@@ -1,24 +1,227 @@
-<!-- ============ LOGIN ============ -->
-<div id="page-login" class="page">
-  <div class="container">
-    <div class="card card-login">
-      <div style="display:flex;align-items:center;justify-content:center;">
-        <img src="assets/logo.svg" alt="DAMA" style="width:96px;height:96px;display:block;">
-      </div>
-      <div style="font-size:24px;font-weight:700;margin:24px 0 26px;text-align:center;">تسجيل الدخول</div>
-      <div class="form-group">
-        <label class="form-label">البريد الإلكتروني</label>
-        <input id="login-email" class="form-input" placeholder="name@example.com" oninput="App.state.loginEmail=this.value;App.state.loginError=false;">
-      </div>
-      <div class="form-group" style="margin-bottom:10px;">
-        <label class="form-label">كلمة المرور</label>
-        <input id="login-pass" type="password" class="form-input" placeholder="••••••••" oninput="App.state.loginPass=this.value;App.state.loginError=false;">
-      </div>
-      <div id="login-error" class="error-text" style="display:none;">بيانات الدخول غير صحيحة.</div>
-      <div style="text-align:left;font-size:13px;color:#1A81BC;margin-bottom:22px;cursor:pointer;">نسيت كلمة المرور؟</div>
-      <button class="btn btn-primary" onclick="App.doLogin()">دخول</button>
-      <div style="text-align:center;font-size:13px;color:#7a8190;margin-top:18px;">ليس لديك حساب؟ <span class="link" onclick="App.navigate('signup')">إنشاء حساب</span></div>
-      <div class="demo-box">بيانات تجريبية · الجمعية: أي بريد · مسؤول النظام: admin@dama-business.com / adminpass · الإدارة التنفيذية: ceo@dama-business.com / execpass</div>
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - منصة داما</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #1e3a5f 0%, #2c694e 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 500px;
+      padding: 40px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo-text {
+      font-size: 32px;
+      font-weight: bold;
+      color: #1e3a5f;
+      margin-bottom: 10px;
+    }
+    .logo-subtitle {
+      color: #666;
+      font-size: 14px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #181c1e;
+    }
+    input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    input[type="email"]:focus, input[type="password"]:focus {
+      outline: none;
+      border-color: #1e3a5f;
+      box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+    }
+    .btn-login {
+      width: 100%;
+      padding: 12px;
+      background: #1e3a5f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .btn-login:hover {
+      background: #0d1b2a;
+    }
+    .demo-section {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .demo-title {
+      font-weight: 600;
+      color: #1e3a5f;
+      margin-bottom: 15px;
+    }
+    .demo-card {
+      background: #f7fafc;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      border-left: 3px solid #2c694e;
+    }
+    .demo-card strong {
+      color: #1e3a5f;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .btn-demo {
+      background: transparent;
+      color: #1e3a5f;
+      border: 1px solid #e2e8f0;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      width: 100%;
+      margin-top: 4px;
+    }
+    .btn-demo:hover {
+      background: #e2e8f0;
+    }
+    .error {
+      background: #fdf3f2;
+      color: #b23b34;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    .success {
+      background: #dcfce7;
+      color: #166534;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <div class="logo">
+    <div class="logo-text">🏛️ داما</div>
+    <div class="logo-subtitle">منصة إدارة المنح والتأهيل</div>
+  </div>
+
+  <div class="error" id="errorMsg"></div>
+  <div class="success" id="successMsg"></div>
+
+  <form id="loginForm">
+    <div class="form-group">
+      <label>البريد الإلكتروني</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="form-group">
+      <label>كلمة المرور</label>
+      <input type="password" id="password" required>
+    </div>
+    <button type="submit" class="btn-login">دخول</button>
+  </form>
+
+  <div class="demo-section">
+    <div class="demo-title">📝 حسابات تجريبية:</div>
+    
+    <div class="demo-card">
+      <strong>👤 جمعية</strong>
+      <div>info@albir.org</div>
+      <button type="button" class="btn-demo" onclick="fillDemo('info@albir.org','pass123')">استخدام</button>
+    </div>
+
+    <div class="demo-card">
+      <strong>👨‍💼 مراجع إداري</strong>
+      <div>ahmed.admin@dama.com</div>
+      <button type="button" class="btn-demo" onclick="fillDemo('ahmed.admin@dama.com','admin123')">استخدام</button>
+    </div>
+
+    <div class="demo-card">
+      <strong>⚙️ مدير النظام</strong>
+      <div>admin@dama.com</div>
+      <button type="button" class="btn-demo" onclick="fillDemo('admin@dama.com','superadmin123')">استخدام</button>
     </div>
   </div>
 </div>
+
+<script src="js/dama-system.js"></script>
+<script>
+let database = {};
+
+async function loadDatabase() {
+  try {
+    const response = await fetch('db/database.json');
+    database = await response.json();
+  } catch (error) {
+    console.error('خطأ:', error);
+  }
+}
+
+function fillDemo(email, password) {
+  document.getElementById('email').value = email;
+  document.getElementById('password').value = password;
+}
+
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  
+  const user = database.users?.find(u => u.email === email && u.password === password);
+  
+  if (!user) {
+    document.getElementById('errorMsg').textContent = '❌ بيانات غير صحيحة';
+    document.getElementById('errorMsg').style.display = 'block';
+    return;
+  }
+
+  localStorage.setItem('damaCurrentUser', JSON.stringify(user));
+  localStorage.setItem('damaDatabase', JSON.stringify(database));
+  
+  const redirects = {
+    'association': 'dashboard-society.html',
+    'admin_reviewer': 'dashboard-reviewer.html',
+    'executive_director': 'dashboard-executive.html',
+    'super_admin': 'dashboard-admin.html'
+  };
+
+  window.location.href = redirects[user.role] || 'index.html';
+});
+
+loadDatabase();
+</script>
+
+</body>
+</html>
