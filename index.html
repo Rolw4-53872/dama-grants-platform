@@ -7,25 +7,22 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css">
 
   <script id="tailwind-config">
     tailwind.config = {
-      darkMode: "class",
       theme: {
         extend: {
-          "colors": {
-              "primary": "#002045",
-              "primary-container": "#1a365d",
-              "secondary": "#2c694e",
-              "on-primary": "#ffffff",
-              "on-primary-container": "#86a0cd",
-              "on-surface": "#181c1e",
-              "on-surface-variant": "#43474e",
-              "background": "#f7fafc",
-              "surface": "#f7fafc",
-              "outline": "#74777f",
-              "outline-variant": "#c4c6cf"
+          colors: {
+            "primary": "#002045",
+            "primary-container": "#1a365d",
+            "secondary": "#2c694e",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#86a0cd",
+            "on-surface": "#181c1e",
+            "on-surface-variant": "#43474e",
+            "background": "#f7fafc",
+            "surface": "#f7fafc",
+            "outline": "#74777f"
           }
         }
       }
@@ -37,298 +34,284 @@
       font-family: 'Noto Sans Arabic', sans-serif;
       background-color: #f7fafc;
       color: #181c1e;
-      overflow-x: hidden;
     }
-
-    .institutional-shadow {
-      box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
-    }
-
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
-
-    .page { display: none; }
-    .page.active { display: block; }
-
-    .fade-in { animation: fadeIn 0.3s; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .page { display: none !important; }
+    .page.active { display: block !important; }
+    .institutional-shadow { box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08); }
   </style>
 </head>
 <body class="bg-background min-h-screen">
 
-<div id="app" class="min-h-screen">
+<!-- LOGIN PAGE -->
+<div id="page-home" class="page active min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white rounded-2xl overflow-hidden institutional-shadow">
+    <!-- Left Panel -->
+    <div class="hidden lg:flex bg-gradient-to-br from-primary via-primary-container to-secondary text-on-primary p-12 flex-col justify-between">
+      <div>
+        <div style="font-family: Cairo;" class="text-3xl font-black tracking-wider mb-8">DAMA</div>
+        <h1 style="font-family: Cairo;" class="text-5xl font-black mb-6">منصة المنح والتأهيل</h1>
+        <p class="text-lg opacity-90">نؤهّل الجمعيات مؤسسياً ثم نمكّنها من التقديم على منح لمشاريعها بإجراءات واضحة ومتابعة لحظية.</p>
+      </div>
 
-  <!-- HOME / LOGIN PAGE -->
-  <div id="page-home" class="page active min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-primary via-primary-container to-secondary">
-    <div class="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-0 bg-surface rounded-2xl overflow-hidden institutional-shadow">
-      <!-- Left Panel -->
-      <div class="hidden lg:flex bg-gradient-to-br from-primary via-primary-container to-secondary text-on-primary p-12 flex-col justify-between">
+      <div class="grid grid-cols-3 gap-6 pt-8 border-t border-on-primary/20">
         <div>
-          <div style="font-family: Cairo;" class="text-3xl font-black tracking-wider mb-8">DAMA</div>
-          <h1 style="font-family: Cairo;" class="text-5xl font-black mb-6">منصة المنح والتأهيل</h1>
-          <p class="text-lg opacity-90">نؤهّل الجمعيات مؤسسياً ثم نمكّنها من التقديم على منح لمشاريعها، بإجراءات واضحة ومتابعة لحظية.</p>
+          <div class="text-3xl font-black">520</div>
+          <div class="text-sm opacity-70">جمعية</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black">300</div>
+          <div class="text-sm opacity-70">طلب منحة</div>
+        </div>
+        <div>
+          <div class="text-3xl font-black">12.5M</div>
+          <div class="text-sm opacity-70">ريال منح</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="p-8 lg:p-12 flex flex-col justify-center">
+      <div class="mb-8">
+        <h2 style="font-family: Cairo;" class="text-3xl font-bold text-primary mb-2">تسجيل الدخول</h2>
+        <p class="text-on-surface-variant">ادخل بيانات حسابك للمتابعة</p>
+      </div>
+
+      <div id="login-error" style="display: none;" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4 text-sm">
+        البريد الإلكتروني أو كلمة المرور غير صحيحة
+      </div>
+
+      <div class="space-y-4 mb-6">
+        <div>
+          <label class="block text-sm font-semibold text-on-surface mb-2">البريد الإلكتروني</label>
+          <input type="email" onchange="App.setState({loginEmail: this.value})" placeholder="your@email.com"
+            class="w-full px-4 py-3 rounded-lg border border-outline bg-white text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" />
         </div>
 
-        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-on-primary/20">
-          <div>
-            <div class="text-3xl font-black">520</div>
-            <div class="text-sm opacity-70">جمعية</div>
-          </div>
-          <div>
-            <div class="text-3xl font-black">300</div>
-            <div class="text-sm opacity-70">طلب منحة</div>
-          </div>
-          <div>
-            <div class="text-3xl font-black">12.5M</div>
-            <div class="text-sm opacity-70">ريال منح</div>
-          </div>
+        <div>
+          <label class="block text-sm font-semibold text-on-surface mb-2">كلمة المرور</label>
+          <input type="password" onchange="App.setState({loginPass: this.value})" placeholder="••••••••"
+            class="w-full px-4 py-3 rounded-lg border border-outline bg-white text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="remember" class="w-4 h-4 rounded accent-primary" />
+          <label for="remember" class="text-sm text-on-surface-variant">تذكرني</label>
         </div>
       </div>
 
-      <!-- Right Panel - Login Form -->
-      <div class="p-8 lg:p-12 flex flex-col justify-center">
-        <div class="mb-8">
-          <h2 style="font-family: Cairo;" class="text-3xl font-bold text-primary mb-2">تسجيل الدخول</h2>
-          <p class="text-on-surface-variant">ادخل بيانات حسابك للمتابعة</p>
-        </div>
+      <button onclick="App.doLogin()" class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:brightness-110 transition-all active:scale-95 mb-4 institutional-shadow">
+        دخول
+      </button>
 
-        <!-- Error Message -->
-        <div id="login-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4 text-sm">
-          البريد الإلكتروني أو كلمة المرور غير صحيحة
-        </div>
+      <button onclick="alert('ميزة إنشاء حساب قريباً')" class="w-full border-2 border-outline text-primary py-3 rounded-lg font-bold hover:bg-primary/5 transition-all">
+        إنشاء حساب جديد
+      </button>
 
-        <div class="space-y-4 mb-6">
+      <div class="mt-6 pt-6 border-t border-outline">
+        <p class="text-sm text-on-surface-variant mb-3 font-semibold">الحسابات التجريبية:</p>
+        <div class="space-y-3 text-left bg-primary/5 p-4 rounded-lg text-xs">
           <div>
-            <label class="block text-sm font-semibold text-on-surface mb-2">البريد الإلكتروني</label>
-            <input type="email" id="login-email" placeholder="your@email.com"
-              class="w-full px-4 py-3 rounded-lg border border-outline bg-surface text-on-surface focus:outline-none focus:ring-2 focus:ring-primary"
-              onchange="App.setState({ loginEmail: this.value })" />
+            <div class="font-bold text-primary">👨‍💼 مسؤول النظام:</div>
+            <div class="text-on-surface-variant">admin@dama-business.com / adminpass</div>
           </div>
-
           <div>
-            <label class="block text-sm font-semibold text-on-surface mb-2">كلمة المرور</label>
-            <input type="password" id="login-pass" placeholder="••••••••"
-              class="w-full px-4 py-3 rounded-lg border border-outline bg-surface text-on-surface focus:outline-none focus:ring-2 focus:ring-primary"
-              onchange="App.setState({ loginPass: this.value })" />
+            <div class="font-bold text-primary">👔 الإدارة التنفيذية:</div>
+            <div class="text-on-surface-variant">ceo@dama-business.com / execpass</div>
           </div>
-
-          <div class="flex items-center gap-2">
-            <input type="checkbox" id="remember" class="w-4 h-4 rounded accent-primary" />
-            <label for="remember" class="text-sm text-on-surface-variant">تذكرني</label>
-          </div>
-        </div>
-
-        <button onclick="App.doLogin()" class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold hover:brightness-110 transition-all active:scale-95 mb-4 institutional-shadow">
-          دخول
-        </button>
-
-        <button onclick="App.navigate('signup')" class="w-full border-2 border-outline text-primary py-3 rounded-lg font-bold hover:bg-primary/5 transition-all">
-          إنشاء حساب جديد
-        </button>
-
-        <div class="mt-6 pt-6 border-t border-outline">
-          <p class="text-sm text-on-surface-variant mb-3 font-semibold">الحسابات التجريبية:</p>
-          <div class="space-y-2 text-left bg-primary/5 p-4 rounded-lg text-sm">
-            <div>
-              <div class="font-bold text-primary">Admin:</div>
-              <div class="text-on-surface-variant text-xs">admin@dama-business.com / adminpass</div>
-            </div>
-            <div class="mt-3">
-              <div class="font-bold text-primary">CEO:</div>
-              <div class="text-on-surface-variant text-xs">ceo@dama-business.com / execpass</div>
-            </div>
-            <div class="mt-3">
-              <div class="font-bold text-primary">جمعية:</div>
-              <div class="text-on-surface-variant text-xs">أي بريد إلكتروني + كلمة مرور</div>
-            </div>
+          <div>
+            <div class="font-bold text-primary">🏢 جمعية:</div>
+            <div class="text-on-surface-variant">أي بريد + أي كلمة مرور</div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ADMIN DASHBOARD -->
-  <div id="page-admin" class="page min-h-screen bg-background">
-    <div class="flex">
-      <!-- Sidebar -->
-      <aside class="h-screen w-64 fixed right-0 top-0 bg-gradient-to-b from-primary to-primary-container text-on-primary shadow-lg flex flex-col py-6 z-50">
-        <div class="px-6 mb-8">
-          <h1 style="font-family: Cairo;" class="text-2xl font-black">DAMA</h1>
-          <p class="text-on-primary-container text-xs opacity-80">نظام إدارة المنح</p>
+<!-- ADMIN DASHBOARD -->
+<div id="page-admin" class="page min-h-screen bg-background">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="h-screen w-64 fixed right-0 top-0 bg-gradient-to-b from-primary to-primary-container text-on-primary shadow-lg flex flex-col py-6 z-50">
+      <div class="px-6 mb-8">
+        <h1 style="font-family: Cairo;" class="text-2xl font-black">DAMA</h1>
+        <p class="text-on-primary-container text-xs opacity-80">لوحة المسؤول</p>
+      </div>
+
+      <nav class="flex-grow space-y-1 px-2">
+        <a href="#" onclick="App.setState({adminScreen:'qual'}); return false;" class="block hover:bg-white/10 rounded-lg px-4 py-3 transition-colors">
+          <span class="material-symbols-outlined align-middle">description</span>
+          <span class="ml-3">طلبات التأهيل</span>
+        </a>
+        <a href="#" onclick="App.setState({adminScreen:'proj'}); return false;" class="block hover:bg-white/10 rounded-lg px-4 py-3 transition-colors">
+          <span class="material-symbols-outlined align-middle">folder</span>
+          <span class="ml-3">طلبات المشاريع</span>
+        </a>
+        <a href="#" onclick="App.setState({adminScreen:'contract'}); return false;" class="block hover:bg-white/10 rounded-lg px-4 py-3 transition-colors">
+          <span class="material-symbols-outlined align-middle">assignment</span>
+          <span class="ml-3">العقود</span>
+        </a>
+      </nav>
+
+      <button onclick="App.setPortal('applicant')" class="mx-6 px-4 py-3 text-sm text-on-primary-container opacity-70 hover:opacity-100 transition-opacity border-t border-on-primary/20 mt-auto w-[calc(100%-3rem)]">
+        تسجيل الخروج
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 flex-1">
+      <!-- Header -->
+      <header class="h-16 bg-white border-b border-outline flex items-center px-8 sticky top-0 z-40 institutional-shadow">
+        <input type="text" placeholder="البحث..." class="w-80 px-4 py-2 bg-primary/5 border border-outline rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+        <h2 style="font-family: Cairo;" class="font-bold text-xl text-primary ml-4">إدارة الطلبات</h2>
+        <div class="ml-auto flex items-center gap-4">
+          <button class="p-2 hover:bg-primary/5 rounded-full">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary"></div>
+        </div>
+      </header>
+
+      <!-- Stats -->
+      <div class="p-8">
+        <div class="grid grid-cols-3 gap-6 mb-8">
+          <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+            <p class="text-xs text-on-surface-variant font-semibold mb-2">إجمالي الطلبات</p>
+            <p class="text-4xl font-black text-primary">1,284</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+            <p class="text-xs text-on-surface-variant font-semibold mb-2">قيد المراجعة</p>
+            <p class="text-4xl font-black text-yellow-600">342</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+            <p class="text-xs text-on-surface-variant font-semibold mb-2">مقبولة</p>
+            <p class="text-4xl font-black text-secondary">512</p>
+          </div>
         </div>
 
-        <nav class="flex-grow space-y-1 px-2">
-          <a href="#" onclick="App.setState({adminScreen: 'qual'})" class="block hover:bg-white/10 rounded-lg px-4 py-3 text-on-primary-container transition-colors">
-            <span class="material-symbols-outlined align-middle">description</span>
-            <span class="ml-3">طلبات التأهيل</span>
-          </a>
-          <a href="#" onclick="App.setState({adminScreen: 'proj'})" class="block hover:bg-white/10 rounded-lg px-4 py-3 text-on-primary-container transition-colors">
-            <span class="material-symbols-outlined align-middle">folder</span>
-            <span class="ml-3">طلبات المشاريع</span>
-          </a>
-          <a href="#" onclick="App.setState({adminScreen: 'contract'})" class="block hover:bg-white/10 rounded-lg px-4 py-3 text-on-primary-container transition-colors">
-            <span class="material-symbols-outlined align-middle">assignment</span>
-            <span class="ml-3">العقود</span>
-          </a>
-        </nav>
-
-        <button onclick="App.setPortal('applicant')" class="mx-6 px-4 py-3 text-sm text-on-primary-container opacity-70 hover:opacity-100 transition-opacity border-t border-on-primary/20 mt-auto w-[calc(100%-3rem)]">
-          تسجيل الخروج
-        </button>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="ml-64 flex-1">
-        <!-- Header -->
-        <header class="h-16 bg-surface border-b border-outline flex items-center px-8 sticky top-0 z-40 institutional-shadow">
-          <div class="flex-1 flex items-center gap-4">
-            <input type="text" placeholder="البحث..." class="w-80 px-4 py-2 bg-primary/5 border border-outline rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
-            <h2 style="font-family: Cairo;" class="font-bold text-xl text-primary ml-4">إدارة الطلبات</h2>
-          </div>
-          <div class="flex items-center gap-4">
-            <button class="p-2 hover:bg-primary/5 rounded-full transition-colors">
-              <span class="material-symbols-outlined">notifications</span>
-            </button>
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary"></div>
-          </div>
-        </header>
-
-        <!-- Stats Grid -->
-        <div class="p-8">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-surface p-6 rounded-2xl border border-outline institutional-shadow">
-              <p class="text-xs text-on-surface-variant font-semibold mb-2">إجمالي الطلبات</p>
-              <p class="text-4xl font-black text-primary">1,284</p>
-            </div>
-            <div class="bg-surface p-6 rounded-2xl border border-outline institutional-shadow">
-              <p class="text-xs text-on-surface-variant font-semibold mb-2">قيد المراجعة</p>
-              <p class="text-4xl font-black text-yellow-600">342</p>
-            </div>
-            <div class="bg-surface p-6 rounded-2xl border border-outline institutional-shadow">
-              <p class="text-xs text-on-surface-variant font-semibold mb-2">مقبولة</p>
-              <p class="text-4xl font-black text-secondary">512</p>
-            </div>
-          </div>
-
-          <!-- Data Table -->
-          <div class="bg-surface rounded-2xl border border-outline institutional-shadow overflow-hidden">
-            <table class="w-full">
-              <thead class="bg-primary/5 border-b border-outline">
-                <tr>
-                  <th class="px-6 py-4 text-xs font-black text-primary text-right">رقم الطلب</th>
-                  <th class="px-6 py-4 text-xs font-black text-primary text-right">الجمعية</th>
-                  <th class="px-6 py-4 text-xs font-black text-primary text-right">الحالة</th>
-                  <th class="px-6 py-4 text-xs font-black text-primary text-right">التاريخ</th>
-                  <th class="px-6 py-4 text-xs font-black text-primary text-center">الإجراء</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-outline">
-                <tr class="hover:bg-primary/[0.02]">
-                  <td class="px-6 py-4 font-bold">#REQ-2401</td>
-                  <td class="px-6 py-4">جمعية البر الأهلية</td>
-                  <td class="px-6 py-4">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 text-xs font-bold border border-yellow-200">
-                      <span class="w-2 h-2 rounded-full bg-yellow-600"></span>
-                      قيد المراجعة
-                    </span>
-                  </td>
-                  <td class="px-6 py-4">24/10/2023</td>
-                  <td class="px-6 py-4 text-center">
-                    <button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:brightness-110">عرض</button>
-                  </td>
-                </tr>
-                <tr class="hover:bg-primary/[0.02]">
-                  <td class="px-6 py-4 font-bold">#REQ-2402</td>
-                  <td class="px-6 py-4">جمعية التنمية الاجتماعية</td>
-                  <td class="px-6 py-4">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-secondary text-xs font-bold border border-green-200">
-                      <span class="w-2 h-2 rounded-full bg-secondary"></span>
-                      مقبولة
-                    </span>
-                  </td>
-                  <td class="px-6 py-4">22/10/2023</td>
-                  <td class="px-6 py-4 text-center">
-                    <button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:brightness-110">عرض</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <!-- Table -->
+        <div class="bg-white rounded-2xl border border-outline institutional-shadow overflow-hidden">
+          <table class="w-full">
+            <thead class="bg-primary/5 border-b border-outline">
+              <tr>
+                <th class="px-6 py-4 text-xs font-black text-primary text-right">رقم الطلب</th>
+                <th class="px-6 py-4 text-xs font-black text-primary text-right">الجمعية</th>
+                <th class="px-6 py-4 text-xs font-black text-primary text-right">الحالة</th>
+                <th class="px-6 py-4 text-xs font-black text-primary text-right">التاريخ</th>
+                <th class="px-6 py-4 text-xs font-black text-primary text-center">الإجراء</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline">
+              <tr class="hover:bg-primary/[0.02]">
+                <td class="px-6 py-4 font-bold">#REQ-2401</td>
+                <td class="px-6 py-4">جمعية البر الأهلية</td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 text-xs font-bold border border-yellow-200">
+                    <span class="w-2 h-2 rounded-full bg-yellow-600"></span>
+                    قيد المراجعة
+                  </span>
+                </td>
+                <td class="px-6 py-4">24/10/2024</td>
+                <td class="px-6 py-4 text-center">
+                  <button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:brightness-110">عرض</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-primary/[0.02]">
+                <td class="px-6 py-4 font-bold">#REQ-2402</td>
+                <td class="px-6 py-4">جمعية التنمية الاجتماعية</td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-secondary text-xs font-bold border border-green-200">
+                    <span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    مقبولة
+                  </span>
+                </td>
+                <td class="px-6 py-4">22/10/2024</td>
+                <td class="px-6 py-4 text-center">
+                  <button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:brightness-110">عرض</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   </div>
+</div>
 
-  <!-- MANAGER DASHBOARD -->
-  <div id="page-manager" class="page min-h-screen bg-background">
-    <div class="flex">
-      <!-- Sidebar -->
-      <aside class="h-screen w-64 fixed right-0 top-0 bg-gradient-to-b from-primary to-primary-container text-on-primary shadow-lg flex flex-col py-6 z-50">
-        <div class="px-6 mb-8">
-          <h1 style="font-family: Cairo;" class="text-2xl font-black">DAMA</h1>
-          <p class="text-on-primary-container text-xs opacity-80">لوحة الإدارة التنفيذية</p>
+<!-- MANAGER DASHBOARD -->
+<div id="page-manager" class="page min-h-screen bg-background">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="h-screen w-64 fixed right-0 top-0 bg-gradient-to-b from-primary to-primary-container text-on-primary shadow-lg flex flex-col py-6 z-50">
+      <div class="px-6 mb-8">
+        <h1 style="font-family: Cairo;" class="text-2xl font-black">DAMA</h1>
+        <p class="text-on-primary-container text-xs opacity-80">الإدارة التنفيذية</p>
+      </div>
+
+      <nav class="flex-grow space-y-1 px-2">
+        <a href="#" onclick="App.setState({mgrScreen:'dash'}); return false;" class="block hover:bg-white/10 rounded-lg px-4 py-3 transition-colors">
+          <span class="material-symbols-outlined align-middle">dashboard</span>
+          <span class="ml-3">لوحة المعلومات</span>
+        </a>
+      </nav>
+
+      <button onclick="App.setPortal('applicant')" class="mx-6 px-4 py-3 text-sm text-on-primary-container opacity-70 hover:opacity-100 transition-opacity border-t border-on-primary/20 mt-auto w-[calc(100%-3rem)]">
+        تسجيل الخروج
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 flex-1">
+      <header class="h-16 bg-white border-b border-outline flex items-center px-8">
+        <h2 style="font-family: Cairo;" class="font-bold text-xl text-primary">لوحة الإدارة التنفيذية</h2>
+        <div class="ml-auto flex items-center gap-4">
+          <button class="p-2 hover:bg-primary/5 rounded-full">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary"></div>
         </div>
+      </header>
 
-        <nav class="flex-grow space-y-1 px-2">
-          <a href="#" onclick="App.setState({mgrScreen: 'dash'})" class="block hover:bg-white/10 rounded-lg px-4 py-3 text-on-primary-container transition-colors">
-            <span class="material-symbols-outlined align-middle">dashboard</span>
-            <span class="ml-3">لوحة المعلومات</span>
-          </a>
-          <a href="#" onclick="App.setState({mgrScreen: 'requests'})" class="block hover:bg-white/10 rounded-lg px-4 py-3 text-on-primary-container transition-colors">
-            <span class="material-symbols-outlined align-middle">list</span>
-            <span class="ml-3">الطلبات</span>
-          </a>
-        </nav>
-
-        <button onclick="App.setPortal('applicant')" class="mx-6 px-4 py-3 text-sm text-on-primary-container opacity-70 hover:opacity-100 transition-opacity border-t border-on-primary/20 mt-auto w-[calc(100%-3rem)]">
-          تسجيل الخروج
-        </button>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="ml-64 flex-1">
-        <!-- Header -->
-        <header class="h-16 bg-surface border-b border-outline flex items-center px-8 sticky top-0 z-40 institutional-shadow">
-          <h2 style="font-family: Cairo;" class="font-bold text-xl text-primary">لوحة الإدارة التنفيذية</h2>
-          <div class="ml-auto flex items-center gap-4">
-            <button class="p-2 hover:bg-primary/5 rounded-full transition-colors">
-              <span class="material-symbols-outlined">notifications</span>
-            </button>
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary"></div>
+      <div class="p-8">
+        <div class="grid grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+            <p class="text-xs text-on-surface-variant font-semibold mb-2">إجمالي الجمعيات</p>
+            <p class="text-4xl font-black text-primary">520</p>
           </div>
-        </header>
-
-        <!-- Stats Grid -->
-        <div class="p-8">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div class="bg-surface p-6 rounded-2xl border border-outline institutional-shadow">
-              <p class="text-xs text-on-surface-variant font-semibold mb-2">إجمالي الجمعيات</p>
-              <p class="text-4xl font-black text-primary">520</p>
-            </div>
-            <div class="bg-surface p-6 rounded-2xl border border-outline institutional-shadow">
-              <p class="text-xs text-on-surface-variant font-semibold mb-2">طلبات التأهيل</p>
-              <p class="text-4xl font-black text-blue-600">220</p>
-            </div>
-            <div class="bg-surface p-6 rounded-2xl border border-outline institutional-shadow">
-              <p class="text-xs text-on-surface-variant font-semibold mb-2">طلبات المشاريع</p>
-              <p class="text-4xl font-black text-purple-600">180</p>
-            </div>
-            <div class="bg-surface p-6 rounded-2xl border border-outline institutional-shadow">
-              <p class="text-xs text-on-surface-variant font-semibold mb-2">المنح المُقرة</p>
-              <p class="text-4xl font-black text-secondary">12.5M</p>
-            </div>
+          <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+            <p class="text-xs text-on-surface-variant font-semibold mb-2">طلبات التأهيل</p>
+            <p class="text-4xl font-black text-blue-600">220</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+            <p class="text-xs text-on-surface-variant font-semibold mb-2">طلبات المشاريع</p>
+            <p class="text-4xl font-black text-purple-600">180</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+            <p class="text-xs text-on-surface-variant font-semibold mb-2">المنح المُقرة</p>
+            <p class="text-4xl font-black text-secondary">12.5M</p>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   </div>
-
 </div>
 
 <script src="js/app.js"></script>
 <script>
-  App.init();
+  // Initialize app on load
+  document.addEventListener('DOMContentLoaded', function() {
+    App.init();
+    // Update error display on login error change
+    App.render = (function(original) {
+      return function() {
+        original.call(this);
+        const errorEl = document.getElementById('login-error');
+        if (errorEl) {
+          errorEl.style.display = this.state.loginError ? 'block' : 'none';
+        }
+      };
+    })(App.render);
+  });
 </script>
 </body>
 </html>
