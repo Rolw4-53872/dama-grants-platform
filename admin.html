@@ -1,0 +1,145 @@
+<!-- ============ ADMIN PANEL ============ -->
+<div id="page-admin" class="page">
+  <div style="display:flex;min-height:100vh;animation:fade .4s;">
+    <!-- Sidebar -->
+    <div class="sidebar sidebar-admin">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-bg"><img src="assets/logo.svg" alt="DAMA"></div>
+        <div class="sidebar-title">DAMA</div>
+      </div>
+      <div class="sidebar-role">مسؤول النظام</div>
+      <div id="admin-nav-qual" class="sidebar-nav-item admin-nav sidebar-nav-active" onclick="App.setState({adminScreen:'qual'})">طلبات التأهيل</div>
+      <div id="admin-nav-proj" class="sidebar-nav-item admin-nav" onclick="App.setState({adminScreen:'proj'})">طلبات المشاريع</div>
+      <div class="sidebar-logout" onclick="App.setState({adminAuthed:false,portal:'applicant'})">تسجيل الخروج</div>
+    </div>
+
+    <!-- Content -->
+    <div style="flex:1;padding:30px 34px;overflow:auto;">
+
+      <!-- Qualification List -->
+      <div id="admin-qual" class="admin-section">
+        <div style="font-size:22px;font-weight:800;margin-bottom:20px;">إدارة طلبات التأهيل</div>
+        <input class="form-input" placeholder="ابحث باسم الجمعية أو رقم الترخيص" style="margin-bottom:18px;">
+        <div class="data-table">
+          <div class="data-table-header" style="grid-template-columns:130px 1.5fr 120px 120px 130px;">
+            <span>رقم الطلب</span><span>اسم الجمعية</span><span>رقم الترخيص</span><span>التاريخ</span><span>الحالة</span>
+          </div>
+          <div id="admin-qual-tbody"></div>
+        </div>
+      </div>
+
+      <!-- Qualification Detail -->
+      <div id="admin-qdetail" class="admin-section" style="display:none;">
+        <div class="back-link" onclick="App.setState({adminScreen:'qual'})">→ رجوع لطلبات التأهيل</div>
+        <div class="grid-2-col">
+          <div class="card" style="padding:28px;">
+            <div style="font-size:20px;font-weight:800;margin-bottom:20px;">طلب تأهيل — TQ-2026-0125</div>
+            <div class="grid-2" style="margin-bottom:24px;">
+              <div><div style="font-size:13px;color:#9aa2b3;">اسم الجمعية</div><div style="font-size:15px;font-weight:700;">جمعية البر بجدة</div></div>
+              <div><div style="font-size:13px;color:#9aa2b3;">رقم الترخيص</div><div style="font-size:15px;font-weight:700;">700123456</div></div>
+              <div><div style="font-size:13px;color:#9aa2b3;">البريد</div><div style="font-size:15px;font-weight:700;">info@albirjeddah.org</div></div>
+              <div><div style="font-size:13px;color:#9aa2b3;">الجوال</div><div style="font-size:15px;font-weight:700;">0551234567</div></div>
+            </div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:12px;">الملفات المرفقة</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">شهادة الترخيص</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">اللائحة الأساسية</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">المعلومات البنكية</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">حساب التبرع</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">الملف التعريفي</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">الهوية البصرية</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">الخطة الاستراتيجية</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">الخطة التشغيلية</span><span class="link">⬇</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;background:#f6f8fb;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#5b6273;">القوائم المالية (سنتان)</span><span class="link">⬇</span></div>
+            </div>
+            <div style="font-size:14px;font-weight:700;margin-bottom:10px;">معلومات التأهيل</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:13px;">
+              <span class="info-tag">شهادات تميز: نعم</span>
+              <span class="info-tag">منصة قوائم: مسجّلة</span>
+              <span class="info-tag">مشاريع سابقة: 4</span>
+            </div>
+          </div>
+          <div class="card" style="padding:26px;">
+            <div style="font-size:16px;font-weight:700;margin-bottom:8px;">إجراء القرار</div>
+            <div style="font-size:13px;color:#9aa2b3;margin-bottom:16px;">الحالة الحالية: <span id="admin-qdetail-status" style="font-weight:700;color:#b8842a;">قيد المراجعة</span></div>
+            <textarea class="form-input" rows="4" placeholder="ملاحظات / سبب القرار" style="margin-bottom:16px;"></textarea>
+            <div class="flex-col" style="gap:10px;">
+              <button class="btn btn-green btn-sm" onclick="App.setState({qualStatus:'accepted',adminScreen:'qual'})">قبول الطلب</button>
+              <button class="btn btn-outline-yellow btn-sm" onclick="App.setState({qualStatus:'edit',adminScreen:'qual'})">طلب تعديل</button>
+              <button class="btn btn-outline-red btn-sm" onclick="App.setState({qualStatus:'rejected',adminScreen:'qual'})">رفض الطلب</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project List -->
+      <div id="admin-proj" class="admin-section" style="display:none;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:20px;">مراجعة طلبات المشاريع</div>
+        <div class="data-table">
+          <div class="data-table-header" style="grid-template-columns:130px 1.4fr 1fr 120px 130px;">
+            <span>رقم الطلب</span><span>المشروع</span><span>الجمعية</span><span>القيمة</span><span>الحالة</span>
+          </div>
+          <div id="admin-proj-tbody"></div>
+        </div>
+      </div>
+
+      <!-- Project Detail -->
+      <div id="admin-pdetail" class="admin-section" style="display:none;">
+        <div class="back-link" onclick="App.setState({adminScreen:'proj'})">→ رجوع لطلبات المشاريع</div>
+        <div class="grid-2-col">
+          <div class="card" style="padding:28px;">
+            <div style="font-size:20px;font-weight:800;margin-bottom:20px;">مشروع — PRJ-2026-0098</div>
+            <div class="grid-2" style="margin-bottom:20px;">
+              <div><div style="font-size:13px;color:#9aa2b3;">اسم المشروع</div><div style="font-size:15px;font-weight:700;">تمكين الأسر المنتجة</div></div>
+              <div><div style="font-size:13px;color:#9aa2b3;">الجمعية</div><div style="font-size:15px;font-weight:700;">جمعية البر بجدة</div></div>
+              <div><div style="font-size:13px;color:#9aa2b3;">الفئة المستهدفة</div><div style="font-size:15px;font-weight:700;">الأسر المنتجة</div></div>
+              <div><div style="font-size:13px;color:#9aa2b3;">قيمة المشروع</div><div style="font-size:15px;font-weight:700;">300,000 ريال</div></div>
+            </div>
+            <div style="margin-bottom:18px;">
+              <div style="font-size:13px;color:#9aa2b3;margin-bottom:5px;">وصف المشروع</div>
+              <div style="font-size:14px;color:#5b6273;line-height:1.9;">تمكين الأسر المنتجة عبر التدريب المهني وتوفير الأدوات اللازمة لبدء مشاريع صغيرة مدرّة للدخل.</div>
+            </div>
+            <div>
+              <div style="font-size:13px;color:#9aa2b3;margin-bottom:5px;">أهداف المشروع</div>
+              <div style="font-size:14px;color:#5b6273;line-height:1.9;">تأهيل 100 أسرة وتمكينها من دخل مستدام خلال سنة.</div>
+            </div>
+          </div>
+          <div class="card" style="padding:26px;">
+            <div style="font-size:16px;font-weight:700;margin-bottom:8px;">القرار والعقد</div>
+            <div style="font-size:13px;color:#9aa2b3;margin-bottom:16px;">حالة المشروع: <span id="admin-pdetail-status" style="font-weight:700;color:#b8842a;">قيد المراجعة</span></div>
+
+            <!-- Before decision -->
+            <div id="admin-proj-review">
+              <textarea class="form-input" rows="3" placeholder="ملاحظات" style="margin-bottom:14px;"></textarea>
+              <div class="flex-col" style="gap:10px;">
+                <button class="btn btn-green btn-sm" onclick="App.setState({projStatus:'accepted'})">قبول المشروع</button>
+                <button class="btn btn-outline-red btn-sm" onclick="App.setState({projStatus:'rejected',adminScreen:'proj'})">رفض المشروع</button>
+              </div>
+            </div>
+
+            <!-- After accept: contract management -->
+            <div id="admin-proj-accepted" style="display:none;">
+              <div style="font-size:13px;color:#9aa2b3;margin-bottom:8px;">حالة العقد: <span id="admin-contract-status" style="font-weight:700;color:#9aa2b3;">لم يُرفع</span></div>
+              <div id="admin-contract-none">
+                <button class="btn btn-primary btn-sm" onclick="App.setState({contractStatus:'admin_up'})">⬆ رفع عقد المشروع</button>
+              </div>
+              <div id="admin-contract-admin-up" style="display:none;">
+                <div class="alert-info">تم إرسال العقد للجمعية — بانتظار رفع النسخة الموقّعة.</div>
+              </div>
+              <div id="admin-contract-signed" style="display:none;">
+                <div style="display:flex;align-items:center;gap:10px;background:#f6f8fb;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;">
+                  <span>📄 العقد الموقّع.pdf</span><span class="link" style="margin-right:auto;">عرض</span>
+                </div>
+                <button class="btn btn-green btn-sm" onclick="App.setState({contractStatus:'approved'})">اعتماد العقد وإكمال المشروع</button>
+              </div>
+              <div id="admin-contract-approved" style="display:none;">
+                <div style="background:#e3efe7;border-radius:10px;padding:14px;font-size:13px;color:#174528;font-weight:700;">✅ تم اعتماد العقد — المشروع مكتمل.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

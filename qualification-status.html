@@ -1,0 +1,39 @@
+<!-- ============ QUAL STATUS ============ -->
+<div id="page-qualstatus" class="page">
+  <div class="container">
+    <div class="card card-md">
+      <div class="back-link" onclick="App.navigate('account')">→ حسابي</div>
+      <div style="font-size:22px;font-weight:800;margin-bottom:20px;">حالة طلب التأهيل</div>
+      <div class="grid-2" style="margin-bottom:24px;">
+        <div><div style="font-size:13px;color:#9aa2b3;">رقم الطلب</div><div style="font-size:15px;font-weight:700;">TQ-2026-0125</div></div>
+        <div><div style="font-size:13px;color:#9aa2b3;">نوع الطلب</div><div style="font-size:15px;font-weight:700;">تأهيل مؤسسي</div></div>
+        <div><div style="font-size:13px;color:#9aa2b3;">تاريخ التقديم</div><div style="font-size:15px;font-weight:700;">20 يونيو 2024</div></div>
+        <div><div style="font-size:13px;color:#9aa2b3;">الحالة</div><div id="qualstatus-label" style="font-size:15px;font-weight:700;color:#b8842a;">قيد المراجعة</div></div>
+      </div>
+
+      <!-- Rejected -->
+      <div id="qualstatus-rejected" style="display:none;">
+        <div class="alert alert-error" style="flex-direction:column;align-items:flex-start;gap:6px;">
+          <div style="font-size:14px;font-weight:700;color:#b23b34;">ملاحظات مسؤول النظام</div>
+          <div style="font-size:13px;color:#7a8190;line-height:1.9;">الملفات المالية غير مكتملة. يرجى رفع القوائم المالية لآخر سنتين وإعادة التقديم.</div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:10px;" onclick="App.navigate('qform',{qstep:1})">تعديل وإعادة التقديم</button>
+      </div>
+
+      <!-- Accepted -->
+      <div id="qualstatus-accepted" style="display:none;">
+        <div class="alert alert-success">
+          <div style="font-size:24px;">✅</div>
+          <div style="font-size:14px;color:#174528;font-weight:600;line-height:1.6;">تم قبول جمعيتكم في برنامج التأهيل. يمكنكم الآن التقديم على مشروع للحصول على منحة.</div>
+        </div>
+        <button class="btn btn-green" onclick="App.navigate('projform')">إدارة المشروع — التقديم على منحة</button>
+      </div>
+
+      <!-- Review -->
+      <div id="qualstatus-review" class="alert alert-warning" style="display:flex;">
+        <div style="font-size:22px;">⏳</div>
+        <div style="font-size:14px;color:#b8842a;font-weight:600;">طلبكم قيد المراجعة من قبل مسؤول النظام.</div>
+      </div>
+    </div>
+  </div>
+</div>

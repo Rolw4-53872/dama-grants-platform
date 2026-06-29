@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الملف الشخصي</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body style="font-family: 'Noto Sans Arabic', sans-serif; background: #f7fafc;">
+
+<nav style="background: white; border-bottom: 1px solid #e2e8f0; padding: 16px 20px;">
+  <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+    <h1 style="font-size: 24px; color: #002045; font-family: 'Cairo', sans-serif;">DAMA</h1>
+    <a href="06-dashboard.html" style="color: #002045; text-decoration: none;">العودة</a>
+  </div>
+</nav>
+
+<main style="max-width: 1000px; margin: 0 auto; padding: 40px 20px;">
+  <h1 style="font-size: 32px; color: #002045; margin-bottom: 30px; font-family: 'Cairo', sans-serif;">الملف الشخصي</h1>
+
+  <div style="background: white; padding: 30px; border-radius: 12px;">
+    <div style="display: grid; grid-template-columns: 100px 1fr; gap: 30px; margin-bottom: 30px;">
+      <div style="width: 100px; height: 100px; background: #002045; border-radius: 50%;"></div>
+      <div>
+        <h2 style="font-size: 28px; color: #002045; font-family: 'Cairo', sans-serif; margin-bottom: 10px;">جمعية البر بجدة</h2>
+        <p style="color: #43474e;">ترخيص: 700123456</p>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid #e2e8f0; padding-top: 30px;">
+      <h3 style="font-size: 20px; color: #002045; font-family: 'Cairo', sans-serif; margin-bottom: 20px;">معلومات الجمعية</h3>
+      <div style="display: grid; gap: 16px;">
+        <div>
+          <label style="display: block; font-weight: 600; margin-bottom: 8px;">البريد الإلكتروني</label>
+          <input type="email" value="info@albir.org" readonly style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;" />
+        </div>
+        <div>
+          <label style="display: block; font-weight: 600; margin-bottom: 8px;">رقم الجوال</label>
+          <input type="tel" value="+966554321098" readonly style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;" />
+        </div>
+        <div>
+          <label style="display: block; font-weight: 600; margin-bottom: 8px;">المدينة</label>
+          <input type="text" value="جدة" readonly style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f7fafc;" />
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; gap: 16px;">
+      <button style="background: #002045; color: white; padding: 12px 32px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600;">تعديل البيانات</button>
+      <button style="background: #1a365d; color: white; padding: 12px 32px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600;">تغيير كلمة المرور</button>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

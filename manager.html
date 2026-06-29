@@ -1,0 +1,92 @@
+<!-- ============ MANAGER PANEL ============ -->
+<div id="page-manager" class="page">
+  <div style="display:flex;min-height:100vh;animation:fade .4s;">
+    <!-- Sidebar -->
+    <div class="sidebar sidebar-mgr">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-bg"><img src="assets/logo.svg" alt="DAMA"></div>
+        <div class="sidebar-title">DAMA</div>
+      </div>
+      <div style="font-size:12px;opacity:.7;margin-bottom:28px;">الإدارة التنفيذية</div>
+      <div id="mgr-nav-dash" class="sidebar-nav-item mgr-nav sidebar-nav-active" onclick="App.setState({mgrScreen:'dash'})">لوحة المعلومات</div>
+      <div id="mgr-nav-table" class="sidebar-nav-item mgr-nav" onclick="App.setState({mgrScreen:'table'})">الجمعيات والطلبات</div>
+      <div style="margin-top:24px;font-size:11px;opacity:.55;line-height:1.7;padding:0 14px;">صلاحية الاطلاع فقط — دون تعديل أو اعتماد.</div>
+      <div class="sidebar-logout" onclick="App.setState({mgrAuthed:false,portal:'applicant'})">تسجيل الخروج</div>
+    </div>
+
+    <!-- Content -->
+    <div style="flex:1;padding:30px 34px;overflow:auto;">
+
+      <!-- Dashboard -->
+      <div id="mgr-dash" class="mgr-section">
+        <div style="font-size:22px;font-weight:800;margin-bottom:22px;">لوحة المعلومات</div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-label">إجمالي الجمعيات</div><div class="stat-value">520</div></div>
+          <div class="stat-card"><div class="stat-label">طلبات التأهيل</div><div class="stat-value" style="color:#1A81BC;">220</div></div>
+          <div class="stat-card"><div class="stat-label">طلبات المشاريع</div><div class="stat-value" style="color:#988057;">300</div></div>
+          <div class="stat-card"><div class="stat-label">مشاريع معتمدة</div><div class="stat-value" style="color:#174528;">160</div></div>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-label">مقبولة</div><div style="font-size:26px;font-weight:800;margin-top:4px;color:#174528;">180</div></div>
+          <div class="stat-card"><div class="stat-label">مرفوضة</div><div style="font-size:26px;font-weight:800;margin-top:4px;color:#b23b34;">60</div></div>
+          <div class="stat-card"><div class="stat-label">قيد المراجعة</div><div style="font-size:26px;font-weight:800;margin-top:4px;color:#b8842a;">40</div></div>
+        </div>
+
+        <!-- Total Grants Banner -->
+        <div class="hero-banner">
+          <div>
+            <div style="font-size:14px;opacity:.85;">إجمالي قيمة المنح المعتمدة</div>
+            <div style="font-size:36px;font-weight:800;margin-top:4px;">12,500,000 ريال</div>
+          </div>
+          <div style="font-size:48px;opacity:.3;">💰</div>
+        </div>
+
+        <!-- Charts -->
+        <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;">
+          <div class="chart-card">
+            <div style="font-size:15px;font-weight:700;margin-bottom:20px;">الطلبات شهرياً</div>
+            <svg viewBox="0 0 420 160" style="width:100%;height:150px;">
+              <polyline points="20,130 90,95 160,105 230,55 300,70 380,25" fill="none" stroke="#1A81BC" stroke-width="3"></polyline>
+              <circle cx="20" cy="130" r="4" fill="#1A81BC"></circle>
+              <circle cx="90" cy="95" r="4" fill="#1A81BC"></circle>
+              <circle cx="160" cy="105" r="4" fill="#1A81BC"></circle>
+              <circle cx="230" cy="55" r="4" fill="#1A81BC"></circle>
+              <circle cx="300" cy="70" r="4" fill="#1A81BC"></circle>
+              <circle cx="380" cy="25" r="4" fill="#1A81BC"></circle>
+              <text x="20" y="152" font-size="11" fill="#9aa2b3" text-anchor="middle">يناير</text>
+              <text x="90" y="152" font-size="11" fill="#9aa2b3" text-anchor="middle">فبراير</text>
+              <text x="160" y="152" font-size="11" fill="#9aa2b3" text-anchor="middle">مارس</text>
+              <text x="230" y="152" font-size="11" fill="#9aa2b3" text-anchor="middle">أبريل</text>
+              <text x="300" y="152" font-size="11" fill="#9aa2b3" text-anchor="middle">مايو</text>
+              <text x="380" y="152" font-size="11" fill="#9aa2b3" text-anchor="middle">يونيو</text>
+            </svg>
+          </div>
+          <div class="chart-card">
+            <div style="font-size:15px;font-weight:700;margin-bottom:18px;">توزيع الحالات</div>
+            <div style="display:flex;align-items:center;gap:18px;">
+              <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(#174528 0 60%,#b8842a 60% 73%,#b23b34 73% 100%);"></div>
+              <div style="font-size:13px;display:flex;flex-direction:column;gap:8px;">
+                <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;border-radius:3px;background:#174528;display:inline-block;"></span>مقبول 60%</div>
+                <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;border-radius:3px;background:#b8842a;display:inline-block;"></span>مراجعة 13%</div>
+                <div style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;border-radius:3px;background:#b23b34;display:inline-block;"></span>مرفوض 27%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table View -->
+      <div id="mgr-table" class="mgr-section" style="display:none;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:6px;">الجمعيات والطلبات</div>
+        <div style="font-size:13px;color:#9aa2b3;margin-bottom:18px;">عرض شامل لحالة التأهيل والمشروع والعقد — للاطلاع فقط.</div>
+        <div style="background:#fff;border-radius:13px;overflow:auto;box-shadow:0 2px 14px rgba(39,45,104,.05);">
+          <div class="mgr-table-header" style="grid-template-columns:1.3fr 110px 1.2fr 110px 120px 110px;">
+            <span>الجمعية</span><span>التأهيل</span><span>المشروع</span><span>حالة المشروع</span><span>العقد</span><span>النهائية</span>
+          </div>
+          <div id="mgr-table-tbody"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
