@@ -1,0 +1,347 @@
+{
+  "system": {
+    "name": "منصة داما",
+    "version": "1.0.0",
+    "status": "active",
+    "createdAt": "2026-01-01",
+    "lastUpdate": "2026-06-29"
+  },
+  "roles": [
+    {
+      "id": 1,
+      "name": "جمعية",
+      "slug": "association",
+      "permissions": ["view_dashboard", "submit_application", "upload_documents", "view_status", "sign_contracts", "view_notifications"]
+    },
+    {
+      "id": 2,
+      "name": "مسؤول الجمعية",
+      "slug": "association_admin",
+      "permissions": ["view_dashboard", "manage_profile", "submit_application", "manage_documents", "view_status", "sign_contracts"]
+    },
+    {
+      "id": 3,
+      "name": "المراجع الإداري",
+      "slug": "admin_reviewer",
+      "permissions": ["view_applications", "review_admin", "add_comments", "request_modifications", "view_documents"]
+    },
+    {
+      "id": 4,
+      "name": "المراجع الفني",
+      "slug": "technical_reviewer",
+      "permissions": ["view_applications", "review_technical", "add_comments", "rate_proposal", "view_documents"]
+    },
+    {
+      "id": 5,
+      "name": "المراجع المالي",
+      "slug": "financial_reviewer",
+      "permissions": ["view_applications", "review_financial", "add_comments", "rate_budget", "view_documents"]
+    },
+    {
+      "id": 6,
+      "name": "لجنة التقييم",
+      "slug": "evaluation_committee",
+      "permissions": ["view_all_reviews", "make_decision", "add_final_comments", "approve_reject"]
+    },
+    {
+      "id": 7,
+      "name": "المدير التنفيذي",
+      "slug": "executive_director",
+      "permissions": ["view_dashboard", "view_all_applications", "make_final_decision", "view_reports", "manage_budget"]
+    },
+    {
+      "id": 8,
+      "name": "مسؤول العقود",
+      "slug": "contracts_manager",
+      "permissions": ["manage_contracts", "create_contracts", "send_for_signature", "track_signatures", "archive"]
+    },
+    {
+      "id": 9,
+      "name": "مسؤول الدفعات",
+      "slug": "payments_manager",
+      "permissions": ["manage_payments", "process_transfers", "track_payments", "generate_reports", "verify_bank"]
+    },
+    {
+      "id": 10,
+      "name": "مسؤول النظام",
+      "slug": "system_admin",
+      "permissions": ["manage_users", "manage_roles", "view_audit_log", "system_settings", "manage_backups"]
+    },
+    {
+      "id": 11,
+      "name": "Super Admin",
+      "slug": "super_admin",
+      "permissions": ["*"]
+    }
+  ],
+  "users": [
+    {
+      "id": 101,
+      "name": "جمعية البر بجدة",
+      "email": "info@albir.org",
+      "password": "pass123",
+      "phone": "0554321098",
+      "role": "association",
+      "status": "active",
+      "createdAt": "2026-01-15"
+    },
+    {
+      "id": 102,
+      "name": "جمعية الرحمة",
+      "email": "info@alrahma.org",
+      "password": "pass123",
+      "phone": "0554321099",
+      "role": "association",
+      "status": "active",
+      "createdAt": "2026-01-20"
+    },
+    {
+      "id": 201,
+      "name": "أحمد محمد",
+      "email": "ahmed.admin@dama.com",
+      "password": "admin123",
+      "phone": "0501234567",
+      "role": "admin_reviewer",
+      "status": "active",
+      "createdAt": "2026-01-01"
+    },
+    {
+      "id": 202,
+      "name": "فاطمة علي",
+      "email": "fatima.tech@dama.com",
+      "password": "admin123",
+      "phone": "0501234568",
+      "role": "technical_reviewer",
+      "status": "active",
+      "createdAt": "2026-01-01"
+    },
+    {
+      "id": 203,
+      "name": "محمود يوسف",
+      "email": "mahmoud.finance@dama.com",
+      "password": "admin123",
+      "phone": "0501234569",
+      "role": "financial_reviewer",
+      "status": "active",
+      "createdAt": "2026-01-01"
+    },
+    {
+      "id": 301,
+      "name": "د. سارة عبدالله",
+      "email": "sarah.director@dama.com",
+      "password": "director123",
+      "phone": "0501111111",
+      "role": "executive_director",
+      "status": "active",
+      "createdAt": "2026-01-01"
+    },
+    {
+      "id": 401,
+      "name": "علي الشيباني",
+      "email": "ali.contracts@dama.com",
+      "password": "admin123",
+      "phone": "0502222222",
+      "role": "contracts_manager",
+      "status": "active",
+      "createdAt": "2026-01-01"
+    },
+    {
+      "id": 501,
+      "name": "منال حسن",
+      "email": "manal.payments@dama.com",
+      "password": "admin123",
+      "phone": "0503333333",
+      "role": "payments_manager",
+      "status": "active",
+      "createdAt": "2026-01-01"
+    },
+    {
+      "id": 601,
+      "name": "نظام داما",
+      "email": "admin@dama.com",
+      "password": "superadmin123",
+      "phone": "0504444444",
+      "role": "super_admin",
+      "status": "active",
+      "createdAt": "2026-01-01"
+    }
+  ],
+  "societies": [
+    {
+      "id": "SOC-001",
+      "name": "جمعية البر بجدة",
+      "license": "700123456",
+      "city": "جدة",
+      "email": "info@albir.org",
+      "phone": "0554321098",
+      "contactPerson": "عبدالعزيز محمد",
+      "status": "verified",
+      "createdAt": "2026-01-15",
+      "verifiedAt": "2026-01-20"
+    },
+    {
+      "id": "SOC-002",
+      "name": "جمعية الرحمة",
+      "license": "700123457",
+      "city": "الرياض",
+      "email": "info@alrahma.org",
+      "phone": "0554321099",
+      "contactPerson": "فاطمة أحمد",
+      "status": "verified",
+      "createdAt": "2026-01-20",
+      "verifiedAt": "2026-01-25"
+    }
+  ],
+  "programs": [
+    {
+      "id": "PRG-001",
+      "name": "برنامج المنح المالية",
+      "description": "دعم مالي للمشاريع المجتمعية",
+      "budget": 5000000,
+      "allocatedBudget": 2500000,
+      "status": "active",
+      "minAmount": 50000,
+      "maxAmount": 500000,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31"
+    },
+    {
+      "id": "PRG-002",
+      "name": "برنامج التأهيل المؤسسي",
+      "description": "تطوير القدرات الإدارية والفنية",
+      "budget": 2000000,
+      "allocatedBudget": 1000000,
+      "status": "active",
+      "minAmount": 20000,
+      "maxAmount": 200000,
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31"
+    }
+  ],
+  "applications": [
+    {
+      "id": "APP-001",
+      "societyId": "SOC-001",
+      "programId": "PRG-001",
+      "title": "تمكين الأسر المنتجة",
+      "description": "مشروع لتمكين الأسر من خلال توفير رأس مال وتدريب مهني",
+      "requestedAmount": 500000,
+      "duration": 6,
+      "objectives": ["تمكين 100 أسرة", "توفير 50 فرصة عمل"],
+      "status": "pending_review",
+      "submittedAt": "2026-06-15",
+      "workflow": {
+        "admin_review": { "status": "pending", "reviewer": null, "comments": "" },
+        "technical_review": { "status": "pending", "reviewer": null, "comments": "" },
+        "financial_review": { "status": "pending", "reviewer": null, "comments": "" },
+        "committee_decision": { "status": "pending", "reviewer": null, "comments": "" },
+        "director_approval": { "status": "pending", "reviewer": null, "comments": "" }
+      },
+      "documents": ["business_plan.pdf", "budget.xlsx", "org_chart.pdf"],
+      "score": 0,
+      "decision": null,
+      "history": []
+    },
+    {
+      "id": "APP-002",
+      "societyId": "SOC-001",
+      "programId": "PRG-002",
+      "title": "برنامج محو الأمية",
+      "description": "برنامج تعليمي شامل للكبار",
+      "requestedAmount": 300000,
+      "duration": 8,
+      "objectives": ["تعليم 200 شخص", "توفير 20 موظف تعليمي"],
+      "status": "approved",
+      "submittedAt": "2026-06-10",
+      "approvedAt": "2026-06-25",
+      "workflow": {
+        "admin_review": { "status": "completed", "reviewer": "ahmed.admin@dama.com", "completedAt": "2026-06-12" },
+        "technical_review": { "status": "completed", "reviewer": "fatima.tech@dama.com", "completedAt": "2026-06-14" },
+        "financial_review": { "status": "completed", "reviewer": "mahmoud.finance@dama.com", "completedAt": "2026-06-16" },
+        "committee_decision": { "status": "completed", "reviewer": "committee", "completedAt": "2026-06-20" },
+        "director_approval": { "status": "completed", "reviewer": "sarah.director@dama.com", "completedAt": "2026-06-25" }
+      },
+      "documents": ["business_plan.pdf", "budget.xlsx", "org_chart.pdf"],
+      "score": 85,
+      "decision": "approved",
+      "history": []
+    }
+  ],
+  "contracts": [
+    {
+      "id": "CTR-001",
+      "applicationId": "APP-002",
+      "societyId": "SOC-001",
+      "amount": 300000,
+      "status": "signed",
+      "createdAt": "2026-06-26",
+      "signedAt": "2026-06-27",
+      "expiresAt": "2027-06-27",
+      "paymentSchedule": [
+        { "phase": 1, "amount": 150000, "dueDate": "2026-07-15", "status": "completed" },
+        { "phase": 2, "amount": 150000, "dueDate": "2026-09-15", "status": "pending" }
+      ]
+    }
+  ],
+  "payments": [
+    {
+      "id": "PAY-001",
+      "contractId": "CTR-001",
+      "phase": 1,
+      "amount": 150000,
+      "status": "completed",
+      "processedAt": "2026-07-16",
+      "reference": "TRF-20260716-001",
+      "bankDetails": {
+        "iban": "SA1234567890123456789012",
+        "accountName": "جمعية البر بجدة"
+      }
+    }
+  ],
+  "notifications": [
+    {
+      "id": "NOT-001",
+      "userId": 101,
+      "title": "طلب جديد قيد المراجعة",
+      "message": "تم استلام طلبك بنجاح وهو الآن قيد المراجعة",
+      "type": "info",
+      "read": false,
+      "createdAt": "2026-06-15T10:30:00Z"
+    },
+    {
+      "id": "NOT-002",
+      "userId": 101,
+      "title": "تمت الموافقة على طلبك",
+      "message": "تمت الموافقة على طلب برنامج محو الأمية",
+      "type": "success",
+      "read": true,
+      "createdAt": "2026-06-25T14:00:00Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": "REP-001",
+      "type": "monthly",
+      "month": "June",
+      "year": 2026,
+      "totalApplications": 15,
+      "approvedApplications": 8,
+      "rejectedApplications": 2,
+      "pendingApplications": 5,
+      "totalGrantsDistributed": 2500000,
+      "createdAt": "2026-07-01"
+    }
+  ],
+  "auditLog": [
+    {
+      "id": "AUD-001",
+      "userId": 101,
+      "action": "submit_application",
+      "entity": "application",
+      "entityId": "APP-001",
+      "details": "تم إرسال الطلب",
+      "timestamp": "2026-06-15T10:30:00Z",
+      "ipAddress": "192.168.1.1"
+    }
+  ]
+}
