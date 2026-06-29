@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA - Grant Application Wizard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto+Sans+Arabic', 'Be Vietnam Pro', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .step-active {
+            box-shadow: 0 0 0 4px rgba(44, 105, 78, 0.15);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-secondary-fixed-variant": "#0e5138",
+                "surface-bright": "#f7fafc",
+                "secondary-fixed-dim": "#95d4b3",
+                "background": "#f7fafc",
+                "secondary-fixed": "#b1f0ce",
+                "primary": "#002045",
+                "on-error": "#ffffff",
+                "on-primary": "#ffffff",
+                "on-secondary-fixed": "#002114",
+                "inverse-primary": "#adc7f7",
+                "surface-container-low": "#f1f4f6",
+                "tertiary": "#00213e",
+                "on-tertiary": "#ffffff",
+                "on-surface": "#181c1e",
+                "tertiary-fixed-dim": "#9fcaff",
+                "surface-container-high": "#e5e9eb",
+                "surface-tint": "#455f88",
+                "on-background": "#181c1e",
+                "surface-variant": "#e0e3e5",
+                "on-primary-fixed": "#001b3c",
+                "error-container": "#ffdad6",
+                "inverse-on-surface": "#eef1f3",
+                "surface-container": "#ebeef0",
+                "primary-fixed": "#d6e3ff",
+                "surface-container-highest": "#e0e3e5",
+                "on-tertiary-fixed-variant": "#00497e",
+                "tertiary-fixed": "#d2e4ff",
+                "inverse-surface": "#2d3133",
+                "on-surface-variant": "#43474e",
+                "on-tertiary-fixed": "#001d37",
+                "surface-dim": "#d7dadc",
+                "tertiary-container": "#003762",
+                "on-secondary-container": "#316e52",
+                "secondary": "#2c694e",
+                "primary-container": "#1a365d",
+                "on-error-container": "#93000a",
+                "on-primary-fixed-variant": "#2d476f",
+                "secondary-container": "#aeeecb",
+                "on-secondary": "#ffffff",
+                "outline": "#74777f",
+                "primary-fixed-dim": "#adc7f7",
+                "outline-variant": "#c4c6cf",
+                "on-tertiary-container": "#58a2f0",
+                "error": "#ba1a1a",
+                "surface": "#f7fafc",
+                "on-primary-container": "#86a0cd",
+                "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "stack-lg": "2rem",
+                "margin-mobile": "1rem",
+                "margin-desktop": "2.5rem",
+                "container-max": "1440px",
+                "gutter": "1.5rem",
+                "stack-sm": "0.5rem",
+                "stack-md": "1rem"
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-surface-bright text-on-surface antialiased min-h-screen">
+<!-- Shell Layout Wrapper -->
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="hidden md:flex flex-col h-full w-[280px] bg-primary dark:bg-primary-container text-on-primary shadow-sm border-l border-outline-variant/20 z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">account_balance</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-primary leading-tight">DAMA</h1>
+<p class="text-on-primary/60 text-label-sm">Grant &amp; Rehab Management</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary dark:bg-secondary-container text-on-secondary dark:text-on-secondary-container rounded-lg transition-transform duration-200 scale-98" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-primary-container/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md">Grant Requests</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-primary-container/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 transition-colors" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="font-label-md">Rehabilitation Projects</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-primary-container/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 transition-colors" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-md">Contracts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-primary-container/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-primary-container/70 hover:text-on-primary hover:bg-primary-fixed-dim/10 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md">User Management</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-white/10">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- TopNavBar (Authority Source: JSON) -->
+<header class="h-16 flex items-center justify-between px-margin-desktop bg-surface-bright border-b border-outline-variant/30 sticky top-0 z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pr-10 pl-4 py-2 text-label-md focus:ring-2 focus:ring-secondary" placeholder="البحث في الطلبات والملفات..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-secondary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-left hidden md:block">
+<p class="text-label-md font-bold leading-none">أحمد العتيبي</p>
+<p class="text-label-sm text-on-surface-variant">مدير المشروع</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-secondary-container" data-alt="A professional headshot of a middle-aged male manager in a corporate office setting. He is wearing a formal white thobe and looking confidently at the camera. The background is a blurred high-end office environment with soft morning lighting, reflecting a corporate modern and reliable atmosphere consistent with a grant management institution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCohzbbe07RWPcacFZeZecQe-G6J2rJUs4ybI3V-reM09NB09zvnI2kIQ4Pj9a0xXxnVWksyoyifJRXXAnFMuJorpYHSvuBt1EV7LvnnDOfC8dTe2HAfCuq9b3iIBvStxuVMSAdN6TqOXcpdrBos0Od2-EZ_A8wVae5-HNbLuckJsuHE3kVz9QuUmJuVA9OWhBxniYLj_Li7S4ssP8-TyYHDYztaANfbF9Q9fjf8jVN67uugZEkCuHsr5RooqK3GUu0VT_IBc5IDtM"/>
+</div>
+</div>
+</header>
+<!-- Application Wizard Content -->
+<div class="p-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Page Header & Stepper -->
+<div class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">تقديم طلب منحة جديد</h2>
+<p class="text-body-md text-on-surface-variant">يرجى إكمال جميع الخطوات لضمان مراجعة طلبكم بنجاح.</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-label-md font-bold bg-secondary/10 text-secondary px-4 py-2 rounded-full">الخطوة 3 من 4</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="relative">
+<div class="absolute top-5 left-0 w-full h-[2px] bg-outline-variant/30"></div>
+<div class="absolute top-5 right-0 w-2/3 h-[2px] bg-secondary"></div>
+<div class="relative flex justify-between">
+<!-- Step 1 -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="mt-2 text-label-sm text-on-surface-variant">بيانات الجهة</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="mt-2 text-label-sm text-on-surface-variant">تفاصيل الطلب</span>
+</div>
+<!-- Step 3 (Active) -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 step-active">
+<span class="font-bold text-label-md">3</span>
+</div>
+<span class="mt-2 text-label-md font-bold text-secondary">رفع الملفات</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center z-10 border-2 border-outline-variant/50">
+<span class="font-bold text-label-md">4</span>
+</div>
+<span class="mt-2 text-label-sm text-on-surface-variant">المراجعة والإرسال</span>
+</div>
+</div>
+</div>
+</div>
+<!-- File Upload Section (Bento Grid Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Requirements Column -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Upload Card Group -->
+<div class="glass-card p-6 rounded-xl shadow-sm">
+<h3 class="font-title-lg text-title-lg text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">inventory_2</span>
+                                الوثائق الرسمية والتأسيسية
+                            </h3>
+<div class="space-y-4">
+<!-- Item 1: License -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col md:flex-row md:items-center gap-4 transition-all hover:bg-white hover:shadow-md">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[28px]">card_membership</span>
+</div>
+<div>
+<p class="font-label-md font-bold text-on-surface">شهادة الترخيص</p>
+<p class="text-label-sm text-on-surface-variant">صيغة PDF، الحد الأقصى 5 ميجابايت</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-container/30 text-on-secondary-container rounded-full">
+<span class="w-2 h-2 bg-secondary rounded-full"></span>
+<span class="text-label-sm">تم الرفع بنجاح</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors" title="استبدال">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors" title="حذف">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Item 2: Bylaws -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col md:flex-row md:items-center gap-4 group">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[28px]">gavel</span>
+</div>
+<div>
+<p class="font-label-md font-bold text-on-surface">اللائحة الأساسية</p>
+<p class="text-label-sm text-on-surface-variant">license_main_v2.pdf (1.2 MB)</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0 min-w-[120px]">
+<div class="w-full bg-outline-variant/20 h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 100%"></div>
+</div>
+<span class="text-label-sm text-secondary">100%</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 border border-outline-variant text-on-surface-variant rounded-lg text-label-sm hover:border-secondary hover:text-secondary transition-colors">استبدال</button>
+<button class="p-2 text-error hover:bg-error/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Item 3: Bank Info (In Progress) -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20 flex flex-col md:flex-row md:items-center gap-4">
+<div class="flex items-center gap-4 flex-1">
+<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[28px]">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-md font-bold text-on-surface">بيانات الحساب البنكي</p>
+<p class="text-label-sm text-on-surface-variant">جارٍ الرفع... bank_statement_2023.pdf</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1 flex-shrink-0 min-w-[120px]">
+<div class="w-full bg-outline-variant/20 h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full animate-pulse" style="width: 65%"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant">65%</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Item 4: Donation Account (Empty) -->
+<div class="p-4 rounded-lg border-2 border-dashed border-outline-variant/50 flex flex-col items-center justify-center gap-2 hover:border-secondary hover:bg-secondary/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary text-[32px]">upload_file</span>
+<p class="font-label-md text-on-surface-variant">رفع حساب التبرعات</p>
+<p class="text-label-sm text-on-surface-variant/70">اسحب الملف هنا أو انقر للإختيار</p>
+</div>
+</div>
+</div>
+<!-- Strategic & Financial Group -->
+<div class="glass-card p-6 rounded-xl shadow-sm">
+<h3 class="font-title-lg text-title-lg text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+                                التخطيط والتقارير المالية
+                            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Profile -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">person_book</span>
+<p class="font-label-md font-bold">الملف التعريفي</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant italic">لم يتم الرفع بعد</span>
+<button class="text-secondary font-label-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]">add</span> رفع الملف
+                                        </button>
+</div>
+</div>
+<!-- Visual Identity -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">palette</span>
+<p class="font-label-md font-bold">الهوية البصرية</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> logo_guide.zip
+                                        </span>
+<button class="text-on-surface-variant hover:text-error">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Strategic Plan -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">ads_click</span>
+<p class="font-label-md font-bold">الخطة الاستراتيجية</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant italic">لم يتم الرفع بعد</span>
+<button class="text-secondary font-label-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]">add</span> رفع الملف
+                                        </button>
+</div>
+</div>
+<!-- Operational Plan -->
+<div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">settings_applications</span>
+<p class="font-label-md font-bold">الخطة التشغيلية</p>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant italic">لم يتم الرفع بعد</span>
+<button class="text-secondary font-label-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]">add</span> رفع الملف
+                                        </button>
+</div>
+</div>
+</div>
+<!-- Financial Statements (last 2 years) -->
+<div class="mt-6 p-5 border-2 border-dashed border-secondary/30 rounded-xl bg-secondary/5">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="bg-white p-4 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[40px]">receipt_long</span>
+</div>
+<div class="text-center md:text-right flex-1">
+<h4 class="font-title-lg text-primary">القوائم المالية (آخر سنتين)</h4>
+<p class="text-body-md text-on-surface-variant">يرجى رفع القوائم المالية المعتمدة للعامين الماضي والحالي بصيغة ملف مضغوط أو PDF مدمج.</p>
+</div>
+<button class="bg-secondary text-on-secondary px-8 py-3 rounded-lg font-bold hover:bg-secondary/90 transition-all shadow-md">
+                                        رفع الوثائق المالية
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Info / Help -->
+<div class="lg:col-span-4 space-y-gutter">
+<div class="glass-card p-6 rounded-xl sticky top-24">
+<h3 class="font-title-lg text-primary mb-4 flex items-center gap-2 border-b border-outline-variant/30 pb-4">
+<span class="material-symbols-outlined">info</span>
+                                تعليمات الرفع
+                            </h3>
+<ul class="space-y-4 text-body-md text-on-surface-variant">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>يجب أن تكون جميع الملفات بصيغة PDF أو JPG أو PNG فقط.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>يجب ألا يتجاوز حجم الملف الواحد 10 ميجابايت.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>تأكد من وضوح الأختام والتواقيع في النسخ الضوئية.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>سيتم حفظ المسودة تلقائياً عند رفع كل ملف.</span>
+</li>
+</ul>
+<div class="mt-8 p-4 bg-primary text-on-primary rounded-lg">
+<p class="text-label-md mb-2">هل تواجه مشكلة؟</p>
+<button class="w-full py-2 bg-white/10 hover:bg-white/20 rounded-lg text-label-sm transition-colors">
+                                    تواصل مع الدعم الفني
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-12 flex items-center justify-between pt-8 border-t border-outline-variant/30">
+<button class="flex items-center gap-2 px-8 py-3 border-2 border-primary text-primary rounded-lg font-bold hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+                        السابق
+                    </button>
+<div class="flex items-center gap-4">
+<button class="px-8 py-3 text-on-surface-variant hover:text-primary transition-colors font-bold">
+                            حفظ كمسودة
+                        </button>
+<button class="flex items-center gap-2 px-12 py-3 bg-secondary text-on-secondary rounded-lg font-bold hover:bg-secondary/90 transition-all shadow-lg hover:shadow-secondary/20">
+                            التالي
+                            <span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer for additional branding/legal -->
+<footer class="mt-auto py-8 px-margin-desktop bg-surface-container text-center">
+<p class="text-label-sm text-on-surface-variant opacity-70">
+                    © 2024 نظام داما لإدارة المنح وإعادة التأهيل. جميع الحقوق محفوظة.
+                </p>
+</footer>
+</main>
+</div>
+<!-- Mobile Navigation Shell (Bottom Bar) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-primary text-on-primary flex items-center justify-around z-50">
+<a class="flex flex-col items-center gap-1 opacity-100" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px]">الرئيسية</span>
+</a>
+<a class="flex flex-col items-center gap-1 opacity-70" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px]">الطلبات</span>
+</a>
+<a class="flex flex-col items-center gap-1 opacity-70" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-[10px]">التقارير</span>
+</a>
+<a class="flex flex-col items-center gap-1 opacity-70" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">الإعدادات</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Progress Bar Simulation
+        window.addEventListener('load', () => {
+            const progressBars = document.querySelectorAll('.animate-pulse');
+            progressBars.forEach(bar => {
+                let width = parseInt(bar.style.width);
+                const interval = setInterval(() => {
+                    if (width >= 100) {
+                        clearInterval(interval);
+                        bar.classList.remove('animate-pulse');
+                        bar.closest('.flex-col').nextElementSibling.innerHTML = '<span class="material-symbols-outlined text-secondary">check_circle</span>';
+                    } else {
+                        width += Math.random() * 2;
+                        if(width > 100) width = 100;
+                        bar.style.width = width + '%';
+                        const label = bar.closest('.flex-col').querySelector('span');
+                        if(label) label.innerText = Math.floor(width) + '%';
+                    }
+                }, 500);
+            });
+        });
+
+        // Toggle functionality for mobile menu would go here
+    </script>
+</body></html>

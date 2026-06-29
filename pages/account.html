@@ -1,0 +1,70 @@
+<!-- ============ ACCOUNT / MY REQUESTS ============ -->
+<div id="page-account" class="page">
+  <div style="max-width:900px;margin:0 auto;padding:36px 24px;animation:fade .4s;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <div>
+        <div id="account-assoc" style="font-size:24px;font-weight:800;">جمعية البر بجدة</div>
+        <div style="font-size:14px;color:#7a8190;margin-top:2px;">لوحة حسابك ومتابعة طلباتك وعقودك</div>
+      </div>
+      <button class="btn btn-outline-light" style="width:auto;padding:12px 20px;font-size:14px;" onclick="App.navigate('intro')">عن البرنامج</button>
+    </div>
+
+    <!-- Association Info Card -->
+    <div class="card" style="padding:24px;margin-bottom:18px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">
+        <div style="width:54px;height:54px;border-radius:13px;overflow:hidden;flex:none;">
+          <img src="assets/logo.svg" alt="DAMA" style="width:54px;height:54px;display:block;">
+        </div>
+        <div>
+          <div id="account-assoc-name" style="font-size:17px;font-weight:700;">جمعية البر بجدة</div>
+          <div id="account-license" style="font-size:13px;color:#7a8190;">جمعية مسجّلة · ترخيص 700123456</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;">
+        <div><div style="font-size:12px;color:#9aa2b3;">البريد</div><div style="font-size:14px;font-weight:600;">info@albirjeddah.org</div></div>
+        <div><div style="font-size:12px;color:#9aa2b3;">الجوال</div><div style="font-size:14px;font-weight:600;">0551234567</div></div>
+        <div><div style="font-size:12px;color:#9aa2b3;">المدينة</div><div style="font-size:14px;font-weight:600;">جدة</div></div>
+        <div><div style="font-size:12px;color:#9aa2b3;">عدد الطلبات</div><div id="account-req-count" style="font-size:14px;font-weight:600;">1</div></div>
+      </div>
+    </div>
+
+    <div style="font-size:16px;font-weight:700;margin-bottom:12px;">طلباتي</div>
+    <div class="flex-col">
+      <!-- Qualification Card -->
+      <div class="request-card" onclick="App.navigate('qualstatus')">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div class="request-icon" style="background:#e7f1f8;color:#1A81BC;">🎓</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;">طلب التأهيل المؤسسي</div>
+            <div style="font-size:12px;color:#9aa2b3;">TQ-2026-0125 · قُدّم 20/06/2024</div>
+          </div>
+        </div>
+        <span id="account-qual-badge" class="badge status-review">قيد المراجعة</span>
+      </div>
+
+      <!-- Project Card -->
+      <div id="account-proj-card" class="request-card" style="display:none;" onclick="App.navigate('projstatus')">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div class="request-icon" style="background:#f0eadf;color:#988057;">💰</div>
+          <div>
+            <div id="account-proj-name" style="font-size:15px;font-weight:700;">تمكين الأسر المنتجة</div>
+            <div style="font-size:12px;color:#9aa2b3;">PRJ-2026-0098 · طلب منحة</div>
+          </div>
+        </div>
+        <span id="account-proj-badge" class="badge status-review">قيد المراجعة</span>
+      </div>
+
+      <!-- Contract Card -->
+      <div id="account-contract-card" class="request-card" style="display:none;" onclick="App.navigate('contract')">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <div class="request-icon" style="background:#e3efe7;color:#174528;">📄</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;">عقد المشروع</div>
+            <div style="font-size:12px;color:#9aa2b3;">CON-2026-0044</div>
+          </div>
+        </div>
+        <span id="account-contract-badge" class="badge status-none">لم يُرفع</span>
+      </div>
+    </div>
+  </div>
+</div>

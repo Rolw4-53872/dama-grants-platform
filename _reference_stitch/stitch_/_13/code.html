@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تم إرسال الطلب بنجاح - DAMA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;600;700;800;900&amp;family=Noto+Kufi+Arabic:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#aeeecb",
+                    "primary": "#002045",
+                    "tertiary-fixed": "#d2e4ff",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e5e9eb",
+                    "primary-container": "#1a365d",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7fafc",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "outline": "#74777f",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "surface-tint": "#455f88",
+                    "primary-fixed-dim": "#adc7f7",
+                    "primary-fixed": "#d6e3ff",
+                    "on-tertiary-container": "#58a2f0",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "inverse-on-surface": "#eef1f3",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed-variant": "#00497e",
+                    "on-primary-container": "#86a0cd",
+                    "secondary": "#2c694e",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary-fixed-dim": "#9fcaff",
+                    "surface-container": "#ebeef0",
+                    "on-background": "#181c1e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#001d37",
+                    "background": "#f7fafc",
+                    "secondary-fixed": "#b1f0ce",
+                    "surface-dim": "#d7dadc",
+                    "tertiary-container": "#003762",
+                    "on-surface": "#181c1e",
+                    "surface-container-low": "#f1f4f6",
+                    "surface-variant": "#e0e3e5",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f7fafc",
+                    "on-surface-variant": "#43474e",
+                    "on-secondary-fixed": "#002114",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "inverse-primary": "#adc7f7",
+                    "error": "#ba1a1a",
+                    "tertiary": "#00213e",
+                    "on-secondary-container": "#316e52"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "0.5rem",
+                    "margin-mobile": "1rem",
+                    "container-max": "1440px",
+                    "stack-lg": "2rem",
+                    "stack-md": "1rem",
+                    "margin-desktop": "2.5rem",
+                    "gutter": "1.5rem"
+            },
+            "fontFamily": {
+                    "label-md": ["Noto Kufi Arabic", "Be Vietnam Pro"],
+                    "body-md": ["Noto Kufi Arabic", "Be Vietnam Pro"],
+                    "headline-md": ["Noto Kufi Arabic", "Be Vietnam Pro"],
+                    "headline-lg": ["Noto Kufi Arabic", "Be Vietnam Pro"],
+                    "body-lg": ["Noto Kufi Arabic", "Be Vietnam Pro"],
+                    "title-lg": ["Noto Kufi Arabic", "Be Vietnam Pro"],
+                    "label-sm": ["Noto Kufi Arabic", "Be Vietnam Pro"],
+                    "display-lg": ["Noto Kufi Arabic", "Be Vietnam Pro"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .success-checkmark-glow {
+            filter: drop-shadow(0 0 15px rgba(44, 105, 78, 0.3));
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Success Screen Container -->
+<main class="min-h-screen flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+<!-- Background Atmospheric Element (SVG Animation placeholder used as background) -->
+<div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+<!-- Simplified abstract shapes for depth without bloating -->
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Content Card -->
+<div class="z-10 w-full max-w-[640px] bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-sm border border-outline-variant/10 text-center flex flex-col items-center gap-stack-lg">
+<!-- Icon Section -->
+<div class="relative">
+<div class="w-24 h-24 md:w-32 md:h-32 bg-secondary/10 rounded-full flex items-center justify-center animate-float success-checkmark-glow">
+<span class="material-symbols-outlined text-secondary text-6xl md:text-8xl" style="font-variation-settings: 'FILL' 1;">
+                        check_circle
+                    </span>
+</div>
+<!-- Decorative Particles -->
+<div class="absolute -top-2 -left-2 w-4 h-4 bg-secondary-fixed rounded-full opacity-50"></div>
+<div class="absolute top-1/2 -right-4 w-3 h-3 bg-secondary rounded-full opacity-30"></div>
+</div>
+<!-- Message Section -->
+<div class="space-y-stack-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary">لقد تم إرسال طلبك بنجاح</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                    شكراً لك على تقديم طلبك. يتم الآن معالجة البيانات من قبل الفريق المختص في نظام "داما".
+                </p>
+</div>
+<!-- Details Section (Bento-style layout for request details) -->
+<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-gutter bg-surface-container-low p-6 rounded-lg border border-outline-variant/30">
+<div class="flex flex-col items-center md:items-start text-center md:text-right gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">رقم الطلب</span>
+<span class="font-title-lg text-title-lg text-primary tracking-wider">REQ-2024-8842</span>
+</div>
+<div class="flex flex-col items-center md:items-start text-center md:text-right gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">حالة الطلب الحالية</span>
+<div class="flex items-center gap-2 px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="font-label-md text-label-md">قيد المراجعة</span>
+</div>
+</div>
+</div>
+<!-- Action Section -->
+<div class="w-full flex flex-col md:flex-row-reverse items-center gap-gutter pt-4">
+<button class="w-full md:w-auto px-8 py-4 bg-primary text-on-primary font-title-lg text-title-lg rounded-lg hover:bg-primary-container transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">track_changes</span>
+                    متابعة الطلب
+                </button>
+<button class="w-full md:w-auto px-8 py-4 border border-outline text-primary font-title-lg text-title-lg rounded-lg hover:bg-surface-container-high transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">dashboard</span>
+                    العودة للرئيسية
+                </button>
+</div>
+</div>
+<!-- Footer / Branding -->
+<footer class="mt-stack-lg z-10 text-center">
+<div class="flex items-center gap-2 justify-center opacity-60">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">DAMA Management System</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant/70 mt-2">نظام إدارة المنح وإعادة التأهيل</p>
+</footer>
+</main>
+<!-- Success Animation Effect (Confetti-like) -->
+<div class="fixed inset-0 pointer-events-none z-50" id="confetti-container"></div>
+<script>
+        // Simple micro-interaction for confetti on load
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#002045', '#2c694e', '#adc7f7', '#b1f0ce'];
+            
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = Math.random() * 8 + 4 + 'px';
+                confetti.style.height = Math.random() * 8 + 4 + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.top = '-10px';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.opacity = Math.random();
+                confetti.style.borderRadius = '50%';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                container.appendChild(confetti);
+
+                const animation = confetti.animate([
+                    { transform: `translate3d(0, 0, 0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate3d(${(Math.random() - 0.5) * 200}px, 100vh, 0) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1000,
+                    easing: 'cubic-bezier(0, .9, .57, 1)',
+                    delay: Math.random() * 500
+                });
+
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(createConfetti, 300);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA - نظام إدارة المنح والتأهيل</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --font-arabic: 'Noto Sans Arabic', sans-serif;
+        }
+        body {
+            font-family: var(--font-arabic), 'Be Vietnam Pro', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .gradient-mesh {
+            background-color: #f7fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(177, 240, 206, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(214, 227, 255, 0.2) 0px, transparent 50%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "surface-bright": "#f7fafc",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "background": "#f7fafc",
+                        "secondary-fixed": "#b1f0ce",
+                        "primary": "#002045",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#adc7f7",
+                        "surface-container-low": "#f1f4f6",
+                        "tertiary": "#00213e",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#181c1e",
+                        "tertiary-fixed-dim": "#9fcaff",
+                        "surface-container-high": "#e5e9eb",
+                        "surface-tint": "#455f88",
+                        "on-background": "#181c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-fixed": "#001b3c",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#eef1f3",
+                        "surface-container": "#ebeef0",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#00497e",
+                        "tertiary-fixed": "#d2e4ff",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#43474e",
+                        "on-tertiary-fixed": "#001d37",
+                        "surface-dim": "#d7dadc",
+                        "tertiary-container": "#003762",
+                        "on-secondary-container": "#316e52",
+                        "secondary": "#2c694e",
+                        "primary-container": "#1a365d",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "secondary-container": "#aeeecb",
+                        "on-secondary": "#ffffff",
+                        "outline": "#74777f",
+                        "primary-fixed-dim": "#adc7f7",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-container": "#58a2f0",
+                        "error": "#ba1a1a",
+                        "surface": "#f7fafc",
+                        "on-primary-container": "#86a0cd",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    spacing: {
+                        "stack-lg": "2rem",
+                        "margin-mobile": "1rem",
+                        "margin-desktop": "2.5rem",
+                        "container-max": "1440px",
+                        "gutter": "1.5rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                        "headline-md": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                        "headline-lg": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                        "display-lg": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                        "body-md": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                        "title-lg": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                        "label-md": ["Noto Sans Arabic", "Be Vietnam Pro"],
+                        "label-sm": ["Noto Sans Arabic", "Be Vietnam Pro"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-bright text-on-surface min-h-screen flex flex-col items-center justify-center gradient-mesh relative overflow-hidden">
+<!-- Atmospheric Background Animation -->
+<div class="absolute inset-0 z-0 opacity-40">
+
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 container mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row items-center gap-12 max-w-container-max">
+<!-- Text Content Area -->
+<div class="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-right space-y-8 order-2 md:order-1">
+<!-- Brand Identity -->
+<div class="flex items-center gap-4 mb-2">
+<div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center shadow-lg transition-transform hover:scale-105 duration-300">
+<span class="material-symbols-outlined text-on-primary text-4xl" data-weight="fill">account_balance</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">DAMA</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Grant &amp; Rehabilitation Management</span>
+</div>
+</div>
+<!-- Title & Description -->
+<div class="space-y-4">
+<h1 class="font-display-lg text-display-lg text-primary leading-tight">
+                    نظام إدارة المنح والتأهيل
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
+                    منصة احترافية متكاملة تهدف إلى تنظيم وتسهيل عمليات تخصيص المنح ومتابعة مشاريع التأهيل لضمان الشفافية والكفاءة في العمل الإنساني والمجتمعي.
+                </p>
+</div>
+<!-- CTA Section -->
+<div class="flex flex-col sm:flex-row gap-4 pt-4 w-full md:w-auto">
+<button class="px-10 py-4 bg-primary text-on-primary font-title-lg text-title-lg rounded-lg shadow-md hover:shadow-xl hover:bg-primary-container transition-all duration-300 flex items-center justify-center gap-3 group active:scale-95">
+                    ابدأ الآن
+                    <span class="material-symbols-outlined transition-transform group-hover:-translate-x-1">arrow_back</span>
+</button>
+<button class="px-10 py-4 border-2 border-primary text-primary font-title-lg text-title-lg rounded-lg hover:bg-primary/5 transition-all duration-300 flex items-center justify-center gap-3 active:scale-95">
+                    تعرف علينا
+                </button>
+</div>
+<!-- Trust Indicators -->
+<div class="flex items-center gap-8 pt-8 opacity-60">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">+١٠٠٠</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">منحة مفعلة</span>
+</div>
+<div class="w-px h-10 bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">٩٨٪</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">نسبة الإنجاز</span>
+</div>
+</div>
+</div>
+<!-- Illustration Area -->
+<div class="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+<div class="relative w-full max-w-lg aspect-square">
+<!-- Floating Decorative Elements -->
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-secondary-container rounded-full blur-3xl opacity-60 animate-pulse"></div>
+<div class="absolute -bottom-8 -left-8 w-32 h-32 bg-primary-fixed rounded-full blur-3xl opacity-40 animate-pulse"></div>
+<!-- Main Illustration Card -->
+<div class="relative z-20 glass-card rounded-3xl p-6 shadow-2xl animate-float">
+<div class="w-full h-full rounded-2xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A clean, modern 3D isometric illustration of a professional NGO workspace. Several diverse professionals are collaborating around a holographic interface showing glowing data charts and grant allocation maps. The style is Corporate Modern with a palette of deep navy blue, emerald green, and soft whites. Bright, high-key studio lighting creates a hopeful and trustworthy atmosphere, emphasizing efficiency and institutional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6D5B5VRZ0r8xDsfUrCUzRHO40hhisJhEWuQm8ymXxOvx9WYvtRHCthRZY66tuEc2aazZ-v_jXvhg4R_zz8D3Rfj3TnaKbTtL8erZF-kV8kXNP9_VH9CtYtg7johT2sj72zz_Wm8Ialhe7MVU_h8SEWOkVrnnbEOhjYgfETnqlaq4l9DbiiWvOD8jMDvmR7yJu72BLQLy5ENzdfYIiJtYxTaGWecV0myKYT0VFlxmobYU14fnPfVCp_KUGUiqv7NZTCrK-UMFkTzY"/>
+</div>
+<!-- Overlaid Stats Card -->
+<div class="absolute -bottom-6 -right-6 glass-card p-4 rounded-2xl shadow-xl border border-secondary/20 flex items-center gap-4">
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary" data-weight="fill">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">حالة المشاريع</span>
+<span class="font-title-lg text-title-lg text-secondary">قيد المراجعة</span>
+</div>
+</div>
+<!-- Small Notification Card -->
+<div class="absolute top-10 -left-10 glass-card p-3 rounded-xl shadow-lg border border-primary/10 hidden lg:flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-weight="fill">monetization_on</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-bold text-primary">تمت الموافقة</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">طلب تمويل رقم #882</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Copyright -->
+<footer class="absolute bottom-8 z-10 w-full text-center">
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">
+            جميع الحقوق محفوظة © ٢٠٢٤ داما - نظام إدارة المنح والتأهيل
+        </p>
+</footer>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctaButton = document.querySelector('button');
+            ctaButton.addEventListener('mouseenter', () => {
+                // Subtle feedback handled by Tailwind group-hover
+            });
+
+            // Parallax effect for the background blobs
+            document.addEventListener('mousemove', (e) => {
+                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+                const blobs = document.querySelectorAll('.animate-pulse');
+                blobs.forEach((blob, index) => {
+                    const factor = (index + 1) * 2;
+                    blob.style.transform = `translate(${moveX * factor}px, ${moveY * factor}px)`;
+                });
+            });
+        });
+    </script>
+</body></html>

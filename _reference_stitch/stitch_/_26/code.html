@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إدارة العقد | نظام داما</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-background": "#181c1e",
+                    "surface-variant": "#e0e3e5",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-primary-fixed": "#001b3c",
+                    "on-surface": "#181c1e",
+                    "surface-tint": "#465f87",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "surface-container-low": "#f1f4f6",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "on-secondary-fixed": "#002114",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "background": "#f7fafc",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "surface": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "accent-line": "#2c694e",
+                    "secondary-container": "#aeeecb",
+                    "tertiary-container": "#002044",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-secondary-container": "#316e52",
+                    "surface-dim": "#d7dadc",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "surface-container": "#ebeef0",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#e5e9eb",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#00081a",
+                    "inverse-primary": "#aec7f5",
+                    "on-error": "#ffffff",
+                    "primary": "#00091b",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f7fafc",
+                    "secondary-fixed": "#b1f0ce",
+                    "on-tertiary-container": "#6589c1",
+                    "on-primary-container": "#7089b3",
+                    "primary-fixed-dim": "#aec7f5",
+                    "outline-variant": "#c4c6cf",
+                    "on-secondary": "#ffffff",
+                    "outline": "#e2e8f0",
+                    "primary-container": "#002045",
+                    "on-error-container": "#93000a",
+                    "secondary": "#2c694e",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#001b3c",
+                    "on-surface-variant": "#44474e",
+                    "tertiary-fixed": "#d5e3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Cairo"],
+                    "display-lg-mobile": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"],
+                    "display-lg": ["Cairo"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: "Noto Sans Arabic", sans-serif;
+            background-color: #f7fafc;
+        }
+        h1, h2, h3, .font-cairo {
+            font-family: "Cairo", sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f4f6;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<div class="flex min-h-screen">
+<!-- Sidebar (Shared Mockup) -->
+<aside class="w-72 bg-surface border-l border-outline hidden lg:flex flex-col sticky top-0 h-screen">
+<div class="p-6 flex items-center gap-3 border-b border-outline">
+<div class="w-8 h-8 bg-primary-container flex items-center justify-center rounded-lg">
+<svg class="w-6 h-6 text-primary-fixed" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+</div>
+<span class="text-xl font-bold font-cairo text-on-background">داما</span>
+</div>
+<nav class="flex-1 p-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="House">house</span>
+<span class="font-medium">الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="ProjectorScreen">ambient_screen</span>
+<span class="font-medium">المشاريع</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="FileText" style="font-variation-settings: 'FILL' 1;">circles_ext</span>
+<span class="font-medium">إدارة العقود</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="ChartBar">avatar</span>
+<span class="font-medium">التقارير</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="Gear">clear</span>
+<span class="font-medium">الإعدادات</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline">
+<div class="flex items-center gap-3 p-2 bg-surface-container-low rounded-xl">
+<div class="w-10 h-10 rounded-full bg-cover" data-alt="A professional portrait of a Saudi business executive in traditional white thobe and ghutra, looking confident against a blurred high-end office background. The lighting is soft and warm, reflecting a professional corporate atmosphere with deep navy and clean white tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1uKCGCOgRj8UiwuqVX_kuE_Y1fjdDeiVqUnkPtdVJbgQsWYSXfGbzNa6LsCixnmqo9OZZ_cHrywVWL7XYBCaQlxbr3x5NaWhhkCinSQoi0RNKRQy2jjtFF0wufNMGBGEt39xSjkuMauoJGjSz8N9V6Eb4jq17OKwpT8CxU8kldQ4EIoRpxt2MmN7NmFvB-cw-sgdU20BU3PK2TxuAZQvS6oT8ToXAPtr82LQpr-yCAAK1jsfXv1KJeOTONyMQ7kUbfzNvr5hxTWk')"></div>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">أحمد العتيبي</p>
+<p class="text-xs text-on-surface-variant truncate">مدير المشاريع</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Top Bar -->
+<header class="h-16 bg-surface border-b border-outline px-6 flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined" data-icon="Menu">menu</span>
+</button>
+<div class="hidden md:flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline w-64">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="Search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full" placeholder="بحث سريع..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="Notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="Help">help</span>
+</button>
+</div>
+</header>
+<!-- Content -->
+<div class="p-4 md:p-8 space-y-6 max-w-6xl mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-black text-primary font-cairo">إدارة العقد</h1>
+<p class="text-on-surface-variant mt-1">عرض وتوقيع ورفع وثيقة العقد الخاصة بالمشروع لضمان استمرارية العمل</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface border border-outline rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="Download">download</span>
+                        تحميل المسودة
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Main Flow -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Contract Details Card -->
+<div class="bg-surface rounded-xl border border-outline shadow-sm overflow-hidden">
+<div class="p-6">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-primary-container rounded-xl flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-3xl" data-icon="Description">description</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">رقم العقد</span>
+<span class="px-2 py-0.5 bg-surface-container-highest rounded-md text-xs font-mono font-bold">CONT-2024-00459</span>
+</div>
+<h2 class="text-xl font-bold font-cairo mt-1">تطوير البنية التحتية التعليمية</h2>
+</div>
+</div>
+<span class="px-4 py-1.5 bg-tertiary-container text-on-tertiary-container rounded-full text-sm font-bold border border-on-tertiary-container/10 flex items-center gap-2">
+<span class="w-2 h-2 bg-on-tertiary-container rounded-full animate-pulse"></span>
+                                    بانتظار التوقيع
+                                </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 border-t border-outline pt-6">
+<div>
+<p class="text-sm text-on-surface-variant">الجهة المستفيدة</p>
+<p class="font-bold">جمعية البر الأهلية - الرياض</p>
+</div>
+<div>
+<p class="text-sm text-on-surface-variant">تاريخ الإصدار</p>
+<p class="font-bold">20 مايو 2024</p>
+</div>
+<div>
+<p class="text-sm text-on-surface-variant">قيمة العقد</p>
+<p class="font-bold text-secondary">450,000 ريال سعودي</p>
+</div>
+<div>
+<p class="text-sm text-on-surface-variant">مدة التنفيذ</p>
+<p class="font-bold">12 شهر</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Document Preview Area -->
+<div class="bg-surface rounded-xl border border-outline shadow-sm overflow-hidden flex flex-col">
+<div class="px-6 py-4 border-b border-outline flex items-center justify-between">
+<h3 class="font-bold font-cairo flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="Visibility">visibility</span>
+                                معاينة وثيقة العقد
+                            </h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors" title="تكبير">
+<span class="material-symbols-outlined text-sm" data-icon="ZoomIn">room</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors" title="فتح في نافذة جديدة">
+<span class="material-symbols-outlined text-sm" data-icon="OpenInNew">open_in_new</span>
+</button>
+</div>
+</div>
+<div class="relative bg-surface-container-low aspect-[4/3] m-4 rounded-lg border border-dashed border-outline flex items-center justify-center group overflow-hidden">
+<div class="absolute inset-0 bg-cover opacity-50 transition-transform group-hover:scale-105" data-alt="A clean, minimalist 3D rendering of a multi-page legal document floating in a soft, bright studio space. The pages are crisp white with professional typography and placeholder signature lines. The environment is illuminated by high-key, modern lighting with soft navy shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrt5Z-lTYfRl2GMVqNYB3-0SSC91L4B0dCwMk2pW1cPG--SCgVt-3LAyqBBktULawnofES0TdcnBzrQfacpOZcKv961gdfFDln5Eu_4_txIN7mEbha4lLIih65k8bsUXhLCuy9sZY3_IMkD6WnBP9O0EsLQDMNc1U9ijejvJgImgr9GcK8eH3NEXSr0Q3c_pC9U2nbZ5kLyMZNthBKppoiGHhHs22UsGtSPbEPfvFVJJZs6FlDLFF2ckfyWZRUS305XOPVSukUN80')"></div>
+<div class="relative z-10 flex flex-col items-center gap-4">
+<button class="px-6 py-3 bg-primary text-on-primary rounded-xl font-bold shadow-lg flex items-center gap-3 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="Draft">draft</span>
+                                    عرض العقد كاملاً (PDF)
+                                </button>
+<p class="text-sm text-on-surface-variant bg-surface/80 px-3 py-1 rounded-full backdrop-blur-sm">حجم الملف: 2.4 ميجابايت</p>
+</div>
+</div>
+</div>
+<!-- Upload Section -->
+<div class="bg-surface rounded-xl border-2 border-dashed border-primary/20 p-8 shadow-sm text-center">
+<div class="max-w-md mx-auto">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-4xl" data-icon="UploadFile">upload_file</span>
+</div>
+<h3 class="text-xl font-bold font-cairo mb-2">رفع العقد الموقع</h3>
+<p class="text-on-surface-variant mb-6">قم بسحب وإفلات الملف هنا، أو اضغط لاختيار ملف من جهازك</p>
+<label class="block">
+<input class="hidden" type="file"/>
+<div class="px-8 py-4 bg-primary rounded-xl text-on-primary font-bold cursor-pointer hover:bg-primary/90 transition-all shadow-md active:scale-95 inline-block">
+                                    اختيار ملف التوقيع
+                                </div>
+</label>
+<div class="mt-4 flex items-center justify-center gap-4 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base" data-icon="CheckCircle">check_circle</span> PDF فقط</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base" data-icon="CheckCircle">check_circle</span> بحد أقصى 10MB</span>
+</div>
+</div>
+</div>
+<!-- Final Action -->
+<div class="flex justify-end pt-4">
+<button class="px-10 py-4 bg-secondary text-on-secondary rounded-xl font-bold text-lg shadow-xl hover:shadow-secondary/20 hover:-translate-y-1 transition-all flex items-center gap-4" onclick="document.getElementById('confirmModal').classList.remove('hidden')">
+                            إرسال العقد الموقع
+                            <span class="material-symbols-outlined" data-icon="Send">send</span>
+</button>
+</div>
+</div>
+<!-- Sidebar Info -->
+<div class="space-y-6">
+<!-- Progress Tracker -->
+<div class="bg-surface rounded-xl border border-outline shadow-sm p-6">
+<h3 class="font-bold font-cairo mb-6">مراحل سير العقد</h3>
+<div class="relative space-y-8 pr-4">
+<!-- Vertical Line -->
+<div class="absolute right-3.5 top-2 bottom-2 w-0.5 bg-outline"></div>
+<!-- Step 1 (Completed) -->
+<div class="relative flex items-center gap-4 pr-10">
+<div class="absolute right-0 w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="Check">check</span>
+</div>
+<div>
+<p class="text-sm font-bold">تم إنشاء العقد</p>
+<p class="text-xs text-on-surface-variant">18 مايو 2024</p>
+</div>
+</div>
+<!-- Step 2 (Active) -->
+<div class="relative flex items-center gap-4 pr-10">
+<div class="absolute right-0 w-8 h-8 rounded-full bg-surface border-2 border-primary text-primary flex items-center justify-center z-10 shadow-sm">
+<div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+</div>
+<div>
+<p class="text-sm font-bold text-primary">بانتظار التوقيع والرفع</p>
+<p class="text-xs text-on-surface-variant">المرحلة الحالية</p>
+</div>
+</div>
+<!-- Step 3 (Pending) -->
+<div class="relative flex items-center gap-4 pr-10">
+<div class="absolute right-0 w-8 h-8 rounded-full bg-surface border-2 border-outline text-outline flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-lg" data-icon="History">history</span>
+</div>
+<div>
+<p class="text-sm font-medium text-on-surface-variant">مرحلة التدقيق</p>
+<p class="text-xs text-on-surface-variant">قيد الانتظار</p>
+</div>
+</div>
+<!-- Step 4 (Future) -->
+<div class="relative flex items-center gap-4 pr-10">
+<div class="absolute right-0 w-8 h-8 rounded-full bg-surface border-2 border-outline text-outline flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-lg" data-icon="TaskAlt">task_alt</span>
+</div>
+<div>
+<p class="text-sm font-medium text-on-surface-variant">إتمام المنحة</p>
+<p class="text-xs text-on-surface-variant">مستقبلي</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Instructions Sidebar -->
+<div class="bg-primary-container/30 rounded-xl border border-primary-container p-6">
+<div class="flex items-center gap-3 mb-4 text-on-primary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="Info">info</span>
+<h3 class="font-bold font-cairo">تعليمات التوقيع</h3>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-3 text-sm text-on-primary-fixed-variant">
+<span class="text-primary font-bold">01</span>
+<p>يرجى تحميل مسودة العقد المرفقة ومراجعة كافة البنود القانونية.</p>
+</li>
+<li class="flex gap-3 text-sm text-on-primary-fixed-variant">
+<span class="text-primary font-bold">02</span>
+<p>يجب أن يتم التوقيع والختم من قبل الشخص المفوض رسمياً في الجمعية.</p>
+</li>
+<li class="flex gap-3 text-sm text-on-primary-fixed-variant">
+<span class="text-primary font-bold">03</span>
+<p>تأكد من وضوح المسح الضوئي (Scanner) لجميع صفحات العقد الموقع.</p>
+</li>
+</ul>
+<div class="mt-6 pt-6 border-t border-primary-container/50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-cover" data-alt="A small, circular profile picture of a professional support specialist with a friendly expression. The person is wearing a headset and modern office attire. The background is a clean, corporate navy and light blue gradient." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJFdjxv81PHW-XWFPzIOgmBaVRexj_HeJGwmujzK_pLQFoIhxwUBGXpQTFdZikdnJv6xXNnPsp0kLh44KmdyZxvj8nlAyj2IixrIIOC33qekXJlDqMT_mmBCZ8fmKa8tCkoFPf-FXcTPgg34NjG2rcFeyfZaboYLrz_MJcM7zwTIWY0mgIG1njLWNQBNTcxKCFblrxlPkpWiBhphnxEqVyFsYy4pYUd-cTugF0nFQ9xwo9qhz2-2PCXntUt3qcYLjDDvxb-fJ9B7o')"></div>
+<div>
+<p class="text-xs font-bold text-on-primary-fixed-variant">تحتاج مساعدة؟</p>
+<a class="text-xs text-primary font-bold underline" href="#">تواصل مع مدير المنح</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal Dialog -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-primary/20 backdrop-blur-sm hidden" id="confirmModal">
+<div class="bg-surface w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="p-8 text-center">
+<div class="w-20 h-20 bg-secondary-container text-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-5xl" data-icon="CheckCircle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="text-2xl font-bold font-cairo mb-2">تأكيد الإرسال</h3>
+<p class="text-on-surface-variant">هل أنت متأكد من صحة العقد الموقع والمرفوع؟ لا يمكن تعديل الملف بعد إرساله للتدقيق.</p>
+</div>
+<div class="p-6 bg-surface-container-low flex flex-col sm:flex-row gap-3">
+<button class="flex-1 px-6 py-3 bg-surface border border-outline rounded-xl font-bold hover:bg-surface-container-highest transition-colors" onclick="document.getElementById('confirmModal').classList.add('hidden')">
+                رجوع
+            </button>
+<button class="flex-1 px-6 py-3 bg-secondary text-on-secondary rounded-xl font-bold shadow-lg shadow-secondary/20 hover:opacity-90 transition-opacity">
+                تأكيد الإرسال
+            </button>
+</div>
+</div>
+</div>
+<script>
+    // Micro-interactions for Drag & Drop zone
+    const dropZone = document.querySelector('.border-dashed');
+    if (dropZone) {
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, e => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+
+        dropZone.addEventListener('dragenter', () => dropZone.classList.add('bg-primary/5', 'border-primary'));
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('bg-primary/5', 'border-primary'));
+        dropZone.addEventListener('drop', () => {
+            dropZone.classList.remove('bg-primary/5', 'border-primary');
+            // Mock file upload feedback
+            alert('تم استلام الملف بنجاح. يمكنك الآن الضغط على زر الإرسال.');
+        });
+    }
+
+    // Modal close on backdrop click
+    document.getElementById('confirmModal').addEventListener('click', (e) => {
+        if (e.target.id === 'confirmModal') {
+            e.target.classList.add('hidden');
+        }
+    });
+</script>
+</body></html>

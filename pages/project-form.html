@@ -1,0 +1,40 @@
+<!-- ============ PROJECT FORM ============ -->
+<div id="page-projform" class="page">
+  <div class="container-top">
+    <div class="card card-form">
+      <div style="font-size:13px;color:#174528;font-weight:700;margin-bottom:4px;">إدارة المشروع</div>
+      <div style="font-size:21px;font-weight:800;margin-bottom:20px;">التقديم على منحة مشروع</div>
+      <div class="form-group">
+        <label class="form-label">اسم المشروع</label>
+        <input class="form-input" value="تمكين الأسر المنتجة" oninput="App.setForm('project',this.value)">
+      </div>
+      <div class="flex-row" style="margin-bottom:15px;">
+        <div style="flex:1;">
+          <label class="form-label">الفئة المستهدفة</label>
+          <select class="form-select">
+            <option>الأسر المنتجة</option>
+            <option>الأيتام</option>
+            <option>ذوو الإعاقة</option>
+            <option>الشباب</option>
+          </select>
+        </div>
+        <div style="flex:1;">
+          <label class="form-label">قيمة المشروع (ريال)</label>
+          <input class="form-input" value="300,000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">وصف المشروع</label>
+        <textarea class="form-input" rows="3">مشروع لتمكين الأسر المنتجة من خلال التدريب المهني وتوفير الأدوات اللازمة.</textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:24px;">
+        <label class="form-label">أهداف المشروع</label>
+        <textarea class="form-input" rows="2">تأهيل 100 أسرة وتمكينها من إدرار دخل مستدام خلال سنة.</textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.navigate('qualstatus')">رجوع</button>
+        <button class="btn btn-green btn-flex btn-sm" onclick="App.setState({projStatus:'review',screen:'projstatus'})">إرسال طلب المشروع</button>
+      </div>
+    </div>
+  </div>
+</div>

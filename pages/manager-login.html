@@ -1,0 +1,23 @@
+<!-- ============ MANAGER LOGIN ============ -->
+<div id="page-manager-login" class="page">
+  <div class="container">
+    <div class="card card-login">
+      <div style="width:64px;height:64px;border-radius:14px;overflow:hidden;margin:0 auto;">
+        <img src="assets/logo.svg" alt="DAMA" style="width:64px;height:64px;display:block;">
+      </div>
+      <div style="font-size:22px;font-weight:800;margin:18px 0 4px;text-align:center;">دخول الإدارة التنفيذية</div>
+      <div style="font-size:13px;color:#9aa2b3;text-align:center;margin-bottom:26px;">حساب خاص للاطلاع على المؤشرات والتقارير</div>
+      <div class="form-group">
+        <label class="form-label">البريد الإلكتروني</label>
+        <input id="mgr-email" class="form-input" placeholder="ceo@dama-business.com" oninput="App.state.mEmail=this.value;App.state.mErr=false;">
+      </div>
+      <div class="form-group" style="margin-bottom:14px;">
+        <label class="form-label">كلمة المرور</label>
+        <input id="mgr-pass" type="password" class="form-input" placeholder="••••••••" oninput="App.state.mPass=this.value;App.state.mErr=false;">
+      </div>
+      <div id="mgr-login-error" class="error-text" style="display:none;">البريد أو كلمة المرور غير صحيحة.</div>
+      <button class="btn btn-green" onclick="App.mgrSignIn()">دخول</button>
+      <div class="link" style="text-align:center;font-size:13px;margin-top:16px;" onclick="App.setPortal('applicant')">→ العودة لبوابة الجمعيات</div>
+    </div>
+  </div>
+</div>

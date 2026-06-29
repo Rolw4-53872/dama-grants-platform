@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA Admin Portal - تفاصيل الطلب</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface": "#f7fafc",
+                "inverse-on-surface": "#eef1f3",
+                "surface-container-high": "#e5e9eb",
+                "outline-variant": "#c4c6cf",
+                "on-background": "#181c1e",
+                "on-tertiary-container": "#58a2f0",
+                "on-surface": "#181c1e",
+                "on-tertiary-fixed": "#001d37",
+                "secondary-fixed-dim": "#95d4b3",
+                "on-primary-fixed-variant": "#2d476f",
+                "error": "#ba1a1a",
+                "on-primary": "#ffffff",
+                "primary-container": "#1a365d",
+                "on-secondary-fixed": "#002114",
+                "tertiary-container": "#003762",
+                "surface-container-low": "#f1f4f6",
+                "secondary": "#2c694e",
+                "background": "#f7fafc",
+                "surface-dim": "#d7dadc",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-highest": "#e0e3e5",
+                "error-container": "#ffdad6",
+                "on-primary-container": "#86a0cd",
+                "surface-container": "#ebeef0",
+                "primary-fixed": "#d6e3ff",
+                "tertiary-fixed": "#d2e4ff",
+                "secondary-fixed": "#b1f0ce",
+                "outline": "#74777f",
+                "tertiary-fixed-dim": "#9fcaff",
+                "on-error": "#ffffff",
+                "tertiary": "#00213e",
+                "inverse-primary": "#adc7f7",
+                "on-tertiary-fixed-variant": "#00497e",
+                "on-surface-variant": "#43474e",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#2d3133",
+                "on-tertiary": "#ffffff",
+                "secondary-container": "#aeeecb",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed-variant": "#0e5138",
+                "surface-bright": "#f7fafc",
+                "on-primary-fixed": "#001b3c",
+                "surface-variant": "#e0e3e5",
+                "primary-fixed-dim": "#adc7f7",
+                "on-secondary-container": "#316e52",
+                "surface-tint": "#455f88",
+                "primary": "#002045"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                "round-eight": "0.5rem"
+            },
+            "spacing": {
+                "gutter": "1.5rem",
+                "stack-sm": "0.5rem",
+                "margin-mobile": "1rem",
+                "stack-md": "1rem",
+                "container-max": "1440px",
+                "stack-lg": "2rem",
+                "margin-desktop": "2.5rem"
+            },
+            "fontFamily": {
+                "sans": ["Noto Sans Arabic", "Be Vietnam Pro", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+        .stepper-line {
+            height: 2px;
+            background: #e0e3e5;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+        .stepper-line.active {
+            background: #002045;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-hidden h-screen flex flex-row-reverse">
+<!-- SideNavBar (Fixed on the Right) -->
+<aside class="w-[280px] bg-primary flex flex-col h-full overflow-y-auto text-right fixed right-0 top-0 shadow-lg z-50">
+<div class="p-6 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<h1 class="text-xl font-bold text-on-primary">DAMA System</h1>
+<p class="text-sm text-on-primary/70">نظام إدارة المنح والتأهيل</p>
+</div>
+<nav class="mt-6 flex-1 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary text-on-secondary rounded-lg mx-2 shadow-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-sm font-bold">طلبات المنح</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="text-sm font-medium">مشاريع التأهيل</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="text-sm font-medium">العقود</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm">الإعدادات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error-container hover:text-white rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm">تسجيل الخروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 mr-[280px] h-full overflow-y-auto custom-scrollbar flex flex-col pb-24">
+<!-- TopAppBar -->
+<header class="h-16 bg-surface flex flex-row-reverse items-center justify-between px-10 border-b border-outline-variant sticky top-0 z-40">
+<div class="flex items-center gap-4 flex-row-reverse">
+<div class="flex items-center gap-2">
+<img class="w-10 h-10 rounded-full border-2 border-primary/20 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATCqBZ_durhsroGho8VexMkfuhF8QDkyhThv6USOgCSbPHjPDLfjeKUBuQwQxsBzOvyJWPIWDldwQY85SuckTMEhfFPfQbDYzhTIQdegZBYIu75V3gqSa9A9QU1cjfSvUAzkV_CFhWiTzonvJBII4M8Pa1I7I4gEzkA2YfznwRlRFw1MXdv4y2uc1ZfXNREH_MP0ul-EO-W7AEfWJvbONWo6yk2jD2DK0_ETccCQcM98KnC6JHWqQ1P-X3T51IJbNK0SdYYw63B0o"/>
+<div class="text-right">
+<p class="text-sm font-bold text-primary">أحمد العتيبي</p>
+<p class="text-[10px] text-outline uppercase">System Admin</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 text-primary hover:bg-surface-container-high rounded-full transition-colors" onclick="window.history.back()">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<h1 class="text-xl font-bold text-primary">تفاصيل طلب المنحة</h1>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Status Header & Progress Tracker -->
+<div class="bg-white p-8 rounded-round-eight soft-shadow border border-outline-variant/30">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-sm text-outline mb-1">رقم الطلب</p>
+<h2 class="text-2xl font-bold text-primary">RQ-2024-0081</h2>
+</div>
+<div class="text-left">
+<p class="text-sm text-outline mb-1">الحالة الحالية</p>
+<span class="bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-sm font-bold border border-blue-100">قيد المراجعة الفنية</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-4">
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined">check</span>
+</div>
+<span class="text-xs font-bold text-primary">تقديم الطلب</span>
+</div>
+<div class="stepper-line active"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-primary/10">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="text-xs font-bold text-primary">المراجعة الفنية</span>
+</div>
+<div class="stepper-line"></div>
+<div class="flex flex-col items-center gap-2 opacity-40">
+<div class="w-10 h-10 rounded-full bg-outline-variant text-white flex items-center justify-center">
+<span class="material-symbols-outlined">rule</span>
+</div>
+<span class="text-xs font-bold">الاعتماد المالي</span>
+</div>
+<div class="stepper-line"></div>
+<div class="flex flex-col items-center gap-2 opacity-40">
+<div class="w-10 h-10 rounded-full bg-outline-variant text-white flex items-center justify-center">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<span class="text-xs font-bold">القرار النهائي</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Main Details (Left Col) -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Association Card -->
+<div class="bg-white rounded-round-eight soft-shadow border border-outline-variant/30 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/30 bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">corporate_fare</span>
+<h3 class="text-lg font-bold text-primary">بيانات الجمعية</h3>
+</div>
+</div>
+<div class="p-8 grid grid-cols-2 gap-y-6 gap-x-12">
+<div>
+<p class="text-xs text-outline mb-1">اسم الجهة</p>
+<p class="text-md font-medium text-on-surface">جمعية البر والتقوى الخيرية</p>
+</div>
+<div>
+<p class="text-xs text-outline mb-1">رقم السجل</p>
+<p class="text-md font-medium text-on-surface">1010459230</p>
+</div>
+<div>
+<p class="text-xs text-outline mb-1">تاريخ التأسيس</p>
+<p class="text-md font-medium text-on-surface">15 ربيع الأول 1420</p>
+</div>
+<div>
+<p class="text-xs text-outline mb-1">المنطقة / المدينة</p>
+<p class="text-md font-medium text-on-surface">الرياض - حي الشمال</p>
+</div>
+</div>
+</div>
+<!-- Project Card -->
+<div class="bg-white rounded-round-eight soft-shadow border border-outline-variant/30 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/30 bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+<h3 class="text-lg font-bold text-primary">تفاصيل المشروع</h3>
+</div>
+</div>
+<div class="p-8 space-y-6">
+<div class="grid grid-cols-2 gap-y-6 gap-x-12">
+<div class="col-span-2">
+<p class="text-xs text-outline mb-1">اسم المشروع</p>
+<p class="text-lg font-bold text-primary">تأهيل المركز الصحي بالحي الشمالي</p>
+</div>
+<div>
+<p class="text-xs text-outline mb-1">نوع المشروع</p>
+<p class="text-md font-medium text-on-surface">تأهيل إنشائي</p>
+</div>
+<div>
+<p class="text-xs text-outline mb-1">الميزانية التقديرية</p>
+<p class="text-md font-bold text-secondary">450,000 ر.س</p>
+</div>
+<div class="col-span-2">
+<p class="text-xs text-outline mb-1">وصف المشروع</p>
+<p class="text-md text-on-surface leading-relaxed">يهدف المشروع إلى تحديث البنية التحتية للمركز الصحي القائم لخدمة أكثر من 5000 مستفيد في الحي الشمالي، يشمل ذلك ترميم العيادات، تحديث أنظمة التكييف، وتوفير مداخل مهيأة لذوي الإعاقة.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Documents Card -->
+<div class="bg-white rounded-round-eight soft-shadow border border-outline-variant/30 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/30 bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">folder_open</span>
+<h3 class="text-lg font-bold text-primary">المرفقات والمستندات</h3>
+</div>
+</div>
+<div class="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Doc 1 -->
+<div class="border border-outline-variant rounded-xl p-3 flex flex-col gap-3 group hover:border-primary transition-colors cursor-pointer">
+<div class="aspect-video bg-surface-container-high rounded-lg flex items-center justify-center overflow-hidden relative">
+<span class="material-symbols-outlined text-4xl text-outline group-hover:hidden">picture_as_pdf</span>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="text-white text-xs font-bold">معاينة الملف</span>
+</div>
+</div>
+<div>
+<p class="text-sm font-bold truncate">صورة السجل التجاري</p>
+<p class="text-[10px] text-outline">PDF • 2.4 MB</p>
+</div>
+</div>
+<!-- Doc 2 -->
+<div class="border border-outline-variant rounded-xl p-3 flex flex-col gap-3 group hover:border-primary transition-colors cursor-pointer">
+<div class="aspect-video bg-surface-container-high rounded-lg flex items-center justify-center overflow-hidden relative">
+<span class="material-symbols-outlined text-4xl text-outline group-hover:hidden">image</span>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="text-white text-xs font-bold">معاينة الملف</span>
+</div>
+</div>
+<div>
+<p class="text-sm font-bold truncate">المخطط الهندسي</p>
+<p class="text-[10px] text-outline">JPG • 4.1 MB</p>
+</div>
+</div>
+<!-- Doc 3 -->
+<div class="border border-outline-variant rounded-xl p-3 flex flex-col gap-3 group hover:border-primary transition-colors cursor-pointer">
+<div class="aspect-video bg-surface-container-high rounded-lg flex items-center justify-center overflow-hidden relative">
+<span class="material-symbols-outlined text-4xl text-outline group-hover:hidden">description</span>
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+<span class="text-white text-xs font-bold">معاينة الملف</span>
+</div>
+</div>
+<div>
+<p class="text-sm font-bold truncate">دراسة الجدوى</p>
+<p class="text-[10px] text-outline">DOCX • 1.2 MB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content (Right Col) -->
+<div class="space-y-8">
+<!-- Comments Section -->
+<div class="bg-white rounded-round-eight soft-shadow border border-outline-variant/30 flex flex-col h-full min-h-[500px]">
+<div class="p-6 border-b border-outline-variant/30 bg-surface-container-low flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">chat_bubble_outline</span>
+<h3 class="text-lg font-bold text-primary">الملاحظات والتعليقات</h3>
+</div>
+</div>
+<div class="flex-1 p-6 space-y-6 overflow-y-auto custom-scrollbar">
+<!-- Comment 1 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-primary">سارة المنصور</span>
+<span class="text-[10px] text-outline">منذ ساعتين</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl text-sm border-r-4 border-primary">
+                                يرجى التأكد من مطابقة المخطط الهندسي لاشتراطات البلدية الجديدة لحي الشمال.
+                            </div>
+</div>
+<!-- Comment 2 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-primary">خالد الحربي</span>
+<span class="text-[10px] text-outline">أمس، 04:30 م</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl text-sm border-r-4 border-outline-variant">
+                                تم تحديث الميزانية التقديرية بناءً على مراجعة الأسعار الحالية للسوق.
+                            </div>
+</div>
+</div>
+<div class="p-6 border-t border-outline-variant/30">
+<div class="relative">
+<textarea class="w-full bg-surface-container-low border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-primary/20 resize-none" placeholder="أضف ملاحظة جديدة..." rows="3"></textarea>
+<button class="absolute bottom-3 left-3 bg-primary text-white p-2 rounded-lg hover:opacity-90">
+<span class="material-symbols-outlined text-lg">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- History Log Card -->
+<div class="bg-white rounded-round-eight soft-shadow border border-outline-variant/30 p-6">
+<h3 class="text-sm font-bold text-primary mb-4">سجل العمليات</h3>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-secondary mt-1.5 shrink-0"></div>
+<div>
+<p class="text-xs font-bold">تم تحويل الطلب للمراجعة الفنية</p>
+<p class="text-[10px] text-outline">بواسطة النظام • 24 أكتوبر 10:00 ص</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-2 h-2 rounded-full bg-outline-variant mt-1.5 shrink-0"></div>
+<div>
+<p class="text-xs font-bold">تم استلام الطلب بنجاح</p>
+<p class="text-[10px] text-outline">بواسطة الجمعية • 23 أكتوبر 11:45 م</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Bar -->
+<div class="fixed bottom-0 right-[280px] left-0 bg-white/80 backdrop-blur-md border-t border-outline-variant/50 p-4 z-40">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex items-center gap-4">
+<button class="bg-primary text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:shadow-lg transition-all">
+<span class="material-symbols-outlined">verified</span>
+<span>اعتماد الطلب</span>
+</button>
+<button class="bg-error-container text-error px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-red-100 transition-colors">
+<span class="material-symbols-outlined">block</span>
+<span>رفض الطلب</span>
+</button>
+<button class="bg-surface-container-high text-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">edit_note</span>
+<span>طلب تعديلات</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-3 text-outline hover:text-primary transition-colors" title="طباعة">
+<span class="material-symbols-outlined">print</span>
+</button>
+<button class="p-3 text-outline hover:text-primary transition-colors" title="تحميل">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+    // Simple hover animation for doc cards
+    document.querySelectorAll('.aspect-video').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            el.querySelector('.material-symbols-outlined')?.classList.add('scale-110');
+        });
+        el.addEventListener('mouseleave', () => {
+            el.querySelector('.material-symbols-outlined')?.classList.remove('scale-110');
+        });
+    });
+</script>
+</body></html>

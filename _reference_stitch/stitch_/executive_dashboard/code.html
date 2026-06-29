@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA Executive Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#001b3c",
+                    "surface-container-low": "#f1f4f6",
+                    "inverse-primary": "#aec7f5",
+                    "surface-container": "#ebeef0",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "secondary-container": "#aeeecb",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#2c694e",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#b1f0ce",
+                    "on-surface": "#181c1e",
+                    "tertiary-fixed": "#d5e3ff",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-high": "#e5e9eb",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "on-primary-fixed": "#001b3c",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e0e3e5",
+                    "accent-line": "#2c694e",
+                    "on-tertiary-container": "#6589c1",
+                    "tertiary-container": "#002044",
+                    "surface-container-highest": "#e0e3e5",
+                    "background": "#f7fafc",
+                    "surface-dim": "#d7dadc",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "outline": "#e2e8f0",
+                    "on-secondary-container": "#316e52",
+                    "on-surface-variant": "#44474e",
+                    "surface": "#ffffff",
+                    "primary": "#00091b",
+                    "surface-tint": "#465f87",
+                    "error": "#ba1a1a",
+                    "on-background": "#181c1e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#7089b3",
+                    "primary-container": "#002045",
+                    "on-secondary-fixed": "#002114",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-bright": "#f7fafc",
+                    "tertiary": "#00081a",
+                    "tertiary-fixed-dim": "#a7c8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "element-gap": "2rem",
+                    "section-gap": "4rem",
+                    "container-max": "1280px",
+                    "card-padding": "2rem",
+                    "grid-gutter": "1.5rem"
+            },
+            "fontFamily": {
+                    "display-lg": ["Cairo"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "display-lg-mobile": ["Cairo"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "headline-lg": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"]
+            },
+            "fontSize": {
+                    "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["72px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "900"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(circle at 2px 2px, rgba(0, 32, 69, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface dark:bg-inverse-surface shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] flex flex-col h-screen py-6 px-4 z-[60]">
+<div class="mb-10 px-2">
+<h1 class="font-headline-lg text-headline-lg text-primary dark:text-inverse-primary leading-tight">DAMA System</h1>
+<p class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant opacity-70">Management Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-3 py-3 text-secondary dark:text-secondary-fixed-dim font-bold border-r-4 border-secondary hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span>Applications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">group_work</span>
+<span>Associations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">contract</span>
+<span>Contracts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span>Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline pt-6">
+<button class="w-full py-3 px-4 bg-primary-container text-on-primary-container rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+                System Support
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-50 bg-surface dark:bg-inverse-surface border-b border-outline shadow-sm flex justify-between items-center px-8 h-20">
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full w-64 focus:ring-2 focus:ring-primary text-sm transition-all" placeholder="Search executive records..." type="text"/>
+</div>
+<h2 class="font-title-lg text-title-lg text-primary ml-4">DAMA Grant &amp; Rehabilitation</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="p-2 text-on-surface-variant hover:text-secondary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-4 border-l border-outline">
+<div class="text-right">
+<p class="text-sm font-bold text-primary">Executive Director</p>
+<p class="text-xs text-on-surface-variant">System Admin</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary object-cover" data-alt="A professional studio portrait of a senior executive in a dark navy tailored suit, sharp lighting from the side, minimalist corporate grey background, high-resolution aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxwTPaUPVFrtmHuhaObeTmFSn0bzGoUhbNO9Cdrcx7-h5ZQcBCceTGIDvbryDGqeMtWkL_ya5BTSQYHcAMvkyYYp0ELQrnYsJg41SANVUucR4UHcvKxvLBiiFffOl3ox699pI8qxv2ZAYbGAKUOFTjM28nOYnQGMz6zExbry5YNFBqjAK2R7fhIH-x82TcspRqrhSCTJt8bsQUFoUc2qsC5Il96OAnhVtVTcR4HeVJgHyQgFtI5gK8pH_JtI-2bHKCoO6OcMRSDWg"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="pt-28 px-10 pb-16 space-y-element-gap">
+<!-- Welcome Header -->
+<section class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-xl text-headline-xl text-primary">Welcome, Executive Director</h3>
+<p class="text-on-surface-variant font-body-lg">Monday, October 23, 2023 | <span class="text-secondary font-bold">12 New Applications</span> pending final signature.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 bg-surface institutional-shadow border border-outline rounded-lg text-sm font-bold text-primary hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">upload_file</span>
+                        Export to PDF
+                    </button>
+<button class="px-6 py-2.5 bg-primary text-on-primary rounded-lg text-sm font-bold hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                        Annual Report
+                    </button>
+</div>
+</section>
+<!-- KPI Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+<!-- KPI Card 1 -->
+<div class="bg-surface institutional-shadow p-5 rounded-xl border-l-4 border-primary">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-primary text-3xl">corporate_fare</span>
+<span class="text-xs font-bold text-secondary flex items-center">
+                            +4% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Associations</p>
+<p class="text-2xl font-bold text-primary mt-1">1,284</p>
+</div>
+<!-- KPI Card 2 -->
+<div class="bg-surface institutional-shadow p-5 rounded-xl border-l-4 border-on-tertiary-container">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-3xl">assignment</span>
+<span class="text-xs font-bold text-secondary flex items-center">
+                            +12% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Applications</p>
+<p class="text-2xl font-bold text-primary mt-1">4,892</p>
+</div>
+<!-- KPI Card 3 -->
+<div class="bg-surface institutional-shadow p-5 rounded-xl border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-secondary text-3xl">task_alt</span>
+<span class="text-xs font-bold text-secondary flex items-center">
+                            +8% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Approved</p>
+<p class="text-2xl font-bold text-primary mt-1">3,120</p>
+</div>
+<!-- KPI Card 4 -->
+<div class="bg-surface institutional-shadow p-5 rounded-xl border-l-4 border-error">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-error text-3xl">cancel</span>
+<span class="text-xs font-bold text-error flex items-center">
+                            -2% <span class="material-symbols-outlined text-[14px]">trending_down</span>
+</span>
+</div>
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Rejected</p>
+<p class="text-2xl font-bold text-primary mt-1">412</p>
+</div>
+<!-- KPI Card 5 -->
+<div class="bg-surface institutional-shadow p-5 rounded-xl border-l-4 border-surface-tint">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-surface-tint text-3xl">border_color</span>
+<span class="text-xs font-bold text-on-surface-variant flex items-center">
+                            0% <span class="material-symbols-outlined text-[14px]">horizontal_rule</span>
+</span>
+</div>
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Modification</p>
+<p class="text-2xl font-bold text-primary mt-1">156</p>
+</div>
+<!-- KPI Card 6 -->
+<div class="bg-surface institutional-shadow p-5 rounded-xl border-l-4 border-secondary-fixed-dim">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-3xl">handshake</span>
+<span class="text-xs font-bold text-secondary flex items-center">
+                            +5% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Contracts</p>
+<p class="text-2xl font-bold text-primary mt-1">2,845</p>
+</div>
+<!-- KPI Card 7 -->
+<div class="bg-surface institutional-shadow p-5 rounded-xl border-l-4 border-tertiary-container">
+<div class="flex justify-between items-start mb-2">
+<span class="material-symbols-outlined text-tertiary-container text-3xl">done_all</span>
+<span class="text-xs font-bold text-secondary flex items-center">
+                            +10% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<p class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Completed</p>
+<p class="text-2xl font-bold text-primary mt-1">1,940</p>
+</div>
+</section>
+<!-- Main Dashboard Grid -->
+<div class="grid grid-cols-12 gap-grid-gutter">
+<!-- Left: Performance Analytics -->
+<div class="col-span-12 lg:col-span-8 space-y-grid-gutter">
+<!-- Line Chart Area -->
+<div class="bg-surface institutional-shadow p-card-padding rounded-2xl">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline-lg text-headline-lg text-primary">Applications Growth Trend</h4>
+<div class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="w-3 h-3 rounded-full bg-primary"></span> 2023
+                                <span class="w-3 h-3 rounded-full bg-outline ml-4"></span> 2022
+                            </div>
+</div>
+<div class="relative h-64 w-full flex items-end gap-2 px-2">
+<!-- Faked CSS Bar/Trend Chart -->
+<div class="flex-1 bg-surface-container h-[40%] rounded-t-sm group relative cursor-pointer"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">JAN: 320</div></div>
+<div class="flex-1 bg-surface-container h-[55%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-surface-container h-[45%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-surface-container h-[70%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-surface-container h-[85%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-surface-container h-[65%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-secondary h-[95%] rounded-t-sm group relative cursor-pointer"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">JUL: 840</div></div>
+<div class="flex-1 bg-primary h-[80%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-primary h-[90%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-primary h-[75%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-primary h-[88%] rounded-t-sm group relative cursor-pointer"></div>
+<div class="flex-1 bg-outline-variant h-[60%] rounded-t-sm group relative cursor-pointer opacity-50"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-on-surface-variant uppercase">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+</div>
+</div>
+<!-- Small Charts Row -->
+<div class="grid grid-cols-2 gap-grid-gutter">
+<div class="bg-surface institutional-shadow p-card-padding rounded-2xl">
+<h4 class="text-sm font-bold text-primary mb-4 uppercase tracking-widest">Target Groups</h4>
+<div class="flex items-center gap-6">
+<div class="w-32 h-32 rounded-full border-[12px] border-primary border-t-secondary border-r-surface-tint"></div>
+<div class="space-y-2 flex-1">
+<div class="flex justify-between text-xs font-bold"><span class="text-primary">Social</span><span>42%</span></div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden"><div class="bg-primary h-full w-[42%]"></div></div>
+<div class="flex justify-between text-xs font-bold"><span class="text-secondary">Health</span><span>28%</span></div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden"><div class="bg-secondary h-full w-[28%]"></div></div>
+<div class="flex justify-between text-xs font-bold"><span class="text-surface-tint">Education</span><span>30%</span></div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden"><div class="bg-surface-tint h-full w-[30%]"></div></div>
+</div>
+</div>
+</div>
+<div class="bg-surface institutional-shadow p-card-padding rounded-2xl">
+<h4 class="text-sm font-bold text-primary mb-4 uppercase tracking-widest">Regional Activity</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center font-bold text-xs">01</div>
+<div class="flex-1">
+<div class="flex justify-between text-xs font-bold mb-1"><span>Riyadh</span><span>1,420</span></div>
+<div class="w-full h-1.5 bg-surface-container rounded-full"><div class="bg-primary h-full w-[85%] rounded-full"></div></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center font-bold text-xs">02</div>
+<div class="flex-1">
+<div class="flex justify-between text-xs font-bold mb-1"><span>Jeddah</span><span>980</span></div>
+<div class="w-full h-1.5 bg-surface-container rounded-full"><div class="bg-secondary h-full w-[60%] rounded-full"></div></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center font-bold text-xs">03</div>
+<div class="flex-1">
+<div class="flex justify-between text-xs font-bold mb-1"><span>Dammam</span><span>740</span></div>
+<div class="w-full h-1.5 bg-surface-container rounded-full"><div class="bg-tertiary-container h-full w-[45%] rounded-full"></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Applications Table -->
+<div class="bg-surface institutional-shadow rounded-2xl overflow-hidden">
+<div class="px-card-padding py-4 bg-surface border-b border-outline flex justify-between items-center">
+<h4 class="font-headline-lg text-headline-lg text-primary">Recent Applications</h4>
+<span class="text-xs font-bold text-secondary cursor-pointer">View All Activity</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-on-surface-variant text-[11px] font-bold uppercase tracking-widest">
+<tr>
+<th class="px-6 py-4">Ref ID</th>
+<th class="px-6 py-4">Association</th>
+<th class="px-6 py-4">Project Scope</th>
+<th class="px-6 py-4">Date</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#DM-9021</td>
+<td class="px-6 py-4">Al-Barakah Charity</td>
+<td class="px-6 py-4 text-sm">Youth Rehabilitation Center</td>
+<td class="px-6 py-4 text-sm">Oct 22, 2023</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase">Approved</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-secondary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#DM-9020</td>
+<td class="px-6 py-4">Digital Future Org</td>
+<td class="px-6 py-4 text-sm">Tech Literacy Program</td>
+<td class="px-6 py-4 text-sm">Oct 21, 2023</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-full uppercase">Pending</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-secondary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#DM-9019</td>
+<td class="px-6 py-4">Hope Foundation</td>
+<td class="px-6 py-4 text-sm">Community Health Hub</td>
+<td class="px-6 py-4 text-sm">Oct 20, 2023</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold rounded-full uppercase">Reviewing</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-secondary transition-colors"><span class="material-symbols-outlined">visibility</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right: Insights & Sidebar Data -->
+<div class="col-span-12 lg:col-span-4 space-y-grid-gutter">
+<!-- Executive Insights Panel -->
+<div class="bg-primary-container text-on-primary-container p-card-padding rounded-2xl relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">psychology</span>
+</div>
+<h4 class="font-headline-lg text-headline-lg mb-6 relative z-10">Executive Insights</h4>
+<div class="space-y-6 relative z-10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-on-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined">location_city</span>
+</div>
+<div>
+<p class="text-xs uppercase font-bold opacity-70">Top City</p>
+<p class="text-lg font-bold">Riyadh (32%)</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-on-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<p class="text-xs uppercase font-bold opacity-70">Peak Month</p>
+<p class="text-lg font-bold">July (842 Apps)</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-on-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined">speed</span>
+</div>
+<div>
+<p class="text-xs uppercase font-bold opacity-70">Avg. Processing</p>
+<p class="text-lg font-bold">4.2 Days</p>
+</div>
+</div>
+<div class="pt-4 border-t border-on-primary-container/20">
+<p class="text-sm italic opacity-80 leading-relaxed">"System performance is 14% higher than Q3 projection. Focus on Jeddah expansion recommended for next quarter."</p>
+</div>
+</div>
+</div>
+<!-- Top Associations -->
+<div class="bg-surface institutional-shadow p-card-padding rounded-2xl">
+<h4 class="font-headline-lg text-headline-lg text-primary mb-6">Top Associations</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-3 bg-surface-container-low rounded-xl">
+<img class="w-12 h-12 rounded bg-white p-1 object-contain shadow-sm" data-alt="A clean, minimalist logo for a charitable organization, featuring stylized green leaves and an abstract house shape, modern vector style, professional branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDYv3-GlQOz_sTHuzgWFKUOE2ohRqo4OJ_pMvq1vqpQ9jW_u5lpkW15H_6ami_j50CJLPUSqjyPP1J3rFsrtOQmHcMdvmRn_lv243tHFm9k91Jb0I6KFkwcqQmrPlttoj2TIxO8A0FzNjPUK56ZnV6bjpdTzz5a91IgfBUCHOEFt-zL0XcdycYLNZ1xylN-tBey0Cbdrh7VO6BEIc66YZqvbIz9ONLQ6Ba4GMbKrvKXjFm-MxZv4qcxaNfaYIn0A1jujB7DsbKIrM"/>
+<div class="flex-1">
+<p class="font-bold text-primary">Al-Namaa Charity</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">18 Projects | 98% Success</p>
+</div>
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<div class="flex items-center gap-4 p-3 bg-surface-container-low rounded-xl">
+<img class="w-12 h-12 rounded bg-white p-1 object-contain shadow-sm" data-alt="A sophisticated emblem for an educational non-profit, incorporating an open book and a stylized sun, minimalist navy and gold color palette, corporate design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXZDdogW6sVxKOvZLgu3rFvBiWErIEIUcwnc5vw82ykcGfwCuwHz7R8nEkzbWvZAWvcK6DHE7zsY-i7obHAGdWZ_7D_k17AuUW2uzTH5qHpsCPN4UHQUkaHhjjfK5XOkpql0xG7wAjRa3a_qD1n_06CYNkGg9jU4mdVD4TKSN8CpMq2BWrWbaKuvarsk1rANApQnwIzUlsT9LRi8D9CEPOSFJmSigVpFLtcmN3EH7Ck_g6fx7R4A0SxPH0-iG5wO8IX9ohA8BahVE"/>
+<div class="flex-1">
+<p class="font-bold text-primary">Takaful Foundation</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">12 Projects | 95% Success</p>
+</div>
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<div class="flex items-center gap-4 p-3 bg-surface-container-low rounded-xl">
+<img class="w-12 h-12 rounded bg-white p-1 object-contain shadow-sm" data-alt="A modern abstract logo representing community health, with interlocking circular motifs in shades of blue and emerald, sleek and professional medical-tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6HgK1mhANprtTVNANcPOjZDkI4YGEA4lTLlsdXOUTQKb4d0SvEZmSWg_wDMrWKzDUUBhqZIUoB5NmIQPFXxOfXgKP03RvNKjp1c95yAl5n8XFLLdm5AvZrPxhw08ko0kb2jWwuwUY_-tidXcU8MkoEqCkwPZ5M-Yu-6vg606CuKuzO8DYxBB--jr0p6sY8slxSwzhaxywinQDpuCDAxLQDsPWXxPZwLEa2BBBKBX3BDBFVRL5QL4NJjBUdSycH1SWzaFvG_OW51s"/>
+<div class="flex-1">
+<p class="font-bold text-primary">Inaya Medical Org</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">9 Projects | 92% Success</p>
+</div>
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border-2 border-dashed border-outline rounded-xl text-xs font-bold text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+                            View Performance Ranking
+                        </button>
+</div>
+<!-- Quick Reports -->
+<div class="bg-surface institutional-shadow p-card-padding rounded-2xl">
+<h4 class="font-headline-lg text-headline-lg text-primary mb-6">Quick Exports</h4>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center gap-2 p-4 bg-surface-container rounded-xl hover:bg-secondary-container transition-colors group">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary">description</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Applications</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 bg-surface-container rounded-xl hover:bg-secondary-container transition-colors group">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary">contract_edit</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Contracts</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 bg-surface-container rounded-xl hover:bg-secondary-container transition-colors group">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary">account_balance</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Finance</span>
+</button>
+<button class="flex flex-col items-center gap-2 p-4 bg-surface-container rounded-xl hover:bg-secondary-container transition-colors group">
+<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary">group</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Associations</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Footer Status -->
+<footer class="mt-element-gap pt-10 border-t border-outline flex justify-between items-center text-on-surface-variant text-xs">
+<div>© 2023 DAMA Grant &amp; Rehabilitation System. Institutional Modernism Framework.</div>
+<div class="flex gap-6 items-center">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> System Online</span>
+<span>Database: v4.2.0-stable</span>
+<span>Last Refreshed: 2 mins ago</span>
+</div>
+</footer>
+</div>
+</main>
+<!-- Visual Accents (Institutional Geometry) -->
+<div class="fixed bottom-0 right-0 w-96 h-96 opacity-5 pointer-events-none -z-10 overflow-hidden">
+<div class="absolute inset-0 border-[40px] border-primary rounded-full scale-150"></div>
+</div>
+<div class="fixed top-20 left-64 w-64 h-64 opacity-[0.03] pointer-events-none -z-10">
+<svg viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="none" height="80" stroke="currentColor" stroke-dasharray="2 2" stroke-width="0.5" width="80" x="10" y="10"></rect>
+<circle cx="50" cy="50" fill="none" r="30" stroke="currentColor" stroke-width="0.5"></circle>
+</svg>
+</div>
+<script>
+        // Micro-interactions for dashboard elements
+        document.querySelectorAll('.institutional-shadow').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'all 0.3s ease-in-out';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

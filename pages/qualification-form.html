@@ -1,0 +1,109 @@
+<!-- ============ QUALIFICATION FORM (3 steps) ============ -->
+<div id="page-qform" class="page">
+  <div class="container-top">
+    <div class="card card-form">
+      <div style="font-size:13px;color:#1A81BC;font-weight:700;margin-bottom:4px;">نموذج التأهيل</div>
+      <div class="stepper">
+        <div id="stepper-dot-1" class="stepper-dot stepper-active">1</div>
+        <div id="stepper-line-1" class="stepper-line stepper-line-pending"></div>
+        <div id="stepper-dot-2" class="stepper-dot stepper-pending">2</div>
+        <div id="stepper-line-2" class="stepper-line stepper-line-pending"></div>
+        <div id="stepper-dot-3" class="stepper-dot stepper-pending">3</div>
+      </div>
+      <div id="qstep-label" style="font-size:13px;color:#9aa2b3;margin-bottom:22px;">الخطوة 1 من 3</div>
+
+      <!-- Step 1: Association Data -->
+      <div id="qstep-1" class="qstep">
+        <div style="font-size:19px;font-weight:700;margin-bottom:18px;">بيانات الجمعية</div>
+        <div class="form-group">
+          <label class="form-label">اسم الجمعية</label>
+          <input id="q-assoc" class="form-input" value="جمعية البر بجدة" oninput="App.setForm('assoc',this.value)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">رقم الترخيص</label>
+          <input class="form-input" value="700123456">
+        </div>
+        <div class="flex-row" style="margin-bottom:24px;">
+          <div style="flex:1;">
+            <label class="form-label">البريد الإلكتروني</label>
+            <input class="form-input" value="info@albirjeddah.org">
+          </div>
+          <div style="flex:1;">
+            <label class="form-label">رقم الجوال</label>
+            <input class="form-input" value="0551234567">
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.navigate('intro')">رجوع</button>
+          <button class="btn btn-primary btn-flex btn-sm" onclick="App.setState({qstep:2})">التالي</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Files -->
+      <div id="qstep-2" class="qstep" style="display:none;">
+        <div style="font-size:19px;font-weight:700;margin-bottom:6px;">ملفات الجمعية</div>
+        <div style="font-size:13px;color:#9aa2b3;margin-bottom:16px;">يرجى رفع المستندات التالية (PDF)</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px;">
+          <div class="file-upload-row"><span>شهادة الترخيص</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>اللائحة الأساسية</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>المعلومات البنكية</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>حساب التبرع</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>الملف التعريفي</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>الهوية البصرية</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>الخطة الاستراتيجية</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>الخطة التشغيلية</span><span>⬆ رفع</span></div>
+          <div class="file-upload-row"><span>القوائم المالية (سنتان)</span><span>⬆ رفع</span></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.setState({qstep:1})">السابق</button>
+          <button class="btn btn-primary btn-flex btn-sm" onclick="App.setState({qstep:3})">التالي</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Additional Questions -->
+      <div id="qstep-3" class="qstep" style="display:none;">
+        <div style="font-size:19px;font-weight:700;margin-bottom:18px;">معلومات إضافية</div>
+        <!-- Q1 -->
+        <div style="margin-bottom:16px;">
+          <div style="font-size:14px;font-weight:600;margin-bottom:9px;">هل لدى الجمعية شهادات تميز؟</div>
+          <div class="flex-row" style="gap:10px;">
+            <button id="q1-yes" class="btn-toggle btn-toggle-off" onclick="App.setState({q1:'yes'})">نعم</button>
+            <button id="q1-no" class="btn-toggle btn-toggle-off" onclick="App.setState({q1:'no'})">لا</button>
+          </div>
+          <div id="q1-upload" style="display:none;margin-top:10px;">
+            <div class="file-upload-row"><span>إرفاق شهادة التميز (اختياري)</span><span>⬆ رفع</span></div>
+          </div>
+        </div>
+        <!-- Q2 -->
+        <div style="margin-bottom:16px;">
+          <div style="font-size:14px;font-weight:600;margin-bottom:9px;">هل الجمعية مسجّلة في منصة قوائم؟</div>
+          <div class="flex-row" style="gap:10px;">
+            <button id="q2-yes" class="btn-toggle btn-toggle-off" onclick="App.setState({q2:'yes'})">نعم</button>
+            <button id="q2-no" class="btn-toggle btn-toggle-off" onclick="App.setState({q2:'no'})">لا</button>
+          </div>
+          <div class="file-upload-row file-upload-required" style="margin-top:10px;">
+            <span>إثبات التسجيل في منصة قوائم (إجباري)</span><span>⬆ رفع</span>
+          </div>
+        </div>
+        <!-- Q3 -->
+        <div style="margin-bottom:24px;">
+          <div style="font-size:14px;font-weight:600;margin-bottom:9px;">هل نفّذت الجمعية مشاريع سابقة؟</div>
+          <div class="flex-row" style="gap:10px;">
+            <button id="q3-yes" class="btn-toggle btn-toggle-off" onclick="App.setState({q3:'yes'})">نعم</button>
+            <button id="q3-no" class="btn-toggle btn-toggle-off" onclick="App.setState({q3:'no'})">لا</button>
+          </div>
+          <div id="q3-upload" style="display:none;margin-top:10px;">
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <div class="file-upload-row"><span>ملفات المشاريع السابقة (اختياري)</span><span>⬆ رفع</span></div>
+              <div class="file-upload-row"><span>شهادة إتمام المشروع (اختياري)</span><span>⬆ رفع</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.setState({qstep:2})">السابق</button>
+          <button class="btn btn-primary btn-flex btn-sm" onclick="App.setState({qualStatus:'review',screen:'qsubmitted'})">تقديم طلب التأهيل</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

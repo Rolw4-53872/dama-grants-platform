@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grant Management System - Notifications</title>
+<!-- Fonts: Cairo & Noto Sans Arabic -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#7089b3",
+                    "primary-fixed": "#d6e3ff",
+                    "on-secondary-container": "#316e52",
+                    "tertiary-fixed": "#d5e3ff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-primary-fixed": "#001b3c",
+                    "inverse-surface": "#2d3133",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "secondary-fixed": "#b1f0ce",
+                    "error": "#ba1a1a",
+                    "secondary": "#2c694e",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "on-tertiary-container": "#6589c1",
+                    "tertiary": "#00081a",
+                    "primary": "#00091b",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "surface-container-high": "#e5e9eb",
+                    "surface": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#aeeecb",
+                    "on-secondary-fixed": "#002114",
+                    "on-surface": "#181c1e",
+                    "background": "#f7fafc",
+                    "on-tertiary-fixed": "#001b3c",
+                    "surface-tint": "#465f87",
+                    "outline-variant": "#c4c6cf",
+                    "on-background": "#181c1e",
+                    "surface-container-low": "#f1f4f6",
+                    "tertiary-container": "#002044",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "surface-container": "#ebeef0",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f7fafc",
+                    "inverse-primary": "#aec7f5",
+                    "outline": "#e2e8f0",
+                    "on-surface-variant": "#44474e",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-dim": "#d7dadc",
+                    "primary-container": "#002045",
+                    "error-container": "#ffdad6",
+                    "accent-line": "#2c694e",
+                    "on-tertiary-fixed-variant": "#1f477b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "grid-gutter": "1.5rem",
+                    "element-gap": "2rem",
+                    "card-padding": "2rem",
+                    "section-gap": "4rem",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Cairo"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"],
+                    "display-lg-mobile": ["Cairo"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "display-lg": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .cube-overlay {
+            background-image: radial-gradient(rgba(0, 32, 69, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Cairo', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen cube-overlay">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline shadow-sm">
+<div class="flex justify-between items-center px-6 py-4 max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">نظام إدارة المنح</span>
+</div>
+<div class="flex items-center gap-6">
+<!-- Search Bar -->
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pr-10 pl-4 py-2 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary w-64 text-label-sm font-label-sm" placeholder="بحث عن طلب أو عقد..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of an Arab administrator in formal business attire, studio lighting, clean white background, high-end corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARZQBHS9SGO3HeBdExAR5Rzqt_gd_hviyN3J5hJ-pgNfr9um8Qde13XoOnNGPZzGmYbdiuiEn2x2opGMA8dEzZieOq7E_rjTI-fALZ1AS5y2xKRn37q4sS8pACergo4gJTeFOxdAQyslBsXOfAOfF32RfjINnDOfxes21aP0jGhPTT2B6GQilU-Qwp_sWZzPo63Nm5-FRKx5GCSfQb0j7CelXP3E5zk1XwvXBpN7E5xaVx3sNBFANpUQsIvzx-zWc-V_Cd5lY0e2w"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (RTL - Fixed Right) -->
+<aside class="fixed right-0 top-0 h-full w-64 bg-surface-container-low border-l border-outline shadow-md flex flex-col py-8 px-4 gap-4 z-40 pt-24">
+<div class="mb-8 px-4">
+<h2 class="font-headline-xl text-headline-xl text-primary font-bold">DAMA</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant">البوابة المؤسسية</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>لوحة التحكم</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">description</span>
+<span>طلبات المنح</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span>المؤهلات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span>الإشعارات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span>التقارير</span>
+</a>
+</nav>
+<button class="bg-primary text-on-primary py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-label-sm text-label-sm transition-transform active:scale-95 duration-150">
+<span class="material-symbols-outlined">add</span>
+<span>منحة جديدة</span>
+</button>
+<div class="mt-auto pt-4 border-t border-outline">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>تسجيل الخروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="mr-64 pt-28 pb-12 px-grid-gutter">
+<div class="max-w-4xl mx-auto">
+<!-- Page Header -->
+<div class="mb-element-gap flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-2">الإشعارات</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">جميع التحديثات المتعلقة بطلباتكم والعقود</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 text-primary border border-outline rounded-lg hover:bg-surface-container-low transition-colors font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[20px]">done_all</span>
+<span>تحديد الكل كمقروء</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 text-error border border-error/20 rounded-lg hover:bg-error/5 transition-colors font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+<span>حذف الكل</span>
+</button>
+</div>
+</div>
+<!-- Filter Toolbar -->
+<div class="bg-surface rounded-xl institutional-shadow p-2 flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+<div class="flex p-1 bg-surface-container-low rounded-lg w-full md:w-auto">
+<button class="px-6 py-2 rounded-md bg-surface text-primary font-bold shadow-sm transition-all font-label-sm text-label-sm">الكل</button>
+<button class="px-6 py-2 rounded-md text-on-surface-variant hover:text-primary transition-all font-label-sm text-label-sm">غير المقروءة</button>
+<button class="px-6 py-2 rounded-md text-on-surface-variant hover:text-primary transition-all font-label-sm text-label-sm">المقروءة</button>
+</div>
+<div class="relative w-full md:w-72 px-2">
+<span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pr-10 pl-4 py-2 bg-surface-container-low border-outline border rounded-lg focus:ring-2 focus:ring-primary text-label-sm font-label-sm" placeholder="بحث في الإشعارات..." type="text"/>
+</div>
+</div>
+<!-- Notifications List -->
+<div class="space-y-4">
+<!-- Notification Card 1 (Unread) -->
+<div class="group relative bg-surface-container-lowest border border-outline rounded-xl p-6 institutional-shadow transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer flex gap-5 overflow-hidden">
+<div class="absolute right-0 top-0 w-1 h-full bg-orange-500"></div>
+<div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-orange-500 text-[28px]">edit_document</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-lg text-title-lg text-primary">يحتاج الطلب إلى تعديل</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">منذ ساعتين</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">طلب رقم RQ-2024-002 يتطلب تحديث بيانات الميزانية.</p>
+<!-- Hover Actions -->
+<div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex items-center gap-1 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>تعيين كمقروء</span>
+</button>
+<button class="flex items-center gap-1 text-error font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+<!-- Unread Dot -->
+<div class="w-3 h-3 bg-orange-500 rounded-full self-center"></div>
+</div>
+<!-- Notification Card 2 (Unread) -->
+<div class="group relative bg-surface-container-lowest border border-outline rounded-xl p-6 institutional-shadow transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer flex gap-5 overflow-hidden">
+<div class="absolute right-0 top-0 w-1 h-full bg-secondary"></div>
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-[28px]">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-lg text-title-lg text-primary">تم قبول الطلب</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">منذ 5 ساعات</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">تم قبول طلب المنحة لمشروع ترميم المنازل بنجاح.</p>
+<div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex items-center gap-1 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>تعيين كمقروء</span>
+</button>
+<button class="flex items-center gap-1 text-error font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+<div class="w-3 h-3 bg-secondary rounded-full self-center"></div>
+</div>
+<!-- Notification Card 3 (Read) -->
+<div class="group relative bg-surface border border-outline rounded-xl p-6 transition-all hover:bg-surface-container-low cursor-pointer flex gap-5 overflow-hidden opacity-80">
+<div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-blue-600 text-[28px]">description</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-lg text-title-lg text-on-surface-variant">تم رفع العقد</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">أمس، 10:00 صباحاً</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">تم استلام نسخة العقد الموقعة من قبلكم.</p>
+<div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex items-center gap-1 text-error font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification Card 4 (Read) -->
+<div class="group relative bg-surface border border-outline rounded-xl p-6 transition-all hover:bg-surface-container-low cursor-pointer flex gap-5 overflow-hidden opacity-80">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-[28px]">assignment_turned_in</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-title-lg text-title-lg text-on-surface-variant">تم اعتماد العقد</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">20 أكتوبر 2024</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">تم اعتماد العقد النهائي من قبل مسؤول النظام.</p>
+<div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex items-center gap-1 text-error font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Illustration (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center py-24 text-center" id="empty-state">
+<div class="w-48 h-48 mb-6 opacity-20">
+<span class="material-symbols-outlined text-[120px] text-on-surface-variant">notifications_off</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">لا توجد إشعارات حالياً</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">سنقوم بإبلاغك فور وجود أي تحديثات جديدة على طلباتك.</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mr-64 w-auto bg-surface-container-lowest border-t border-outline mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center py-6 px-grid-gutter max-w-container-max mx-auto">
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 نظام إدارة المنح المؤسسي. جميع الحقوق محفوظة.</span>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">سياسة الخصوصية</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">شروط الخدمة</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">الدعم الفني</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // If clicked a button inside, don't trigger card click
+                if(e.target.closest('button')) return;
+                
+                // Visual feedback for click
+                card.classList.add('scale-[0.98]');
+                setTimeout(() => card.classList.remove('scale-[0.98]'), 150);
+                
+                // Logic for marking read visually
+                const unreadDot = card.querySelector('.w-3.h-3');
+                const accentBar = card.querySelector('.absolute.right-0.top-0');
+                if(unreadDot) unreadDot.remove();
+                if(accentBar) card.classList.add('opacity-80');
+                
+                console.log('Navigating to notification details...');
+            });
+        });
+
+        // Delete buttons logic
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerText.includes('حذف')) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = btn.closest('.group');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateX(-20px)';
+                    setTimeout(() => {
+                        card.remove();
+                        // Check if no cards left
+                        if(document.querySelectorAll('.group').length === 0) {
+                            document.getElementById('empty-state').classList.remove('hidden');
+                            document.getElementById('empty-state').classList.add('flex');
+                        }
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body></html>

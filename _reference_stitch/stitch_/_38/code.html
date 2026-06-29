@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>نظام داما - منصة ذكية لإدارة المنح</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#144272", // DAMA Blue
+                        secondary: "#4A7c59", // DAMA Green
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        display: ["Cairo", "sans-serif"],
+                        body: ["Cairo", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(20, 66, 114, 0.9) 0%, rgba(74, 124, 89, 0.8) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 transition-colors duration-300">
+<nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20 items-center">
+<div class="flex items-center gap-2">
+<img alt="DAMA Logo" class="h-12 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVFng0fhKosBPQKz0qndf30TcjPABC0o-YVWHHiiPwH9jIkHFIU_qzetkUy3uqFaqbIXQHwi32LejOUZgFS8oc6TbmWIlbJR3KlAum4VImivKuVebbIsv5aFfoTknVbU7kA6ijofFy8JOuUWJFRQetosSQRI_U2MHvh3bOuyhR7AMOPS1IuTCHkTrJc5J8h3UlOut4ntEQtMQ_TZ_RAaJVMaLVZ_LY-UZ0uMEDH4kEVjUeICMObA43G-52gxqWQSdUT5TqzJi9Sg8"/>
+</div>
+<div class="hidden md:flex items-center space-x-reverse space-x-8 font-semibold">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="hover:text-primary transition-colors" href="#about">عن المنصة</a>
+<a class="hover:text-primary transition-colors" href="#features">المميزات</a>
+<a class="hover:text-primary transition-colors" href="#">المشاريع</a>
+<button class="bg-primary text-white px-6 py-2 rounded-full hover:shadow-lg hover:opacity-90 transition-all">دخول النظام</button>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined cursor-pointer">menu</span>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Business Collaboration" class="w-full h-full object-cover opacity-10 dark:opacity-20 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjqh1JRsGVnuZbuoPTZmgd1SxikVQC1pQE77OSY34uD5gw8AwNDqeL1LNBPfTcZ2t2LxjEAUwf12M46itpwL4_hZZy7Ae0iIMdEtT6ejx38NOmQXFA5IIPTfHDHDBPzyKeaB6blMD70AO2a8gdXeh7GMeXYLz7j0tWbdDk97c9dztNAt7u2Fpxi5Cr0Q7_0J-NpR3r7pSd_MlSLdMEx4MjedANFCxXqDMnI6CjJlHY7pwuVzsKJCrHlLyFQzq4tKTZhbQLt-ipwaI"/>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-right">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8 animate-fade-in">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary font-bold text-sm">مستقبل إدارة المنح الخيرية</span>
+<h1 class="text-4xl lg:text-6xl font-extrabold text-primary leading-tight dark:text-blue-400">
+                        نظام داما - منصة مؤسسية ذكية لإدارة المنح وتأهيل المشاريع
+                    </h1>
+<p class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                        نحو تحول رقمي شامل في العمل الخيري، نسعى في داما لتمكين المؤسسات المانحة من إدارة مواردها بكفاءة عالية وشفافية تامة لتحقيق أقصى أثر اجتماعي.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+<a class="bg-secondary text-white px-10 py-4 rounded-xl text-lg font-bold hover:shadow-xl hover:translate-y-[-2px] transition-all text-center" href="#">
+                            ابدأ الآن
+                        </a>
+<a class="border-2 border-primary text-primary dark:border-blue-400 dark:text-blue-400 px-10 py-4 rounded-xl text-lg font-bold hover:bg-primary hover:text-white transition-all text-center" href="#">
+                            عرض توضيحي
+                        </a>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<img alt="DAMA Branding" class="w-full h-auto drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCKSsO85OuTLFAUrHBYSzT0GRgC9GlvPWrzYZceQuIwj6p4TCrJs8q7kG3U6msj2KY8uFX40Gy3lwVG0D2gZsQ8vuHjkn5QWlOKmJ9_ssrrRoJ5-sL5HvqbIHoVWqnK3tl7mLRVHaDZGib8KVt_25UR-A1L9FvZ4oRXREvkLpp9OISiwan_oqc0o51M88laWYbV4ffp7MMDQ0irj0kVwg7c1E4391ItgXucx-ijUIUfaRjV9DVfbfhfxbegIXX28GKAkQarCdM4ag"/>
+<div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-2xl flex items-center gap-4">
+<div class="bg-secondary/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-secondary text-3xl">verified</span>
+</div>
+<div class="text-right">
+<p class="text-sm text-slate-500">تمويل المشاريع</p>
+<p class="text-xl font-bold">+500 مشروع</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="py-24 bg-white dark:bg-slate-900" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<div class="relative">
+<div class="absolute -top-4 -right-4 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+<img alt="Impact" class="rounded-3xl shadow-xl relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFYQ9aqHo9BJfb-i-TUw8PBZ2pVLB1OiOblTSrfs0ATOrpoE-8lZjEXoyQQDIzejDoznU96GEKsqkxb39u4R3wHLCOGVka5gP1m82cm-q4qWHA3wVVd97pQ9DkBS8nnlCMbWLDdyGEv-jc96tlEbrcxDd9aOV-3QY8sznyPGeYjwh7mH_PTqMjAZGmZKZw_OmsGegcB5wExXk8ZYwjTfgUk4mxrb7qaoeS6dTCAff_Pm3hB29mwE4Tazif6mAt4Nwk6-aJ8Uli4SE"/>
+</div>
+</div>
+<div class="lg:w-1/2 space-y-6">
+<h2 class="text-3xl font-bold text-primary dark:text-blue-400">عن منصة داما</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        جاءت منصة داما لتكون الذراع التقني المتطور للمؤسسات المانحة والجمعيات الأهلية. تهدف المنصة إلى رقمنة وأتمتة كافة مراحل دورة حياة المنح، بدءاً من استقبال الطلبات، مروراً بالتقييم الفني والمالي، وصولاً إلى قياس الأثر النهائي.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>رفع كفاءة تخصيص الموارد وضمان وصولها للمستحقين.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>توفير لوحات تحكم ذكية لاتخاذ قرارات مبنية على بيانات دقيقة.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>تعزيز الشفافية والحوكمة في كافة الإجراءات المالية والإدارية.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-background-dark" id="features">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="text-3xl font-bold text-primary dark:text-blue-400 mb-4">مميزات المنصة</h2>
+<p class="text-slate-600 dark:text-slate-400">نقدم حلولاً متكاملة تضمن رحلة ناجحة لكل مشروع من الفكرة حتى التنفيذ</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-card p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-secondary transition-all hover:shadow-2xl group">
+<div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white">track_changes</span>
+</div>
+<h3 class="text-xl font-bold mb-4">التتبع الرقمي (Digital Tracking)</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        متابعة لحظية لسير العمل في المشاريع، مع إمكانية استخراج تقارير دورية تضمن الالتزام بالخطط الزمنية والمستهدفات.
+                    </p>
+</div>
+<div class="glass-card p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-secondary transition-all hover:shadow-2xl group">
+<div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary text-3xl group-hover:text-white">corporate_fare</span>
+</div>
+<h3 class="text-xl font-bold mb-4">الدعم المؤسسي (Institutional Support)</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        نظام متكامل لتأهيل الجهات المنفذة ورفع قدراتها المؤسسية لضمان تقديم مشاريع ذات جودة عالية وأثر مستدام.
+                    </p>
+</div>
+<div class="glass-card p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-secondary transition-all hover:shadow-2xl group">
+<div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-blue-600 text-3xl group-hover:text-white">account_balance_wallet</span>
+</div>
+<h3 class="text-xl font-bold mb-4">تخصيص الموارد (Efficient Allocation)</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        خوارزميات ذكية تساعد في توزيع المنح المالية بناءً على معايير الاستحقاق وقياس الاحتياج الفعلي للمجتمعات.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-primary text-white overflow-hidden relative">
+<div class="absolute inset-0 opacity-10">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M0 100 C 20 0 50 0 100 100" fill="transparent" stroke="white"></path>
+<path d="M0 80 C 30 20 60 20 100 80" fill="transparent" stroke="white"></path>
+</svg>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<h2 class="text-3xl font-bold mb-12">أرقام تفخر بها داما</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<p class="text-5xl font-extrabold mb-2 text-secondary">40+</p>
+<p class="text-slate-300">مؤسسة شريكة</p>
+</div>
+<div>
+<p class="text-5xl font-extrabold mb-2 text-secondary">2.5M</p>
+<p class="text-slate-300">مستفيد نهائي</p>
+</div>
+<div>
+<p class="text-5xl font-extrabold mb-2 text-secondary">150M</p>
+<p class="text-slate-300">إجمالي المنح (ريال)</p>
+</div>
+<div>
+<p class="text-5xl font-extrabold mb-2 text-secondary">98%</p>
+<p class="text-slate-300">نسبة الشفافية</p>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-slate-900 text-slate-300 pt-20 pb-10 border-t border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<img alt="DAMA Footer" class="h-16 w-auto mb-6 brightness-0 invert opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhjOt1uIUWdR5D_WkokYt5WPpav0p45J1fStiSVbWwk2KeHHN_QCXAB33WdLtOd2e1_jdtnBDOfdNQ65s5WDht1Ok1-CsTWlzsjOuuWL13RY9x3EpOufv_DuyCPNtC6MpE7EX4F42Hb0yPu_U7fmrS0JhOWlEikzlClj-WtBugivwaw5pb161jH6cLSV6f1p_PgU-csqXlDLjdnIEyYARh6nCIQqolmD4r3-v4KkCSEHBHgZGfupjRH4sk-tgprZQVLrwFKMgNBtA"/>
+<p class="text-sm leading-relaxed">
+                        نظام داما يسعى لتمكين القطاع الثالث تقنياً وتحقيق مستهدفات رؤية المملكة 2030 في العمل الخيري والتنموي.
+                    </p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">روابط سريعة</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-secondary transition-colors" href="#">عن المنصة</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">خدماتنا</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">شركاء النجاح</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">انضم إلينا</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">أقسام المؤسسة</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-secondary transition-colors" href="#">إدارة المنح</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">التأهيل والتدريب</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">المتابعة والتقييم</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">الدعم التقني</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">تواصل معنا</h4>
+<p class="text-sm mb-4">المملكة العربية السعودية، الرياض</p>
+<p class="text-sm mb-4">info@dama-system.com</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-800 text-center text-xs">
+<p>© 2024 نظام داما لإدارة المنح. جميع الحقوق محفوظة.</p>
+</div>
+</div>
+</footer>
+
+</body></html>

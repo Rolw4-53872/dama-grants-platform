@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>نظام داما - منصة مؤسسية ذكية لإدارة المنح وتأهيل المشاريع</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&amp;family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-error": "#ffffff",
+                    "surface-container": "#ebeef0",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#44474e",
+                    "on-error-container": "#93000a",
+                    "secondary": "#2c694e",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#181c1e",
+                    "secondary-container": "#aeeecb",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "secondary-fixed": "#b1f0ce",
+                    "primary-container": "#002045",
+                    "tertiary": "#00081a",
+                    "surface-tint": "#465f87",
+                    "surface-dim": "#d7dadc",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "error-container": "#ffdad6",
+                    "accent-line": "#2c694e",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "tertiary-container": "#002044",
+                    "surface-container-low": "#f1f4f6",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#e2e8f0",
+                    "primary": "#00091b",
+                    "on-secondary-container": "#316e52",
+                    "surface-container-high": "#e5e9eb",
+                    "on-background": "#181c1e",
+                    "surface": "#ffffff",
+                    "on-tertiary-container": "#6589c1",
+                    "tertiary-fixed": "#d5e3ff",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "inverse-primary": "#aec7f5",
+                    "background": "#f7fafc",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-fixed-dim": "#aec7f5",
+                    "primary-fixed": "#d6e3ff",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f7fafc",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#001b3c",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#7089b3",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary-fixed": "#001b3c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "4rem",
+                    "element-gap": "2rem",
+                    "card-padding": "2rem",
+                    "grid-gutter": "1.5rem",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Noto Sans Arabic"],
+                    "display-lg": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"],
+                    "headline-lg": ["Cairo"],
+                    "display-lg-mobile": ["Cairo"]
+            },
+            "fontSize": {
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "display-lg-mobile": ["72px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "900"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Cairo', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .institutional-shadow { shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08); }
+        .animate-reveal { animation: reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+        .cube-overlay {
+            background-image: radial-gradient(circle at 2px 2px, rgba(0,32,69,0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .step-connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -50%;
+            width: 100%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-secondary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline h-20 shadow-sm flex items-center px-12 md:px-24">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg font-black text-primary leading-none">DAMA</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Grant System</span>
+</div>
+</div>
+<nav class="hidden lg:flex flex-1 justify-center gap-8">
+<a class="font-body-md text-primary font-bold border-b-2 border-primary py-2" href="#">الرئيسية</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors py-2" href="#about">عن البرنامج</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors py-2" href="#features">المميزات</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors py-2" href="#steps">الخطوات</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container rounded-full p-2">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container rounded-full p-2">help_outline</span>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a Middle Eastern male administrator in a modern office environment, wearing a clean formal white shirt. The lighting is soft and natural, with a blurred high-tech office background including glass partitions and digital screens, maintaining a prestige institutional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg9CThy41qb7YJ4Zlj36SiJT1bK7Q_o7d74aElyIvKdkCNiqLbtyJ7O18QnLjANvjqEtFmSHtrUjzGZBQ_tJShhRrVoE-46jm2ug1zNg9dD6wDLGQfNXuKP5TJfK8mGDh-VSPH2EYnDIv8QLr5aYGw6awDx-x0yWYXvyCLF2LY9yg2zSMryYtvmWJd9onVD6CC5VT_TzhUKUVTcRee07qEXzWr2wVqrHS0jAY4HKh1Q4pSOgOXXppCgsWBQ7kuQMrmvNHNftYXBLQ"/>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden cube-overlay bg-surface">
+
+<div class="container mx-auto px-6 lg:px-24 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+<div class="animate-reveal [animation-delay:200ms]">
+<span class="inline-block py-1 px-4 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm mb-6">
+                        إصدار 2024 الحديث
+                    </span>
+<h1 class="font-headline-xl text-headline-xl lg:text-[48px] text-primary mb-6 leading-tight">
+                        نظام داما - منصة مؤسسية ذكية لإدارة المنح وتأهيل المشاريع
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                        نسعى لتمكين الجمعيات والمؤسسات الأهلية من خلال حلول تقنية متكاملة تضمن الشفافية، الكفاءة، وقياس الأثر في إدارة المشاريع التنموية.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="px-8 py-4 bg-primary-container text-white rounded-lg font-title-lg text-title-lg hover:bg-primary transition-all shadow-lg active:scale-95" href="{{DATA:SCREEN:SCREEN_14}}">ابدأ الآن</a>
+<a class="px-8 py-4 border border-outline text-primary rounded-lg font-title-lg text-title-lg hover:bg-surface-container transition-all active:scale-95" href="{{DATA:SCREEN:SCREEN_16}}">تسجيل الدخول</a>
+</div>
+</div>
+<div class="relative animate-reveal [animation-delay:400ms]">
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-secondary-fixed opacity-10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-primary-fixed opacity-10 rounded-full blur-3xl"></div>
+<div class="relative z-10 rounded-2xl overflow-hidden border border-outline shadow-2xl">
+<img class="w-full aspect-[4/3] object-cover" data-alt="A cinematic, wide-angle shot of a group of diverse professionals in a minimalist, sun-drenched institutional board room. They are collaboratively reviewing digital architectural blueprints and social impact data on large touch-screen tables. The style is hyper-modern institutionalism with clean lines, neutral tones, and deep navy accents, reflecting prestige and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwsK9yB79N9EKhVmRiGwFmXpzBIsPglI5hQX2dJ6O7DWcm-YsSsuwYQ9l6BWuAQup5evXJgwAt87fFsSlsu5mNtDEucPlhv_5Jvgds6Pwp98bEbVDcoRMcRoz2ecsiIs9MIzUGUZzME3VJVdMLJuK0IWS7aEOoAP6eWt6ax_1HO4g9pbaID9WbZbisVIMIb1ntxHJpibzsjLivTsDjgHX1yHzBbXp87-AADAcU3U4YoNdvZz1ZMAL_HsxJtL07-u3qAUgu31B7H1Y"/>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap bg-background" id="about">
+<div class="container mx-auto px-6 lg:px-24">
+<div class="text-center mb-16 animate-reveal">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-4">عن برنامج داما</h2>
+<div class="w-20 h-1.5 bg-secondary mx-auto rounded-full"></div>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-grid-gutter">
+<!-- Card 1 -->
+<div class="bg-surface p-card-padding rounded-xl border border-outline shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] animate-reveal [animation-delay:100ms] hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]">info</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-3">ما هو البرنامج</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">منظومة رقمية متكاملة تهدف لأتمتة دورة حياة المنحة من تقديم الطلب حتى التقرير النهائي.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface p-card-padding rounded-xl border border-outline shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] animate-reveal [animation-delay:200ms] hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]">track_changes</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-3">أهدافنا</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">رفع كفاءة الإنفاق التنموي وتسهيل وصول الدعم للمشاريع الأكثر احتياجاً وأثراً.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface p-card-padding rounded-xl border border-outline shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] animate-reveal [animation-delay:300ms] hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]">groups</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-3">الفئات المستفيدة</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">المؤسسات الخيرية، الجمعيات الأهلية، والفرق التطوعية المرخصة في المنطقة.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface p-card-padding rounded-xl border border-outline shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] animate-reveal [animation-delay:400ms] hover:-translate-y-2 transition-transform">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]">trending_up</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-3">أثر البرنامج</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">تمكين شركائنا من تحقيق استدامة مالية وتشغيلية من خلال حوكمة دقيقة.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section (Bento Grid) -->
+<section class="py-section-gap bg-surface relative" id="features">
+<div class="container mx-auto px-6 lg:px-24">
+<div class="text-center mb-16 animate-reveal">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-4">مميزات المنصة</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">أدوات ذكية مصممة خصيصاً لخدمة القطاع غير الربحي</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+<!-- Large Feature -->
+<div class="md:col-span-2 md:row-span-2 bg-primary-container rounded-2xl p-8 text-white relative overflow-hidden flex flex-col justify-end group animate-reveal">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-[80px] text-on-primary-container opacity-20 group-hover:scale-110 transition-transform duration-500">app_registration</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4 relative z-10">التقديم الرقمي الذكي</h3>
+<p class="font-body-lg text-body-lg text-on-primary-container relative z-10 max-w-md">نظام متطور يستقبل الطلبات ويحللها مبدئياً لضمان مطابقتها لمعايير المنح المعتمدة.</p>
+</div>
+<div class="bg-surface-container-low border border-outline rounded-2xl p-6 flex flex-col justify-between hover:bg-surface-container transition-colors animate-reveal [animation-delay:200ms]">
+<span class="material-symbols-outlined text-secondary text-[40px]">monitoring</span>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">متابعة فورية</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">تتبع حالة طلبك لحظة بلحظة مع تنبيهات عند كل مرحلة جديدة.</p>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline rounded-2xl p-6 flex flex-col justify-between hover:bg-surface-container transition-colors animate-reveal [animation-delay:300ms]">
+<span class="material-symbols-outlined text-secondary text-[40px]">folder_managed</span>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">إدارة الملفات</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">أرشفة سحابية آمنة لجميع الوثائق والمستندات الخاصة بالمشاريع.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+<div class="bg-surface-container-low border border-outline rounded-2xl p-6 flex items-start gap-4 animate-reveal [animation-delay:400ms]">
+<div class="p-3 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-1">إدارة العقود</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">توقيع العقود إلكترونياً وإدارة الدفعات المالية.</p>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline rounded-2xl p-6 flex items-start gap-4 animate-reveal [animation-delay:500ms]">
+<div class="p-3 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-1">إشعارات ذكية</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">نظام تنبيهات عبر الرسائل النصية والبريد الإلكتروني.</p>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline rounded-2xl p-6 flex items-start gap-4 animate-reveal [animation-delay:600ms]">
+<div class="p-3 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">touch_app</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-1">واجهة سهلة</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">تجربة مستخدم سلسة تضمن وصولك لما تريد بأقل عدد نقرات.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Steps Section (Horizontal Timeline) -->
+<section class="py-section-gap bg-background overflow-hidden" id="steps">
+<div class="container mx-auto px-6 lg:px-24">
+<div class="text-center mb-20 animate-reveal">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-4">رحلة المنحة في داما</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">خطوات واضحة وشفافة من التسجيل حتى التنفيذ</p>
+</div>
+<div class="relative">
+<!-- Desktop Timeline Line -->
+<div class="hidden lg:block absolute top-12 left-0 w-full h-[2px] bg-outline-variant"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center group animate-reveal [animation-delay:100ms]">
+<div class="w-24 h-24 bg-surface border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-20">
+<span class="material-symbols-outlined text-primary text-[32px]">person_add</span>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold">1</div>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">إنشاء حساب</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">تسجيل بيانات المؤسسة الرسمية</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center group animate-reveal [animation-delay:200ms]">
+<div class="w-24 h-24 bg-surface border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-20">
+<span class="material-symbols-outlined text-primary text-[32px]">description</span>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold">2</div>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">تقديم الطلب</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">تعبئة نموذج المشروع ورفع المرفقات</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center group animate-reveal [animation-delay:300ms]">
+<div class="w-24 h-24 bg-surface border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-20">
+<span class="material-symbols-outlined text-primary text-[32px]">fact_check</span>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold">3</div>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">فرز الطلبات</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">مراجعة أولية لمطابقة الشروط</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center text-center group animate-reveal [animation-delay:400ms]">
+<div class="w-24 h-24 bg-surface border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-20">
+<span class="material-symbols-outlined text-primary text-[32px]">rule</span>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold">4</div>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">التقييم الفني</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">دراسة جدوى وأثر المشروع</p>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center text-center group animate-reveal [animation-delay:500ms]">
+<div class="w-24 h-24 bg-surface border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-20">
+<span class="material-symbols-outlined text-primary text-[32px]">task_alt</span>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold">5</div>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">الموافقة النهائية</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">اعتماد مجلس الإدارة للمنحة</p>
+</div>
+<!-- Step 6 -->
+<div class="flex flex-col items-center text-center group animate-reveal [animation-delay:600ms]">
+<div class="w-24 h-24 bg-primary-container border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-20">
+<span class="material-symbols-outlined text-white text-[32px]">history_edu</span>
+<div class="absolute -bottom-2 -right-2 w-8 h-8 bg-secondary rounded-full flex items-center justify-center text-white font-bold">6</div>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-2">توقيع العقد</h3>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">اعتماد الاتفاقية وصرف الدفعات</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-section-gap bg-surface">
+<div class="container mx-auto px-6 lg:max-w-4xl">
+<div class="text-center mb-16 animate-reveal">
+<h2 class="font-headline-xl text-headline-xl text-primary mb-4">الأسئلة الشائعة</h2>
+<div class="w-16 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
+</div>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="border border-outline rounded-xl overflow-hidden group animate-reveal">
+<button class="w-full flex items-center justify-between p-6 bg-white hover:bg-surface-container-low transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')">
+<span class="font-title-lg text-title-lg text-primary">هل يتطلب التقديم رسوم مالية؟</span>
+<span class="material-symbols-outlined arrow transition-transform duration-300">expand_more</span>
+</button>
+<div class="hidden p-6 bg-background border-t border-outline">
+<p class="font-body-md text-body-md text-on-surface-variant">لا، خدمة التقديم على المنح عبر نظام داما مجانية تماماً لكافة المؤسسات والجمعيات الأهلية المسجلة.</p>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="border border-outline rounded-xl overflow-hidden group animate-reveal">
+<button class="w-full flex items-center justify-between p-6 bg-white hover:bg-surface-container-low transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')">
+<span class="font-title-lg text-title-lg text-primary">ما هي المستندات المطلوبة للتسجيل؟</span>
+<span class="material-symbols-outlined arrow transition-transform duration-300">expand_more</span>
+</button>
+<div class="hidden p-6 bg-background border-t border-outline">
+<p class="font-body-md text-body-md text-on-surface-variant">يتطلب التسجيل شهادة تسجيل الجمعية من المركز الوطني لتنمية القطاع غير الربحي، اللائحة الأساسية، وقائمة بأسماء مجلس الإدارة.</p>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="border border-outline rounded-xl overflow-hidden group animate-reveal">
+<button class="w-full flex items-center justify-between p-6 bg-white hover:bg-surface-container-low transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')">
+<span class="font-title-lg text-title-lg text-primary">كم تستغرق مدة دراسة الطلب؟</span>
+<span class="material-symbols-outlined arrow transition-transform duration-300">expand_more</span>
+</button>
+<div class="hidden p-6 bg-background border-t border-outline">
+<p class="font-body-md text-body-md text-on-surface-variant">تتراوح المدة بين 15 إلى 30 يوم عمل من تاريخ اكتمال الملف والتحقق من الشروط الأولية.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="py-section-gap px-6">
+<div class="container mx-auto px-6 lg:px-24 bg-primary-container rounded-3xl p-12 text-center relative overflow-hidden animate-reveal">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+<h2 class="font-headline-xl text-headline-xl text-white mb-6 relative z-10">جاهز للبدء في رحلة التميز المؤسسي؟</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container mb-10 max-w-2xl mx-auto relative z-10">انضم اليوم إلى مئات الجمعيات التي تستخدم داما لإدارة مشاريعها بكفاءة وشفافية عالية.</p>
+<div class="relative z-10">
+<a class="px-10 py-5 bg-secondary text-white rounded-xl font-title-lg text-title-lg hover:bg-opacity-90 transition-all inline-block shadow-xl" href="{{DATA:SCREEN:SCREEN_14}}">سجل مؤسستك الآن</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline pt-20 pb-10">
+<div class="container mx-auto px-6 lg:px-24">
+<div class="grid lg:grid-cols-4 gap-12 mb-20">
+<div class="lg:col-span-2">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1">account_balance</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary">نظام داما</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-8">
+                        نظام مؤسسي ذكي متخصص في إدارة دورة حياة المنح وتأهيل المشاريع التنموية، يهدف لرفع جودة الأداء في القطاع الثالث بما يتواكب مع رؤية المملكة 2030.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 border border-outline rounded-full flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="w-10 h-10 border border-outline rounded-full flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all" href="#"><span class="material-symbols-outlined">mail</span></a>
+<a class="w-10 h-10 border border-outline rounded-full flex items-center justify-center text-primary hover:bg-primary-container hover:text-white transition-all" href="#"><span class="material-symbols-outlined">call</span></a>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-8">روابط سريعة</h3>
+<ul class="space-y-4">
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">عن البرنامج</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">المميزات والخدمات</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">رحلة المنحة</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">الأسئلة الشائعة</a></li>
+<li><a class="font-body-md text-on-surface-variant hover:text-secondary transition-colors" href="#">سياسة الخصوصية</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary mb-8">تواصل معنا</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<span>الرياض، حي الملقا، طريق الأمير محمد بن سعد</span>
+</li>
+<li class="flex items-center gap-3 font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary">mail</span>
+<span>support@dama-system.org</span>
+</li>
+<li class="flex items-center gap-3 font-body-md text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary">call</span>
+<span>920005678</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t border-outline text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                    © 2024 جميع الحقوق محفوظة لنظام داما - منصة إدارة المنح وتأهيل المشاريع.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-reveal');
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-reveal').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

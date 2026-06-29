@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إدارة الجمعيات | Grant System Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eef1f3",
+                        "on-surface": "#181c1e",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-container-low": "#f1f4f6",
+                        "on-primary-fixed": "#001b3c",
+                        "tertiary-fixed": "#d5e3ff",
+                        "secondary-fixed": "#b1f0ce",
+                        "tertiary": "#00081a",
+                        "secondary-container": "#aeeecb",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#c4c6cf",
+                        "surface-bright": "#f7fafc",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#002045",
+                        "surface-variant": "#e0e3e5",
+                        "secondary": "#2c694e",
+                        "tertiary-container": "#002044",
+                        "on-tertiary-fixed-variant": "#1f477b",
+                        "on-surface-variant": "#44474e",
+                        "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                        "accent-line": "#2c694e",
+                        "surface": "#ffffff",
+                        "on-secondary-container": "#316e52",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#181c1e",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#001b3c",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#a7c8ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#6589c1",
+                        "outline": "#e2e8f0",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#aec7f5",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface-container-high": "#e5e9eb",
+                        "primary": "#00091b",
+                        "surface-dim": "#d7dadc",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7fafc",
+                        "surface-tint": "#465f87",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "surface-container": "#ebeef0",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "grid-gutter": "1.5rem",
+                        "card-padding": "2rem",
+                        "section-gap": "4rem",
+                        "element-gap": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Cairo"],
+                        "display-lg": ["Cairo"],
+                        "title-lg": ["Noto Sans Arabic"],
+                        "body-md": ["Noto Sans Arabic"],
+                        "label-sm": ["Noto Sans Arabic"],
+                        "headline-lg": ["Cairo"],
+                        "body-lg": ["Noto Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+                        "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(circle at 2px 2px, rgba(0, 32, 69, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .side-panel-transition {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed right-0 top-0 bg-surface-container-lowest border-l border-outline flex flex-col py-4 px-3 z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-xl text-headline-xl text-primary">DAMA</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">نظام المنح والتأهيل</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">لوحة التحكم</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-body-md">الجمعيات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">المنح</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-body-md">الاعتمادات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md">التقارير</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">مركز المساعدة</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">تسجيل الخروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="mr-64 p-8 min-h-screen">
+<!-- Top Bar -->
+<header class="flex justify-between items-center mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">إدارة الجمعيات</h2>
+<p class="font-body-md text-on-surface-variant">استعراض وإدارة جميع الجمعيات المسجلة في نظام المنح والتأهيل.</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="flex items-center gap-3 bg-surface p-1 px-3 rounded-full institutional-shadow border border-outline">
+<div class="text-left leading-tight">
+<p class="text-label-sm font-bold">أحمد المسؤول</p>
+<p class="text-[10px] text-on-surface-variant">مدير النظام</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional portrait of a Middle Eastern male administrator in a corporate setting, wearing a formal suit and smiling warmly. High-key professional photography with a soft-focus office background, consistent with institutional modernism and clean business aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASz58BTux5C2ovS76gsGbMEPbC-7CCTqnQDYutcGJ6UHio2J3l2PAcO_Q2t0lLEz6x4y2ppQz09y3MoKdmPheeaspBlCmleM76BU5IvTQ66A_83kjsDvuiPgYG61_gkpPibQI6CTEx1Wl4e-faQwQzfs7tIP2zRYet_67FDvOaaIsM9xyCtMNbyW1HHTyBBkien-3sr781OdS5b7orqblpMtdDv1hhecVTy7C1RXAO2TJUI0q2IrIAEbPiG2wlX6dseOU6x1ED05g"/>
+</div>
+</div>
+</header>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-primary-container bg-primary-fixed p-2 rounded-lg">group</span>
+<span class="text-label-sm text-on-surface-variant font-bold">+12%</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">إجمالي الجمعيات</p>
+<p class="text-headline-lg font-bold text-primary">1,248</p>
+</div>
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed p-2 rounded-lg">check_circle</span>
+<span class="text-label-sm text-secondary font-bold">نشط</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">الجمعيات النشطة</p>
+<p class="text-headline-lg font-bold text-primary">942</p>
+</div>
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow flex flex-col gap-2 border-b-4 border-b-yellow-500">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-yellow-700 bg-yellow-100 p-2 rounded-lg">pending_actions</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">طلبات قيد الانتظار</p>
+<p class="text-headline-lg font-bold text-primary">56</p>
+</div>
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-on-secondary-container bg-secondary-container p-2 rounded-lg">verified</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">الجمعيات المعتمدة</p>
+<p class="text-headline-lg font-bold text-primary">1,102</p>
+</div>
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-error bg-error-container p-2 rounded-lg">cancel</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">طلبات مرفوضة</p>
+<p class="text-headline-lg font-bold text-primary">12</p>
+</div>
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant bg-tertiary-fixed p-2 rounded-lg">history_edu</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">عقود مكتملة</p>
+<p class="text-headline-lg font-bold text-primary">438</p>
+</div>
+</section>
+<!-- Filters Section -->
+<section class="bg-surface p-6 rounded-xl border border-outline institutional-shadow mb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+<div class="col-span-1 md:col-span-2">
+<label class="block text-label-sm font-bold mb-2">البحث</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant">search</span>
+<input class="w-full pr-10 pl-4 py-2 bg-background border border-outline rounded-lg focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="البحث بالاسم، رقم الترخيص، أو البريد الإلكتروني..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-label-sm font-bold mb-2">المدينة</label>
+<select class="w-full px-4 py-2 bg-background border border-outline rounded-lg focus:ring-2 focus:ring-primary-container outline-none transition-all">
+<option>الكل</option>
+<option>الرياض</option>
+<option>جدة</option>
+<option>الدمام</option>
+<option>مكة المكرمة</option>
+</select>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg font-bold hover:bg-primary-container transition-colors">تطبيق الفلاتر</button>
+<button class="px-4 py-2 border border-outline text-on-surface-variant rounded-lg hover:bg-surface-container-low transition-colors">إعادة ضبط</button>
+</div>
+</div>
+</section>
+<!-- Data Table -->
+<section class="bg-surface rounded-xl border border-outline institutional-shadow overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline">
+<th class="p-4 font-bold text-label-sm text-on-surface-variant">الجمعية</th>
+<th class="p-4 font-bold text-label-sm text-on-surface-variant">رقم الترخيص</th>
+<th class="p-4 font-bold text-label-sm text-on-surface-variant">المدينة</th>
+<th class="p-4 font-bold text-label-sm text-on-surface-variant">التواصل</th>
+<th class="p-4 font-bold text-label-sm text-on-surface-variant text-center">الطلبات</th>
+<th class="p-4 font-bold text-label-sm text-on-surface-variant">آخر طلب</th>
+<th class="p-4 font-bold text-label-sm text-on-surface-variant">حالة العقد</th>
+<th class="p-4 font-bold text-label-sm text-on-surface-variant">الإجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="A minimalist logo for a non-profit association, featuring clean green and blue geometric abstract shapes representing growth and unity. White background, vector style, professional institutional branding." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<div>
+<p class="font-bold text-body-md">جمعية البر الخيرية</p>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-secondary-container text-on-secondary-container font-bold">نشط</span>
+</div>
+</div>
+</td>
+<td class="p-4 text-body-md font-mono">LIC-2023-8842</td>
+<td class="p-4 text-body-md">الرياض</td>
+<td class="p-4">
+<p class="text-label-sm text-primary">info@albir.sa</p>
+<p class="text-[12px] text-on-surface-variant">+966 55 123 4567</p>
+</td>
+<td class="p-4 text-center">
+<span class="bg-surface-container px-3 py-1 rounded-full font-bold">14</span>
+</td>
+<td class="p-4">
+<p class="text-label-sm">24 أكتوبر 2023</p>
+<span class="flex items-center gap-1 text-[11px] text-secondary font-bold">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span> مكتمل
+                                </span>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full text-xs font-bold bg-primary-fixed text-on-primary-fixed">عقد ساري</span>
+</td>
+<td class="p-4">
+<button class="flex items-center gap-1 text-primary-container hover:underline font-bold text-label-sm" onclick="togglePanel()">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                                    تفاصيل
+                                </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="Corporate logo for a technical training foundation, featuring sharp navy blue lines and a stylized gear icon. Professional vector graphics on a white background, embodying administrative reliability and modern technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvwY-JDKg95qVMbS1Mg0QKdX5BmxDwyH_jLjGNoFJw5HhQzFrn8dmPxEb3oUptpT2XitNIJnxtaRKCItkx2i_v6dMopxmJK-yz28PcH8MDCdHsgW-IW0Nz28t12xOwmrKAU0A3mLC08wA--psTnu_mHYKe6ooCth6Yy5lb12Tnw75VTli8NVFb8_7yWmNXVf9xP7LTvW7jEEkh_J0s-phwsBlFrAM-fZicmNAS6P16VU7FCtrWdehwfj-85CHzX07v0Rw35xdZc2c"/>
+</div>
+<div>
+<p class="font-bold text-body-md">مؤسسة نماء التقنية</p>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-yellow-100 text-yellow-700 font-bold">قيد الانتظار</span>
+</div>
+</div>
+</td>
+<td class="p-4 text-body-md font-mono">LIC-2023-1109</td>
+<td class="p-4 text-body-md">جدة</td>
+<td class="p-4">
+<p class="text-label-sm text-primary">hr@namaa.tech</p>
+<p class="text-[12px] text-on-surface-variant">+966 50 998 7766</p>
+</td>
+<td class="p-4 text-center">
+<span class="bg-surface-container px-3 py-1 rounded-full font-bold">3</span>
+</td>
+<td class="p-4">
+<p class="text-label-sm">12 نوفمبر 2023</p>
+<span class="flex items-center gap-1 text-[11px] text-yellow-600 font-bold">
+<span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span> مراجعة
+                                </span>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full text-xs font-bold bg-surface-container text-on-surface-variant">لا توجد طلبات</span>
+</td>
+<td class="p-4">
+<button class="flex items-center gap-1 text-primary-container hover:underline font-bold text-label-sm" onclick="togglePanel()">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                                    تفاصيل
+                                </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="A sophisticated floral-inspired logo for a social development association, using soft lavender and gold accents. Clean vector design on white, conveying empathy and high-level social responsibility." src=""/>
+</div>
+<div>
+<p class="font-bold text-body-md">جمعية تكاتف الاجتماعية</p>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-error-container text-error font-bold">موقوف</span>
+</div>
+</div>
+</td>
+<td class="p-4 text-body-md font-mono">LIC-2022-5521</td>
+<td class="p-4 text-body-md">الدمام</td>
+<td class="p-4">
+<p class="text-label-sm text-primary">contact@takatof.org</p>
+<p class="text-[12px] text-on-surface-variant">+966 53 444 3322</p>
+</td>
+<td class="p-4 text-center">
+<span class="bg-surface-container px-3 py-1 rounded-full font-bold">28</span>
+</td>
+<td class="p-4">
+<p class="text-label-sm">05 سبتمبر 2023</p>
+<span class="flex items-center gap-1 text-[11px] text-error font-bold">
+<span class="w-1.5 h-1.5 bg-error rounded-full"></span> مرفوض
+                                </span>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full text-xs font-bold bg-error-container text-error">عقد ملغى</span>
+</td>
+<td class="p-4">
+<button class="flex items-center gap-1 text-primary-container hover:underline font-bold text-label-sm" onclick="togglePanel()">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                                    تفاصيل
+                                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="bg-surface-container-low px-6 py-4 flex justify-between items-center border-t border-outline">
+<span class="text-label-sm text-on-surface-variant">عرض 1-10 من أصل 1,248 جمعية</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-surface transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-surface transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-surface transition-colors">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-surface transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+</div>
+</div>
+</section>
+</main>
+<!-- Side Panel (Association Summary) -->
+<div class="fixed top-0 left-0 h-full w-[450px] bg-surface border-r border-outline z-[60] side-panel-transition translate-x-[-100%] shadow-2xl flex flex-col" id="sidePanel">
+<!-- Panel Header -->
+<div class="p-6 border-b border-outline flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-surface-container-high border border-outline flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="Detailed close-up of a corporate logo on a white card, showcasing sharp green gradients and professional typography. Clean vector finish, studio lighting, representing organizational prestige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwDzITg435GBk4jEUYxujYxPfuTN4wt13p9ovyos5Xskax2Mnuw4B7Vw8Y1D4O8GP-C6vGG1yj1-fsiaWGGal1XcBcThrrl1QQKFAs4ldTDc_MXshAV7kKm9m0niL7aLnxscYWeSRESh19vaObK2xoUoGWh7jTSVkd6VhTwpiEH_XNT2Yllsed9cr6aLQaVn1llNQvJLDLq0eFcrnGrT3XWSIApOv2oibkOsAmQFV9qTy549UcsvcwfYhKu99PwHRBlxyaZ0-H7Dg"/>
+</div>
+<div>
+<h3 class="font-headline-lg text-primary">جمعية البر الخيرية</h3>
+<p class="text-label-sm text-on-surface-variant">تاريخ التسجيل: 15/01/2021</p>
+</div>
+</div>
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant transition-colors" onclick="togglePanel()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 scrollbar-hide">
+<!-- Quick Stats -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-secondary-container/20 border border-secondary/20 p-4 rounded-xl">
+<p class="text-label-sm text-secondary font-bold">طلبات مقبولة</p>
+<p class="text-headline-lg text-primary">12</p>
+</div>
+<div class="bg-error-container/20 border border-error/20 p-4 rounded-xl">
+<p class="text-label-sm text-error font-bold">طلبات مرفوضة</p>
+<p class="text-headline-lg text-primary">2</p>
+</div>
+</div>
+<!-- Contact Info -->
+<div class="space-y-4 mb-8">
+<h4 class="font-bold text-label-sm text-on-surface-variant uppercase tracking-wider">معلومات التواصل</h4>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">mail</span>
+<div>
+<p class="text-[10px] text-on-surface-variant">البريد الإلكتروني الرسمي</p>
+<p class="text-body-md font-bold">info@albir.sa</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">call</span>
+<div>
+<p class="text-[10px] text-on-surface-variant">رقم التواصل</p>
+<p class="text-body-md font-bold">+966 55 123 4567</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">location_on</span>
+<div>
+<p class="text-[10px] text-on-surface-variant">العنوان</p>
+<p class="text-body-md font-bold">طريق الملك فهد، العليا، الرياض</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Latest Applications -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-bold text-label-sm text-on-surface-variant uppercase tracking-wider">آخر الطلبات</h4>
+<a class="text-[11px] text-primary font-bold hover:underline" href="#">عرض الكل</a>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-surface-container-lowest border border-outline rounded-lg flex justify-between items-center">
+<div>
+<p class="text-label-sm font-bold">منحة دعم الأسر المنتجة</p>
+<p class="text-[10px] text-on-surface-variant">رقم الطلب: #REQ-9902</p>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">مكتمل</span>
+</div>
+<div class="p-3 bg-surface-container-lowest border border-outline rounded-lg flex justify-between items-center">
+<div>
+<p class="text-label-sm font-bold">تطوير الكوادر البشرية</p>
+<p class="text-[10px] text-on-surface-variant">رقم الطلب: #REQ-8841</p>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">مكتمل</span>
+</div>
+</div>
+</div>
+<!-- Latest Contracts -->
+<div>
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-bold text-label-sm text-on-surface-variant uppercase tracking-wider">العقود الحالية</h4>
+<a class="text-[11px] text-primary font-bold hover:underline" href="#">عرض الكل</a>
+</div>
+<div class="p-4 bg-primary-container text-white rounded-xl flex items-center gap-4">
+<span class="material-symbols-outlined text-[32px]">verified_user</span>
+<div>
+<p class="text-label-sm font-bold">اتفاقية التمويل السنوية</p>
+<p class="text-[11px] text-on-primary-container">تنتهي في: 31 ديسمبر 2024</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Panel Actions -->
+<div class="p-6 bg-surface-container-low border-t border-outline">
+<div class="grid grid-cols-2 gap-3 mb-3">
+<button class="flex items-center justify-center gap-2 py-2.5 bg-primary text-white rounded-lg font-bold hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span class="text-label-sm">إرسال تنبيه</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2.5 bg-surface border border-outline text-on-surface rounded-lg font-bold hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span class="text-label-sm">تقرير كامل</span>
+</button>
+</div>
+<button class="w-full py-2.5 bg-error-container text-error rounded-lg font-bold hover:bg-red-100 transition-colors">تجميد الحساب</button>
+</div>
+</div>
+<!-- Backdrop -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300" id="backdrop" onclick="togglePanel()"></div>
+<script>
+        function togglePanel() {
+            const panel = document.getElementById('sidePanel');
+            const backdrop = document.getElementById('backdrop');
+            
+            if (panel.classList.contains('translate-x-[-100%]')) {
+                panel.classList.remove('translate-x-[-100%]');
+                panel.classList.add('translate-x-0');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.add('opacity-100'), 10);
+            } else {
+                panel.classList.remove('translate-x-0');
+                panel.classList.add('translate-x-[-100%]');
+                backdrop.classList.remove('opacity-100');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
+            }
+        }
+    </script>
+</body></html>

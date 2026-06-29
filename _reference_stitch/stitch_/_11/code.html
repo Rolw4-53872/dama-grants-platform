@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA Admin Portal - إدارة الطلبات</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-variant": "#e0e3e5",
+                "outline-variant": "#c4c6cf",
+                "on-primary-container": "#86a0cd",
+                "tertiary-container": "#003762",
+                "on-secondary-container": "#316e52",
+                "on-secondary-fixed-variant": "#0e5138",
+                "surface-container-high": "#e5e9eb",
+                "secondary-fixed": "#b1f0ce",
+                "on-error": "#ffffff",
+                "on-secondary-fixed": "#002114",
+                "inverse-surface": "#2d3133",
+                "surface-container-low": "#f1f4f6",
+                "secondary": "#2c694e",
+                "surface-tint": "#455f88",
+                "outline": "#74777f",
+                "on-tertiary-fixed": "#001d37",
+                "on-error-container": "#93000a",
+                "on-tertiary-fixed-variant": "#00497e",
+                "primary-fixed-dim": "#adc7f7",
+                "on-background": "#181c1e",
+                "surface-container-lowest": "#ffffff",
+                "on-surface-variant": "#43474e",
+                "tertiary-fixed": "#d2e4ff",
+                "surface-container": "#ebeef0",
+                "secondary-container": "#aeeecb",
+                "secondary-fixed-dim": "#95d4b3",
+                "primary-fixed": "#d6e3ff",
+                "on-tertiary-container": "#58a2f0",
+                "on-primary-fixed": "#001b3c",
+                "inverse-on-surface": "#eef1f3",
+                "error": "#ba1a1a",
+                "inverse-primary": "#adc7f7",
+                "surface-bright": "#f7fafc",
+                "on-secondary": "#ffffff",
+                "tertiary": "#00213e",
+                "background": "#f7fafc",
+                "on-surface": "#181c1e",
+                "surface": "#f7fafc",
+                "surface-container-highest": "#e0e3e5",
+                "on-primary-fixed-variant": "#2d476f",
+                "surface-dim": "#d7dadc",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed-dim": "#9fcaff",
+                "primary": "#002045",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "primary-container": "#1a365d"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-md": "1rem",
+                "stack-lg": "2rem",
+                "margin-mobile": "1rem",
+                "margin-desktop": "2.5rem",
+                "gutter": "1.5rem",
+                "container-max": "1440px",
+                "stack-sm": "0.5rem"
+            },
+            "fontFamily": {
+                "sans": ["Noto Sans Arabic", "Be Vietnam Pro", "sans-serif"],
+                "title-lg": ["Noto Sans Arabic"],
+                "headline-lg": ["Noto Sans Arabic"],
+                "body-md": ["Noto Sans Arabic"],
+                "label-sm": ["Noto Sans Arabic"],
+                "label-md": ["Noto Sans Arabic"],
+                "headline-md": ["Noto Sans Arabic"],
+                "display-lg": ["Noto Sans Arabic"],
+                "body-lg": ["Noto Sans Arabic"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-hidden h-screen flex flex-row-reverse">
+<!-- SideNavBar (RTL - Fixed on the Right) -->
+<aside class="w-[280px] bg-primary dark:bg-surface-container-lowest flex flex-col h-full overflow-y-auto text-right fixed right-0 top-0 shadow-lg z-50">
+<div class="p-6 flex flex-col items-center gap-2">
+<div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<h1 class="text-headline-md font-headline-md text-on-primary">DAMA System</h1>
+<p class="text-label-md font-label-md text-on-primary/70">نظام إدارة المنح والتأهيل</p>
+</div>
+<nav class="mt-6 flex-1 px-2 space-y-1">
+<!-- Labels and Icons mapped from JSON -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-surface-variant hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2 my-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">الرئيسية</span>
+</a>
+<!-- ACTIVE TAB: إدارة الطلبات (Requested Management) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary dark:bg-secondary-container text-on-secondary dark:text-on-secondary-container rounded-lg mx-2 my-1 shadow-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-label-md font-label-md font-bold">طلبات المنح</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-surface-variant hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2 my-1" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="text-label-md font-label-md">مشاريع التأهيل</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-surface-variant hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2 my-1" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="text-label-md font-label-md">العقود</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-surface-variant hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2 my-1" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-label-md font-label-md">التقارير</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 dark:text-on-surface-variant hover:text-on-primary hover:bg-white/10 rounded-lg transition-all mx-2 my-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-md font-label-md">إدارة المستخدمين</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 p-4 space-y-1">
+<button class="w-full flex items-center justify-center gap-2 bg-secondary py-3 rounded-xl text-white font-bold hover:scale-[0.98] transition-transform shadow-lg mb-4">
+<span class="material-symbols-outlined">add</span>
+<span>طلب جديد</span>
+</button>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md">الإعدادات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error-container hover:text-white rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md">تسجيل الخروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 mr-[280px] h-full overflow-y-auto custom-scrollbar flex flex-col">
+<!-- TopAppBar -->
+<header class="h-16 bg-surface dark:bg-surface-container flex flex-row-reverse items-center justify-between px-margin-desktop border-b border-outline-variant dark:border-outline sticky top-0 z-40">
+<div class="flex items-center gap-4 flex-row-reverse">
+<div class="flex items-center gap-2">
+<img class="w-10 h-10 rounded-full border-2 border-primary/20 object-cover" data-alt="A clean professional headshot of a middle-aged male administrator in a corporate setting, soft studio lighting, focused gaze, minimalist background in shades of gray and navy blue, executive office vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATCqBZ_durhsroGho8VexMkfuhF8QDkyhThv6USOgCSbPHjPDLfjeKUBuQwQxsBzOvyJWPIWDldwQY85SuckTMEhfFPfQbDYzhTIQdegZBYIu75V3gqSa9A9QU1cjfSvUAzkV_CFhWiTzonvJBII4M8Pa1I7I4gEzkA2YfznwRlRFw1MXdv4y2uc1ZfXNREH_MP0ul-EO-W7AEfWJvbONWo6yk2jD2DK0_ETccCQcM98KnC6JHWqQ1P-X3T51IJbNK0SdYYw63B0o"/>
+<div class="text-right">
+<p class="text-label-md font-bold text-primary">أحمد العتيبي</p>
+<p class="text-[10px] text-outline">مدير النظام</p>
+</div>
+</div>
+<div class="flex items-center gap-2 mr-4 border-r pr-4 border-outline-variant">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</div>
+</div>
+<div class="flex-1 max-w-xl mx-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pr-10 pl-4 py-2 text-body-md focus:ring-2 focus:ring-secondary/50 transition-all" placeholder="ابحث عن رقم طلب، جمعية، أو مشروع..." type="text"/>
+</div>
+</div>
+<div class="text-title-lg font-title-lg font-bold text-primary">DAMA Portal</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div class="text-right">
+<h2 class="text-headline-lg font-headline-lg text-primary">إدارة الطلبات</h2>
+<p class="text-body-md text-outline mt-1">إجمالي الطلبات المسجلة: <span class="font-bold text-primary">1,248</span> طلب</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl hover:opacity-90 transition-opacity font-bold shadow-md">
+<span class="material-symbols-outlined">download</span>
+<span>تصدير البيانات</span>
+</button>
+</div>
+<!-- Statistics Cards - Bento Layout -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-white p-6 rounded-2xl soft-shadow border border-outline-variant/30 flex items-center gap-4 hover:border-primary/30 transition-colors cursor-pointer">
+<div class="w-14 h-14 rounded-xl bg-amber-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-600 text-3xl">pending_actions</span>
+</div>
+<div>
+<p class="text-label-md text-outline">بانتظار المراجعة</p>
+<h3 class="text-headline-md font-bold text-primary">42</h3>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl soft-shadow border border-outline-variant/30 flex items-center gap-4 hover:border-primary/30 transition-colors cursor-pointer">
+<div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 text-3xl">sync</span>
+</div>
+<div>
+<p class="text-label-md text-outline">تحت المعالجة</p>
+<h3 class="text-headline-md font-bold text-primary">156</h3>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl soft-shadow border border-outline-variant/30 flex items-center gap-4 hover:border-primary/30 transition-colors cursor-pointer">
+<div class="w-14 h-14 rounded-xl bg-red-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-600 text-3xl">edit_note</span>
+</div>
+<div>
+<p class="text-label-md text-outline">تحتاج تعديل</p>
+<h3 class="text-headline-md font-bold text-primary">28</h3>
+</div>
+</div>
+<div class="bg-white p-6 rounded-2xl soft-shadow border border-outline-variant/30 flex items-center gap-4 hover:border-primary/30 transition-colors cursor-pointer">
+<div class="w-14 h-14 rounded-xl bg-green-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-600 text-3xl">task_alt</span>
+</div>
+<div>
+<p class="text-label-md text-outline">مقبولة / مرفوضة</p>
+<h3 class="text-headline-md font-bold text-primary">1,022</h3>
+</div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-white p-4 rounded-2xl soft-shadow border border-outline-variant/30 flex flex-wrap gap-4 items-center">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pr-10 border-outline-variant rounded-xl focus:border-secondary focus:ring-0 text-body-md" placeholder="البحث برقم الطلب أو اسم الجمعية..." type="text"/>
+</div>
+<select class="border-outline-variant rounded-xl focus:border-secondary focus:ring-0 text-body-md pr-10 min-w-[140px]">
+<option value="">الحالة</option>
+<option>جديد</option>
+<option>قيد المراجعة</option>
+<option>يحتاج تعديل</option>
+<option>مقبول</option>
+</select>
+<select class="border-outline-variant rounded-xl focus:border-secondary focus:ring-0 text-body-md pr-10 min-w-[140px]">
+<option value="">نوع المشروع</option>
+<option>تأهيل سكني</option>
+<option>دعم مالي</option>
+<option>تنمية مهارات</option>
+</select>
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline">calendar_month</span>
+<input class="border-outline-variant rounded-xl focus:border-secondary focus:ring-0 text-body-md pr-10" type="date"/>
+</div>
+<button class="bg-surface-container-high px-4 py-2 rounded-xl text-primary font-bold hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">filter_list</span>
+<span>فلترة</span>
+</button>
+</div>
+<!-- Table Section -->
+<div class="bg-white rounded-2xl soft-shadow border border-outline-variant/30 overflow-hidden">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant/50">
+<th class="px-6 py-4 text-label-md font-bold text-primary">رقم الطلب</th>
+<th class="px-6 py-4 text-label-md font-bold text-primary">اسم الجمعية</th>
+<th class="px-6 py-4 text-label-md font-bold text-primary">اسم المشروع</th>
+<th class="px-6 py-4 text-label-md font-bold text-primary">تاريخ التقديم</th>
+<th class="px-6 py-4 text-label-md font-bold text-primary text-center">الحالة</th>
+<th class="px-6 py-4 text-label-md font-bold text-primary text-center">الإجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-bold text-primary">RQ-2024-0081</td>
+<td class="px-6 py-5 text-body-md">جمعية البر والتقوى</td>
+<td class="px-6 py-5 text-body-md">تأهيل المركز الصحي بالحي الشمالي</td>
+<td class="px-6 py-5 text-body-md text-outline">24 أكتوبر 2024</td>
+<td class="px-6 py-5 text-center">
+<span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-label-sm font-bold border border-blue-100">جديد</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="flex justify-center gap-2">
+<button class="p-2 hover:bg-primary/10 rounded-lg text-primary transition-colors" title="عرض">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 hover:bg-outline-variant/20 rounded-lg text-outline transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-bold text-primary">RQ-2024-0079</td>
+<td class="px-6 py-5 text-body-md">مؤسسة التنمية الشاملة</td>
+<td class="px-6 py-5 text-body-md">ترميم منازل الأسر المتعففة</td>
+<td class="px-6 py-5 text-body-md text-outline">22 أكتوبر 2024</td>
+<td class="px-6 py-5 text-center">
+<span class="bg-amber-50 text-amber-700 px-3 py-1 rounded-full text-label-sm font-bold border border-amber-100">قيد المراجعة</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="flex justify-center gap-2">
+<button class="p-2 hover:bg-primary/10 rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 hover:bg-outline-variant/20 rounded-lg text-outline transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-bold text-primary">RQ-2024-0075</td>
+<td class="px-6 py-5 text-body-md">جمعية كفالة الأيتام</td>
+<td class="px-6 py-5 text-body-md">إنشاء مركز تدريب مهني</td>
+<td class="px-6 py-5 text-body-md text-outline">18 أكتوبر 2024</td>
+<td class="px-6 py-5 text-center">
+<span class="bg-red-50 text-red-700 px-3 py-1 rounded-full text-label-sm font-bold border border-red-100">يحتاج تعديل</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="flex justify-center gap-2">
+<button class="p-2 hover:bg-primary/10 rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 hover:bg-outline-variant/20 rounded-lg text-outline transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-bold text-primary">RQ-2024-0070</td>
+<td class="px-6 py-5 text-body-md">مركز الأمل المجتمعي</td>
+<td class="px-6 py-5 text-body-md">مبادرة التشجير الوطنية</td>
+<td class="px-6 py-5 text-body-md text-outline">15 أكتوبر 2024</td>
+<td class="px-6 py-5 text-center">
+<span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-label-sm font-bold border border-green-100">مقبول</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="flex justify-center gap-2">
+<button class="p-2 hover:bg-primary/10 rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 hover:bg-outline-variant/20 rounded-lg text-outline transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="bg-surface-container p-4 flex flex-row-reverse items-center justify-between">
+<div class="flex items-center gap-4 flex-row-reverse">
+<span class="text-label-md text-outline">عرض 10 من 1,248</span>
+<select class="border-outline-variant rounded-lg py-1 px-2 text-label-sm bg-white focus:ring-0">
+<option>10 صفوف</option>
+<option>20 صفوف</option>
+<option>50 صفوف</option>
+</select>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white transition-colors text-outline">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold shadow-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white transition-colors text-primary font-bold border border-transparent hover:border-outline-variant/30">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white transition-colors text-primary font-bold border border-transparent hover:border-outline-variant/30">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white transition-colors text-primary font-bold border border-transparent hover:border-outline-variant/30">125</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white transition-colors text-outline">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction: Active state logic simulation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // In a real app, this would handle routing
+                // e.preventDefault();
+                console.log('Navigating to:', link.textContent.trim());
+            });
+        });
+
+        // Add some click feedback for the stats cards
+        document.querySelectorAll('.grid > div').forEach(card => {
+            card.addEventListener('mousedown', () => card.style.transform = 'scale(0.98)');
+            card.addEventListener('mouseup', () => card.style.transform = 'scale(1)');
+            card.addEventListener('mouseleave', () => card.style.transform = 'scale(1)');
+        });
+    </script>
+</body></html>

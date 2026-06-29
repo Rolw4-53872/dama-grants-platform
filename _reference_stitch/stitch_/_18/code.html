@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>داما | برنامج المنح والتأهيل</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#002045",
+                        "on-tertiary-fixed-variant": "#1f477b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#7089b3",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "tertiary-fixed-dim": "#a7c8ff",
+                        "on-secondary-container": "#316e52",
+                        "secondary-container": "#aeeecb",
+                        "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-fixed": "#b1f0ce",
+                        "on-surface": "#181c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary": "#00081a",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#001b3c",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d5e3ff",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-low": "#f1f4f6",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "on-tertiary-container": "#6589c1",
+                        "surface-tint": "#465f87",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e5e9eb",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "background": "#f7fafc",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "surface": "#ffffff",
+                        "on-background": "#181c1e",
+                        "on-primary": "#ffffff",
+                        "accent-line": "#2c694e",
+                        "on-secondary-fixed": "#002114",
+                        "primary-fixed-dim": "#aec7f5",
+                        "inverse-primary": "#aec7f5",
+                        "primary": "#00091b",
+                        "tertiary-container": "#002044",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container": "#ebeef0",
+                        "outline": "#e2e8f0",
+                        "surface-dim": "#d7dadc",
+                        "secondary": "#2c694e",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7fafc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "display": ["Cairo", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: "Noto Sans Arabic", sans-serif; background-color: #f7fafc; }
+        .hero-font { font-family: "Cairo", sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Shared Header -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-outline">
+<div class="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-4 text-primary-container">
+<div class="size-8">
+<svg class="text-primary-container" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-black hero-font tracking-tight">DAMA</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface hover:text-secondary font-medium transition-colors" href="#">الرئيسية</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1" href="#">البرامج</a>
+<a class="text-on-surface hover:text-secondary font-medium transition-colors" href="#">عن داما</a>
+<a class="text-on-surface hover:text-secondary font-medium transition-colors" href="#">تواصل معنا</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="bg-primary-container text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">إنشاء حساب</button>
+<button class="bg-surface-container text-on-surface px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-surface-container-high transition-colors">تسجيل الدخول</button>
+</div>
+</div>
+</header>
+<main>
+<!-- 1. Hero Section -->
+<section class="relative overflow-hidden bg-primary-container pt-16 pb-24 md:pt-24 md:pb-32">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<webgl-shader class="w-full h-full" src="{{DATA:ANIMATION:ANIMATION_1}}"></webgl-shader>
+</div>
+<div class="max-w-[1280px] mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+<div class="text-right">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary/20 text-secondary-fixed-dim text-sm font-bold mb-6">مبادرة تمكين القطاع الثالث</span>
+<h1 class="text-white hero-font text-4xl md:text-6xl font-black leading-tight mb-6">
+                        برنامج المنح والتأهيل <br/>
+<span class="text-secondary-fixed-dim">نحو استدامة مؤسسية</span>
+</h1>
+<p class="text-on-primary-container text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+                        يهدف البرنامج إلى تمكين الجمعيات الأهلية وتطوير قدراتها المؤسسية لتحقيق الاستدامة المالية والتحول الرقمي من خلال دعم مالي وفني متخصص يواكب رؤية المملكة 2030.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center gap-2 hover:scale-105 transition-transform shadow-lg shadow-secondary/20">
+<span>ابدأ التقديم الآن</span>
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="bg-white/10 text-white backdrop-blur-sm border border-white/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
+                            تحميل الدليل التعريفي
+                        </button>
+</div>
+</div>
+<div class="relative">
+<div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
+<img class="w-full aspect-[4/3] object-cover" data-alt="A professional aerial view of a modern urban business district featuring sleek glass skyscrapers and lush green parks. The scene is bathed in golden hour sunlight, reflecting a sense of growth, prosperity, and sophisticated architectural planning. The overall aesthetic is clean, high-end, and perfectly aligned with a corporate and developmental identity using navy and emerald accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvYTQAipACUbEdAKh1_mKIpdimkkWjM_iSEKDkEWLDYAZWFQJbVJr1HF_vcwxRPcIx4bOCd4vuqdz00oBMYpwAXNqBu01C-2z2apljqA8xP7PaMTfZ9V_-Bg8ELPEJs1qbQCLGAPAaUgjOOiQWZiXJLcRQUwYssphgB5iOmDD-7ByWArP7DWIdsBODBm1m97WRlAN6ahBCkNcIyWjSY2rri7hRE7_l6TCkTiKWIExFn7sFxgWMd8SAULpXU1R8HCFejvCVjtEfQvs"/>
+</div>
+<div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl hidden lg:flex items-center gap-4">
+<div class="bg-secondary-container p-3 rounded-full">
+<span class="material-symbols-outlined text-secondary" data-icon="groups">groups</span>
+</div>
+<div>
+<div class="text-primary-container font-black text-2xl">+500</div>
+<div class="text-on-surface-variant text-sm font-medium">جمعية مستفيدة</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. About the Program -->
+<section class="py-20 -mt-10 relative z-20">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="bg-white rounded-[2rem] shadow-xl border border-outline overflow-hidden">
+<div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x md:divide-x-reverse divide-outline">
+<!-- Brief -->
+<div class="p-10 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-blue-50 text-primary-container rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined !text-4xl" data-icon="info">info</span>
+</div>
+<h3 class="hero-font text-2xl font-bold text-primary-container mb-4">نبذة عن البرنامج</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                برنامج "داما" هو محرك تنموي متكامل صُمم خصيصاً لسد الفجوات التشغيلية والمالية في الجمعيات الأهلية، مما يحولها من الرعوية إلى التنموية المستدامة.
+                            </p>
+</div>
+<!-- Mission -->
+<div class="p-10 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-green-50 text-secondary rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined !text-4xl" data-icon="target">target</span>
+</div>
+<h3 class="hero-font text-2xl font-bold text-primary-container mb-4">رسالة البرنامج</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                تقديم منح نوعية وحلول تأهيلية مبتكرة تساهم في رفع كفاءة الأداء المؤسسي وتعظيم الأثر الاجتماعي عبر معايير عالمية للحوكمة والشفافية.
+                            </p>
+</div>
+<!-- Vision -->
+<div class="p-10 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined !text-4xl" data-icon="visibility">visibility</span>
+</div>
+<h3 class="hero-font text-2xl font-bold text-primary-container mb-4">رؤية البرنامج</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                                أن نكون المرجع الأول والنموذج الرائد في صناعة الأثر المستدام وتمكين القطاع غير الربحي ليكون مساهماً فاعلاً في الناتج المحلي الإجمالي.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Program Objectives -->
+<section class="py-20 bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="hero-font text-3xl md:text-4xl font-bold text-primary-container mb-4">أهداف البرنامج الاستراتيجية</h2>
+<div class="w-24 h-1.5 bg-secondary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Objective 1 -->
+<div class="bg-white p-8 rounded-2xl border border-outline hover:shadow-lg transition-all group">
+<div class="bg-surface-container w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<h4 class="hero-font text-lg font-bold text-primary-container mb-3">التمكين المؤسسي</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">تطوير الهياكل التنظيمية وتفعيل أنظمة الحوكمة لضمان كفاءة العمل الإداري والمالي.</p>
+</div>
+<!-- Objective 2 -->
+<div class="bg-white p-8 rounded-2xl border border-outline hover:shadow-lg transition-all group">
+<div class="bg-surface-container w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<h4 class="hero-font text-lg font-bold text-primary-container mb-3">الاستدامة المالية</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">تنويع مصادر الدخل وبناء الأوقاف الاستثمارية التي تضمن استمرارية المشاريع التنموية.</p>
+</div>
+<!-- Objective 3 -->
+<div class="bg-white p-8 rounded-2xl border border-outline hover:shadow-lg transition-all group">
+<div class="bg-surface-container w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="devices">devices</span>
+</div>
+<h4 class="hero-font text-lg font-bold text-primary-container mb-3">التحول الرقمي</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">أتمتة كافة العمليات الداخلية والخارجية لتسهيل التواصل ورفع سرعة الإنجاز.</p>
+</div>
+<!-- Objective 4 -->
+<div class="bg-white p-8 rounded-2xl border border-outline hover:shadow-lg transition-all group">
+<div class="bg-surface-container w-12 h-12 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+</div>
+<h4 class="hero-font text-lg font-bold text-primary-container mb-3">تجويد المخرجات</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">قياس الأثر الاجتماعي وضمان وصول الدعم للفئات الأكثر احتياجاً بأعلى جودة.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Program Benefits -->
+<section class="py-20 bg-white">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+<div class="text-right">
+<h2 class="hero-font text-3xl font-bold text-primary-container mb-2">مزايا البرنامج للمستفيدين</h2>
+<p class="text-on-surface-variant">تجربة رقمية فريدة تضمن السهولة والشفافية في كل مرحلة.</p>
+</div>
+<div class="flex gap-2">
+<div class="w-12 h-1 bg-outline rounded-full"></div>
+<div class="w-12 h-1 bg-secondary rounded-full"></div>
+<div class="w-12 h-1 bg-outline rounded-full"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+<!-- Benefit 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline text-center hover:border-secondary transition-colors">
+<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined !text-3xl" data-icon="edit_document">edit_document</span>
+</div>
+<h5 class="font-bold text-primary-container">سهولة التقديم</h5>
+</div>
+<!-- Benefit 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline text-center hover:border-secondary transition-colors">
+<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined !text-3xl" data-icon="track_changes">track_changes</span>
+</div>
+<h5 class="font-bold text-primary-container">تتبع إلكتروني</h5>
+</div>
+<!-- Benefit 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline text-center hover:border-secondary transition-colors">
+<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined !text-3xl" data-icon="speed">speed</span>
+</div>
+<h5 class="font-bold text-primary-container">سرعة المراجعة</h5>
+</div>
+<!-- Benefit 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline text-center hover:border-secondary transition-colors">
+<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined !text-3xl" data-icon="history_edu">history_edu</span>
+</div>
+<h5 class="font-bold text-primary-container">إدارة العقود</h5>
+</div>
+<!-- Benefit 5 -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline text-center hover:border-secondary transition-colors">
+<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined !text-3xl" data-icon="notifications_active">notifications_active</span>
+</div>
+<h5 class="font-bold text-primary-container">تنبيهات فورية</h5>
+</div>
+</div>
+</div>
+</section>
+<!-- 5 & 6. Requirements & Documents -->
+<section class="py-20 bg-surface-container">
+<div class="max-w-[1280px] mx-auto px-6 grid lg:grid-cols-12 gap-12">
+<!-- Eligibility Requirements -->
+<div class="lg:col-span-5">
+<h2 class="hero-font text-3xl font-bold text-primary-container mb-8">شروط التقديم</h2>
+<div class="space-y-4">
+<div class="flex gap-4 p-5 bg-white rounded-xl border border-outline">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" data-weight="fill">check_circle</span>
+<p class="text-on-surface font-medium leading-relaxed">أن تكون الجمعية مسجلة رسمياً لدى المركز الوطني لتنمية القطاع غير الربحي.</p>
+</div>
+<div class="flex gap-4 p-5 bg-white rounded-xl border border-outline">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" data-weight="fill">check_circle</span>
+<p class="text-on-surface font-medium leading-relaxed">وجود مجلس إدارة فاعل وشهادة امتثال سارية المفعول.</p>
+</div>
+<div class="flex gap-4 p-5 bg-white rounded-xl border border-outline">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" data-weight="fill">check_circle</span>
+<p class="text-on-surface font-medium leading-relaxed">تطابق نشاط الجمعية مع مجالات المنح المتاحة في الدورة الحالية.</p>
+</div>
+<div class="flex gap-4 p-5 bg-white rounded-xl border border-outline">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" data-weight="fill">check_circle</span>
+<p class="text-on-surface font-medium leading-relaxed">الالتزام بمعايير الإفصاح والشفافية المالية المطلوبة.</p>
+</div>
+</div>
+</div>
+<!-- Required Documents -->
+<div class="lg:col-span-7">
+<h2 class="hero-font text-3xl font-bold text-primary-container mb-8">المستندات المطلوبة</h2>
+<div class="grid sm:grid-cols-2 gap-4">
+<div class="p-4 bg-white/60 border border-outline rounded-xl flex items-center gap-3">
+<div class="bg-primary-container text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="description">description</span></div>
+<span class="font-bold text-sm">شهادة الترخيص</span>
+</div>
+<div class="p-4 bg-white/60 border border-outline rounded-xl flex items-center gap-3">
+<div class="bg-primary-container text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="gavel">gavel</span></div>
+<span class="font-bold text-sm">اللائحة الأساسية</span>
+</div>
+<div class="p-4 bg-white/60 border border-outline rounded-xl flex items-center gap-3">
+<div class="bg-primary-container text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span></div>
+<span class="font-bold text-sm">المعلومات البنكية</span>
+</div>
+<div class="p-4 bg-white/60 border border-outline rounded-xl flex items-center gap-3">
+<div class="bg-primary-container text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="event_note">event_note</span></div>
+<span class="font-bold text-sm">الخطة التشغيلية</span>
+</div>
+<div class="p-4 bg-white/60 border border-outline rounded-xl flex items-center gap-3">
+<div class="bg-primary-container text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="star">star</span></div>
+<span class="font-bold text-sm">الخطة الاستراتيجية</span>
+</div>
+<div class="p-4 bg-white/60 border border-outline rounded-xl flex items-center gap-3">
+<div class="bg-primary-container text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="finance">finance</span></div>
+<span class="font-bold text-sm">القوائم المالية</span>
+</div>
+<div class="p-4 bg-white/60 border border-outline rounded-xl flex items-center gap-3 sm:col-span-2">
+<div class="bg-primary-container text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="badge">badge</span></div>
+<span class="font-bold text-sm">الملف التعريفي للجمعية</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Application Process (Stepper) -->
+<section class="py-20 bg-white overflow-hidden">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="hero-font text-3xl font-bold text-primary-container mb-4">رحلة التقديم</h2>
+<p class="text-on-surface-variant">خطوات واضحة تبدأ من التسجيل وتنتهي بتوقيع العقد</p>
+</div>
+<div class="relative">
+<!-- Desktop Stepper Line -->
+<div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant -translate-y-1/2 z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 bg-white border-2 border-secondary rounded-full flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="font-black text-secondary group-hover:text-white">1</span>
+</div>
+<h6 class="font-bold text-sm text-primary-container text-center">إنشاء حساب</h6>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 bg-white border-2 border-outline-variant rounded-full flex items-center justify-center mb-4 group-hover:border-secondary transition-all">
+<span class="font-black text-on-surface-variant">2</span>
+</div>
+<h6 class="font-bold text-sm text-primary-container text-center">تسجيل الدخول</h6>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 bg-white border-2 border-outline-variant rounded-full flex items-center justify-center mb-4 group-hover:border-secondary transition-all">
+<span class="font-black text-on-surface-variant">3</span>
+</div>
+<h6 class="font-bold text-sm text-primary-container text-center">تعبئة الطلب</h6>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 bg-white border-2 border-outline-variant rounded-full flex items-center justify-center mb-4 group-hover:border-secondary transition-all">
+<span class="font-black text-on-surface-variant">4</span>
+</div>
+<h6 class="font-bold text-sm text-primary-container text-center">رفع الملفات</h6>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 bg-white border-2 border-outline-variant rounded-full flex items-center justify-center mb-4 group-hover:border-secondary transition-all">
+<span class="font-black text-on-surface-variant">5</span>
+</div>
+<h6 class="font-bold text-sm text-primary-container text-center">مراجعة الطلب</h6>
+</div>
+<!-- Step 6 -->
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 bg-white border-2 border-outline-variant rounded-full flex items-center justify-center mb-4 group-hover:border-secondary transition-all">
+<span class="font-black text-on-surface-variant">6</span>
+</div>
+<h6 class="font-bold text-sm text-primary-container text-center">اعتماد الطلب</h6>
+</div>
+<!-- Step 7 -->
+<div class="flex flex-col items-center group">
+<div class="w-12 h-12 bg-white border-2 border-outline-variant rounded-full flex items-center justify-center mb-4 group-hover:border-secondary transition-all">
+<span class="font-black text-on-surface-variant">7</span>
+</div>
+<h6 class="font-bold text-sm text-primary-container text-center">توقيع العقد</h6>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. FAQ -->
+<section class="py-20 bg-surface-container-low">
+<div class="max-w-[800px] mx-auto px-6">
+<div class="text-center mb-12">
+<h2 class="hero-font text-3xl font-bold text-primary-container mb-4">الأسئلة الشائعة</h2>
+<p class="text-on-surface-variant">كل ما تود معرفته عن برنامج المنح</p>
+</div>
+<div class="space-y-4">
+<details class="bg-white rounded-xl border border-outline group">
+<summary class="p-6 cursor-pointer list-none flex justify-between items-center font-bold text-primary-container">
+                            ما هي مدة مراجعة الطلبات؟
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                            تستغرق عملية المراجعة الأولية والتقييم الفني ما بين 10 إلى 15 يوم عمل من تاريخ اكتمال رفع جميع المستندات المطلوبة.
+                        </div>
+</details>
+<details class="bg-white rounded-xl border border-outline group">
+<summary class="p-6 cursor-pointer list-none flex justify-between items-center font-bold text-primary-container">
+                            هل يمكن للجمعية التقديم على أكثر من منحة؟
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                            نعم، يمكن للجمعية التقديم على مسارات مختلفة شريطة أن تكون لديها القدرة التشغيلية اللازمة لتنفيذ المشاريع في وقت واحد.
+                        </div>
+</details>
+<details class="bg-white rounded-xl border border-outline group">
+<summary class="p-6 cursor-pointer list-none flex justify-between items-center font-bold text-primary-container">
+                            كيف يتم صرف مبالغ المنحة؟
+                            <span class="material-symbols-outlined transition-transform group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                            يتم صرف المنح على دفعات مرحلية مرتبطة بتحقيق مؤشرات الأداء المتفق عليها في العقد التشغيلي.
+                        </div>
+</details>
+</div>
+</div>
+</section>
+<!-- 9. CTA Section -->
+<section class="py-20 px-6">
+<div class="max-w-[1000px] mx-auto bg-primary-container rounded-[2.5rem] p-12 text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<animated-svg class="w-full h-full" src="{{DATA:ANIMATION:ANIMATION_2}}"></animated-svg>
+</div>
+<div class="relative z-10">
+<h2 class="hero-font text-3xl md:text-5xl font-black text-white mb-6">مستعد لتمكين جمعيتك؟</h2>
+<p class="text-on-primary-container text-lg md:text-xl mb-12 max-w-2xl mx-auto">انضم الآن إلى مئات الجمعيات الرائدة وابدأ رحلة التحول المؤسسي مع داما.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-secondary text-white px-10 py-4 rounded-xl font-bold text-xl shadow-xl shadow-secondary/20 hover:scale-105 transition-transform">
+                            إنشاء حساب جديد
+                        </button>
+<button class="bg-white/10 text-white backdrop-blur-sm border border-white/20 px-10 py-4 rounded-xl font-bold text-xl hover:bg-white/20 transition-all">
+                            تسجيل الدخول
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-12 border-t border-outline">
+<div class="max-w-[1280px] mx-auto px-6 grid md:grid-cols-4 gap-12">
+<div class="md:col-span-2">
+<div class="flex items-center gap-4 text-primary-container mb-6">
+<div class="size-6">
+<svg class="text-primary-container" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-black hero-font tracking-tight">DAMA</h2>
+</div>
+<p class="text-on-surface-variant max-w-sm mb-8">
+                    نعمل في داما على بناء مستقبل مشرق للقطاع الثالث في المملكة، من خلال أدوات تمكين تقنية ومعرفية متطورة.
+                </p>
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-container cursor-pointer hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-container cursor-pointer hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-primary-container cursor-pointer hover:bg-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">phone_in_talk</span>
+</div>
+</div>
+</div>
+<div>
+<h5 class="font-bold text-primary-container mb-6">روابط سريعة</h5>
+<ul class="space-y-4 text-on-surface-variant">
+<li><a class="hover:text-secondary" href="#">الرئيسية</a></li>
+<li><a class="hover:text-secondary" href="#">عن داما</a></li>
+<li><a class="hover:text-secondary" href="#">البرامج والمنح</a></li>
+<li><a class="hover:text-secondary" href="#">اتصل بنا</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-primary-container mb-6">الموارد</h5>
+<ul class="space-y-4 text-on-surface-variant">
+<li><a class="hover:text-secondary" href="#">الأسئلة الشائعة</a></li>
+<li><a class="hover:text-secondary" href="#">دليل المستخدم</a></li>
+<li><a class="hover:text-secondary" href="#">سياسة الخصوصية</a></li>
+<li><a class="hover:text-secondary" href="#">الشروط والأحكام</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto px-6 pt-12 mt-12 border-t border-outline flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-surface-variant">
+<p>© 2024 داما لتمكين القطاع غير الربحي. جميع الحقوق محفوظة.</p>
+<div class="flex items-center gap-2">
+<span>تطوير وتصميم فريق داما التقني</span>
+<span class="material-symbols-outlined text-red-500 !text-sm" data-icon="favorite" data-weight="fill">favorite</span>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for stepper
+        document.querySelectorAll('.group').forEach((step, index) => {
+            step.addEventListener('mouseenter', () => {
+                step.style.transform = 'translateY(-5px)';
+            });
+            step.addEventListener('mouseleave', () => {
+                step.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

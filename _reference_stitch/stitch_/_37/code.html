@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA - Executive Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&amp;family=Noto+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .cube-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.657 4.535L30 18.75 5.343 4.535l24.657-14.228 24.657 14.228zM5.343 41.25L30 55.465l24.657-14.215L30 27.035 5.343 41.25z' fill='%23002045' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#465f87",
+                      "surface-dim": "#d7dadc",
+                      "secondary": "#2c694e",
+                      "on-tertiary-container": "#6589c1",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "on-surface": "#181c1e",
+                      "secondary-container": "#aeeecb",
+                      "on-secondary-fixed": "#002114",
+                      "on-primary-fixed": "#001b3c",
+                      "outline-variant": "#c4c6cf",
+                      "outline": "#e2e8f0",
+                      "background": "#f7fafc",
+                      "surface-container-high": "#e5e9eb",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#d5e3ff",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed": "#b1f0ce",
+                      "on-tertiary-fixed-variant": "#1f477b",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#001b3c",
+                      "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                      "secondary-fixed-dim": "#95d4b3",
+                      "on-secondary-fixed-variant": "#0e5138",
+                      "tertiary-fixed-dim": "#a7c8ff",
+                      "primary-container": "#002045",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#00091b",
+                      "primary-fixed-dim": "#aec7f5",
+                      "on-surface-variant": "#44474e",
+                      "inverse-primary": "#aec7f5",
+                      "inverse-on-surface": "#eef1f3",
+                      "surface-variant": "#e0e3e5",
+                      "on-error-container": "#93000a",
+                      "surface": "#ffffff",
+                      "surface-container": "#ebeef0",
+                      "primary-fixed": "#d6e3ff",
+                      "on-primary-container": "#7089b3",
+                      "error": "#ba1a1a",
+                      "accent-line": "#2c694e",
+                      "tertiary-container": "#002044",
+                      "inverse-surface": "#2d3133",
+                      "tertiary": "#00081a",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f1f4f6",
+                      "surface-bright": "#f7fafc",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-secondary-container": "#316e52",
+                      "on-background": "#181c1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "grid-gutter": "1.5rem",
+                      "element-gap": "2rem",
+                      "container-max": "1280px",
+                      "card-padding": "2rem",
+                      "section-gap": "4rem"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Cairo"],
+                      "display-lg-mobile": ["Cairo"],
+                      "title-lg": ["Noto Sans Arabic"],
+                      "display-lg": ["Cairo"],
+                      "body-md": ["Noto Sans Arabic"],
+                      "body-lg": ["Noto Sans Arabic"],
+                      "label-sm": ["Noto Sans Arabic"],
+                      "headline-lg": ["Cairo"]
+              },
+              "fontSize": {
+                      "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "display-lg-mobile": ["72px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "900"}],
+                      "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                      "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}],
+                      "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface cube-pattern min-h-screen flex flex-col items-center justify-center p-4 md:p-0 overflow-x-hidden">
+<!-- Global Top Bar (Simplified Logo Anchor) -->
+<header class="absolute top-0 left-0 right-0 h-24 z-50 flex items-center px-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<span class="font-headline-lg text-headline-lg text-primary-container tracking-tight">DAMA System</span>
+</div>
+</header>
+<main class="w-full max-w-[1440px] grid md:grid-cols-2 h-screen max-h-[900px] bg-white institutional-shadow rounded-3xl overflow-hidden relative">
+<!-- Left Side: Visual/Illustration -->
+<div class="hidden md:flex flex-col relative overflow-hidden bg-primary-container">
+<!-- Animated Shader Background Placeholder -->
+
+<!-- Content Overlay -->
+<div class="relative z-10 flex flex-col justify-center items-start p-16 h-full space-y-8">
+<div class="space-y-4">
+<h1 class="font-headline-xl text-headline-xl text-white leading-tight">بوابة المدير التنفيذي</h1>
+<p class="font-body-lg text-body-lg text-on-primary-container max-w-md opacity-90">
+                        مرحباً بك في لوحة تحكم القيادة. تابع مؤشرات الأداء، راجع التقارير الاستراتيجية، واتخذ قرارات مدروسة لدعم مسيرة التميز المؤسسي.
+                    </p>
+</div>
+<!-- Abstract Decorative Image -->
+<div class="w-full aspect-video rounded-2xl overflow-hidden institutional-shadow border border-white/10 group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A professional 3D digital illustration representing high-level executive leadership and data analysis. The scene features glowing holographic charts, floating architectural blueprints, and subtle digital networks. The color palette is dominated by deep navy blue and emerald green accents, reflecting a premium institutional brand. Soft, cinematic lighting highlights a futuristic workspace environment for a government or academic system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXC370r0n-PW4hro25x5eOb_7TQ4-nET7hQBnH4_7-l5iT-TlC9MBcVVNsJ90VXoFt5DWbeozo_k1e9SLoz2tuYbidKNJhDbqcc96xt-DOPgbGVCKx81A1w5J3ZxMqv3CQiFhRBZNNIjUO_Pi1LWD8wBRG1xCTi_tSFFvQciWzu4Glql8KYPIJ2dRi8c4A4uJsIk8iMLIaH3ZoXuBemAEuBmxxG28xZn8ubok4EsXpeLI0jH0UodTCRm3nVkb1PYpSBkIvunKc-Hk"/>
+</div>
+<div class="grid grid-cols-2 gap-4 w-full">
+<div class="p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
+<span class="material-symbols-outlined text-secondary-fixed mb-2">insights</span>
+<h4 class="font-label-sm text-label-sm text-white">مؤشرات الأداء</h4>
+<p class="text-xs text-white/60">تحليلات لحظية دقيقة</p>
+</div>
+<div class="p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
+<span class="material-symbols-outlined text-secondary-fixed mb-2">task_alt</span>
+<h4 class="font-label-sm text-label-sm text-white">طلبات الاعتماد</h4>
+<p class="text-xs text-white/60">إدارة التدفقات الإدارية</p>
+</div>
+</div>
+</div>
+<!-- Decorative Accent -->
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 blur-[120px] -mr-32 -mb-32"></div>
+</div>
+<!-- Right Side: Login Card -->
+<div class="flex flex-col items-center justify-center p-8 md:p-20 bg-surface">
+<div class="w-full max-w-md space-y-10">
+<div class="text-center md:text-right space-y-2">
+<h2 class="font-headline-xl text-headline-xl text-primary-container">تسجيل الدخول</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">الوصول المباشر لنظام إدارة المنح والتأهيل</p>
+</div>
+<form class="space-y-6">
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="email">البريد الإلكتروني</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-secondary transition-colors">mail</span>
+<input class="w-full h-14 pr-12 pl-4 bg-surface-container-low border border-outline rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all font-body-md" id="email" name="email" placeholder="admin@dama.gov" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="password">كلمة المرور</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-secondary transition-colors">lock</span>
+<input class="w-full h-14 pr-12 pl-4 bg-surface-container-low border border-outline rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all font-body-md" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 appearance-none rounded border border-outline checked:bg-secondary checked:border-secondary transition-all cursor-pointer" type="checkbox"/>
+<span class="material-symbols-outlined absolute inset-0 text-white opacity-0 peer-checked:opacity-100 flex items-center justify-center text-sm pointer-events-none">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-primary transition-colors">تذكرني</span>
+</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">نسيت كلمة المرور؟</a>
+</div>
+<button class="w-full h-14 bg-primary-container text-white font-title-lg text-title-lg rounded-lg hover:bg-primary transition-all active:scale-[0.98] shadow-lg shadow-primary/10 flex items-center justify-center gap-2" type="submit">
+<span>تسجيل الدخول</span>
+<span class="material-symbols-outlined">login</span>
+</button>
+</form>
+<div class="pt-10 border-t border-outline-variant/30 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant/60 flex items-center justify-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                        Version 1.0.4 - Enterprise Edition
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Security Notice -->
+<footer class="mt-8 max-w-container-max w-full px-6 flex flex-col items-center gap-4">
+<div class="flex items-center gap-3 px-6 py-3 bg-error-container/20 border border-error/10 rounded-full">
+<span class="material-symbols-outlined text-error text-[20px]" style="font-variation-settings: 'FILL' 1;">security</span>
+<p class="font-label-sm text-label-sm text-error/80 text-center">
+                هذه المنصة مخصصة للإدارة التنفيذية فقط، ويتم تسجيل جميع عمليات الدخول والاطلاع داخل النظام.
+            </p>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant/50">© 2024 DAMA Grant &amp; Rehabilitation Management System. All rights reserved.</p>
+</footer>
+<!-- Interactive Layer -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> جارِ التحقق...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> تم الدخول';
+                    btn.classList.replace('bg-primary-container', 'bg-secondary');
+                }, 1500);
+            });
+        });
+    </script>
+</body></html>

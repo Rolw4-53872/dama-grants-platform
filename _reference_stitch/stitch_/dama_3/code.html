@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إدارة المستخدمين | DAMA System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@100..900&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#b1f0ce",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface": "#181c1e",
+                        "tertiary": "#00081a",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#aeeecb",
+                        "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                        "on-secondary-container": "#316e52",
+                        "inverse-on-surface": "#eef1f3",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "on-primary-container": "#7089b3",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#a7c8ff",
+                        "primary-container": "#002045",
+                        "on-tertiary-fixed-variant": "#1f477b",
+                        "on-surface-variant": "#44474e",
+                        "on-tertiary-container": "#6589c1",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-tint": "#465f87",
+                        "tertiary-fixed": "#d5e3ff",
+                        "surface-container-low": "#f1f4f6",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#001b3c",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#002044",
+                        "primary": "#00091b",
+                        "primary-fixed": "#d6e3ff",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#aec7f5",
+                        "surface": "#ffffff",
+                        "on-background": "#181c1e",
+                        "on-primary": "#ffffff",
+                        "accent-line": "#2c694e",
+                        "surface-container-high": "#e5e9eb",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "background": "#f7fafc",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7fafc",
+                        "outline": "#e2e8f0",
+                        "surface-dim": "#d7dadc",
+                        "secondary": "#2c694e",
+                        "surface-container": "#ebeef0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "grid-gutter": "1.5rem",
+                        "card-padding": "2rem",
+                        "section-gap": "4rem",
+                        "element-gap": "2rem"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Cairo"],
+                        "headline-xl": ["Cairo"],
+                        "title-lg": ["Noto Sans Arabic"],
+                        "display-lg": ["Cairo"],
+                        "label-sm": ["Noto Sans Arabic"],
+                        "body-lg": ["Noto Sans Arabic"],
+                        "headline-lg": ["Cairo"],
+                        "body-md": ["Noto Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["72px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "900" }],
+                        "headline-xl": ["36px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "title-lg": ["20px", { "lineHeight": "1.5", "fontWeight": "700" }],
+                        "display-lg": ["128px", { "lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900" }],
+                        "label-sm": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.75", "fontWeight": "500" }],
+                        "headline-lg": ["24px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(circle at 2px 2px, rgba(0, 32, 69, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-on-background antialiased">
+<!-- Sidebar Navigation (Mandatory Styling) -->
+<aside class="fixed top-0 right-0 h-full w-64 bg-primary text-on-primary shadow-xl flex flex-col py-6 z-50 transition-all duration-200 ease-in-out border-l border-outline-variant/10">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-on-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">account_balance</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg leading-none">DAMA</h2>
+<p class="text-[10px] opacity-70 tracking-widest uppercase">Enterprise Admin</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/50 transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2 transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">group</span> User Management
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/50 transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">account_balance</span> Grants
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/50 transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">health_and_safety</span> Rehabilitation
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/50 transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">assessment</span> Reports
+            </a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full bg-on-primary/5 hover:bg-on-primary/10 py-3 rounded-lg flex items-center justify-center gap-2 transition-colors font-label-sm text-label-sm">
+<span class="material-symbols-outlined">help</span> Support Center
+            </button>
+<div class="mt-4 pt-4 border-t border-on-primary/10">
+<a class="flex items-center gap-3 px-4 py-2 text-on-primary/70 hover:text-error transition-colors font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="mr-64 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-surface shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] h-20 flex items-center px-grid-gutter w-full">
+<div class="flex justify-between items-center w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-6">
+<h1 class="font-headline-lg text-headline-lg text-primary">إدارة المستخدمين</h1>
+<div class="h-8 w-[1px] bg-outline"></div>
+<p class="text-on-surface-variant font-body-md text-body-md hidden lg:block">إدارة جميع حسابات المستخدمين وصلاحياتهم داخل نظام المنح والتأهيل.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2 mr-4">
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<div class="flex items-center gap-3 border-r pr-4 border-outline">
+<div class="text-left">
+<p class="text-primary font-bold text-sm">أحمد العلي</p>
+<p class="text-on-surface-variant text-[10px]">مسؤول النظام</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-secondary-fixed object-cover" data-alt="A professional headshot of a middle-aged Arabic man with a clean-cut beard, wearing a formal suit. The portrait is set against a soft, blurred office environment with institutional lighting. The image style is polished and high-end, representing an executive leadership profile in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDffdHOUyvsTipSMxiiOOgwHzNNGe3bAY0WEQizWa6dRIQ8GYPVqixyhb3eIzGpvjq96zZ0CXLDYAgTJjRXw6pDjSwxNafJQrjv02mBKWbxcSLvYh2ID9pDpJjZvqDDvuZUMkcLhZEvHFOtr09fU5SAAA7dtgxuA4c-fXZ9vb3KeHd4Hh_uFhAsIeKLh3OyB_3yhVj4iIZBmMQsHHGJiTX6794rLRmTNVKi4IjWhhezt3pSsy8AZuotPVqSSv-HKwFdFKDhbTnD3xM"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-grid-gutter max-w-container-max mx-auto space-y-element-gap">
+<!-- Page Header Actions -->
+<div class="flex justify-between items-end">
+<div class="space-y-1">
+<p class="text-on-surface-variant font-label-sm text-label-sm">نظرة عامة على النظام</p>
+<h2 class="text-primary font-headline-xl text-headline-xl">المستخدمين والصلاحيات</h2>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-3 rounded-lg flex items-center gap-2 transition-all transform active:scale-95 font-title-lg text-title-lg shadow-lg" onclick="document.getElementById('side-panel').classList.remove('translate-x-full')">
+<span class="material-symbols-outlined">person_add</span>
+<span>إضافة مستخدم جديد</span>
+</button>
+</div>
+<!-- Statistics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Stat Card 1 -->
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline flex items-center gap-5 group hover:border-secondary transition-all">
+<div class="w-14 h-14 bg-primary-fixed text-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px">groups</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm">إجمالي المستخدمين</p>
+<h3 class="text-primary text-3xl font-bold">12</h3>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline flex items-center gap-5 group hover:border-secondary transition-all">
+<div class="w-14 h-14 bg-secondary-fixed text-secondary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px">admin_panel_settings</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm">مسؤولو النظام</p>
+<h3 class="text-primary text-3xl font-bold">4</h3>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline flex items-center gap-5 group hover:border-secondary transition-all">
+<div class="w-14 h-14 bg-tertiary-fixed text-tertiary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px">tv_with_assistant</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm">المديرون التنفيذيون</p>
+<h3 class="text-primary text-3xl font-bold">8</h3>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline flex items-center gap-5 group hover:border-secondary transition-all">
+<div class="w-14 h-14 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px">check_circle</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm">الحسابات النشطة</p>
+<h3 class="text-primary text-3xl font-bold">10</h3>
+</div>
+</div>
+</div>
+<!-- Toolbar Section -->
+<div class="bg-surface institutional-shadow p-4 rounded-xl border border-outline flex flex-wrap gap-4 items-center">
+<div class="flex-1 relative min-w-[300px]">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pr-12 pl-4 py-3 bg-background border-none rounded-lg focus:ring-2 focus:ring-secondary transition-all" placeholder="البحث بالاسم أو البريد الإلكتروني..." type="text"/>
+</div>
+<div class="flex gap-3">
+<select class="bg-background border-none rounded-lg px-4 py-3 min-w-[160px] focus:ring-2 focus:ring-secondary text-sm">
+<option value="">الدور الوظيفي</option>
+<option>مسؤول نظام (Admin)</option>
+<option>مدير تنفيذي (Executive)</option>
+</select>
+<select class="bg-background border-none rounded-lg px-4 py-3 min-w-[160px] focus:ring-2 focus:ring-secondary text-sm">
+<option value="">حالة الحساب</option>
+<option>نشط</option>
+<option>غير نشط</option>
+<option>محظور</option>
+</select>
+<button class="bg-surface border border-outline text-on-surface-variant hover:bg-surface-container px-6 py-3 rounded-lg flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined">filter_list</span>
+<span>فلترة متقدمة</span>
+</button>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-surface institutional-shadow rounded-xl border border-outline overflow-hidden">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline">
+<th class="px-6 py-4 font-bold text-primary text-sm">المستخدم</th>
+<th class="px-6 py-4 font-bold text-primary text-sm">البريد الإلكتروني</th>
+<th class="px-6 py-4 font-bold text-primary text-sm">الدور الوظيفي</th>
+<th class="px-6 py-4 font-bold text-primary text-sm">حالة الحساب</th>
+<th class="px-6 py-4 font-bold text-primary text-sm">آخر دخول</th>
+<th class="px-6 py-4 font-bold text-primary text-sm">الإجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-pointer" onclick="document.getElementById('side-panel').classList.remove('translate-x-full')">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Close-up avatar of a professional woman wearing a dark business blazer. The setting is a clean, bright office with natural lighting. She has a warm, confident expression. High-end photography with institutional soft colors and sharp focus on the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo_psHzT1jbHeWb9iSPsSXG73M7GWyR9ZWbHrOmJptQGPd8vn3LPPDKbEYEy8_azthBhbtjieqgUhSyRjdeqlg_g3lUKYaoej9FrMEAOUWROVYIKjb9FoYCgjcs_5nqCn1MuLV9rgbmlOb35hQ2rctpJrVl5hEpWGghBeC9CKeO_IfxO8xR1-ea0p5zd8Szy9ZAzNBNo8FgmHcmEgpxbLCWinc0ZytCO3o8tcqAy4uIjEvgurF2D1Nar9yo6uUuyCrxQACCa8jJ_o"/>
+<div>
+<p class="font-bold text-primary text-sm">سارة المنصوري</p>
+<p class="text-[11px] text-on-surface-variant">ID: #DAMA-0881</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">s.mansouri@dama.gov.sa</td>
+<td class="px-6 py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Admin</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-sm text-secondary">نشط</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">منذ ساعتين</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">lock_reset</span></button>
+<button class="p-1.5 hover:bg-error/10 text-error rounded transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait of a young male professional in a modern workspace. He is wearing a crisp white shirt with the top button open, standing against a blurred background of architectural lines and indoor plants. Professional lighting highlights a focused and reliable expression." src=""/>
+<div>
+<p class="font-bold text-primary text-sm">خالد الحربي</p>
+<p class="text-[11px] text-on-surface-variant">ID: #DAMA-0422</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">k.harbi@dama.gov.sa</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Executive</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-sm text-secondary">نشط</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">أمس، 04:30 م</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">lock_reset</span></button>
+<button class="p-1.5 hover:bg-error/10 text-error rounded transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Inactive) -->
+<tr class="hover:bg-surface-container-lowest transition-colors group opacity-80">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center font-bold text-on-surface-variant">م.ع</div>
+<div>
+<p class="font-bold text-primary text-sm">منى عسيري</p>
+<p class="text-[11px] text-on-surface-variant">ID: #DAMA-0115</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">m.asiri@dama.gov.sa</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Executive</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<span class="text-sm text-on-surface-variant">غير نشط</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">منذ 3 أيام</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">check_circle</span></button>
+<button class="p-1.5 hover:bg-error/10 text-error rounded transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 (Blocked) -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center font-bold text-error">ف.ص</div>
+<div>
+<p class="font-bold text-primary text-sm">فهد صالح</p>
+<p class="text-[11px] text-on-surface-variant">ID: #DAMA-0099</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">f.saleh@dama.gov.sa</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Executive</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="text-sm text-error font-bold">محظور</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">12 أغسطس 2024</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-1.5 hover:bg-primary-container/10 text-primary rounded transition-colors"><span class="material-symbols-outlined text-sm">undo</span></button>
+<button class="p-1.5 hover:bg-error/10 text-error rounded transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-surface-container-low flex justify-between items-center">
+<p class="text-sm text-on-surface-variant">عرض 1-4 من أصل 12 مستخدم</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline rounded-lg bg-surface disabled:opacity-50"><span class="material-symbols-outlined">chevron_right</span></button>
+<button class="p-2 border border-outline rounded-lg bg-surface"><span class="material-symbols-outlined">chevron_left</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full mt-section-gap border-t border-outline bg-surface-container-lowest py-8 px-grid-gutter">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div>
+<h3 class="font-title-lg text-title-lg text-primary">نظام داما (DAMA)</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1">© 2024 نظام إدارة المنح والتأهيل DAMA. جميع الحقوق محفوظة.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">سياسة الخصوصية</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">شروط الخدمة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">الدليل الإداري</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Details Overlay Panel -->
+<div class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 pointer-events-none" id="side-panel">
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-sm pointer-events-auto" onclick="document.getElementById('side-panel').classList.add('translate-x-full')"></div>
+<div class="absolute top-0 left-0 h-full w-full max-w-lg bg-surface shadow-2xl pointer-events-auto flex flex-col overflow-hidden">
+<div class="p-6 bg-primary text-on-primary flex justify-between items-center">
+<div class="flex items-center gap-4">
+<img class="w-16 h-16 rounded-xl border-2 border-on-primary/20 object-cover shadow-lg" data-alt="Close-up avatar of a professional woman wearing a dark business blazer. The setting is a clean, bright office with natural lighting. She has a warm, confident expression. High-end photography with institutional soft colors and sharp focus on the face." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<div>
+<h3 class="text-xl font-bold">سارة المنصوري</h3>
+<p class="opacity-80 text-sm">مسؤول نظام • رقم الموظف 0881</p>
+</div>
+</div>
+<button class="p-2 hover:bg-white/10 rounded-full transition-colors" onclick="document.getElementById('side-panel').classList.add('translate-x-full')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar-hide p-6 space-y-8">
+<!-- User Permissions -->
+<section class="space-y-4">
+<h4 class="text-primary font-bold border-b border-outline pb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">security</span>
+                        صلاحيات المستخدم
+                    </h4>
+<div class="grid grid-cols-1 gap-3">
+<label class="flex items-center justify-between p-3 bg-background rounded-lg border border-transparent hover:border-secondary transition-all cursor-pointer">
+<span class="text-sm font-semibold">إدارة طلبات المنح</span>
+<input checked="" class="rounded text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 bg-background rounded-lg border border-transparent hover:border-secondary transition-all cursor-pointer">
+<span class="text-sm font-semibold">إدارة العقود والاتفاقيات</span>
+<input checked="" class="rounded text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 bg-background rounded-lg border border-transparent hover:border-secondary transition-all cursor-pointer">
+<span class="text-sm font-semibold">اعتماد الميزانيات التشغيلية</span>
+<input checked="" class="rounded text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 bg-background rounded-lg border border-transparent hover:border-secondary transition-all cursor-pointer">
+<span class="text-sm font-semibold">إدارة سجلات المستخدمين</span>
+<input class="rounded text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 bg-background rounded-lg border border-transparent hover:border-secondary transition-all cursor-pointer">
+<span class="text-sm font-semibold">تعديل إعدادات النظام</span>
+<input class="rounded text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Activity Log -->
+<section class="space-y-4">
+<h4 class="text-primary font-bold border-b border-outline pb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span>
+                        سجل النشاطات
+                    </h4>
+<div class="space-y-6 relative before:absolute before:right-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-outline">
+<div class="relative pr-8">
+<div class="absolute right-0 top-1 w-6 h-6 bg-secondary-fixed rounded-full flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-[12px] text-secondary">update</span>
+</div>
+<p class="text-sm font-bold text-primary">تم تحديث حالة طلب المنحة #991</p>
+<p class="text-[11px] text-on-surface-variant">اليوم، 10:20 ص</p>
+</div>
+<div class="relative pr-8">
+<div class="absolute right-0 top-1 w-6 h-6 bg-primary-fixed rounded-full flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-[12px] text-primary">login</span>
+</div>
+<p class="text-sm font-bold text-primary">تسجيل دخول ناجح للنظام</p>
+<p class="text-[11px] text-on-surface-variant">اليوم، 08:15 ص</p>
+</div>
+<div class="relative pr-8">
+<div class="absolute right-0 top-1 w-6 h-6 bg-tertiary-fixed rounded-full flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-[12px] text-tertiary">description</span>
+</div>
+<p class="text-sm font-bold text-primary">تصدير تقرير الربع السنوي الثاني</p>
+<p class="text-[11px] text-on-surface-variant">أمس، 02:40 م</p>
+</div>
+</div>
+</section>
+</div>
+<div class="p-6 border-t border-outline flex gap-3 bg-surface-container-low">
+<button class="flex-1 bg-secondary text-on-secondary py-3 rounded-lg font-bold hover:brightness-110 transition-all">حفظ التغييرات</button>
+<button class="flex-1 bg-surface border border-outline py-3 rounded-lg font-bold hover:bg-surface-container transition-all" onclick="document.getElementById('side-panel').classList.add('translate-x-full')">إلغاء</button>
+</div>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Placeholder for future interactivity logic
+            console.log('DAMA User Management Page Initialized');
+        });
+    </script>
+</body></html>

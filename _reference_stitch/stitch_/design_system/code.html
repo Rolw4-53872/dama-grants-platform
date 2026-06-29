@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA Management System | Design System Documentation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#002114",
+                    "surface-container-high": "#e5e9eb",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container": "#ebeef0",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "secondary": "#2c694e",
+                    "on-surface": "#181c1e",
+                    "primary-container": "#002045",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-tertiary-fixed": "#001b3c",
+                    "on-primary": "#ffffff",
+                    "background": "#f7fafc",
+                    "tertiary-container": "#002044",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "on-background": "#181c1e",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "tertiary-fixed": "#d5e3ff",
+                    "on-secondary-container": "#316e52",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#aeeecb",
+                    "on-surface-variant": "#44474e",
+                    "surface-tint": "#465f87",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-primary": "#aec7f5",
+                    "surface-dim": "#d7dadc",
+                    "surface-bright": "#f7fafc",
+                    "on-primary-container": "#7089b3",
+                    "secondary-fixed": "#b1f0ce",
+                    "primary": "#00091b",
+                    "surface-container-low": "#f1f4f6",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e0e3e5",
+                    "accent-line": "#2c694e",
+                    "surface": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "outline": "#e2e8f0",
+                    "tertiary": "#00081a",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-tertiary-container": "#6589c1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "2rem",
+                    "section-gap": "4rem",
+                    "grid-gutter": "1.5rem",
+                    "container-max": "1280px",
+                    "element-gap": "2rem"
+            },
+            "fontFamily": {
+                    "body-md": ["Noto Sans Arabic"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"],
+                    "display-lg-mobile": ["Cairo"],
+                    "headline-lg": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"],
+                    "display-lg": ["Cairo"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg-mobile": ["72px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "900"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}],
+                    "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(circle at 2px 2px, rgba(0,32,69,0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Sidebar Shell -->
+<aside class="h-screen w-64 fixed right-0 top-0 bg-surface dark:bg-primary-container shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] flex flex-col h-full py-6 px-4 z-50">
+<div class="mb-10 px-2">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">DAMA System</h1>
+<p class="text-on-surface-variant font-label-sm">Grant Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg transition-colors text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-primary/50" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg transition-colors text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-accent-line bg-surface-container-low" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg transition-colors text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-primary/50" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md">Requests</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 rounded-lg transition-colors text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-primary/50" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-body-md">Projects</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline">
+<button class="w-full bg-primary-container text-on-primary py-3 px-4 rounded-lg flex items-center justify-center gap-2 font-bold hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                New Application
+            </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="mr-64 p-12 min-h-screen">
+<!-- Header -->
+<header class="mb-12">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-2">دليل النظام التصميمي</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">نظام DAMA لإدارة المنح والمؤهلات. يجمع هذا الدليل بين الحداثة المؤسسية والمعايير الأكاديمية الصارمة لضمان تجربة مستخدم متسقة وموثوقة.</p>
+</div>
+<div class="flex gap-4">
+<button class="p-3 rounded-full bg-surface-container shadow-sm hover:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-3 rounded-full bg-surface-container shadow-sm hover:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</div>
+</div>
+</header>
+<!-- 1. Color Palette -->
+<section class="mb-section-gap">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6 flex items-center gap-2">
+<span class="w-8 h-1 bg-accent-line inline-block"></span>
+                لوحة الألوان (Color Palette)
+            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-grid-gutter">
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline">
+<div class="w-full h-32 bg-primary-container rounded-lg mb-4"></div>
+<div class="space-y-1">
+<span class="font-label-sm text-on-surface-variant">Primary Navy</span>
+<div class="flex justify-between items-center">
+<span class="font-title-lg text-primary">#002045</span>
+<span class="text-xs bg-surface-container px-2 py-1 rounded">Institutional</span>
+</div>
+</div>
+</div>
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline">
+<div class="w-full h-32 bg-secondary rounded-lg mb-4"></div>
+<div class="space-y-1">
+<span class="font-label-sm text-on-surface-variant">Secondary Green</span>
+<div class="flex justify-between items-center">
+<span class="font-title-lg text-primary">#2C694E</span>
+<span class="text-xs bg-surface-container px-2 py-1 rounded">Success</span>
+</div>
+</div>
+</div>
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline">
+<div class="w-full h-32 bg-surface-container rounded-lg mb-4 flex items-center justify-center border border-dashed border-outline">
+<span class="text-on-surface-variant font-label-sm">Surface Background</span>
+</div>
+<div class="space-y-1">
+<span class="font-label-sm text-on-surface-variant">Neutral Surface</span>
+<div class="flex justify-between items-center">
+<span class="font-title-lg text-primary">#F7FAFC</span>
+<span class="text-xs bg-surface-container px-2 py-1 rounded">Ambient</span>
+</div>
+</div>
+</div>
+<div class="bg-surface institutional-shadow p-6 rounded-xl border border-outline">
+<div class="w-full h-32 bg-error rounded-lg mb-4"></div>
+<div class="space-y-1">
+<span class="font-label-sm text-on-surface-variant">Semantic Error</span>
+<div class="flex justify-between items-center">
+<span class="font-title-lg text-primary">#BA1A1A</span>
+<span class="text-xs bg-surface-container px-2 py-1 rounded">Alert</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Typography -->
+<section class="mb-section-gap">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6 flex items-center gap-2">
+<span class="w-8 h-1 bg-accent-line inline-block"></span>
+                الخطوط والطباعة (Typography)
+            </h3>
+<div class="bg-surface institutional-shadow rounded-xl border border-outline overflow-hidden">
+<div class="p-card-padding bg-surface-container-low border-b border-outline">
+<h4 class="font-title-lg text-primary">عائلة خط القاهرة (Cairo Family)</h4>
+</div>
+<div class="p-card-padding space-y-10">
+<div class="grid grid-cols-12 items-baseline">
+<div class="col-span-3 font-label-sm text-on-surface-variant">Headline XL (36px)</div>
+<div class="col-span-9 font-headline-xl text-headline-xl text-primary">نظام إدارة المنح والمؤهلات المؤسسي</div>
+</div>
+<div class="grid grid-cols-12 items-baseline">
+<div class="col-span-3 font-label-sm text-on-surface-variant">Headline LG (24px)</div>
+<div class="col-span-9 font-headline-lg text-headline-lg text-primary">تفاصيل الطلبات والمشاريع الحالية</div>
+</div>
+<div class="grid grid-cols-12 items-baseline">
+<div class="col-span-3 font-label-sm text-on-surface-variant">Title LG (20px)</div>
+<div class="col-span-9 font-title-lg text-title-lg text-primary">معلومات المؤسسة المانحة</div>
+</div>
+<div class="grid grid-cols-12 items-baseline">
+<div class="col-span-3 font-label-sm text-on-surface-variant">Body LG (18px) - Noto Sans</div>
+<div class="col-span-9 font-body-lg text-body-lg text-on-surface">يستخدم هذا الخط للنصوص الطويلة والتقارير الرسمية لضمان الوضوح التام للقارئ.</div>
+</div>
+<div class="grid grid-cols-12 items-baseline">
+<div class="col-span-3 font-label-sm text-on-surface-variant">Body MD (16px) - Noto Sans</div>
+<div class="col-span-9 font-body-md text-body-md text-on-surface-variant">تخضع جميع الطلبات المقدمة للتدقيق والتحليل من قبل لجنة الخبراء المختصة.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Buttons & Actions -->
+<section class="mb-section-gap">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6 flex items-center gap-2">
+<span class="w-8 h-1 bg-accent-line inline-block"></span>
+                الأزرار والتفاعلات (Buttons)
+            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-grid-gutter">
+<div class="bg-surface institutional-shadow p-card-padding rounded-xl border border-outline">
+<p class="font-label-sm text-on-surface-variant mb-6">الحالات الافتراضية (Default States)</p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-3 bg-primary-container text-on-primary rounded-lg font-title-lg institutional-shadow transition-transform hover:scale-[0.98]">أساسي (Primary)</button>
+<button class="px-8 py-3 bg-secondary text-on-secondary rounded-lg font-title-lg institutional-shadow transition-transform hover:scale-[0.98]">ثانوي (Secondary)</button>
+<button class="px-8 py-3 border border-outline bg-surface text-primary rounded-lg font-title-lg transition-all hover:bg-surface-container-low">إطار (Outline)</button>
+</div>
+</div>
+<div class="bg-surface institutional-shadow p-card-padding rounded-xl border border-outline">
+<p class="font-label-sm text-on-surface-variant mb-6">أزرار مع أيقونات (With Icons)</p>
+<div class="flex flex-wrap gap-4">
+<button class="px-6 py-3 bg-primary-container text-on-primary rounded-lg flex items-center gap-3 transition-opacity active:opacity-80">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+<span class="font-title-lg">رفع الملفات</span>
+</button>
+<button class="px-6 py-3 bg-secondary-container text-on-secondary-container rounded-lg flex items-center gap-3 transition-colors hover:bg-secondary/20">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-title-lg">تأكيد الإجراء</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container text-primary hover:bg-primary-container hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Form Elements & Status Badges -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-grid-gutter mb-section-gap">
+<!-- Form Elements -->
+<section>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6 flex items-center gap-2">
+<span class="w-8 h-1 bg-accent-line inline-block"></span>
+                    عناصر النماذج (Forms)
+                </h3>
+<div class="bg-surface institutional-shadow p-card-padding rounded-xl border border-outline space-y-6">
+<div class="space-y-2">
+<label class="font-label-sm text-on-surface-variant block">اسم الجهة المتقدمة</label>
+<input class="w-full p-4 rounded-lg bg-surface border border-outline focus:ring-2 focus:ring-primary-container focus:outline-none transition-shadow" placeholder="أدخل اسم المؤسسة..." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-on-surface-variant block">نوع المنحة</label>
+<select class="w-full p-4 rounded-lg bg-surface border border-outline focus:ring-2 focus:ring-primary-container focus:outline-none">
+<option>بحث أكاديمي</option>
+<option>تطوير مؤسسي</option>
+<option>ابتكار تقني</option>
+</select>
+</div>
+<div class="flex items-center gap-4 py-2">
+<label class="relative flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-6 h-6 border-2 border-outline rounded flex items-center justify-center peer-checked:bg-secondary peer-checked:border-secondary transition-all">
+<span class="material-symbols-outlined text-white text-xs opacity-0 peer-checked:opacity-100" data-icon="check">check</span>
+</div>
+<span class="mr-3 font-body-md text-on-surface">أوافق على جميع الشروط والأحكام</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Status Badges -->
+<section>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6 flex items-center gap-2">
+<span class="w-8 h-1 bg-accent-line inline-block"></span>
+                    شارات الحالة (Status)
+                </h3>
+<div class="bg-surface institutional-shadow p-card-padding rounded-xl border border-outline h-full">
+<div class="space-y-8">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+<span class="font-body-md">قيد المراجعة</span>
+<span class="px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                قيد المراجعة
+                            </span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+<span class="font-body-md">مقبول</span>
+<span class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                مقبول
+                            </span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+<span class="font-body-md">مرفوض</span>
+<span class="px-4 py-1.5 rounded-full bg-error-container text-on-error-container font-label-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                                مرفوض
+                            </span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+<span class="font-body-md">يحتاج تعديل</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-surface-variant"></span>
+                                يحتاج تعديل
+                            </span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- 5. Grid & Spacing -->
+<section class="mb-section-gap">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6 flex items-center gap-2">
+<span class="w-8 h-1 bg-accent-line inline-block"></span>
+                الشبكة والمسافات (Grid &amp; Spacing)
+            </h3>
+<div class="bg-surface institutional-shadow p-card-padding rounded-xl border border-outline">
+<div class="grid grid-cols-12 gap-4 h-64 mb-8">
+<!-- Visual representation of the 8px grid -->
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">1</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">2</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">3</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">4</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">5</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">6</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">7</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">8</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">9</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">10</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">11</div>
+<div class="col-span-1 bg-primary-container/5 border border-primary-container/10 rounded flex items-end justify-center pb-2 text-[10px] text-primary-container/40">12</div>
+</div>
+<div class="flex flex-col md:flex-row gap-element-gap">
+<div class="flex-1 space-y-4">
+<h4 class="font-title-lg text-primary">المسافات القياسية</h4>
+<p class="font-body-md text-on-surface-variant">نعتمد نظام الـ 8 بكسل (8px Grid) كقاعدة أساسية لجميع المسافات والحواشي:</p>
+<ul class="space-y-2 list-disc list-inside text-on-surface-variant">
+<li>الهوامش الجانبية: 24px (1.5rem)</li>
+<li>الفراغ بين العناصر الصغيرة: 8px أو 16px</li>
+<li>الحواشي داخل البطاقات: 32px (2rem)</li>
+<li>الفجوات بين الأقسام الرئيسية: 64px (4rem)</li>
+</ul>
+</div>
+<div class="flex-1 flex flex-col justify-center items-center bg-surface-container-low rounded-lg p-8 border border-dashed border-outline">
+<div class="w-32 h-32 bg-primary-container rounded-lg flex items-center justify-center text-white relative">
+<span class="font-label-sm">Element</span>
+<!-- Visual spacing indicators -->
+<div class="absolute -top-4 left-0 w-full flex justify-center"><div class="h-4 border-l border-r border-accent-line flex items-center px-1"><span class="text-[8px] text-accent-line">8px</span></div></div>
+<div class="absolute -right-8 top-0 h-full flex items-center"><div class="w-8 border-t border-b border-accent-line flex flex-col items-center justify-center"><span class="text-[8px] text-accent-line">16px</span></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Note -->
+<footer class="mt-20 py-10 border-t border-outline flex flex-col md:flex-row justify-between items-center text-on-surface-variant">
+<div class="flex items-center gap-4 mb-4 md:mb-0">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center text-white font-bold">D</div>
+<span class="font-title-lg text-primary">DAMA Institutional Design v1.0</span>
+</div>
+<div class="flex gap-8 font-label-sm">
+<span>آخر تحديث: أكتوبر 2023</span>
+<a class="hover:text-primary transition-colors" href="#">اتفاقية الاستخدام</a>
+<a class="hover:text-primary transition-colors" href="#">الدعم الفني</a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Search bar interaction (simulation)
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.classList.add('duration-200');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

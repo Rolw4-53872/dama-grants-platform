@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA Management System - Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Scripts -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "on-tertiary-container": "#6589c1",
+                    "on-secondary-container": "#316e52",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container": "#ebeef0",
+                    "tertiary-fixed": "#d5e3ff",
+                    "on-tertiary-fixed": "#001b3c",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#aeeecb",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-fixed-dim": "#aec7f5",
+                    "surface-container-high": "#e5e9eb",
+                    "surface": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "tertiary": "#00081a",
+                    "on-background": "#181c1e",
+                    "outline": "#e2e8f0",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-primary-fixed": "#001b3c",
+                    "primary": "#00091b",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#465f87",
+                    "surface-container-low": "#f1f4f6",
+                    "secondary": "#2c694e",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "surface-dim": "#d7dadc",
+                    "tertiary-container": "#002044",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#aec7f5",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#002045",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7089b3",
+                    "accent-line": "#2c694e",
+                    "on-secondary-fixed": "#002114",
+                    "on-surface": "#181c1e",
+                    "background": "#f7fafc",
+                    "secondary-fixed": "#b1f0ce",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#44474e",
+                    "primary-fixed": "#d6e3ff",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f7fafc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "element-gap": "2rem",
+                    "grid-gutter": "1.5rem",
+                    "container-max": "1280px",
+                    "card-padding": "2rem",
+                    "section-gap": "4rem"
+            },
+            "fontFamily": {
+                    "label-sm": ["Noto Sans Arabic"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "headline-lg": ["Cairo"],
+                    "display-lg": ["Cairo"],
+                    "display-lg-mobile": ["Cairo"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"]
+            },
+            "fontSize": {
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+                    "display-lg-mobile": ["72px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "900"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(rgba(0, 32, 69, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid #e2e8f0;
+        }
+        .side-nav-active {
+            background-color: #2c694e;
+            color: #ffffff;
+            border-radius: 0.5rem;
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="fixed right-0 top-0 h-full w-64 z-40 bg-primary-container flex flex-col py-6 gap-2 institutional-shadow overflow-y-auto">
+<div class="px-6 mb-8">
+<h1 class="font-headline-xl text-headline-xl text-on-primary-container leading-tight">DAMA</h1>
+<p class="text-on-primary-container/60 font-label-sm text-label-sm">نظام إدارة المنح</p>
+</div>
+<div class="flex flex-col flex-1 gap-1">
+<a class="bg-secondary text-on-secondary rounded-lg mx-2 flex items-center gap-3 py-3 px-4 scale-[0.98] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm">الرئيسية</span>
+</a>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-4 mx-2 hover:bg-primary/10 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm">إدارة الطلبات</span>
+</a>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-4 mx-2 hover:bg-primary/10 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-sm">إدارة العقود</span>
+</a>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-4 mx-2 hover:bg-primary/10 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-sm">إدارة الجمعيات</span>
+</a>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-4 mx-2 hover:bg-primary/10 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm">إدارة المستخدمين</span>
+</a>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-4 mx-2 hover:bg-primary/10 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-sm">التقارير والإحصائيات</span>
+</a>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-4 mx-2 hover:bg-primary/10 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-sm">الإشعارات</span>
+</a>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-4 mx-2 hover:bg-primary/10 transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm">الإعدادات</span>
+</a>
+</div>
+<div class="mt-auto border-t border-on-primary-container/10 pt-4">
+<div class="px-6 flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="text-white font-label-sm">مسؤول النظام</p>
+<p class="text-on-primary-container/50 text-[10px]">لوحة التحكم</p>
+</div>
+</div>
+<a class="text-on-primary-container/70 flex items-center gap-3 py-3 px-6 hover:bg-error/10 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-sm">تسجيل الخروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="mr-64 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 w-full h-20 bg-surface shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] flex justify-between items-center px-8">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full h-11 bg-surface-container-low border-none rounded-lg pr-12 pl-4 font-body-md text-sm focus:ring-2 focus:ring-primary/20" placeholder="البحث في الطلبات، الجمعيات، أو المستخدمين..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<span class="absolute top-2 left-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-3">
+<div class="text-left hidden md:block">
+<p class="font-label-sm text-primary">أحمد العلي</p>
+<p class="text-[11px] text-on-surface-variant">مدير النظام الأساسي</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover border-2 border-outline" data-alt="A professional studio portrait of a high-ranking corporate administrator in a dark navy business suit. The background is a clean, minimalist studio setting with soft directional lighting. The aesthetic is institutional, evoking reliability, trust, and professional integrity. The overall color palette features professional navy tones and soft neutral whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFYq2rjHqsXdcn880ueKS3KJ57h7I7V255z5Vjs4k9vmcuRHBs9c_kxVgR9G7wE1hIidZzGU4LkDRb4KvsaLfhLPgSZa6yHPI7spDf3RZ0VY7nB5FFOzc2v6zo4Qx_HSO--y2kc6FQJxNSb4b63LpFPMMt5X1BugpwQtL1XZaQBhZHMbG0tsHeRkeV7pVQW7iFRwEc6MxBLekGkv29fVpIJR11oAnFeKxUbnwqgTyRMXLj2DSRcL4ezEQi1bmk8bGdW2amvGY7iIg"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8 flex-1">
+<!-- Welcome Section -->
+<section class="relative overflow-hidden rounded-xl bg-primary-container p-8 text-white institutional-shadow">
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-2">مرحباً، مسؤول النظام 👋</h2>
+<p class="opacity-80 font-body-md">اليوم هو الثلاثاء، 12 نوفمبر 2024. إليك ملخص سريع للنشاط اليومي.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/5 min-w-[140px]">
+<p class="text-[11px] opacity-60 mb-1">طلبات جديدة اليوم</p>
+<p class="text-2xl font-bold">12</p>
+</div>
+<div class="bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/5 min-w-[140px]">
+<p class="text-[11px] opacity-60 mb-1">بانتظار المراجعة</p>
+<p class="text-2xl font-bold">45</p>
+</div>
+</div>
+</div>
+
+</section>
+<!-- Quick Actions -->
+<div class="flex flex-wrap gap-4 items-center">
+<button class="bg-secondary text-on-secondary px-6 py-3 rounded-lg font-label-sm flex items-center gap-2 hover:opacity-90 transition-opacity institutional-shadow">
+<span class="material-symbols-outlined">rate_review</span>
+                    مراجعة الطلبات
+                </button>
+<button class="bg-white text-primary border border-outline px-6 py-3 rounded-lg font-label-sm flex items-center gap-2 hover:bg-surface-container-low transition-colors institutional-shadow">
+<span class="material-symbols-outlined">history_edu</span>
+                    إدارة العقود
+                </button>
+<button class="bg-white text-primary border border-outline px-6 py-3 rounded-lg font-label-sm flex items-center gap-2 hover:bg-surface-container-low transition-colors institutional-shadow">
+<span class="material-symbols-outlined">download</span>
+                    تصدير تقرير
+                </button>
+<button class="bg-white text-primary border border-outline px-6 py-3 rounded-lg font-label-sm flex items-center gap-2 hover:bg-surface-container-low transition-colors institutional-shadow">
+<span class="material-symbols-outlined">person_add</span>
+                    إضافة مستخدم
+                </button>
+</div>
+<!-- Statistics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+<!-- Card 1 -->
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed-dim/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+                            +12% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">إجمالي الطلبات</p>
+<h4 class="text-xl font-bold text-primary">1,284</h4>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">new_releases</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+                            +5% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">الطلبات الجديدة</p>
+<h4 class="text-xl font-bold text-primary">45</h4>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed-dim/30 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined">pending_actions</span>
+</div>
+<span class="text-[11px] font-bold text-error flex items-center gap-1">
+                            -2% <span class="material-symbols-outlined text-[14px]">trending_down</span>
+</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">قيد المراجعة</p>
+<h4 class="text-xl font-bold text-primary">156</h4>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<span class="text-[11px] font-bold text-secondary flex items-center gap-1">
+                            +18% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">الطلبات المقبولة</p>
+<h4 class="text-xl font-bold text-primary">892</h4>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">cancel</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface-variant flex items-center gap-1">
+                            0% <span class="material-symbols-outlined text-[14px]">remove</span>
+</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">الطلبات المرفوضة</p>
+<h4 class="text-xl font-bold text-primary">124</h4>
+</div>
+</div>
+<!-- Row 2 Stats -->
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">تحتاج تعديل</p>
+<h4 class="text-xl font-bold text-primary">67</h4>
+</div>
+</div>
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">contract</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">عقود معلقة</p>
+<h4 class="text-xl font-bold text-primary">32</h4>
+</div>
+</div>
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">task_alt</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">عقود مكتملة</p>
+<h4 class="text-xl font-bold text-primary">215</h4>
+</div>
+</div>
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">إجمالي الجمعيات</p>
+<h4 class="text-xl font-bold text-primary">482</h4>
+</div>
+</div>
+<div class="glass-card p-5 rounded-xl institutional-shadow flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+<div>
+<p class="text-on-surface-variant text-[12px] font-label-sm">إجمالي المستخدمين</p>
+<h4 class="text-xl font-bold text-primary">1,120</h4>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 glass-card rounded-xl p-6 institutional-shadow">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-title-lg text-title-lg text-primary">اتجاهات الطلبات الشهرية</h3>
+<select class="bg-surface-container-low border-none rounded-lg text-sm font-label-sm py-1 pr-8 pl-4">
+<option>آخر 12 شهر</option>
+<option>آخر 6 أشهر</option>
+</select>
+</div>
+<div class="h-64">
+<canvas id="lineChart"></canvas>
+</div>
+</div>
+<div class="glass-card rounded-xl p-6 institutional-shadow">
+<h3 class="font-title-lg text-title-lg text-primary mb-6 text-center">توزيع حالة الطلبات</h3>
+<div class="h-64 flex items-center justify-center">
+<canvas id="doughnutChart"></canvas>
+</div>
+</div>
+</section>
+<!-- Table and Activities -->
+<section class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+<!-- Recent Applications Table -->
+<div class="xl:col-span-3 glass-card rounded-xl p-0 overflow-hidden institutional-shadow">
+<div class="p-6 flex justify-between items-center border-b border-outline">
+<h3 class="font-title-lg text-title-lg text-primary">أحدث الطلبات المقدمة</h3>
+<a class="text-secondary text-sm font-bold hover:underline" href="#">عرض الكل</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-right">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-xs font-label-sm uppercase tracking-wider">
+<th class="px-6 py-4">رقم الطلب</th>
+<th class="px-6 py-4">اسم الجمعية</th>
+<th class="px-6 py-4">اسم المشروع</th>
+<th class="px-6 py-4">تاريخ التقديم</th>
+<th class="px-6 py-4">الحالة</th>
+<th class="px-6 py-4">الإجراء</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#DM-8291</td>
+<td class="px-6 py-4 text-sm">جمعية البر الخيرية</td>
+<td class="px-6 py-4 text-sm">ترميم منازل المحتاجين</td>
+<td class="px-6 py-4 text-sm">2024/11/10</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold">جديد</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-secondary font-bold text-xs">عرض التفاصيل</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#DM-8290</td>
+<td class="px-6 py-4 text-sm">جمعية كفيف</td>
+<td class="px-6 py-4 text-sm">دعم ذوي الإعاقة البصرية</td>
+<td class="px-6 py-4 text-sm">2024/11/09</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold">قيد المراجعة</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-secondary font-bold text-xs">عرض التفاصيل</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#DM-8289</td>
+<td class="px-6 py-4 text-sm">جمعية تكاتف</td>
+<td class="px-6 py-4 text-sm">تطوير مهارات الشباب</td>
+<td class="px-6 py-4 text-sm">2024/11/08</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-bold">يحتاج تعديل</span>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:text-secondary font-bold text-xs">عرض التفاصيل</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Recent Activity Timeline -->
+<div class="glass-card rounded-xl p-6 institutional-shadow">
+<h3 class="font-title-lg text-title-lg text-primary mb-6">النشاطات الأخيرة</h3>
+<div class="space-y-6">
+<div class="flex gap-4 relative">
+<div class="absolute right-2.5 top-8 bottom-0 w-px bg-outline-variant"></div>
+<div class="w-5 h-5 rounded-full bg-secondary flex-shrink-0 mt-1 relative z-10"></div>
+<div>
+<p class="text-sm font-bold text-primary">تم تسجيل جمعية جديدة</p>
+<p class="text-xs text-on-surface-variant">جمعية الأمل لرعاية الأيتام</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">منذ 10 دقائق</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="absolute right-2.5 top-8 bottom-0 w-px bg-outline-variant"></div>
+<div class="w-5 h-5 rounded-full bg-primary flex-shrink-0 mt-1 relative z-10"></div>
+<div>
+<p class="text-sm font-bold text-primary">تقديم طلب منحة جديد</p>
+<p class="text-xs text-on-surface-variant">مشروع التعليم المستدام - جمعية نماء</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">منذ ساعتين</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="absolute right-2.5 top-8 bottom-0 w-px bg-outline-variant"></div>
+<div class="w-5 h-5 rounded-full bg-tertiary-fixed-dim flex-shrink-0 mt-1 relative z-10"></div>
+<div>
+<p class="text-sm font-bold text-primary">اعتماد عقد مشروع</p>
+<p class="text-xs text-on-surface-variant">مشروع السلال الغذائية الرمضانية</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">منذ 5 ساعات</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-5 h-5 rounded-full bg-secondary flex-shrink-0 mt-1 relative z-10"></div>
+<div>
+<p class="text-sm font-bold text-primary">تعديل ملف مستخدم</p>
+<p class="text-xs text-on-surface-variant">تحديث صلاحيات مدير الطلبات</p>
+<p class="text-[10px] text-on-surface-variant/60 mt-1">يوم أمس</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-4 border-t border-outline-variant mt-auto">
+<div class="max-w-container-max mx-auto px-8 flex justify-between items-center">
+<p class="text-on-surface-variant text-label-sm font-label-sm">حقوق الطبع والنشر © 2024 DAMA. كافة الحقوق محفوظة.</p>
+<div class="flex gap-4 items-center">
+<span class="text-on-surface-variant text-label-sm font-label-sm">v2.1.0</span>
+<div class="h-4 w-px bg-outline-variant"></div>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">شروط الخدمة</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-label-sm font-label-sm" href="#">سياسة الخصوصية</a>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Charts Initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'الطلبات',
+                        data: [65, 59, 80, 81, 56, 55, 40, 48, 72, 91, 105, 120],
+                        borderColor: '#2c694e',
+                        backgroundColor: 'rgba(44, 105, 78, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f4f6' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+            new Chart(doughnutCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['مقبول', 'قيد المراجعة', 'مرفوض', 'جديد'],
+                    datasets: [{
+                        data: [45, 25, 10, 20],
+                        backgroundColor: ['#2c694e', '#aec7f5', '#ba1a1a', '#002045'],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { family: 'Noto Sans Arabic' } } }
+                    },
+                    cutout: '70%'
+                }
+            });
+        });
+    </script>
+</body></html>

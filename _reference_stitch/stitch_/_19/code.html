@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA - إنشاء حساب جديد</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "surface-tint": "#465f87",
+                    "surface-variant": "#e0e3e5",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-primary-fixed": "#001b3c",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-dim": "#d7dadc",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#002044",
+                    "secondary": "#2c694e",
+                    "inverse-primary": "#aec7f5",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "on-error": "#ffffff",
+                    "outline": "#e2e8f0",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "on-surface": "#181c1e",
+                    "primary-container": "#002045",
+                    "surface": "#ffffff",
+                    "on-tertiary-fixed": "#001b3c",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "on-tertiary-container": "#6589c1",
+                    "on-background": "#181c1e",
+                    "surface-container-high": "#e5e9eb",
+                    "secondary-container": "#aeeecb",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "accent-line": "#2c694e",
+                    "on-surface-variant": "#44474e",
+                    "primary": "#00091b",
+                    "on-secondary-container": "#316e52",
+                    "surface-bright": "#f7fafc",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "surface-container": "#ebeef0",
+                    "on-primary-container": "#7089b3",
+                    "surface-container-highest": "#e0e3e5",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f1f4f6",
+                    "background": "#f7fafc",
+                    "tertiary": "#00081a",
+                    "tertiary-fixed": "#d5e3ff",
+                    "secondary-fixed": "#b1f0ce",
+                    "on-secondary-fixed": "#002114",
+                    "inverse-on-surface": "#eef1f3",
+                    "outline-variant": "#c4c6cf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "4rem",
+                    "grid-gutter": "1.5rem",
+                    "card-padding": "2rem",
+                    "element-gap": "2rem",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Cairo"],
+                    "headline-lg": ["Cairo"],
+                    "display-lg": ["Cairo"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "body-lg": ["Noto Sans Arabic"]
+            },
+            "fontSize": {
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            background-color: #f7fafc;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .cube-pattern {
+            background-image: radial-gradient(#002045 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.03;
+        }
+        .form-input-focus:focus {
+            border-color: #002045;
+            box-shadow: 0 0 0 2px rgba(0, 32, 69, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative">
+<!-- Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none cube-pattern z-0"></div>
+<!-- Layout: Dual-pane split screen -->
+<main class="flex flex-col md:flex-row min-h-screen relative z-10">
+<!-- Left Side: Professional Illustration / Branding -->
+<section class="hidden md:flex md:w-5/12 bg-primary-container relative overflow-hidden flex-col justify-center items-center p-grid-gutter text-center">
+<!-- Animated Shader / Background Element -->
+
+<div class="relative z-20 space-y-8 max-w-md">
+<div class="w-full aspect-video rounded-xl institutional-shadow overflow-hidden border border-white/10 group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A sophisticated digital artwork illustrating institutional growth and collaboration for the DAMA system. It features stylized architectural elements representing structural integrity, interconnected nodes for networking, and soft green pulses of light indicating social impact. The lighting is professional and high-key, using a refined palette of deep navy blue and emerald green. The overall aesthetic is institutional modernism, clean and prestigious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA65hr3OcXlywT5yaZixZ-HiwjWthb5UF0nvUdRIt1rkuCMbsqWEP6BZAt-3rMZ6eZTMTTEqFzjcGo5eIXiA-NwiorL5uaPslCoY_RrZTh22FrQNgnsrj_JuMcjxHMPbsca7asF-MA3QAx8R6qRt8GBJF6Am1GEwhhFiHRae9JJG3KeOHgpLUyBBjlc-rwgQIK9W1nl2-_R-9lYhuxV1IyoiV_wo4bvUQT9snNn-U5KyvBV-_K8WsjBqZvy6oSgoaBgwYhZbaePGuc"/>
+</div>
+<div class="space-y-4 text-surface">
+<h2 class="font-headline-xl text-headline-xl text-primary-fixed">بناء المستقبل المؤسسي</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container opacity-90 leading-relaxed">
+                        نساهم في تمكين الجمعيات والمؤسسات الأهلية عبر نظام ذكي يدير المنح والتأهيل بكفاءة وشفافية عالية.
+                    </p>
+</div>
+<div class="flex justify-center gap-4 pt-4">
+<div class="flex items-center gap-2 text-secondary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">حوكمة شفافة</span>
+</div>
+<div class="flex items-center gap-2 text-secondary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">تأهيل مستدام</span>
+</div>
+</div>
+</div>
+<!-- Subtle Decorative Circle -->
+<div class="absolute -bottom-20 -left-20 w-80 h-80 border-4 border-white/5 rounded-full"></div>
+<div class="absolute -top-10 -right-10 w-40 h-40 border border-white/10 rounded-full"></div>
+</section>
+<!-- Right Side: Registration Form Container -->
+<section class="flex-1 flex flex-col items-center justify-center p-grid-gutter bg-surface">
+<!-- Simple Top Nav (Back Button) -->
+<nav class="absolute top-0 right-0 left-0 h-16 flex items-center px-grid-gutter justify-between max-w-container-max mx-auto w-full">
+<div class="flex items-center gap-2 group cursor-pointer text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+<span class="font-label-sm text-label-sm">صفحة التعريف بالبرنامج</span>
+</div>
+<div class="md:hidden">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">DAMA</h1>
+</div>
+</nav>
+<!-- Card -->
+<div class="w-full max-w-xl institutional-shadow bg-surface border border-outline rounded-xl p-card-padding mt-16 md:mt-0 animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="text-center mb-8">
+<div class="mb-4 inline-block">
+<h1 class="font-display-lg text-[40px] font-extrabold tracking-tight text-primary">DAMA</h1>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-2">إنشاء حساب جديد</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto">
+                        أنشئ حساب جمعيتك لبدء تقديم طلبات المنح والتأهيل ومتابعتها إلكترونيًا.
+                    </p>
+</div>
+<!-- Form -->
+<form class="space-y-element-gap/2" onsubmit="event.preventDefault()">
+<!-- Association Name -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5 col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant pr-1">اسم الجمعية</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary">corporate_fare</span>
+<input class="w-full pr-10 py-3 bg-surface border border-outline rounded-lg font-body-md text-body-md form-input-focus transition-all" placeholder="أدخل اسم الجمعية الرسمي" type="text"/>
+</div>
+</div>
+<!-- License Number -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant pr-1">رقم الترخيص</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary">badge</span>
+<input class="w-full pr-10 py-3 bg-surface border border-outline rounded-lg font-body-md text-body-md form-input-focus transition-all" placeholder="123456" type="text"/>
+</div>
+</div>
+<!-- Mobile Number -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant pr-1">رقم الجوال</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary">phone</span>
+<input class="w-full pr-10 py-3 bg-surface border border-outline rounded-lg font-body-md text-body-md text-right form-input-focus transition-all" dir="ltr" placeholder="05xxxxxxxx" type="tel"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-1.5 col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant pr-1">البريد الإلكتروني</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary">mail</span>
+<input class="w-full pr-10 py-3 bg-surface border border-outline rounded-lg font-body-md text-body-md text-right form-input-focus transition-all" dir="ltr" placeholder="example@org.sa" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant pr-1">كلمة المرور</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary">lock</span>
+<input class="w-full pr-10 py-3 bg-surface border border-outline rounded-lg font-body-md text-body-md form-input-focus transition-all" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant pr-1">تأكيد كلمة المرور</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary">lock_reset</span>
+<input class="w-full pr-10 py-3 bg-surface border border-outline rounded-lg font-body-md text-body-md form-input-focus transition-all" placeholder="••••••••" type="password"/>
+</div>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 py-2">
+<input class="mt-1 w-4 h-4 rounded text-primary focus:ring-primary border-outline" id="terms" type="checkbox"/>
+<label class="font-body-md text-[14px] text-on-surface-variant" for="terms">
+                            أوافق على <a class="text-secondary font-bold hover:underline" href="#">الشروط والأحكام</a> و <a class="text-secondary font-bold hover:underline" href="#">سياسة الخصوصية</a> الخاصة بنظام داما.
+                        </label>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary-container text-white font-title-lg text-title-lg py-4 rounded-lg institutional-shadow hover:bg-primary transition-all active:scale-[0.98] focus:ring-4 focus:ring-primary-fixed">
+                        إنشاء الحساب
+                    </button>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 text-center border-t border-outline pt-6">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        لديك حساب بالفعل؟ 
+                        <a class="text-primary font-bold hover:underline" href="#">تسجيل الدخول</a>
+</p>
+</div>
+</div>
+<!-- Bottom Support Text -->
+<div class="mt-8 flex items-center gap-2 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span class="font-label-sm text-label-sm">هل تواجه مشكلة؟ تواصل مع الدعم الفني</span>
+</div>
+</section>
+</main>
+<!-- Footer Copyright (Simple) -->
+<footer class="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-40">
+            © 2024 نظام داما لإدارة المنح والتأهيل. جميع الحقوق محفوظة.
+        </p>
+</footer>
+<script>
+        // Simple micro-interaction for form inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

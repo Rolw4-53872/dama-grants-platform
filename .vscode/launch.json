@@ -1,0 +1,16 @@
+{
+    // استخدم IntelliSense لمعرفة المزيد عن السمات الممكنة.
+    // أشر لعرض وصف السمات الموجودة.
+    // لمزيد من المعلومات، قم بزيارة: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        
+        {
+            "type": "editor-browser",
+            "request": "launch",
+            "name": "Open account.html",
+            "url": "file:///c%3A/Users/RolaA/Desktop/%D9%85%D9%86%D8%B5%D8%A9%20%D8%AF%D8%A7%D9%85%D8%A7%20%D9%84%D9%84%D9%85%D9%86%D8%AD%20%D9%88%D8%A7%D9%84%D8%AA%D8%A7%D9%87%D9%8A%D9%84/pages/account.html"
+        }
+    ]
+}

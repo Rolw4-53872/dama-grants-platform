@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@100..900&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#c4c6cf",
+                        "secondary-fixed": "#b1f0ce",
+                        "tertiary": "#00081a",
+                        "secondary-container": "#aeeecb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f7fafc",
+                        "on-surface": "#181c1e",
+                        "inverse-on-surface": "#eef1f3",
+                        "tertiary-fixed": "#d5e3ff",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-container-low": "#f1f4f6",
+                        "on-primary-fixed": "#001b3c",
+                        "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                        "accent-line": "#2c694e",
+                        "on-background": "#181c1e",
+                        "on-secondary-container": "#316e52",
+                        "surface": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#7089b3",
+                        "tertiary-container": "#002044",
+                        "secondary": "#2c694e",
+                        "surface-variant": "#e0e3e5",
+                        "primary-container": "#002045",
+                        "on-surface-variant": "#44474e",
+                        "on-tertiary-fixed-variant": "#1f477b",
+                        "on-primary": "#ffffff",
+                        "outline": "#e2e8f0",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#6589c1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#002114",
+                        "on-tertiary-fixed": "#001b3c",
+                        "primary-fixed": "#d6e3ff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#a7c8ff",
+                        "surface-tint": "#465f87",
+                        "background": "#f7fafc",
+                        "surface-container": "#ebeef0",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "inverse-primary": "#aec7f5",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d7dadc",
+                        "surface-container-high": "#e5e9eb",
+                        "primary": "#00091b",
+                        "primary-fixed-dim": "#aec7f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Cairo"],
+                        "display-lg": ["Cairo"],
+                        "title-lg": ["Noto Sans Arabic"],
+                        "label-sm": ["Noto Sans Arabic"],
+                        "headline-lg": ["Cairo"],
+                        "body-lg": ["Noto Sans Arabic"],
+                        "body-md": ["Noto Sans Arabic"],
+                        "display-lg-mobile": ["Cairo"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Noto Sans Arabic', sans-serif; background-color: #f7fafc; }
+        .font-cairo { font-family: 'Cairo', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .step-active { color: #002045; border-color: #002045; }
+        .step-inactive { color: #44474e; border-color: #e2e8f0; }
+        input, select, textarea { transition: all 0.2s ease-in-out; }
+        input:focus, select:focus, textarea:focus { border-color: #002045 !important; ring: 0 !important; outline: none !important; box-shadow: 0 0 0 2px rgba(0, 32, 69, 0.1); }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation (Shared Component Integration) -->
+<aside class="hidden lg:flex w-72 flex-col bg-surface border-l border-outline sticky top-0 h-screen overflow-y-auto">
+<div class="p-6 flex items-center gap-3 border-b border-outline">
+<div class="size-8 bg-primary-container rounded flex items-center justify-center text-on-primary">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-primary font-cairo text-xl font-bold tracking-tight">DAMA</h2>
+</div>
+<div class="flex-1 px-4 py-6 space-y-2">
+<div class="text-xs font-bold text-on-surface-variant px-4 mb-4 uppercase tracking-wider">القائمة الرئيسية</div>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">لوحة التحكم</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-container text-on-primary shadow-sm transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="text-sm font-medium">الطلبات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">المنح</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">التقارير</span>
+</a>
+<div class="pt-6 border-t border-outline mt-6">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">الإعدادات</span>
+</a>
+</div>
+</div>
+<div class="p-4 m-4 bg-surface-container-low rounded-2xl border border-outline">
+<div class="flex items-center gap-3 mb-3">
+<div class="bg-secondary text-on-secondary text-[10px] px-2 py-0.5 rounded-full font-bold">نشط</div>
+<div class="text-xs text-on-surface-variant">طلب مكتمل بنسبة 40%</div>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 40%"></div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Top Bar -->
+<header class="h-16 border-b border-outline bg-surface flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">arrow_forward_ios</span>
+<span class="text-sm font-medium">الطلبات</span>
+<span class="text-sm opacity-50">/</span>
+<span class="text-sm font-bold text-on-surface">تقديم طلب منحة جديد</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-outline"></div>
+<div class="flex items-center gap-3">
+<div class="text-left hidden sm:block">
+<p class="text-xs font-bold text-on-surface">أحمد السعيد</p>
+<p class="text-[10px] text-on-surface-variant">مدير مشروع</p>
+</div>
+<div class="size-9 rounded-full bg-surface-container-highest border border-outline overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a smiling middle-eastern man in corporate business attire, captured in a brightly lit modern office setting with soft natural light and a shallow depth of field. The style is clean, high-resolution, and professional, maintaining a sophisticated blue and white color palette to match the DAMA branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtjlSCZK4MtN1F2aSwpBKpXGcov6tsHe_gSLOxaCSDAERkswz1UL9eAcZWM_S2Va5VA1YFKaF2BEGLLENWpqfAKBfnzJfgxDpbF54sVVkR9XM2Mf5QwpmaY4vKFZQNP1fpBzmXcJ15QdSq7wwMAG9AAnSiXA7BSUKl0joeXoJdb824m9cxdfCa99vAWgaulLgaLMZzpSPWrK_d73jnDx2QK9pmSOL5dlycHknzaxwbL29vTNxaFRNkA1KFapXJs4ekrdCrEADXXjY"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Progress Stepper Header -->
+<div class="bg-surface border-b border-outline px-8 py-10">
+<div class="max-w-5xl mx-auto w-full">
+<div class="flex items-center justify-between relative">
+<!-- Progress Line Background -->
+<div class="absolute top-5 right-0 left-0 h-[2px] bg-outline-variant -z-10 mx-6"></div>
+<!-- Progress Line Active -->
+<div class="absolute top-5 right-0 h-[2px] bg-secondary -z-10 mx-6 transition-all duration-500" style="width: 25%"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center gap-3">
+<div class="size-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined">check</span>
+</div>
+<span class="text-sm font-bold text-on-surface">البيانات الأساسية</span>
+</div>
+<!-- Step 2 (Active) -->
+<div class="flex flex-col items-center gap-3">
+<div class="size-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-lg ring-4 ring-primary-container/20">
+<span class="text-sm font-bold">٢</span>
+</div>
+<span class="text-sm font-bold text-primary">بيانات المشروع</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-3 opacity-60">
+<div class="size-10 rounded-full bg-surface border-2 border-outline-variant text-on-surface-variant flex items-center justify-center">
+<span class="text-sm font-bold">٣</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">الميزانية والجدول</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-3 opacity-60">
+<div class="size-10 rounded-full bg-surface border-2 border-outline-variant text-on-surface-variant flex items-center justify-center">
+<span class="text-sm font-bold">٤</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">المرفقات والوثائق</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Scrollable Form Area -->
+<div class="flex-1 overflow-y-auto p-8 bg-surface-container-lowest">
+<div class="max-w-4xl mx-auto">
+<div class="bg-surface rounded-3xl border border-outline shadow-sm overflow-hidden mb-24">
+<!-- Section Header -->
+<div class="p-8 border-b border-outline flex items-center gap-4 bg-surface-container-low">
+<div class="size-12 rounded-2xl bg-primary-container/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+</div>
+<div>
+<h1 class="text-2xl font-bold font-cairo text-primary">بيانات المشروع التفصيلية</h1>
+<p class="text-on-surface-variant text-sm mt-1">يرجى تقديم معلومات دقيقة حول المشروع المقترح لضمان عملية التقييم.</p>
+</div>
+</div>
+<!-- Form Grid -->
+<form class="p-8 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Project Name -->
+<div class="col-span-full">
+<label class="block text-sm font-bold text-on-surface mb-2">اسم المشروع <span class="text-error">*</span></label>
+<input class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium" placeholder="مثلاً: مشروع تمكين الشباب الرقمي" type="text"/>
+</div>
+<!-- Project Type -->
+<div>
+<label class="block text-sm font-bold text-on-surface mb-2">نوع المشروع <span class="text-error">*</span></label>
+<select class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium appearance-none">
+<option disabled="" selected="" value="">اختر النوع...</option>
+<option>تعليمي / تدريبي</option>
+<option>صحي / رعاية</option>
+<option>تنموي مستدام</option>
+<option>إغاثي عاجل</option>
+<option>تقني / رقمي</option>
+</select>
+</div>
+<!-- Target Group -->
+<div>
+<label class="block text-sm font-bold text-on-surface mb-2">الفئة المستهدفة <span class="text-error">*</span></label>
+<input class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium" placeholder="مثلاً: طلاب الجامعات" type="text"/>
+</div>
+<!-- Project Value -->
+<div>
+<label class="block text-sm font-bold text-on-surface mb-2">قيمة التمويل المطلوب <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium pl-16" placeholder="0.00" type="number"/>
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-secondary">SAR</span>
+</div>
+</div>
+<!-- Duration -->
+<div>
+<label class="block text-sm font-bold text-on-surface mb-2">مدة التنفيذ (بالأشهر) <span class="text-error">*</span></label>
+<input class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium" placeholder="مثلاً: 12" type="number"/>
+</div>
+<!-- City -->
+<div>
+<label class="block text-sm font-bold text-on-surface mb-2">مدينة التنفيذ <span class="text-error">*</span></label>
+<input class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium" data-location="Riyadh" placeholder="اسم المدينة" type="text"/>
+</div>
+<!-- Beneficiaries -->
+<div>
+<label class="block text-sm font-bold text-on-surface mb-2">عدد المستفيدين المباشرين <span class="text-error">*</span></label>
+<input class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium" placeholder="أدخل العدد المقدر" type="number"/>
+</div>
+<!-- Description -->
+<div class="col-span-full">
+<label class="block text-sm font-bold text-on-surface mb-2">وصف المشروع <span class="text-error">*</span></label>
+<textarea class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium resize-none" placeholder="قدم وصفاً شاملاً لفكرة المشروع وآلية التنفيذ..." rows="4"></textarea>
+</div>
+<!-- Objectives -->
+<div class="col-span-full">
+<label class="block text-sm font-bold text-on-surface mb-2">الأهداف الاستراتيجية <span class="text-error">*</span></label>
+<textarea class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium resize-none" placeholder="ما هي النتائج التي يطمح المشروع لتحقيقها؟" rows="3"></textarea>
+</div>
+<!-- Expected Outputs -->
+<div class="col-span-full">
+<label class="block text-sm font-bold text-on-surface mb-2">المخرجات المتوقعة <span class="text-error">*</span></label>
+<textarea class="w-full px-5 py-3.5 rounded-xl border border-outline bg-surface text-on-surface text-md font-medium resize-none" placeholder="قائمة بالمخرجات الملموسة في نهاية المشروع..." rows="3"></textarea>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Footer Action Bar -->
+<footer class="h-24 bg-surface border-t border-outline flex items-center justify-between px-8 sticky bottom-0 z-10 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<div class="max-w-4xl mx-auto w-full flex items-center justify-between">
+<div class="flex gap-4">
+<button class="px-8 py-3.5 rounded-xl bg-surface border border-outline text-on-surface font-bold text-md hover:bg-surface-container transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">arrow_forward</span>
+                        السابق
+                    </button>
+<button class="px-8 py-3.5 rounded-xl bg-surface-container-highest text-primary font-bold text-md hover:bg-outline-variant transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                        حفظ كمسودة
+                    </button>
+</div>
+<button class="px-12 py-3.5 rounded-xl bg-primary-container text-on-primary font-bold text-md hover:opacity-90 shadow-lg shadow-primary-container/20 transition-all flex items-center gap-2">
+                    التالي
+                    <span class="material-symbols-outlined">arrow_back</span>
+</button>
+</div>
+</footer>
+</main>
+</div>
+<!-- Atmospheric Overlay Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Add subtle animation to form elements on focus
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+                input.parentElement.style.transition = 'transform 0.2s ease-out';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Simple stepper interaction simulation
+        const nextBtn = document.querySelector('button.bg-primary-container');
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // In a real app, this would validate and route
+            alert('يتم الآن حفظ البيانات والانتقال للمرحلة التالية...');
+        });
+    });
+</script>
+</body></html>

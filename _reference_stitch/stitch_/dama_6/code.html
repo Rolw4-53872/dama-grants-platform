@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إعدادات النظام | بوابة داما</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e5e9eb",
+                    "on-secondary": "#ffffff",
+                    "surface": "#ffffff",
+                    "surface-container": "#ebeef0",
+                    "outline-variant": "#c4c6cf",
+                    "tertiary-fixed": "#d5e3ff",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "on-secondary-container": "#316e52",
+                    "on-tertiary-container": "#6589c1",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-tertiary-fixed": "#001b3c",
+                    "secondary-container": "#aeeecb",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "primary": "#00091b",
+                    "surface-tint": "#465f87",
+                    "surface-container-low": "#f1f4f6",
+                    "surface-dim": "#d7dadc",
+                    "secondary": "#2c694e",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "outline": "#e2e8f0",
+                    "on-background": "#181c1e",
+                    "tertiary": "#00081a",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-surface": "#181c1e",
+                    "on-secondary-fixed": "#002114",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#002044",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7089b3",
+                    "accent-line": "#2c694e",
+                    "primary-container": "#002045",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#aec7f5",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7fafc",
+                    "secondary-fixed": "#b1f0ce",
+                    "background": "#f7fafc",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "inverse-on-surface": "#eef1f3",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#44474e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "4rem",
+                    "grid-gutter": "1.5rem",
+                    "container-max": "1280px",
+                    "card-padding": "2rem",
+                    "element-gap": "2rem"
+            },
+            "fontFamily": {
+                    "display-lg": ["Cairo"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "headline-lg": ["Cairo"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(rgba(0, 32, 69, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .settings-nav-item.active {
+            background-color: #002045;
+            color: white;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopAppBar Navigation -->
+<nav class="flex flex-row-reverse justify-between items-center px-grid-gutter w-full h-16 sticky top-0 z-50 bg-surface shadow-sm border-b border-outline">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-start rtl">
+<span class="font-bold text-primary font-headline-lg text-headline-lg">DAMA Grant Management</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">help_outline</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="font-bold text-sm">مدير النظام</p>
+<p class="text-xs text-on-surface-variant">Log Out</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">AD</div>
+</div>
+</div>
+</nav>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- SideNavBar (Right) -->
+<aside class="fixed right-0 top-16 h-[calc(100vh-64px)] w-72 bg-primary text-on-primary shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] z-40 overflow-y-auto rtl flex flex-col">
+<div class="p-6 border-b border-white/10">
+<h2 class="font-headline-xl text-headline-xl text-white font-bold">نظام داما</h2>
+<p class="text-white/60 text-sm mt-1">بوابة المسؤول</p>
+</div>
+<nav class="flex-1 py-4 px-2 space-y-1">
+<a class="flex flex-row-reverse items-center gap-4 text-white/70 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">لوحة التحكم</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 text-white/70 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md text-body-md">طلبات المنح</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 text-white/70 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-body-md text-body-md">إدارة الجمعيات</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 text-white/70 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">إدارة المستخدمين</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 text-white/70 hover:text-white hover:bg-white/10 px-4 py-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">التقارير والتحليلات</span>
+</a>
+<a class="flex flex-row-reverse items-center gap-4 bg-secondary text-white rounded-lg px-4 py-3 my-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">إعدادات النظام</span>
+</a>
+</nav>
+<div class="p-4 border-t border-white/10 mt-auto">
+<a class="flex flex-row-reverse items-center gap-4 text-white/70 hover:text-white px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="text-sm">الدعم الفني</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area (Left) -->
+<main class="mr-72 flex-1 overflow-y-auto custom-scrollbar bg-background">
+<!-- Page Header -->
+<div class="bg-surface px-10 py-8 border-b border-outline">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-2">إعدادات النظام</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">إدارة جميع إعدادات نظام إدارة المنح والتأهيل وتخصيص تجربة المستخدم.</p>
+</div>
+<!-- Split Screen Content -->
+<div class="max-w-container-max mx-auto px-10 py-10 flex gap-8 rtl">
+<!-- Inner Sidebar Menu (Secondary Nav) -->
+<aside class="w-64 flex-shrink-0">
+<div class="bg-surface institutional-shadow rounded-lg p-2 sticky top-24">
+<nav class="space-y-1">
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-white font-bold transition-all">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span>الإعدادات العامة</span>
+</button>
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">palette</span>
+<span>الهوية البصرية</span>
+</button>
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">manage_accounts</span>
+<span>الحساب الشخصي</span>
+</button>
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">notifications_active</span>
+<span>التنبيهات</span>
+</button>
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">security</span>
+<span>الأمان والخصوصية</span>
+</button>
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">backup</span>
+<span>النسخ الاحتياطي</span>
+</button>
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">history_edu</span>
+<span>سجلات التدقيق</span>
+</button>
+<button class="w-full text-right flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">info</span>
+<span>حول النظام</span>
+</button>
+</nav>
+</div>
+</aside>
+<!-- Cards Column -->
+<div class="flex-1 space-y-10">
+<!-- General Settings -->
+<section class="bg-surface institutional-shadow rounded-lg overflow-hidden" id="general">
+<div class="p-card-padding border-b border-outline flex justify-between items-center bg-surface-bright">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined">settings_suggest</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">الإعدادات العامة</h3>
+</div>
+</div>
+<div class="p-card-padding grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">اسم النظام</label>
+<input class="w-full border border-outline rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="text" value="نظام داما لإدارة المنح"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">اسم المؤسسة</label>
+<input class="w-full border border-outline rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="text" value="مؤسسة داما للتنمية"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">البريد الإلكتروني الرسمي</label>
+<input class="w-full border border-outline rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="email" value="admin@dama-grants.org"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">رقم الهاتف</label>
+<input class="w-full border border-outline rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="text" value="+966 500 000 000"/>
+</div>
+<div class="col-span-2 space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">العنوان الجغرافي</label>
+<textarea class="w-full border border-outline rounded-lg px-4 py-3 h-24 focus:ring-2 focus:ring-primary focus:border-transparent outline-none resize-none">الرياض، المملكة العربية السعودية - حي المروج، طريق الملك فهد</textarea>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">المنطقة الزمنية</label>
+<select class="w-full border border-outline rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface">
+<option>(GMT+03:00) Riyadh</option>
+<option>(GMT+02:00) Cairo</option>
+<option>(GMT+04:00) Dubai</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">لغة الواجهة الافتراضية</label>
+<select class="w-full border border-outline rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface">
+<option>العربية (RTL)</option>
+<option>English (LTR)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Brand Identity Card -->
+<section class="bg-surface institutional-shadow rounded-lg overflow-hidden" id="identity">
+<div class="p-card-padding border-b border-outline bg-surface-bright flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">الهوية البصرية</h3>
+</div>
+<div class="p-card-padding space-y-8">
+<div class="flex items-start gap-12">
+<div class="flex flex-col items-center gap-4">
+<div class="w-32 h-32 rounded-xl border-2 border-dashed border-outline flex flex-col items-center justify-center bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="text-primary font-bold text-2xl">DAMA</div>
+<p class="text-[10px] text-on-surface-variant mt-2 text-center">شعار النظام</p>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">تغيير الشعار</button>
+</div>
+<div class="flex-1 grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<p class="font-bold text-sm">الألوان الرئيسية</p>
+<div class="flex gap-4">
+<div class="flex flex-col gap-2">
+<div class="w-12 h-12 rounded-lg bg-primary border border-outline"></div>
+<span class="text-[10px] text-center font-mono">#002045</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="w-12 h-12 rounded-lg bg-secondary border border-outline"></div>
+<span class="text-[10px] text-center font-mono">#2C694E</span>
+</div>
+<div class="w-12 h-12 rounded-lg border-2 border-dashed border-outline flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-outline-variant">add</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-bold text-sm">خطوط النظام</p>
+<div class="space-y-2">
+<div class="flex justify-between items-center p-3 border border-outline rounded-lg">
+<span class="font-display-lg text-sm">العناوين: Cairo</span>
+<span class="material-symbols-outlined text-sm text-outline-variant">edit</span>
+</div>
+<div class="flex justify-between items-center p-3 border border-outline rounded-lg">
+<span class="font-body-md text-sm">النصوص: Noto Sans Arabic</span>
+<span class="material-symbols-outlined text-sm text-outline-variant">edit</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Personal Account Card -->
+<section class="bg-primary text-white institutional-shadow rounded-lg overflow-hidden" id="account">
+<div class="p-card-padding flex justify-between items-center border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+<h3 class="font-title-lg text-title-lg">بيانات الحساب الشخصي</h3>
+</div>
+<span class="bg-secondary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Super Admin</span>
+</div>
+<div class="p-card-padding flex items-center gap-8">
+<div class="relative">
+<div class="w-24 h-24 rounded-full bg-surface-container-highest flex items-center justify-center text-primary text-3xl font-bold border-4 border-white/20">AD</div>
+<button class="absolute bottom-0 right-0 w-8 h-8 bg-secondary rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm text-white">camera_alt</span>
+</button>
+</div>
+<div class="flex-1 grid grid-cols-2 gap-4">
+<div>
+<p class="text-white/60 text-xs mb-1">الاسم الكامل</p>
+<p class="font-bold">أحمد الداوود</p>
+</div>
+<div>
+<p class="text-white/60 text-xs mb-1">البريد الإلكتروني</p>
+<p class="font-bold">a.dawood@dama-portal.gov.sa</p>
+</div>
+<div class="col-span-2 pt-4 flex gap-4">
+<button class="bg-white text-primary px-6 py-2 rounded-lg font-bold text-sm hover:bg-white/90 transition-colors">تحديث البيانات</button>
+<button class="border border-white/30 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-white/10 transition-colors">تغيير كلمة المرور</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Notifications Card -->
+<section class="bg-surface institutional-shadow rounded-lg overflow-hidden" id="notifications">
+<div class="p-card-padding border-b border-outline bg-surface-bright flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed-dim flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">إعدادات التنبيهات</h3>
+</div>
+<div class="p-card-padding space-y-6">
+<div class="flex justify-between items-center p-4 border border-outline rounded-xl hover:bg-surface-container-lowest transition-colors">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">request_page</span>
+<div>
+<p class="font-bold text-primary">تنبيهات الطلبات الجديدة</p>
+<p class="text-xs text-on-surface-variant">إرسال إشعار فوري عند استلام طلب منحة جديد من الجمعيات.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:-translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex justify-between items-center p-4 border border-outline rounded-xl hover:bg-surface-container-lowest transition-colors">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">history_edu</span>
+<div>
+<p class="font-bold text-primary">تنبيهات العقود</p>
+<p class="text-xs text-on-surface-variant">إشعار عند اقتراب موعد انتهاء عقد أو اتفاقية منحة.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:-translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex justify-between items-center p-4 border border-outline rounded-xl hover:bg-surface-container-lowest transition-colors">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary">person_add</span>
+<div>
+<p class="font-bold text-primary">تسجيل المستخدمين</p>
+<p class="text-xs text-on-surface-variant">تنبيه عند تسجيل مستخدم جديد يتطلب تفعيل حسابه.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:-translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Security Card -->
+<section class="bg-surface institutional-shadow rounded-lg overflow-hidden border border-error-container/30" id="security">
+<div class="p-card-padding border-b border-outline bg-surface-bright flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined">security</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">الأمان والخصوصية</h3>
+</div>
+</div>
+<div class="p-card-padding space-y-6">
+<div class="flex justify-between items-center p-4 bg-surface-container-low rounded-xl">
+<div>
+<p class="font-bold text-primary">المصادقة الثنائية (2FA)</p>
+<p class="text-xs text-on-surface-variant">إضافة طبقة حماية إضافية لحسابات المسؤولين.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:-translate-x-full rtl:peer-checked:after:-translate-x-full after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="grid grid-cols-2 gap-6 items-center">
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant">مدة صلاحية الجلسة</label>
+<select class="w-full border border-outline rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none bg-surface">
+<option>30 دقيقة</option>
+<option>ساعة واحدة</option>
+<option>4 ساعات</option>
+<option>يوم كامل</option>
+</select>
+</div>
+<div class="flex items-end h-full">
+<button class="w-full border border-error text-error px-4 py-3 rounded-lg font-bold text-sm hover:bg-error/5 transition-colors">تسجيل الخروج من جميع الأجهزة</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Backup Card -->
+<section class="bg-surface institutional-shadow rounded-lg overflow-hidden" id="backup">
+<div class="p-card-padding border-b border-outline bg-surface-bright flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined">backup</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">النسخ الاحتياطي والاستعادة</h3>
+</div>
+<div class="p-card-padding">
+<div class="bg-surface-container-lowest border border-outline p-6 rounded-xl flex items-center justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">cloud_done</span>
+</div>
+<div>
+<p class="font-bold text-primary">آخر نسخة احتياطية</p>
+<p class="text-sm text-on-surface-variant">اليوم، الساعة 03:45 صباحاً (حجم: 1.2 جيجابايت)</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-sm">add_to_photos</span>
+                                        إنشاء نسخة الآن
+                                    </button>
+<button class="flex items-center gap-2 border border-outline text-on-surface-variant px-4 py-2 rounded-lg text-sm font-bold hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                                        تحميل النسخة
+                                    </button>
+</div>
+</div>
+<div class="text-xs text-on-surface-variant flex items-center gap-2 opacity-70">
+<span class="material-symbols-outlined text-sm">info</span>
+                                ملاحظة: يتم إجراء نسخ احتياطي آلي يومياً في تمام الساعة 12:00 منتصف الليل.
+                            </div>
+</div>
+</section>
+<!-- Audit Logs Table -->
+<section class="bg-surface institutional-shadow rounded-lg overflow-hidden" id="audit">
+<div class="p-card-padding border-b border-outline bg-surface-bright flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary">سجلات التدقيق</h3>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">عرض جميع السجلات</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-right">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline">
+<th class="px-6 py-4 font-bold text-xs text-on-surface-variant uppercase tracking-wider">المستخدم</th>
+<th class="px-6 py-4 font-bold text-xs text-on-surface-variant uppercase tracking-wider">الإجراء</th>
+<th class="px-6 py-4 font-bold text-xs text-on-surface-variant uppercase tracking-wider">الصفحة</th>
+<th class="px-6 py-4 font-bold text-xs text-on-surface-variant uppercase tracking-wider">التاريخ / IP</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-[10px] font-bold">AD</div>
+<span class="text-sm font-bold">أحمد الداوود</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">تغيير إعدادات الأمان</td>
+<td class="px-6 py-4 text-sm text-secondary font-bold">إعدادات النظام</td>
+<td class="px-6 py-4">
+<p class="text-xs font-bold">2024-05-20 | 14:30</p>
+<p class="text-[10px] text-on-surface-variant">192.168.1.105</p>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary text-[10px] font-bold">FA</div>
+<span class="text-sm font-bold">فهد العتيبي</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm">تعديل بيانات جمعية</td>
+<td class="px-6 py-4 text-sm text-secondary font-bold">إدارة الجمعيات</td>
+<td class="px-6 py-4">
+<p class="text-xs font-bold">2024-05-20 | 12:15</p>
+<p class="text-[10px] text-on-surface-variant">192.168.1.42</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer Actions (Sticky Bar) -->
+<footer class="sticky bottom-0 bg-surface border-t border-outline px-10 py-4 z-50 institutional-shadow flex items-center justify-between">
+<div class="flex items-center gap-6">
+<button class="bg-primary text-white px-10 py-3 rounded-lg font-bold shadow-lg hover:bg-primary-container transition-all active:scale-95">حفظ جميع التغييرات</button>
+<button class="text-on-surface-variant font-bold hover:text-primary transition-colors">إعادة تعيين الافتراضات</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-4 py-2 bg-secondary-container rounded-full text-on-secondary-fixed-variant font-bold text-xs">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        النظام محدث (الإصدار 4.2.0)
+                    </div>
+<button class="flex items-center gap-2 border border-outline px-4 py-2 rounded-lg text-sm font-bold hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-sm">update</span>
+                        تحديث النظام
+                    </button>
+</div>
+</footer>
+<div class="px-10 py-8 bg-surface-container-lowest text-center">
+<p class="text-on-surface-variant font-label-sm text-label-sm">© 2024 نظام داما لإدارة المنح والتأهيل. جميع الحقوق محفوظة.</p>
+<div class="flex justify-center gap-6 mt-2">
+<a class="text-on-surface-variant hover:text-primary text-xs font-bold" href="#">سياسة الخصوصية</a>
+<a class="text-on-surface-variant hover:text-primary text-xs font-bold" href="#">شروط الاستخدام</a>
+</div>
+</div>
+</main>
+</div>
+<!-- Micro-interaction for form inputs -->
+<script>
+        document.querySelectorAll('input, select, textarea').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {</script></body></html>

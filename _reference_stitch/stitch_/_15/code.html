@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>داما - منصة إدارة المنح الذكية</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed": "#001b3c",
+                        "inverse-primary": "#aec7f5",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "surface-container": "#ebeef0",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#aeeecb",
+                        "surface-container-low": "#f1f4f6",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#b1f0ce",
+                        "secondary": "#2c694e",
+                        "outline-variant": "#c4c6cf",
+                        "emerald-accent": "#2c694e",
+                        "on-surface": "#181c1e",
+                        "tertiary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed-variant": "#2d476f",
+                        "surface-container-high": "#e5e9eb",
+                        "on-primary-fixed": "#001b3c",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "surface-ice": "#f7fafc",
+                        "on-tertiary-container": "#6f89b5",
+                        "background": "#f7fafc",
+                        "tertiary-container": "#002045",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#316e52",
+                        "on-surface-variant": "#44474e",
+                        "surface-dim": "#d7dadc",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "outline": "#74777f",
+                        "surface-tint": "#465f87",
+                        "error": "#ba1a1a",
+                        "surface": "#f7fafc",
+                        "primary": "#00091b",
+                        "text-on-navy-secondary": "#86a0cd",
+                        "on-background": "#181c1e",
+                        "on-primary-container": "#7089b3",
+                        "glass-navy": "rgba(0, 32, 69, 0.95)",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#002045",
+                        "on-secondary-fixed": "#002114",
+                        "surface-bright": "#f7fafc",
+                        "tertiary": "#00091a",
+                        "tertiary-fixed-dim": "#adc7f7",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "1.5rem",
+                        "margin-desktop": "4rem",
+                        "accent-line-width": "80px",
+                        "container-max": "1152px",
+                        "margin-mobile": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Noto Sans Arabic"],
+                        "label-md": ["Noto Sans Arabic"],
+                        "body-lg": ["Noto Sans Arabic"],
+                        "headline-md": ["Noto Sans Arabic"],
+                        "display-lg-mobile": ["Noto Sans Arabic"],
+                        "display-lg": ["Noto Sans Arabic"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(247, 250, 252, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background overflow-x-hidden">
+<!-- Header / Navigation -->
+<header class="fixed top-0 w-full z-50 glass-header border-b border-surface-variant">
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-title-lg font-black tracking-tight text-primary">داما</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-label-md hover:text-secondary transition-colors" href="#home">الرئيسية</a>
+<a class="text-label-md hover:text-secondary transition-colors" href="#about">حول المنصة</a>
+<a class="text-label-md hover:text-secondary transition-colors" href="#features">المميزات</a>
+<a class="text-label-md hover:text-secondary transition-colors" href="#contact">تواصل معنا</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-secondary text-on-secondary px-6 py-2.5 rounded-lg text-label-md font-bold hover:bg-on-secondary-container transition-all shadow-md">
+                    ابدأ الآن
+                </button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden" id="home">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-l from-surface-ice/90 to-surface-ice/40 z-10"></div>
+<div class="w-full h-full" data-alt="A professional aerial view of a modern urban development center integrated with lush green parks. The scene is bathed in soft golden hour light, creating a hopeful and productive atmosphere. The aesthetic is clean, high-end, and corporate, featuring architectural glass and steel structures that symbolize institutional strength and transparency in social impact." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbDAPX9CnyblR5vqNk0fDtHGvkKQMNGKTFJ3c7mu67y6w7JVmnPRF7NvArg55cagyq2H-gACjUf0NrUD_eHI7ZkG6RwjBe1GjRfZNWCo7zh9fu-nuVIqeQpjZmMljzZjHW04ncUkyrB8fb0bIpZ32BWGJObqvPw5mcjlL8WWgElZuaoucQi3X9-CbdK5FxjcphPsUx6vGtgD2hLC9mReI79ldvqElSmKrbjd93LE0MuYf117tpPaxBck-YAz761llQwePOYiMl6to')"></div>
+</div>
+<div class="relative z-20 max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8 animate-fade-in-right">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-sm font-semibold">
+<span class="material-symbols-outlined text-sm">verified</span>
+                    الجيل القادم من إدارة المنح
+                </div>
+<h1 class="text-headline-md lg:text-display-lg-mobile text-primary leading-tight">
+                    نظام داما - منصة مؤسسية ذكية لإدارة المنح وتأهيل المشاريع
+                </h1>
+<p class="text-body-lg text-on-surface-variant max-w-xl">
+                    تمكين المؤسسات من خلال التحول الرقمي لتحقيق أقصى درجات الشفافية والكفاءة في إدارة المنح والمشاريع التنموية والاجتماعية.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-xl text-title-lg font-bold hover:scale-105 transition-transform flex items-center gap-3 shadow-xl">
+                        ابدأ الآن
+                        <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<button class="bg-surface-container-lowest border-2 border-outline-variant text-primary px-8 py-4 rounded-xl text-title-lg font-bold hover:bg-surface-container transition-colors">
+                        عرض توضيحي
+                    </button>
+</div>
+</div>
+<div class="hidden lg:block relative">
+<div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-surface-container-lowest">
+<div class="aspect-video w-full" data-alt="A detailed user interface dashboard of a modern software platform, showing clean data visualizations, pie charts in shades of emerald and navy, and progress bars. The background is a crisp white office setting with soft natural sunlight filtering through large windows, emphasizing a professional, efficient work environment for association management." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADyCM1m8WKzoV0sspJsiCv4svPt8relSrWLB1FxcwmPpZk8bH5qb3OJZP_uIuPx8m_HQ1VRzkqBlq29wqwipF2F8p0HQ4cIJ9aDppQcVjCzuXsJscM7vJRA8XorysHGGEnwPRDdi3h76AIi01SRbgUHlwqb5PfRPOPnCwv-bf1GpX6YrADyCclMmJkzLbm-cPkXsZV10GvUX_cZS-0nBjqx89WDdycX-AebVwLz9KYsZOhqblCrjoBNJ_YhcYF2cDORW5F80ofD4M')"></div>
+</div>
+<div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="absolute -top-6 -left-6 w-32 h-32 bg-tertiary-fixed/20 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="bg-primary-container py-12">
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="text-on-primary-fixed text-4xl font-black mb-1">+500</div>
+<div class="text-on-primary-container text-sm">مشروع تم تأهيله</div>
+</div>
+<div class="text-center">
+<div class="text-on-primary-fixed text-4xl font-black mb-1">98%</div>
+<div class="text-on-primary-container text-sm">رضا المانحين</div>
+</div>
+<div class="text-center">
+<div class="text-on-primary-fixed text-4xl font-black mb-1">24/7</div>
+<div class="text-on-primary-container text-sm">دعم فني متواصل</div>
+</div>
+<div class="text-center">
+<div class="text-on-primary-fixed text-4xl font-black mb-1">M10+</div>
+<div class="text-on-primary-container text-sm">إجمالي المنح المدارة</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 bg-surface-container-lowest" id="about">
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="relative order-2 lg:order-1">
+<div class="rounded-3xl overflow-hidden aspect-square shadow-2xl" data-alt="A group of diverse professionals in a bright, modern conference room collaborating effectively. They are focused on a large screen displaying organizational growth charts. The environment is clean, filled with indoor plants and warm wooden textures, radiating a sense of professional purpose and community impact through technology." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBESjxho9Mk6e13xJfMyMSZXF3qtZ2kKyHIgOgw-M6KZni5jeoKhNFgllRrTIN6dHptk85r-zFLbGKGCqkOEJnkCSaQu0cc9GBQHumhZhCNiSf4W-hFvtQ9s3bo34HJ37IaD5lp5WUvObLw3HzDeU60RuCozVRCB6rdotLoCa_oWFYFfG3VTOb18OAaRjJ-VGlAzAbwJ63iYgNeMSXLJiPs9uCUx94jP4FHsc6keIqxBbBdVySLq9FtbBZ4yPUhKMi2gqQ4Ct8hN9c')"></div>
+<div class="absolute -bottom-8 -left-8 bg-secondary text-on-secondary p-8 rounded-2xl shadow-xl max-w-xs">
+<p class="text-lg italic font-medium leading-relaxed">
+                            "داما ليست مجرد نظام تقني، بل هي شريك استراتيجي في رحلة التحول الرقمي للقطاع الثالث."
+                        </p>
+</div>
+</div>
+<div class="space-y-6 order-1 lg:order-2">
+<h2 class="text-headline-md text-primary">حول منصة داما</h2>
+<div class="w-20 h-1.5 bg-secondary rounded-full"></div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">
+                        تسعى منصة داما إلى رقمنة وتحسين عمليات تخصيص المنح مع التركيز على الكفاءة والشفافية العالية، مما يضمن وصول الدعم إلى مستحقيه وتطوير المشاريع المؤسسية بأحدث الوسائل التقنية.
+                    </p>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">
+                        نحن نؤمن بأن التكنولوجيا هي المفتاح لتعظيم الأثر الاجتماعي، لذا قمنا ببناء نظام متكامل يخدم الجهات المانحة والمستفيدة على حد سواء، مع معايير حوكمة صارمة.
+                    </p>
+<ul class="space-y-4 pt-4">
+<li class="flex items-center gap-3 text-primary font-bold">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            تحويل العمليات الورقية إلى تدفقات عمل رقمية
+                        </li>
+<li class="flex items-center gap-3 text-primary font-bold">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            تقارير أداء لحظية ودقيقة
+                        </li>
+<li class="flex items-center gap-3 text-primary font-bold">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            أتمتة عملية التقييم والاختيار
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-24 bg-surface-ice relative overflow-hidden" id="features">
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop relative z-10">
+<div class="text-center space-y-4 mb-20">
+<h2 class="text-headline-md text-primary">مميزات المنصة</h2>
+<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">نقدم حلولاً متكاملة لدعم القطاع غير الربحي والمؤسسات المانحة لضمان أفضل النتائج</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-surface-variant hover-card shadow-sm">
+<div class="w-14 h-14 bg-secondary-container rounded-2xl flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-4xl" data-icon="trending_up">trending_up</span>
+</div>
+<h3 class="text-title-lg text-primary mb-4">التتبع الرقمي</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        نظام تتبع دقيق لكافة مراحل المنحة من التقديم حتى التنفيذ النهائي، مع تنبيهات ذكية لكل خطوة لضمان الالتزام بالمواعيد.
+                    </p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-surface-variant hover-card shadow-sm">
+<div class="w-14 h-14 bg-tertiary-fixed rounded-2xl flex items-center justify-center text-tertiary mb-6">
+<span class="material-symbols-outlined text-4xl" data-icon="business_center">business_center</span>
+</div>
+<h3 class="text-title-lg text-primary mb-4">الدعم المؤسسي</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        تأهيل وتطوير المشاريع عبر ورش عمل رقمية وأدوات استشارية مدمجة لضمان استدامة الأثر وتحقيق الأهداف المخطط لها.
+                    </p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl border border-surface-variant hover-card shadow-sm">
+<div class="w-14 h-14 bg-secondary-fixed rounded-2xl flex items-center justify-center text-on-secondary-fixed-variant mb-6">
+<span class="material-symbols-outlined text-4xl" data-icon="pie_chart">pie_chart</span>
+</div>
+<h3 class="text-title-lg text-primary mb-4">كفاءة الموارد</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                        تحسين توزيع الموارد المالية والبشرية باستخدام خوارزميات ذكية تضمن أعلى أثر اجتماعي مقابل كل ريال يتم استثماره.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20">
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+<div class="bg-primary-container rounded-[2.5rem] p-12 lg:p-20 relative overflow-hidden text-center lg:text-right">
+<div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<h2 class="text-headline-md lg:text-5xl text-on-primary-fixed leading-tight">جاهز لرقمنة أعمال مؤسستك؟</h2>
+<p class="text-on-primary-container text-body-lg">انضم إلى مئات المؤسسات التي وثقت بـ داما لتحقيق تحول حقيقي في إدارة منحها.</p>
+<div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+<button class="bg-secondary text-on-secondary px-10 py-4 rounded-xl text-title-lg font-bold hover:bg-on-secondary-container transition-colors shadow-lg">سجل الآن مجاناً</button>
+<button class="bg-transparent border border-on-primary-container text-on-primary-fixed px-10 py-4 rounded-xl text-title-lg font-bold hover:bg-on-tertiary-fixed transition-colors">تواصل مع خبير</button>
+</div>
+</div>
+<div class="hidden lg:flex justify-end">
+<div class="w-80 h-80 bg-white/5 rounded-full flex items-center justify-center border border-white/10 animate-pulse">
+<div class="w-64 h-64 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-on-primary-fixed text-[120px]" style="font-variation-settings: 'wght' 200;">rocket_launch</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-primary text-on-tertiary pt-20 pb-10" id="contact">
+<div class="max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<!-- Branding -->
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="size-10 bg-secondary rounded-lg flex items-center justify-center text-white">
+<svg class="w-6 h-6" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-2xl font-bold tracking-tight">داما</span>
+</div>
+<p class="text-text-on-navy-secondary text-sm leading-relaxed">
+                        المنصة الرائدة في المملكة لإدارة المنح وتطوير المشاريع المؤسسية بمعايير عالمية وتقنيات محلية مبتكرة.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center hover:bg-secondary transition-colors" href="#"><span class="material-symbols-outlined text-xl">language</span></a>
+<a class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center hover:bg-secondary transition-colors" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center hover:bg-secondary transition-colors" href="#"><span class="material-symbols-outlined text-xl">mail</span></a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="text-white font-bold mb-6 text-lg">روابط سريعة</h4>
+<ul class="space-y-4">
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">عن المنصة</a></li>
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">المميزات</a></li>
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">الأسعار</a></li>
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">قصص النجاح</a></li>
+</ul>
+</div>
+<!-- Departments/Academic -->
+<div>
+<h4 class="text-white font-bold mb-6 text-lg">أقسام الجامعة والبحث</h4>
+<ul class="space-y-4">
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">قسم الخدمة الاجتماعية</a></li>
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">مركز الابتكار التنموي</a></li>
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">إدارة المشاريع البحثية</a></li>
+<li><a class="text-text-on-navy-secondary hover:text-secondary transition-colors" href="#">وحدة المنح الأكاديمية</a></li>
+</ul>
+</div>
+<!-- Contact -->
+<div>
+<h4 class="text-white font-bold mb-6 text-lg">معلومات التواصل</h4>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<span class="text-text-on-navy-secondary">الرياض، المملكة العربية السعودية</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary">call</span>
+<span class="text-text-on-navy-secondary" dir="ltr">+966 500 000 000</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary">mail</span>
+<span class="text-text-on-navy-secondary">info@dama-platform.com</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-text-on-navy-secondary text-sm">© 2024 نظام داما. جميع الحقوق محفوظة.</p>
+<div class="flex gap-6 text-sm">
+<a class="text-text-on-navy-secondary hover:text-white" href="#">سياسة الخصوصية</a>
+<a class="text-text-on-navy-secondary hover:text-white" href="#">الشروط والأحكام</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll indicator and reveal logic
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+
+        // Basic animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000');
+        });
+    </script>
+</body></html>

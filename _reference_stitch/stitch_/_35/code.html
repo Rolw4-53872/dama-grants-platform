@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA Admin Portal - اعتماد طلب المنحة والتأهيل</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#002114",
+                    "on-surface": "#181c1e",
+                    "tertiary-container": "#002044",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#aec7f5",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#002045",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7089b3",
+                    "accent-line": "#2c694e",
+                    "inverse-surface": "#2d3133",
+                    "surface-bright": "#f7fafc",
+                    "background": "#f7fafc",
+                    "secondary-fixed": "#b1f0ce",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#44474e",
+                    "primary-fixed": "#d6e3ff",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "inverse-on-surface": "#eef1f3",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e5e9eb",
+                    "surface": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#6589c1",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "tertiary-fixed": "#d5e3ff",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container": "#ebeef0",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#aeeecb",
+                    "on-tertiary-fixed": "#001b3c",
+                    "surface-container-highest": "#e0e3e5",
+                    "primary-fixed-dim": "#aec7f5",
+                    "surface-tint": "#465f87",
+                    "primary": "#00091b",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "secondary": "#2c694e",
+                    "surface-dim": "#d7dadc",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "tertiary": "#00081a",
+                    "on-background": "#181c1e",
+                    "outline": "#e2e8f0",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-primary-fixed": "#001b3c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "2rem",
+                    "grid-gutter": "1.5rem",
+                    "container-max": "1280px",
+                    "section-gap": "4rem",
+                    "element-gap": "2rem"
+            },
+            "fontFamily": {
+                    "display-lg": ["Cairo"],
+                    "headline-xl": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "label-sm": ["Noto Sans Arabic"],
+                    "headline-lg": ["Cairo"],
+                    "body-md": ["Noto Sans Arabic"]
+            },
+            "fontSize": {
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(circle at 2px 2px, rgba(0, 32, 69, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active::before {
+            content: '';
+            position: absolute;
+            right: -24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-0 h-16 bg-surface border-b border-outline-variant z-50 flex items-center justify-between px-8">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="text-primary font-display-lg text-headline-lg font-bold">DAMA</span>
+<div class="h-6 w-[1px] bg-outline"></div>
+<span class="text-on-surface-variant font-title-lg text-body-md">بوابة الإدارة</span>
+</div>
+<nav class="hidden md:flex items-center gap-6 mr-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-medium" href="#">الرئيسية</a>
+<a class="text-primary border-b-2 border-primary font-bold text-body-md" href="#">طلبات المنح</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-body-md font-medium" href="#">مشاريع التأهيل</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="flex items-center gap-3 mr-2">
+<div class="text-left">
+<p class="text-label-sm font-bold text-on-surface">أحمد المسؤول</p>
+<p class="text-[10px] text-on-surface-variant">مدير النظام</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center text-primary font-bold overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a Middle Eastern male administrator in business attire, looking directly at the camera with a friendly and trustworthy expression. The background is a soft-focus office setting with institutional colors of blue and white, perfectly fitting a corporate government portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5OEz_VZVDa3wTxFcQ0ctK2Z8sMti2QwxA8t-keb7pxl-veoWfB2dEF0ltA9Zo5HxMZJ3J83OspyfSQANUHxoY8cCZuFV_oksjzmDkRBGyWQYgMDAAaqPOvVvZuidAn4m-xzYShkaaqQClyZP0iG0JoAejVsAb_UQOrUOFSclUMVs_yEpp0Fd35uMTYhLLowc86RY9QDehJEEaq11_P9UipdTtMOI2cP2mcPUxh1xrQXB6bEuUf5Pps2vtFosMcfAhSehD_ed0TWI"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation -->
+<aside class="fixed right-0 top-16 bottom-0 w-[280px] bg-primary text-white z-40 hidden lg:flex flex-col p-6 overflow-y-auto">
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-white mb-1">DAMA System</h2>
+<p class="text-on-primary-container text-label-sm opacity-80">نظام إدارة المنح والتأهيل</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:bg-white/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm">الرئيسية</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary text-on-secondary rounded-lg transition-all shadow-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-label-sm">طلبات المنح</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:bg-white/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="font-label-sm">مشاريع التأهيل</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:bg-white/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-sm">العقود</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:bg-white/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-sm">التقارير</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary/70 hover:bg-white/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm">إدارة المستخدمين</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-6 gap-2 flex flex-col">
+<a class="flex items-center gap-4 px-4 py-2 text-on-primary/70 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-label-sm">الإعدادات</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 text-on-primary/70 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="text-label-sm">تسجيل الخروج</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:mr-[280px] pt-16 min-h-screen px-8 pb-12">
+<div class="max-w-container-max mx-auto py-8">
+<!-- Page Header -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant mb-3">
+<a class="text-label-sm hover:text-primary" href="#">الطلبات</a>
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span class="text-label-sm text-primary font-bold">اعتماد طلب المنحة</span>
+</nav>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-2">اعتماد طلب المنحة والتأهيل</h1>
+<p class="text-body-md text-on-surface-variant max-w-2xl">
+                        مرحلة الاعتماد النهائي للطلب ونقل المعاملة إلى إدارة العقود لإعداد مسودة الاتفاقية مع الجمعية المتقدمة.
+                    </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2.5 border border-outline rounded-lg text-on-surface font-semibold hover:bg-surface-container-low transition-all">إلغاء</button>
+<button class="px-8 py-2.5 bg-secondary text-white rounded-lg font-bold shadow-md hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">check_circle</span>
+                        اعتماد الطلب
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-grid-gutter">
+<!-- Left Column: Primary Actions and Details -->
+<div class="xl:col-span-2 space-y-grid-gutter">
+<!-- Application Summary Card -->
+<section class="bg-surface institutional-shadow rounded-xl p-card-padding border border-outline/50 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-2 h-full bg-primary-container"></div>
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-lg text-headline-lg text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">info</span>
+                                ملخص الطلب
+                            </h3>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-label-sm font-bold">
+                                بانتظار الاعتماد النهائي
+                            </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-label-sm">رقم الطلب</span>
+<span class="text-title-lg font-bold">#REQ-2024-0892</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-label-sm">اسم الجمعية</span>
+<span class="text-title-lg font-bold">جمعية البر والخدمات الاجتماعية بالرياض</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-label-sm">رقم الترخيص</span>
+<span class="text-title-lg font-bold">102-SA-009</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-label-sm">اسم المشروع</span>
+<span class="text-title-lg font-bold">تأهيل وتمكين الشباب لسوق العمل</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-label-sm">المبلغ المطلوب</span>
+<span class="text-title-lg font-bold text-secondary">450,000 ريال سعودي</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-on-surface-variant text-label-sm">تاريخ التقديم</span>
+<span class="text-title-lg font-bold">12 أكتوبر 2024</span>
+</div>
+</div>
+</section>
+<!-- Next Step Information & Notification Preview -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-grid-gutter">
+<!-- Next Step Information -->
+<section class="bg-primary-container text-white rounded-xl p-card-padding institutional-shadow border border-white/10">
+<h3 class="font-headline-lg text-headline-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed">arrow_forward</span>
+                                الخطوة التالية
+                            </h3>
+<p class="text-body-md text-on-primary-container mb-6">
+                                بعد اعتماد الطلب، سيتم تحويل المعاملة آلياً إلى نظام إدارة العقود لإصدار الوثائق القانونية والمالية.
+                            </p>
+<div class="bg-white/5 border border-white/10 rounded-lg p-4">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">verified_user</span>
+<span class="font-bold text-label-sm">المسؤول عن الخطوة:</span>
+</div>
+<p class="text-label-sm text-on-primary-container">إدارة الشؤون القانونية والتعاقدات</p>
+</div>
+</section>
+<!-- Notification Preview -->
+<section class="bg-surface rounded-xl p-card-padding institutional-shadow border border-outline/50">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-lg text-headline-lg text-primary">معاينة الإشعار</h3>
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-5 border-dashed border-2 border-outline">
+<p class="text-body-md font-bold mb-2">إلى: جمعية البر</p>
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+                                    يسر شركة داما إبلاغكم بأنه تم قبول طلبكم رقم REQ-2024-0892 مبدئياً، وجارٍ العمل على إعداد مسودة العقد. سيتم التواصل معكم قريباً...
+                                </p>
+</div>
+</section>
+</div>
+<!-- Approval Notes Area -->
+<section class="bg-surface rounded-xl p-card-padding institutional-shadow border border-outline/50">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-4">ملاحظات الاعتماد (اختياري)</h3>
+<textarea class="w-full h-32 bg-surface border border-outline rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-outline" placeholder="اكتب أي ملاحظات إضافية ترغب في إرسالها للجمعية أو تضمينها في ملف الطلب..."></textarea>
+</section>
+</div>
+<!-- Right Column: Sidebar (Checklist & Timeline) -->
+<div class="space-y-grid-gutter">
+<!-- Review Summary Checklist -->
+<section class="bg-surface rounded-xl p-card-padding institutional-shadow border border-outline/50">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6">ملخص المراجعة</h3>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-container font-bold">check</span>
+</div>
+<span class="text-body-md font-medium">جميع البيانات مكتملة</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-container font-bold">check</span>
+</div>
+<span class="text-body-md font-medium">الملفات المطلوبة مرفقة</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-container font-bold">check</span>
+</div>
+<span class="text-body-md font-medium">المشروع يستوفي الشروط</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-secondary-container font-bold">check</span>
+</div>
+<span class="text-body-md font-medium">لا توجد ملاحظات معلقة</span>
+</li>
+</ul>
+</section>
+<!-- Activity Timeline -->
+<section class="bg-surface rounded-xl p-card-padding institutional-shadow border border-outline/50">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6">سجل العمليات</h3>
+<div class="relative space-y-8 pr-6">
+<!-- Vertical Line -->
+<div class="absolute right-3 top-2 bottom-2 w-[2px] bg-outline-variant"></div>
+<!-- New Status (Future) -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -right-[15px] top-1 w-8 h-8 rounded-full bg-white border-4 border-secondary-container flex items-center justify-center z-10 animate-pulse">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-bold text-secondary">الاعتماد (الآن)</span>
+<span class="text-[12px] text-on-surface-variant">يتم التنفيذ حالياً</span>
+</div>
+</div>
+<!-- Past Step 1 -->
+<div class="relative flex items-start gap-4 opacity-70">
+<div class="absolute -right-[15px] top-1 w-8 h-8 rounded-full bg-surface-container-high border-4 border-surface flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] text-primary">done</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-bold">اكتمال الفحص الفني</span>
+<span class="text-[12px] text-on-surface-variant">منذ يومين - م. سارة القحطاني</span>
+</div>
+</div>
+<!-- Past Step 2 -->
+<div class="relative flex items-start gap-4 opacity-70">
+<div class="absolute -right-[15px] top-1 w-8 h-8 rounded-full bg-surface-container-high border-4 border-surface flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[16px] text-primary">done</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-bold">تقديم الطلب</span>
+<span class="text-[12px] text-on-surface-variant">12 أكتوبر 2024 - النظام آلياً</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Association Document Preview (Decorative Image) -->
+<div class="rounded-xl overflow-hidden institutional-shadow h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A professional close-up photograph of a formal government-style document with a wax seal and Arabic calligraphy header. The lighting is soft and golden, highlighting the texture of the high-quality parchment paper. The setting is a polished mahogany desk in a modern administrative office, symbolizing institutional integrity and official approval." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBjnmJqkPyvKkdrpwTQXqF0p6vM9PNuIaDdEcUP16jrLxJXJ-YplezqzHn22ZgFxMf3p-DCGoYvzYEJN_nZKEwOTxEX39RJU8eH1Z1rchLx9QEScy2sFUmWpitwJcb7cXJJ7Lq8iaHkP3nkzHoNId5wPsSSZSHlb0caUwAo8ruwLgeN_MMLSpWLEtTREmp6bmCgFavpOFj0uXwxSc5shx-BN-RaLe7bGbA98qoEY0UYgCS4kd9ZEg-v4iQ-t6u8gbPNDf34vI08gY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-4">
+<span class="text-white font-bold text-label-sm">معاينة وثيقة المشروع</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Background Blur / Micro-interaction script -->
+<script>
+        // Simple logic to simulate interaction for demo purposes
+        document.querySelector('button.bg-secondary').addEventListener('click', function() {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+                alert('تم اعتماد الطلب بنجاح وتم تحويله لنظام العقود.');
+            }, 150);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DAMA - Executive Applications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#aeeecb",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#ebeef0",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#181c1e",
+                    "on-error-container": "#93000a",
+                    "secondary": "#2c694e",
+                    "on-surface-variant": "#44474e",
+                    "glass-overlay": "rgba(0, 32, 69, 0.05)",
+                    "secondary-fixed-dim": "#95d4b3",
+                    "accent-line": "#2c694e",
+                    "tertiary-container": "#002044",
+                    "surface-tint": "#465f87",
+                    "primary-container": "#002045",
+                    "tertiary": "#00081a",
+                    "tertiary-fixed-dim": "#a7c8ff",
+                    "secondary-fixed": "#b1f0ce",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d7dadc",
+                    "on-secondary-fixed-variant": "#0e5138",
+                    "on-tertiary-container": "#6589c1",
+                    "surface": "#ffffff",
+                    "surface-container-high": "#e5e9eb",
+                    "on-background": "#181c1e",
+                    "tertiary-fixed": "#d5e3ff",
+                    "on-tertiary-fixed-variant": "#1f477b",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-on-surface": "#eef1f3",
+                    "surface-container-low": "#f1f4f6",
+                    "primary": "#00091b",
+                    "on-secondary-container": "#316e52",
+                    "outline": "#e2e8f0",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#001b3c",
+                    "on-secondary-fixed": "#002114",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-container": "#7089b3",
+                    "primary-fixed-dim": "#aec7f5",
+                    "background": "#f7fafc",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-primary": "#aec7f5",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f7fafc",
+                    "inverse-surface": "#2d3133",
+                    "primary-fixed": "#d6e3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "2rem",
+                    "grid-gutter": "1.5rem",
+                    "container-max": "1280px",
+                    "section-gap": "4rem",
+                    "element-gap": "2rem"
+            },
+            "fontFamily": {
+                    "display-lg": ["Cairo"],
+                    "title-lg": ["Noto Sans Arabic"],
+                    "body-md": ["Noto Sans Arabic"],
+                    "headline-xl": ["Cairo"],
+                    "headline-lg": ["Cairo"],
+                    "display-lg-mobile": ["Cairo"],
+                    "body-lg": ["Noto Sans Arabic"],
+                    "label-sm": ["Noto Sans Arabic"]
+            },
+            "fontSize": {
+                    "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+                    "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "display-lg-mobile": ["72px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "900"}],
+                    "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7fafc;
+            background-image: radial-gradient(circle at 2px 2px, rgba(0, 32, 69, 0.03) 1px, transparent 0);
+            background-size: 32px 32px;
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        .institutional-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .status-pill {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- Sidebar (Shared Component Style) -->
+<aside class="fixed top-0 right-0 h-full w-64 bg-primary text-on-primary shadow-xl z-50 flex flex-col py-6">
+<div class="px-6 mb-8">
+<h1 class="font-headline-lg text-headline-lg text-on-primary">DAMA System</h1>
+<p class="text-on-primary/60 text-sm">Enterprise Admin</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center px-6 py-3 text-on-primary/70 hover:bg-primary-container/50 transition-all" href="#">
+<span class="material-symbols-outlined ml-3" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-primary/70 hover:bg-primary-container/50 transition-all" href="#">
+<span class="material-symbols-outlined ml-3" data-icon="group">group</span>
+<span class="font-label-sm">User Management</span>
+</a>
+<a class="flex items-center px-6 py-3 bg-secondary-container text-on-secondary-container rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined ml-3" data-icon="account_balance">account_balance</span>
+<span class="font-label-sm">Grants</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-primary/70 hover:bg-primary-container/50 transition-all" href="#">
+<span class="material-symbols-outlined ml-3" data-icon="health_and_safety">health_and_safety</span>
+<span class="font-label-sm">Rehabilitation</span>
+</a>
+<a class="flex items-center px-6 py-3 text-on-primary/70 hover:bg-primary-container/50 transition-all" href="#">
+<span class="material-symbols-outlined ml-3" data-icon="assessment">assessment</span>
+<span class="font-label-sm">Reports</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-2 bg-secondary text-white rounded-lg font-bold text-sm mb-4">Support Center</button>
+<div class="flex items-center text-on-primary/70 hover:text-on-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined ml-3" data-icon="logout">logout</span>
+<span class="font-label-sm">Logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="mr-64 min-h-screen">
+<!-- Top Nav Bar (Shared Component Style) -->
+<header class="h-20 bg-surface shadow-[0_4px_20px_-2px_rgba(0,32,69,0.08)] sticky top-0 z-40 flex justify-between items-center px-8 w-full">
+<div class="flex items-center">
+<div class="relative">
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant material-symbols-outlined">search</span>
+<input class="pr-10 pl-4 py-2 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary-container w-80 text-sm" placeholder="بحث عام..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors" data-icon="settings">settings</button>
+<button class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors" data-icon="help">help</button>
+</div>
+<div class="flex items-center gap-3 pr-6 border-r border-outline">
+<div class="text-left">
+<p class="text-sm font-bold text-primary">أحمد المدير</p>
+<p class="text-xs text-on-surface-variant">المدير التنفيذي</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border-2 border-white shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A formal professional headshot of a Middle Eastern executive male in a dark blue business suit, photographed against a minimalist studio background with soft overhead lighting and a high-end corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw7rHBzvom4nRfyANZpcpHiXnEo9UoemyTHAUk0IZZGu3pYj0LNJP2p--tiDkyY5ZL9QmromqzqsDpD-ObCcU9SiWwEm5CMeoADQU9y5uHMFY-SCxyIKFsEZE0jW26KAOMK5o-LEcZlebMQ7S0QmNezbkQ2QcT3IcTblHsfelslpxy7tMgl_Qnc73cRng5Y07rSFgR8GrzEqCfTKgk48qSZwqnfQtHn9kuHeLh1vK_tndUUFqILj79OqGnQEqUqfF1RAgXvtJrOcQ"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-1">الطلبات</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">استعراض جميع طلبات المنح والتأهيل المقدمة من الجمعيات.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container-lowest border border-outline rounded-lg text-primary font-bold text-sm hover:bg-surface-container transition-all institutional-shadow">
+<span class="material-symbols-outlined text-sm">picture_as_pdf</span>
+                        تصدير PDF
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container-lowest border border-outline rounded-lg text-primary font-bold text-sm hover:bg-surface-container transition-all institutional-shadow">
+<span class="material-symbols-outlined text-sm">table_view</span>
+                        تصدير Excel
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-surface-container-lowest border border-outline rounded-lg text-primary font-bold text-sm hover:bg-surface-container transition-all institutional-shadow">
+<span class="material-symbols-outlined text-sm">print</span>
+                        طباعة
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-secondary text-on-secondary rounded-lg font-bold text-sm hover:bg-opacity-90 transition-all institutional-shadow">
+<span class="material-symbols-outlined text-sm">refresh</span>
+                        تحديث البيانات
+                    </button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
+<!-- Total -->
+<div class="bg-primary text-white p-5 rounded-xl institutional-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-white/10 p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="all_inbox">all_inbox</span></div>
+<span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">+12%</span>
+</div>
+<p class="text-xs text-white/70 mb-1">إجمالي الطلبات</p>
+<h3 class="text-2xl font-bold">1,482</h3>
+</div>
+<!-- New -->
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary-container/10 p-2 rounded-lg text-primary"><span class="material-symbols-outlined" data-icon="new_releases">new_releases</span></div>
+<span class="text-[10px] text-secondary bg-secondary-container px-2 py-0.5 rounded-full">+5%</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-1">الطلبات الجديدة</p>
+<h3 class="text-2xl font-bold text-primary">124</h3>
+</div>
+<!-- Review -->
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-amber-100 p-2 rounded-lg text-amber-700"><span class="material-symbols-outlined" data-icon="pending">pending</span></div>
+<span class="text-[10px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">-2%</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-1">قيد المراجعة</p>
+<h3 class="text-2xl font-bold text-primary">45</h3>
+</div>
+<!-- Accepted -->
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-secondary-container/30 p-2 rounded-lg text-secondary"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span></div>
+<span class="text-[10px] text-secondary bg-secondary-container px-2 py-0.5 rounded-full">+18%</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-1">الطلبات المقبولة</p>
+<h3 class="text-2xl font-bold text-primary">856</h3>
+</div>
+<!-- Rejected -->
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-error-container/30 p-2 rounded-lg text-error"><span class="material-symbols-outlined" data-icon="cancel">cancel</span></div>
+<span class="text-[10px] text-error bg-error-container px-2 py-0.5 rounded-full">+1%</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-1">الطلبات المرفوضة</p>
+<h3 class="text-2xl font-bold text-primary">112</h3>
+</div>
+<!-- Needs Mod -->
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-blue-100 p-2 rounded-lg text-blue-700"><span class="material-symbols-outlined" data-icon="edit_note">edit_note</span></div>
+<span class="text-[10px] text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">+4%</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-1">تحتاج تعديل</p>
+<h3 class="text-2xl font-bold text-primary">68</h3>
+</div>
+<!-- Completed -->
+<div class="bg-surface p-5 rounded-xl border border-outline institutional-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-emerald-100 p-2 rounded-lg text-emerald-800"><span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span></div>
+<span class="text-[10px] text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full">+9%</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-1">الطلبات المكتملة</p>
+<h3 class="text-2xl font-bold text-primary">277</h3>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Main Data Section -->
+<div class="flex-grow space-y-6">
+<!-- Filters Bar -->
+<div class="bg-surface p-4 rounded-xl border border-outline institutional-shadow flex flex-wrap items-center gap-4">
+<div class="flex-grow relative min-w-[200px]">
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant material-symbols-outlined text-sm">search</span>
+<input class="w-full pr-10 pl-4 py-2 text-sm bg-surface-container-low border-outline rounded-lg focus:ring-primary" placeholder="اسم الجمعية / رقم الطلب / المشروع" type="text"/>
+</div>
+<select class="px-4 py-2 text-sm bg-surface-container-low border-outline rounded-lg focus:ring-primary min-w-[140px]">
+<option value="">كل المدن</option>
+<option>الرياض</option>
+<option>جدة</option>
+<option>الدمام</option>
+</select>
+<select class="px-4 py-2 text-sm bg-surface-container-low border-outline rounded-lg focus:ring-primary min-w-[140px]">
+<option value="">كل الحالات</option>
+<option>جديد</option>
+<option>قيد المراجعة</option>
+<option>مكتمل</option>
+</select>
+<input class="px-4 py-2 text-sm bg-surface-container-low border-outline rounded-lg focus:ring-primary" type="date"/>
+<button class="px-4 py-2 text-sm text-primary font-bold border border-outline rounded-lg hover:bg-surface-container transition-colors">إعادة ضبط</button>
+</div>
+<!-- Table Section -->
+<div class="bg-surface rounded-xl border border-outline institutional-shadow overflow-hidden">
+<div class="overflow-x-auto scrollbar-hide">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-outline">
+<th class="px-6 py-4 font-label-sm">الرقم المرجعي</th>
+<th class="px-6 py-4 font-label-sm">اسم الجمعية</th>
+<th class="px-6 py-4 font-label-sm">رقم الترخيص</th>
+<th class="px-6 py-4 font-label-sm">اسم المشروع</th>
+<th class="px-6 py-4 font-label-sm">المدينة</th>
+<th class="px-6 py-4 font-label-sm">تاريخ التقديم</th>
+<th class="px-6 py-4 font-label-sm text-center">حالة الطلب</th>
+<th class="px-6 py-4 font-label-sm text-center">التعاقد</th>
+<th class="px-6 py-4 font-label-sm">آخر تحديث</th>
+<th class="px-6 py-4 font-label-sm">الإجراء</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#REQ-8842</td>
+<td class="px-6 py-4 text-sm font-semibold">جمعية البر الخيرية</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">L-10293</td>
+<td class="px-6 py-4 text-sm">تأهيل الشباب للعمل التقني</td>
+<td class="px-6 py-4 text-sm">الرياض</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">2024/05/12</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-blue-100 text-blue-700">قيد المراجعة</span>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-surface-container text-on-surface-variant">لم يبدأ</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">منذ ساعتين</td>
+<td class="px-6 py-4">
+<button class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-base">visibility</span>
+                                                عرض التفاصيل
+                                            </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#REQ-8839</td>
+<td class="px-6 py-4 text-sm font-semibold">مؤسسة التطوع الأهلية</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">L-44210</td>
+<td class="px-6 py-4 text-sm">سقيا الماء للمناطق النائية</td>
+<td class="px-6 py-4 text-sm">جدة</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">2024/05/11</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-secondary-container text-on-secondary-container">مقبول</span>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-amber-100 text-amber-700">قيد التوقيع</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">منذ 5 ساعات</td>
+<td class="px-6 py-4">
+<button class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-base">visibility</span>
+                                                عرض التفاصيل
+                                            </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#REQ-8835</td>
+<td class="px-6 py-4 text-sm font-semibold">جمعية رعاية الأيتام</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">L-88211</td>
+<td class="px-6 py-4 text-sm">تمكين الأيتام في البرمجة</td>
+<td class="px-6 py-4 text-sm">الدمام</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">2024/05/10</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-primary-container/10 text-primary">جديد</span>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-surface-container text-on-surface-variant">لم يبدأ</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">أمس</td>
+<td class="px-6 py-4">
+<button class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-base">visibility</span>
+                                                عرض التفاصيل
+                                            </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#REQ-8830</td>
+<td class="px-6 py-4 text-sm font-semibold">جمعية حفظ النعمة</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">L-11340</td>
+<td class="px-6 py-4 text-sm">تقليل الفاقد الغذائي بجدة</td>
+<td class="px-6 py-4 text-sm">جدة</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">2024/05/10</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-error-container text-error">مرفوض</span>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-surface-container text-on-surface-variant">ملغي</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">أمس</td>
+<td class="px-6 py-4">
+<button class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-base">visibility</span>
+                                                عرض التفاصيل
+                                            </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4 text-sm font-bold text-primary">#REQ-8822</td>
+<td class="px-6 py-4 text-sm font-semibold">تنمية القرى الخيرية</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">L-55201</td>
+<td class="px-6 py-4 text-sm">تطوير البنى التحتية المائية</td>
+<td class="px-6 py-4 text-sm">جازان</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">2024/05/09</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-emerald-100 text-emerald-800">مكتمل</span>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="status-pill bg-secondary-container text-on-secondary-container">موقّع</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">قبل يومين</td>
+<td class="px-6 py-4">
+<button class="text-secondary font-bold text-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-base">visibility</span>
+                                                عرض التفاصيل
+                                            </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-low flex justify-between items-center border-t border-outline">
+<span class="text-xs text-on-surface-variant">عرض 1-10 من أصل 1,482 طلب</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-white"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-white text-xs">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-white text-xs">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline hover:bg-white"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar/Right Panel -->
+<aside class="w-full lg:w-80 space-y-6">
+<!-- Quick Stats Card -->
+<div class="bg-surface rounded-xl border border-outline institutional-shadow p-6">
+<div class="flex items-center gap-2 mb-6 border-b border-outline pb-4">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h4 class="font-title-lg text-title-lg text-primary">إحصائيات سريعة</h4>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">المدينة الأكثر تقديماً</span>
+<span class="text-sm font-bold text-primary">الرياض (32%)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">أكثر الجمعيات نشاطاً</span>
+<span class="text-sm font-bold text-primary">جمعية البر</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">نوع المشروع المتكرر</span>
+<span class="text-sm font-bold text-primary">تقني/تعليمي</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">متوسط زمن المراجعة</span>
+<span class="text-sm font-bold text-primary">4.2 يوم</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">نسبة القبول الكلية</span>
+<span class="text-sm font-bold text-secondary">78.4%</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline">
+<button class="w-full py-2 text-primary font-bold text-xs border border-primary rounded-lg hover:bg-primary-container/10 transition-colors">عرض التقرير السنوي</button>
+</div>
+</div>
+<!-- Recent Activity Timeline -->
+<div class="bg-surface rounded-xl border border-outline institutional-shadow p-6">
+<div class="flex items-center gap-2 mb-6 border-b border-outline pb-4">
+<span class="material-symbols-outlined text-primary">history</span>
+<h4 class="font-title-lg text-title-lg text-primary">النشاط الأخير</h4>
+</div>
+<div class="space-y-6 relative before:absolute before:right-3 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant/30">
+<!-- Item 1 -->
+<div class="relative pr-8">
+<div class="absolute right-1 top-1.5 w-4 h-4 rounded-full bg-primary-container border-2 border-white shadow-sm"></div>
+<p class="text-xs text-on-surface-variant mb-1">منذ 10 دقائق</p>
+<p class="text-sm font-semibold">تم استلام طلب جديد من <span class="text-primary">جمعية الأثر</span></p>
+</div>
+<!-- Item 2 -->
+<div class="relative pr-8">
+<div class="absolute right-1 top-1.5 w-4 h-4 rounded-full bg-secondary border-2 border-white shadow-sm"></div>
+<p class="text-xs text-on-surface-variant mb-1">منذ 30 دقيقة</p>
+<p class="text-sm font-semibold">تمت الموافقة على طلب <span class="text-primary">مشروع تمكين</span></p>
+</div>
+<!-- Item 3 -->
+<div class="relative pr-8">
+<div class="absolute right-1 top-1.5 w-4 h-4 rounded-full bg-error border-2 border-white shadow-sm"></div>
+<p class="text-xs text-on-surface-variant mb-1">منذ ساعة</p>
+<p class="text-sm font-semibold">رُفض طلب <span class="text-primary">إعادة التأهيل المجتمعي</span></p>
+</div>
+<!-- Item 4 -->
+<div class="relative pr-8">
+<div class="absolute right-1 top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-white shadow-sm"></div>
+<p class="text-xs text-on-surface-variant mb-1">منذ ساعتين</p>
+<p class="text-sm font-semibold">طلب تعديل لمشروع <span class="text-primary">بيئتنا أمانة</span></p>
+</div>
+<!-- Item 5 -->
+<div class="relative pr-8">
+<div class="absolute right-1 top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow-sm"></div>
+<p class="text-xs text-on-surface-variant mb-1">منذ 4 ساعات</p>
+<p class="text-sm font-semibold">اكتمل التعاقد مع <span class="text-primary">مؤسسة التنمية</span></p>
+</div>
+</div>
+</div>
+</aside></div>
+</div>
+<!-- Empty State (Hidden) -->
+<div class="hidden flex-col items-center justify-center py-24 text-center" id="empty-state">
+<div class="w-64 h-64 mb-8">
+<img class="w-full h-full object-contain" data-alt="A sophisticated minimalist line-art illustration of an empty desk with a glowing digital tablet showing an empty state message, using a palette of institutional navy and soft grays, with a clean professional office backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcArFMcGMZRt9z0qAy6lIn7i2ZacwqK6aKbPOz_7Z1fdsG8e6dOvw9Tp5_cHwW99cav8py4SU44FKvTIE35n2osyAl1p64B-JyPNl3ZZi2-hM9KUnUUhaWxsH9JMXyrXfGG6B9glihu9c_gxQ-G4ytdxDntAhNXQJgGDbH_p_QtOiCH3nbL0x4kRCXcGRpFnbf5vyZbEMmfB4CO1z3hK69NAiPqO5BYiStHWl8-k02e8yCVYl6WtO5JLuho938uG8gRyTjHWFnkwU"/>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-2">لا توجد طلبات متاحة حالياً.</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">سيتم عرض الطلبات المقدمة فور وصولها إلى النظام.</p>
+</div>
+<!-- Footer (Shared Component Style) -->
+<footer class="w-full mt-12 bg-surface-container-lowest border-t border-outline flex flex-col md:flex-row justify-between items-center px-8 py-8 max-w-full mx-auto">
+<div class="mb-4 md:mb-0">
+<p class="font-title-lg text-title-lg text-primary mb-1">DAMA Grant System</p>
+<p class="text-sm text-on-surface-variant">© 2024 DAMA Grant &amp; Rehabilitation Management System. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Administrative Guidelines</a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for executive feel
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.classList.add('scale-95');
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.classList.remove('scale-95');
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('scale-95');
+            });
+        });
+
+        // Search highlight effect
+        const searchInput = document.querySelector('input[placeholder="اسم الجمعية / رقم الطلب / المشروع"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>
