@@ -1,0 +1,40 @@
+صفحات النظام المطلوبة:
+
+🏠 صفحات عامة:
+- landing-page.html (الصفحة الرئيسية)
+- program-info.html (معلومات البرنامج)
+- register.html (إنشاء حساب)
+- login.html (تسجيل الدخول)
+
+📱 صفحات الجمعية:
+- dashboard.html (لوحة تحكم الجمعية)
+- new-application.html (طلب منحة جديدة)
+- my-applications.html (طلباتي)
+- application-details.html (تفاصيل الطلب)
+- contracts.html (العقود)
+- notifications.html (الإشعارات)
+- profile.html (الملف الشخصي)
+- settings.html (الإعدادات)
+
+👨‍💼 صفحات مسؤول النظام:
+- admin-login.html (دخول الإدارة)
+- admin-dashboard.html (لوحة الإدارة)
+- admin-applications.html (إدارة الطلبات)
+- admin-application-details.html (تفاصيل الطلب للإدارة)
+- admin-request-modification.html (طلب تعديل)
+- admin-approve.html (قبول الطلب)
+- admin-reject.html (رفض الطلب)
+- admin-contracts.html (إدارة العقود)
+- admin-societies.html (إدارة الجمعيات)
+- admin-users.html (إدارة المستخدمين)
+- admin-reports.html (التقارير)
+- admin-settings.html (الإعدادات)
+
+👔 صفحات المدير التنفيذي:
+- executive-login.html (دخول المدير)
+- executive-dashboard.html (لوحة المدير)
+- executive-applications.html (الطلبات)
+- executive-contracts.html (العقود)
+- executive-reports.html (التقارير)
+
+المجموع: 30+ صفحة

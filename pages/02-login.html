@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - منصة داما</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Noto Sans Arabic', sans-serif;
+      background: #f7fafc;
+    }
+    h1, h2, h3 {
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<div style="min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+  <!-- Left Side - Image -->
+  <div style="background: linear-gradient(135deg, #002045 0%, #1a365d 100%); display: none; grid-column: 1; @media(min-width: 768px) { display: flex; }" class="md:flex items-center justify-center p-12">
+    <div style="text-align: center; color: white;">
+      <h2 style="font-size: 36px; margin-bottom: 20px;">منصة إدارة المنح والتأهيل</h2>
+      <p style="font-size: 18px; opacity: 0.8; line-height: 1.6;">دخولك الآن إلى نظام إدارة متكامل لطلبات المنح والتأهيل المؤسسي</p>
+    </div>
+  </div>
+
+  <!-- Right Side - Form -->
+  <div style="display: flex; align-items: center; justify-center; padding: 20px;">
+    <div style="background: white; border-radius: 12px; box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08); padding: 40px; width: 100%; max-width: 400px;">
+      <!-- Header -->
+      <div style="text-align: center; margin-bottom: 30px;">
+        <div style="width: 60px; height: 60px; background: #002045; border-radius: 8px; margin: 0 auto 20px;"></div>
+        <h1 style="font-size: 28px; color: #002045; margin-bottom: 10px;">تسجيل الدخول</h1>
+        <p style="color: #43474e; font-size: 14px;">أدخل بيانات حسابك للمتابعة</p>
+      </div>
+
+      <!-- Error Message -->
+      <div id="error-msg" style="display: none; background: #fdf3f2; border: 1px solid #f4a2a0; color: #b23b34; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;">
+        البريد الإلكتروني أو كلمة المرور غير صحيحة
+      </div>
+
+      <!-- Form -->
+      <form onsubmit="handleLogin(event)">
+        <!-- Email Field -->
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #181c1e;">البريد الإلكتروني</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="your@email.com"
+            style="width: 100%; padding: 12px; border: 1px solid #74777f; border-radius: 8px; font-family: 'Noto Sans Arabic', sans-serif; font-size: 16px; transition: 0.3s;"
+            onfocus="this.style.borderColor='#002045'; this.style.boxShadow='0 0 0 3px rgba(0, 32, 69, 0.1)'"
+            onblur="this.style.borderColor='#74777f'; this.style.boxShadow='none'"
+            required
+          />
+        </div>
+
+        <!-- Password Field -->
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #181c1e;">كلمة المرور</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="••••••••"
+            style="width: 100%; padding: 12px; border: 1px solid #74777f; border-radius: 8px; font-family: 'Noto Sans Arabic', sans-serif; font-size: 16px; transition: 0.3s;"
+            onfocus="this.style.borderColor='#002045'; this.style.boxShadow='0 0 0 3px rgba(0, 32, 69, 0.1)'"
+            onblur="this.style.borderColor='#74777f'; this.style.boxShadow='none'"
+            required
+          />
+        </div>
+
+        <!-- Remember Me -->
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px;">
+          <input type="checkbox" id="remember" style="cursor: pointer;">
+          <label for="remember" style="cursor: pointer; font-size: 14px;">تذكرني</label>
+        </div>
+
+        <!-- Login Button -->
+        <button
+          type="submit"
+          style="width: 100%; background: #002045; color: white; padding: 12px; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; transition: 0.3s; font-family: 'Noto Sans Arabic', sans-serif; font-size: 16px;"
+          onmouseover="this.style.filter='brightness(1.1)'"
+          onmouseout="this.style.filter='brightness(1)'"
+        >
+          دخول
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div style="margin: 24px 0; display: flex; align-items: center; gap: 12px;">
+        <div style="flex: 1; height: 1px; background: #74777f;"></div>
+        <span style="color: #43474e; font-size: 12px;">أو</span>
+        <div style="flex: 1; height: 1px; background: #74777f;"></div>
+      </div>
+
+      <!-- Sign Up Link -->
+      <a
+        href="04-register.html"
+        style="display: block; width: 100%; text-align: center; color: #002045; text-decoration: none; padding: 12px; border: 2px solid #74777f; border-radius: 8px; font-weight: 600; transition: 0.3s; font-family: 'Noto Sans Arabic', sans-serif; font-size: 16px;"
+        onmouseover="this.style.backgroundColor='#f7fafc'; this.style.borderColor='#002045'"
+        onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='#74777f'"
+      >
+        إنشاء حساب جديد
+      </a>
+
+      <!-- Footer -->
+      <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #74777f; text-align: center;">
+        <p style="font-size: 12px; color: #43474e; margin-bottom: 8px;">الحسابات التجريبية:</p>
+        <div style="background: #f7fafc; padding: 12px; border-radius: 8px; text-align: left; font-size: 12px; color: #43474e;">
+          <div style="margin-bottom: 8px;">👤 <strong>جمعية:</strong> any@email.com</div>
+          <div style="margin-bottom: 8px;">👨‍💼 <strong>Admin:</strong> admin@dama.com</div>
+          <div>👔 <strong>CEO:</strong> ceo@dama.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function handleLogin(event) {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const errorMsg = document.getElementById('error-msg');
+
+  // Simulate login
+  if (email && password) {
+    if (email.includes('admin')) {
+      window.location.href = '10-admin-dashboard.html';
+    } else if (email.includes('ceo')) {
+      window.location.href = '20-executive-dashboard.html';
+    } else {
+      window.location.href = '06-dashboard.html';
+    }
+  } else {
+    errorMsg.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>

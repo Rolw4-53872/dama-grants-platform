@@ -1,0 +1,118 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "جمعية البر بجدة",
+      "email": "info@albir.org",
+      "phone": "0554321098",
+      "city": "جدة",
+      "license": "700123456",
+      "status": "active",
+      "registeredAt": "2024-06-15"
+    },
+    {
+      "id": 2,
+      "name": "جمعية الرحمة",
+      "email": "info@alrahma.org",
+      "phone": "0554321099",
+      "city": "الرياض",
+      "license": "700123457",
+      "status": "active",
+      "registeredAt": "2024-05-10"
+    },
+    {
+      "id": 3,
+      "name": "جمعية التنمية",
+      "email": "info@altanmia.org",
+      "phone": "0554321100",
+      "city": "القاهرة",
+      "license": "700123458",
+      "status": "active",
+      "registeredAt": "2024-04-20"
+    }
+  ],
+  "applications": [
+    {
+      "id": "REQ-001",
+      "userId": 1,
+      "title": "تمكين الأسر المنتجة",
+      "description": "مشروع لتمكين الأسر من خلال توفير رأس مال وتدريب",
+      "amount": 500000,
+      "duration": "6 months",
+      "status": "pending",
+      "createdAt": "2026-06-15",
+      "updatedAt": "2026-06-29"
+    },
+    {
+      "id": "REQ-002",
+      "userId": 1,
+      "title": "برنامج محو الأمية",
+      "description": "برنامج تعليمي شامل للكبار",
+      "amount": 300000,
+      "duration": "8 months",
+      "status": "approved",
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-06-25"
+    },
+    {
+      "id": "REQ-003",
+      "userId": 2,
+      "title": "دعم الحرف اليدوية",
+      "description": "تطوير وتسويق المنتجات الحرفية",
+      "amount": 400000,
+      "duration": "7 months",
+      "status": "modification_requested",
+      "createdAt": "2026-06-12",
+      "updatedAt": "2026-06-28"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "CTR-001",
+      "applicationId": "REQ-002",
+      "status": "signed",
+      "signedAt": "2026-06-26",
+      "expiresAt": "2027-06-26"
+    },
+    {
+      "id": "CTR-002",
+      "applicationId": "REQ-001",
+      "status": "pending_signature",
+      "createdAt": "2026-06-29"
+    }
+  ],
+  "statistics": {
+    "totalAssociations": 520,
+    "totalApplications": 345,
+    "approvedApplications": 268,
+    "rejectedApplications": 45,
+    "totalGrantsDistributed": 12500000,
+    "averageSatisfaction": 95
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "تم قبول طلبك",
+      "message": "تم قبول طلب تمكين الأسر المنتجة",
+      "type": "success",
+      "createdAt": "2026-06-29T10:30:00"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "title": "يحتاج تعديل",
+      "message": "طلبك يحتاج إلى بعض التعديلات",
+      "type": "warning",
+      "createdAt": "2026-06-28T14:15:00"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "title": "عقد جديد",
+      "message": "تم رفع عقد جديد لتوقيعك",
+      "type": "info",
+      "createdAt": "2026-06-27T09:45:00"
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة داما للمنح والتأهيل</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #002045;
+      --primary-container: #1a365d;
+      --secondary: #2c694e;
+      --on-primary: #ffffff;
+      --on-surface: #181c1e;
+      --background: #f7fafc;
+      --outline: #74777f;
+    }
+
+    body {
+      font-family: 'Noto Sans Arabic', sans-serif;
+      background: var(--background);
+      color: var(--on-surface);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--outline);
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--background);
+      border-color: var(--primary);
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--outline);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 30px -2px rgba(0, 32, 69, 0.12);
+    }
+
+    .navbar {
+      background: white;
+      border-bottom: 1px solid var(--outline);
+      box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 50%, var(--secondary) 100%);
+      color: var(--on-primary);
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      text-align: center;
+      padding: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar sticky top-0 z-50">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div style="width: 50px; height: 50px; background: var(--primary); border-radius: 8px;"></div>
+      <span style="font-family: Cairo; font-weight: 900; font-size: 20px; color: var(--primary);">DAMA</span>
+    </div>
+
+    <div class="hidden md:flex gap-8">
+      <a href="#about" style="color: var(--on-surface); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--on-surface)'">عن البرنامج</a>
+      <a href="#features" style="color: var(--on-surface); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--on-surface)'">المميزات</a>
+      <a href="#steps" style="color: var(--on-surface); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--on-surface)'">الخطوات</a>
+    </div>
+
+    <div class="flex gap-4">
+      <a href="02-login.html" class="btn-secondary" style="text-decoration: none;">دخول</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 style="font-size: 48px; margin-bottom: 20px; line-height: 1.2;">منصة إدارة المنح والتأهيل</h1>
+    <p style="font-size: 20px; opacity: 0.9; margin-bottom: 40px; line-height: 1.6;">
+      منصة رقمية متكاملة تمكّن الجمعيات من تقديم طلبات المنح والتأهيل المؤسسي، ومتابعة إجراءاتها إلكترونياً بسهولة وكفاءة
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="03-program-info.html" class="btn-primary" style="text-decoration: none;">ابدأ الآن</a>
+      <button class="btn-secondary" onclick="scrollTo('features')" style="text-decoration: none;">اعرف المزيد</button>
+    </div>
+  </div>
+</section>
+
+<!-- Statistics -->
+<section style="background: white; padding: 60px 20px;">
+  <div class="container mx-auto">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+      <div style="text-align: center;">
+        <div style="font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 8px;">520</div>
+        <div style="color: var(--on-surface-variant); font-size: 16px;">جمعية مسجلة</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 8px;">300</div>
+        <div style="color: var(--on-surface-variant); font-size: 16px;">طلب منحة</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 8px;">12.5M</div>
+        <div style="color: var(--on-surface-variant); font-size: 16px;">ريال منح</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 40px; font-weight: 900; color: var(--primary); margin-bottom: 8px;">95%</div>
+        <div style="color: var(--on-surface-variant); font-size: 16px;">رضا المستخدمين</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" style="padding: 80px 20px; background: var(--background);">
+  <div class="container mx-auto">
+    <h2 style="font-size: 36px; text-align: center; margin-bottom: 60px; color: var(--primary);">مميزات المنصة</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      <div class="card">
+        <div style="font-size: 32px; margin-bottom: 16px;">📋</div>
+        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">تقديم الطلبات</h3>
+        <p style="color: var(--on-surface-variant); line-height: 1.6;">تقديم طلبات المنح والتأهيل الإلكترونية بسهولة من خلال نماذج منظمة وواضحة</p>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 32px; margin-bottom: 16px;">📊</div>
+        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">متابعة الحالة</h3>
+        <p style="color: var(--on-surface-variant); line-height: 1.6;">متابعة حالة الطلبات والعقود بشكل فوري والحصول على إشعارات فورية</p>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 32px; margin-bottom: 16px;">📁</div>
+        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">رفع الملفات</h3>
+        <p style="color: var(--on-surface-variant); line-height: 1.6;">رفع الملفات والوثائق بسهولة مع إمكانية تتبع حالة الرفع</p>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 32px; margin-bottom: 16px;">📜</div>
+        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">إدارة العقود</h3>
+        <p style="color: var(--on-surface-variant); line-height: 1.6;">توقيع واعتماد العقود إلكترونياً بدون تعقيدات</p>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 32px; margin-bottom: 16px;">🔔</div>
+        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">إشعارات فورية</h3>
+        <p style="color: var(--on-surface-variant); line-height: 1.6;">تلقي إشعارات فورية عند كل تحديث أو تغيير في حالة الطلب</p>
+      </div>
+
+      <div class="card">
+        <div style="font-size: 32px; margin-bottom: 16px;">🎯</div>
+        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">سهولة الاستخدام</h3>
+        <p style="color: var(--on-surface-variant); line-height: 1.6;">واجهة بسيطة وسهلة الاستخدام تناسب جميع المستخدمين</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Steps Section -->
+<section id="steps" style="padding: 80px 20px; background: white;">
+  <div class="container mx-auto">
+    <h2 style="font-size: 36px; text-align: center; margin-bottom: 60px; color: var(--primary);">خطوات التقديم</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; max-width: 900px; margin: 0 auto;">
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: 0 auto 16px;">1</div>
+        <h4 style="font-weight: 700; margin-bottom: 8px;">إنشاء حساب</h4>
+        <p style="color: var(--on-surface-variant); font-size: 14px;">إنشاء حساب الجمعية</p>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: 0 auto 16px;">2</div>
+        <h4 style="font-weight: 700; margin-bottom: 8px;">دخول النظام</h4>
+        <p style="color: var(--on-surface-variant); font-size: 14px;">تسجيل الدخول</p>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: 0 auto 16px;">3</div>
+        <h4 style="font-weight: 700; margin-bottom: 8px;">تعبئة الطلب</h4>
+        <p style="color: var(--on-surface-variant); font-size: 14px;">ملء بيانات الطلب</p>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: 0 auto 16px;">4</div>
+        <h4 style="font-weight: 700; margin-bottom: 8px;">رفع الملفات</h4>
+        <p style="color: var(--on-surface-variant); font-size: 14px;">إرفاق الوثائق</p>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: 0 auto 16px;">5</div>
+        <h4 style="font-weight: 700; margin-bottom: 8px;">المراجعة</h4>
+        <p style="color: var(--on-surface-variant); font-size: 14px;">مراجعة الطلب</p>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; margin: 0 auto 16px;">6</div>
+        <h4 style="font-weight: 700; margin-bottom: 8px;">الاعتماد</h4>
+        <p style="color: var(--on-surface-variant); font-size: 14px;">اعتماد الطلب</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 60px;">
+      <a href="03-program-info.html" class="btn-primary" style="text-decoration: none;">ابدأ الآن</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section style="background: var(--primary); color: white; padding: 80px 20px;">
+  <div class="container mx-auto" style="text-align: center; max-width: 700px;">
+    <h2 style="font-size: 36px; margin-bottom: 20px; font-family: Cairo;">جاهز للبدء؟</h2>
+    <p style="font-size: 18px; margin-bottom: 40px; opacity: 0.9;">انضم إلى مئات الجمعيات التي تستخدم منصة داما</p>
+    <a href="04-register.html" class="btn-primary" style="text-decoration: none; background: white; color: var(--primary);">إنشاء حساب جديد</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background: var(--on-surface); color: white; padding: 40px 20px; text-align: center;">
+  <div class="container mx-auto">
+    <p style="margin-bottom: 12px;">&copy; 2026 شركة داما. جميع الحقوق محفوظة</p>
+    <div style="display: flex; gap: 24px; justify-content: center; margin-top: 20px;">
+      <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">سياسة الخصوصية</a>
+      <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">شروط الاستخدام</a>
+      <a href="#" style="color: white; text-decoration: none; opacity: 0.8;">اتصل بنا</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function scrollTo(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+
+</body>
+</html>
