@@ -1,654 +1,315 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html dir="rtl" lang="ar">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>منصة داما للمنح والتأهيل</title>
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>DAMA Enterprise | منصة المنح والتأهيل</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+              "primary-container": "#002045",
+              "on-surface": "#181c1e",
+              "secondary-fixed-dim": "#95d4b3",
+              "on-primary-fixed-variant": "#2e476e",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "on-background": "#181c1e",
+              "surface-container-high": "#e5e9eb",
+              "on-tertiary-container": "#6589c1",
+              "on-tertiary-fixed": "#001b3c",
+              "glass-overlay": "rgba(0, 32, 69, 0.05)",
+              "surface": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#001b3c",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed-dim": "#aec7f5",
+              "surface-tint": "#465f87",
+              "on-tertiary-fixed-variant": "#1f477b",
+              "inverse-surface": "#2d3133",
+              "outline": "#e2e8f0",
+              "tertiary-fixed-dim": "#a7c8ff",
+              "on-error": "#ffffff",
+              "inverse-primary": "#aec7f5",
+              "tertiary-container": "#002044",
+              "secondary": "#2c694e",
+              "surface-dim": "#d7dadc",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#d6e3ff",
+              "on-secondary-fixed": "#002114",
+              "outline-variant": "#c4c6cf",
+              "inverse-on-surface": "#eef1f3",
+              "on-secondary-fixed-variant": "#0e5138",
+              "surface-bright": "#f7fafc",
+              "on-secondary-container": "#316e52",
+              "primary": "#00091b",
+              "on-surface-variant": "#44474e",
+              "accent-line": "#2c694e",
+              "on-secondary": "#ffffff",
+              "secondary-container": "#aeeecb",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed": "#d5e3ff",
+              "secondary-fixed": "#b1f0ce",
+              "tertiary": "#00081a",
+              "surface-container-low": "#f1f4f6",
+              "background": "#f7fafc",
+              "surface-container-highest": "#e0e3e5",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#7089b3",
+              "surface-container": "#ebeef0"
+          },
+          "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+          },
+          "spacing": {
+              "element-gap": "2rem",
+              "container-max": "1280px",
+              "card-padding": "2rem",
+              "section-gap": "4rem",
+              "grid-gutter": "1.5rem"
+          },
+          "fontFamily": {
+              "body-lg": ["Noto Sans Arabic"],
+              "headline-lg": ["Cairo"],
+              "display-lg": ["Cairo"],
+              "title-lg": ["Noto Sans Arabic"],
+              "label-sm": ["Noto Sans Arabic"],
+              "body-md": ["Noto Sans Arabic"],
+              "headline-xl": ["Cairo"]
+          },
+          "fontSize": {
+              "body-lg": ["18px", {"lineHeight": "1.75", "fontWeight": "500"}],
+              "headline-lg": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+              "display-lg": ["128px", {"lineHeight": "1", "letterSpacing": "0.2em", "fontWeight": "900"}],
+              "title-lg": ["20px", {"lineHeight": "1.5", "fontWeight": "700"}],
+              "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+              "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+              "headline-xl": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      @apply bg-background text-on-surface font-body-md;
+      background-image: radial-gradient(#00204505 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    .institutional-shadow {
+      box-shadow: 0 4px 20px -2px rgba(0, 32, 69, 0.08);
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
 </head>
-<body>
+<body class="antialiased">
 
-  <div id="app" style="min-height:100vh;padding-bottom:90px;">
+<div id="app" class="min-h-screen">
 
-    <!-- ===== All Pages Inline ===== -->
+  <!-- Home Page -->
+  <div id="page-home" class="page active min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-4xl bg-surface rounded-3xl overflow-hidden flex shadow-2xl">
+      <!-- Left Side - Gradient -->
+      <div class="flex-1 bg-gradient-to-br from-primary-container via-primary to-secondary p-12 lg:p-16 flex flex-col text-on-primary relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 24px 24px;"></div>
 
-    <!-- #include pages/home.html -->
-    <div id="page-home" class="page active">
-      <div class="container">
-        <div style="display:flex;width:100%;max-width:980px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px -4px rgba(0,32,69,.12);border:1px solid #e2e8f0;">
-          <div style="flex:1;background:linear-gradient(150deg,#002045 0%,#00091b 55%,#2c694e 100%);color:#fff;padding:54px 46px;display:flex;flex-direction:column;position:relative;overflow:hidden;">
-            <!-- subtle background pattern -->
-            <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 0);background-size:24px 24px;pointer-events:none;"></div>
-            <div style="position:relative;">
-              <div style="display:flex;align-items:center;gap:12px;">
-                <div style="background:#fff;border-radius:12px;padding:8px;display:flex;flex:none;box-shadow:0 2px 8px rgba(0,0,0,.1);">
-                  <img src="assets/logo.svg" alt="DAMA" style="width:40px;height:40px;display:block;">
-                </div>
-                <div>
-                  <div style="font-size:24px;font-weight:900;letter-spacing:2px;line-height:1;font-family:'Cairo',sans-serif;">DAMA</div>
-                  <div style="font-size:11px;opacity:.65;margin-top:3px;letter-spacing:1px;">داما القابضة</div>
-                </div>
-              </div>
-              <div style="margin-top:48px;">
-                <div style="display:inline-block;background:rgba(44,105,78,.3);border:1px solid rgba(44,105,78,.5);border-radius:20px;padding:4px 14px;font-size:12px;margin-bottom:14px;letter-spacing:.5px;">برنامج 2026</div>
-                <div style="font-size:36px;font-weight:800;line-height:1.25;font-family:'Cairo',sans-serif;">برنامج التأهيل<br>والمنح</div>
-                <div style="font-size:17px;opacity:.8;margin-top:10px;color:#aec7f5;">تمكين الجمعيات غير الربحية</div>
-                <p style="font-size:14px;opacity:.7;line-height:1.9;margin-top:14px;">نؤهّل الجمعيات مؤسسياً ثم نمكّنها من التقديم على منح لمشاريعها، بإجراءات واضحة ومتابعة لحظية.</p>
-                <div style="display:flex;gap:0;margin-top:28px;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;">
-                  <div style="flex:1;padding-left:20px;border-left:1px solid rgba(255,255,255,.12);">
-                    <div style="font-size:24px;font-weight:800;font-family:'Cairo',sans-serif;">520</div>
-                    <div style="font-size:11px;opacity:.55;margin-top:2px;">جمعية مسجّلة</div>
-                  </div>
-                  <div style="flex:1;padding-right:20px;padding-left:20px;border-left:1px solid rgba(255,255,255,.12);">
-                    <div style="font-size:24px;font-weight:800;font-family:'Cairo',sans-serif;">300</div>
-                    <div style="font-size:11px;opacity:.55;margin-top:2px;">طلب منحة</div>
-                  </div>
-                  <div style="flex:1;padding-right:20px;">
-                    <div style="font-size:24px;font-weight:800;font-family:'Cairo',sans-serif;">12.5M</div>
-                    <div style="font-size:11px;opacity:.55;margin-top:2px;">ريال منح معتمدة</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="relative z-10 flex items-center gap-3 mb-8">
+          <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-md">
+            <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none">
+              <rect x="20" y="20" width="60" height="60" fill="#002045" rx="8"/>
+            </svg>
           </div>
-          <div style="width:360px;padding:50px 42px;display:flex;flex-direction:column;justify-content:center;gap:14px;background:#fff;">
-            <div style="font-size:22px;font-weight:700;margin-bottom:8px;font-family:'Cairo',sans-serif;">ابدأ رحلتك معنا</div>
-            <button class="btn btn-primary" onclick="App.navigate('signup')">إنشاء حساب جمعية</button>
-            <button class="btn btn-outline" onclick="App.navigate('login')">تسجيل الدخول</button>
-            <div style="font-size:12px;color:#7089b3;text-align:center;line-height:1.9;margin-top:6px;padding:10px;background:#f7fafc;border-radius:8px;border:1px solid #e2e8f0;">قدّم على التأهيل، ثم على منح مشاريعك، وتابع حالتها في أي وقت.</div>
+          <div>
+            <h1 class="font-headline-lg text-xl font-black tracking-wider">DAMA</h1>
+            <p class="text-xs opacity-70">داما القابضة</p>
+          </div>
+        </div>
+
+        <div class="relative z-10 mt-auto">
+          <h2 class="font-headline-xl text-4xl font-black mb-4">برنامج التأهيل<br/>والمنح</h2>
+          <p class="text-lg opacity-90 mb-4">تمكين الجمعيات غير الربحية</p>
+          <p class="text-base opacity-75 leading-relaxed mb-8">نؤهّل الجمعيات مؤسسياً ثم نمكّنها من التقديم على منح لمشاريعها، بإجراءات واضحة ومتابعة لحظية لكل طلب وعقد.</p>
+
+          <div class="flex gap-6 pt-6 border-t border-white/15">
+            <div><div class="text-3xl font-black">520</div><div class="text-xs opacity-60">جمعية</div></div>
+            <div><div class="text-3xl font-black">300</div><div class="text-xs opacity-60">طلب منحة</div></div>
+            <div><div class="text-3xl font-black">12.5M</div><div class="text-xs opacity-60">ريال منح</div></div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- #include pages/signup.html -->
-    <div id="page-signup" class="page">
-      <div class="container">
-        <div class="card card-sm">
-          <div style="display:flex;align-items:center;gap:11px;">
-            <div style="background:#002045;border-radius:10px;padding:8px;display:flex;">
-              <img src="assets/logo.svg" alt="DAMA" style="width:36px;height:36px;display:block;">
-            </div>
-            <div>
-              <div style="font-size:18px;font-weight:800;letter-spacing:1px;color:#002045;font-family:'Cairo',sans-serif;">DAMA</div>
-              <div style="font-size:11px;color:#7089b3;">داما القابضة</div>
-            </div>
-          </div>
-          <div style="font-size:22px;font-weight:700;margin:22px 0 6px;font-family:'Cairo',sans-serif;">إنشاء حساب جمعية</div>
-          <div style="font-size:13px;color:#7089b3;margin-bottom:22px;">أنشئ حسابك وابدأ رحلة التأهيل والمنح</div>
-          <div class="form-group"><label class="form-label">اسم الجمعية</label><input class="form-input" placeholder="جمعية ..."></div>
-          <div class="form-group"><label class="form-label">رقم الترخيص</label><input class="form-input" placeholder="700xxxxxx"></div>
-          <div class="form-group"><label class="form-label">رقم جوال الجمعية</label><input class="form-input" placeholder="05xxxxxxxx"></div>
-          <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input class="form-input" placeholder="name@example.com"></div>
-          <div class="form-group" style="margin-bottom:18px;"><label class="form-label">كلمة المرور</label><input type="password" class="form-input" placeholder="••••••••"></div>
-          <button class="btn btn-primary" onclick="App.navigate('login')">إنشاء الحساب</button>
-          <div style="text-align:center;font-size:13px;color:#44474e;margin-top:16px;">لديك حساب؟ <span class="link" onclick="App.navigate('login')">تسجيل الدخول</span></div>
+      <!-- Right Side - Form -->
+      <div class="w-full lg:w-96 p-12 lg:p-16 flex flex-col justify-center gap-6">
+        <div>
+          <h3 class="font-headline-lg text-2xl font-bold text-primary-container mb-2">ابدأ رحلتك معنا</h3>
+          <p class="text-sm text-on-surface-variant">انضم إلى برنامج التأهيل والمنح</p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <input type="email" placeholder="البريد الإلكتروني" class="w-full px-4 py-3 rounded-lg border border-outline bg-surface-container-low focus:ring-2 focus:ring-secondary outline-none text-on-surface" />
+          <input type="password" placeholder="كلمة المرور" class="w-full px-4 py-3 rounded-lg border border-outline bg-surface-container-low focus:ring-2 focus:ring-secondary outline-none text-on-surface" />
+        </div>
+
+        <button class="w-full bg-primary-container text-on-primary py-3 rounded-lg font-title-lg font-bold hover:shadow-lg transition-all active:scale-95 institutional-shadow">
+          تسجيل الدخول
+        </button>
+
+        <button class="w-full border-2 border-outline bg-surface text-primary-container py-3 rounded-lg font-title-lg font-bold hover:bg-surface-container-low transition-all">
+          إنشاء حساب جمعية
+        </button>
+
+        <div class="text-xs text-on-surface-variant text-center leading-relaxed bg-surface-container-low p-3 rounded-lg">
+          قدّم على التأهيل، ثم على منح مشاريعك، وتابع حالتها في أي وقت
         </div>
       </div>
-    </div>
-
-    <!-- #include pages/login.html -->
-    <div id="page-login" class="page">
-      <div class="container">
-        <div class="card card-login">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px;">
-            <div style="background:#002045;border-radius:14px;padding:12px;display:flex;">
-              <img src="assets/logo.svg" alt="DAMA" style="width:48px;height:48px;display:block;">
-            </div>
-            <div style="font-size:22px;font-weight:900;letter-spacing:2px;color:#002045;font-family:'Cairo',sans-serif;">DAMA</div>
-          </div>
-          <div style="font-size:22px;font-weight:700;margin:18px 0 6px;text-align:center;font-family:'Cairo',sans-serif;">تسجيل الدخول</div>
-          <div style="font-size:13px;color:#7089b3;text-align:center;margin-bottom:24px;">بوابة الجمعيات والمنظمات غير الربحية</div>
-          <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input id="login-email" class="form-input" placeholder="name@example.com" oninput="App.state.loginEmail=this.value;App.state.loginError=false;"></div>
-          <div class="form-group" style="margin-bottom:10px;"><label class="form-label">كلمة المرور</label><input id="login-pass" type="password" class="form-input" placeholder="••••••••" oninput="App.state.loginPass=this.value;App.state.loginError=false;"></div>
-          <div id="login-error" class="error-text" style="display:none;">بيانات الدخول غير صحيحة.</div>
-          <div style="text-align:left;font-size:13px;color:#002045;margin-bottom:22px;cursor:pointer;">نسيت كلمة المرور؟</div>
-          <button class="btn btn-primary" onclick="App.doLogin()">دخول</button>
-          <div style="text-align:center;font-size:13px;color:#44474e;margin-top:18px;">ليس لديك حساب؟ <span class="link" onclick="App.navigate('signup')">إنشاء حساب</span></div>
-          <div class="demo-box">بيانات تجريبية · الجمعية: أي بريد · مسؤول النظام: admin@dama-business.com / adminpass · الإدارة التنفيذية: ceo@dama-business.com / execpass</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/intro.html -->
-    <div id="page-intro" class="page">
-      <div class="container">
-        <div style="width:100%;max-width:820px;">
-          <div style="background:linear-gradient(150deg,#002045 0%,#00091b 55%,#2c694e 100%);color:#fff;border-radius:18px 18px 0 0;padding:42px 46px;position:relative;overflow:hidden;">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 0);background-size:24px 24px;pointer-events:none;"></div>
-            <div style="position:relative;">
-              <div style="display:flex;align-items:center;gap:9px;margin-bottom:18px;">
-                <div style="background:#fff;border-radius:7px;padding:5px;display:flex;flex:none;"><img src="assets/logo.svg" alt="DAMA" style="width:22px;height:22px;display:block;"></div>
-                <div style="font-size:12px;letter-spacing:2px;opacity:.7;font-family:'Cairo',sans-serif;">DAMA HOLDING</div>
-              </div>
-              <div style="font-size:28px;font-weight:800;font-family:'Cairo',sans-serif;">برنامج التأهيل والمنح</div>
-              <p style="font-size:14px;opacity:.78;line-height:1.9;margin:12px 0 0;max-width:580px;">داما القابضة كيان سعودي متخصص في تمكين المنظمات غير الربحية عبر حلول استشارية احترافية، لتحقيق الاستدامة المؤسسية وصناعة أثر اقتصادي واجتماعي ملموس.</p>
-            </div>
-          </div>
-          <div style="background:#fff;border-radius:0 0 18px 18px;padding:36px 46px;box-shadow:0 8px 36px rgba(0,32,69,.08);">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:30px;">
-              <div>
-                <div style="font-size:13px;font-weight:700;color:#002045;margin-bottom:10px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:3px;height:16px;background:#2c694e;border-radius:2px;"></span>أهداف البرنامج</div>
-                <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#44474e;line-height:1.7;font-weight:500;">
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>تمكين المنظمات من الاستدامة المالية والتشغيلية</span></div>
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>رفع مستوى الحوكمة والامتثال المؤسسي</span></div>
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>تطوير القيادات والكفاءات البشرية</span></div>
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>دعم التحول الرقمي والابتكار المؤسسي</span></div>
-                </div>
-              </div>
-              <div>
-                <div style="font-size:13px;font-weight:700;color:#002045;margin-bottom:10px;display:flex;align-items:center;gap:8px;"><span style="display:inline-block;width:3px;height:16px;background:#2c694e;border-radius:2px;"></span>مزايا وشروط الانضمام</div>
-                <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:#44474e;line-height:1.7;font-weight:500;">
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>منحة مالية لتمويل المشاريع المؤهّلة</span></div>
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>استشارات وبرامج تأهيل مؤسسي</span></div>
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>أن تكون الجمعية مرخّصة ونشطة</span></div>
-                  <div style="display:flex;gap:8px;align-items:flex-start;"><span style="color:#2c694e;font-weight:700;">●</span><span>استكمال ملفات الجمعية المطلوبة</span></div>
-                </div>
-              </div>
-            </div>
-            <div style="font-size:14px;font-weight:700;margin-bottom:18px;color:#181c1e;">خطوات التقديم المرحلية</div>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:30px;">
-              <span class="step-badge">1. طلب التأهيل</span>
-              <span style="color:#c0c7d4;font-weight:700;">↓</span>
-              <span class="step-badge">2. قبول التأهيل</span>
-              <span style="color:#c0c7d4;font-weight:700;">↓</span>
-              <span class="step-badge">3. التقديم على مشروع</span>
-              <span style="color:#c0c7d4;font-weight:700;">↓</span>
-              <span class="step-badge">4. اعتماد المنحة</span>
-            </div>
-            <div class="btn-row">
-              <button class="btn btn-primary btn-flex" onclick="App.navigate('qform',{qstep:1})">قدّم على خدمة التأهيل الآن</button>
-              <button class="btn btn-outline-light" style="padding:15px 24px;font-size:15px;" onclick="App.navigate('account')">حسابي</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/qualification-form.html -->
-    <div id="page-qform" class="page">
-      <div class="container-top">
-        <div class="card card-form">
-          <div style="font-size:13px;color:#002045;font-weight:700;margin-bottom:4px;">نموذج التأهيل</div>
-          <div class="stepper">
-            <div id="stepper-dot-1" class="stepper-dot stepper-active">1</div>
-            <div id="stepper-line-1" class="stepper-line stepper-line-pending"></div>
-            <div id="stepper-dot-2" class="stepper-dot stepper-pending">2</div>
-            <div id="stepper-line-2" class="stepper-line stepper-line-pending"></div>
-            <div id="stepper-dot-3" class="stepper-dot stepper-pending">3</div>
-          </div>
-          <div id="qstep-label" style="font-size:13px;color:#7089b3;margin-bottom:22px;">الخطوة 1 من 3</div>
-          <div id="qstep-1" class="qstep">
-            <div style="font-size:19px;font-weight:700;margin-bottom:18px;">بيانات الجمعية</div>
-            <div class="form-group"><label class="form-label">اسم الجمعية</label><input id="q-assoc" class="form-input" value="جمعية البر بجدة" oninput="App.setForm('assoc',this.value)"></div>
-            <div class="form-group"><label class="form-label">رقم الترخيص</label><input class="form-input" value="700123456"></div>
-            <div class="flex-row" style="margin-bottom:24px;">
-              <div style="flex:1;"><label class="form-label">البريد الإلكتروني</label><input class="form-input" value="info@albirjeddah.org"></div>
-              <div style="flex:1;"><label class="form-label">رقم الجوال</label><input class="form-input" value="0551234567"></div>
-            </div>
-            <div class="btn-row">
-              <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.navigate('intro')">رجوع</button>
-              <button class="btn btn-primary btn-flex btn-sm" onclick="App.setState({qstep:2})">التالي</button>
-            </div>
-          </div>
-          <div id="qstep-2" class="qstep" style="display:none;">
-            <div style="font-size:19px;font-weight:700;margin-bottom:6px;">ملفات الجمعية</div>
-            <div style="font-size:13px;color:#7089b3;margin-bottom:16px;">يرجى رفع المستندات التالية (PDF)</div>
-            <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px;">
-              <div class="file-upload-row"><span>شهادة الترخيص</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>اللائحة الأساسية</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>المعلومات البنكية</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>حساب التبرع</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>الملف التعريفي</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>الهوية البصرية</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>الخطة الاستراتيجية</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>الخطة التشغيلية</span><span>⬆ رفع</span></div>
-              <div class="file-upload-row"><span>القوائم المالية (سنتان)</span><span>⬆ رفع</span></div>
-            </div>
-            <div class="btn-row">
-              <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.setState({qstep:1})">السابق</button>
-              <button class="btn btn-primary btn-flex btn-sm" onclick="App.setState({qstep:3})">التالي</button>
-            </div>
-          </div>
-          <div id="qstep-3" class="qstep" style="display:none;">
-            <div style="font-size:19px;font-weight:700;margin-bottom:18px;">معلومات إضافية</div>
-            <div style="margin-bottom:16px;">
-              <div style="font-size:14px;font-weight:600;margin-bottom:9px;">هل لدى الجمعية شهادات تميز؟</div>
-              <div class="flex-row" style="gap:10px;">
-                <button id="q1-yes" class="btn-toggle btn-toggle-off" onclick="App.setState({q1:'yes'})">نعم</button>
-                <button id="q1-no" class="btn-toggle btn-toggle-off" onclick="App.setState({q1:'no'})">لا</button>
-              </div>
-              <div id="q1-upload" style="display:none;margin-top:10px;"><div class="file-upload-row"><span>إرفاق شهادة التميز (اختياري)</span><span>⬆ رفع</span></div></div>
-            </div>
-            <div style="margin-bottom:16px;">
-              <div style="font-size:14px;font-weight:600;margin-bottom:9px;">هل الجمعية مسجّلة في منصة قوائم؟</div>
-              <div class="flex-row" style="gap:10px;">
-                <button id="q2-yes" class="btn-toggle btn-toggle-off" onclick="App.setState({q2:'yes'})">نعم</button>
-                <button id="q2-no" class="btn-toggle btn-toggle-off" onclick="App.setState({q2:'no'})">لا</button>
-              </div>
-              <div class="file-upload-row file-upload-required" style="margin-top:10px;"><span>إثبات التسجيل في منصة قوائم (إجباري)</span><span>⬆ رفع</span></div>
-            </div>
-            <div style="margin-bottom:24px;">
-              <div style="font-size:14px;font-weight:600;margin-bottom:9px;">هل نفّذت الجمعية مشاريع سابقة؟</div>
-              <div class="flex-row" style="gap:10px;">
-                <button id="q3-yes" class="btn-toggle btn-toggle-off" onclick="App.setState({q3:'yes'})">نعم</button>
-                <button id="q3-no" class="btn-toggle btn-toggle-off" onclick="App.setState({q3:'no'})">لا</button>
-              </div>
-              <div id="q3-upload" style="display:none;margin-top:10px;">
-                <div style="display:flex;flex-direction:column;gap:9px;">
-                  <div class="file-upload-row"><span>ملفات المشاريع السابقة (اختياري)</span><span>⬆ رفع</span></div>
-                  <div class="file-upload-row"><span>شهادة إتمام المشروع (اختياري)</span><span>⬆ رفع</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="btn-row">
-              <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.setState({qstep:2})">السابق</button>
-              <button class="btn btn-primary btn-flex btn-sm" onclick="App.setState({qualStatus:'review',screen:'qsubmitted'})">تقديم طلب التأهيل</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/qualification-submitted.html -->
-    <div id="page-qsubmitted" class="page">
-      <div class="container">
-        <div class="card" style="padding:48px 40px;width:100%;max-width:440px;text-align:center;">
-          <div style="width:80px;height:80px;border-radius:50%;background:#e7f1f8;color:#002045;display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 22px;animation:pop .5s;">✓</div>
-          <div style="font-size:22px;font-weight:800;">تم إرسال طلب التأهيل</div>
-          <div style="font-size:14px;color:#44474e;margin-top:16px;">رقم الطلب</div>
-          <div style="font-size:26px;font-weight:800;letter-spacing:1px;margin-top:4px;">TQ-2026-0125</div>
-          <div class="badge status-review" style="margin-top:18px;padding:8px 18px;font-size:14px;">الحالة: قيد المراجعة</div>
-          <p style="font-size:13px;color:#7089b3;line-height:1.8;margin-top:18px;">سيراجع مسؤول النظام طلبكم وملفاتكم، وسيتم إشعاركم عند تحديث الحالة.</p>
-          <button class="btn btn-primary" style="margin-top:14px;" onclick="App.navigate('account')">الذهاب لحسابي</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/account.html -->
-    <div id="page-account" class="page">
-      <div style="max-width:900px;margin:0 auto;padding:36px 24px;animation:fade .4s;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
-          <div><div id="account-assoc" style="font-size:24px;font-weight:800;">جمعية البر بجدة</div><div style="font-size:14px;color:#44474e;margin-top:2px;">لوحة حسابك ومتابعة طلباتك وعقودك</div></div>
-          <button class="btn btn-outline-light" style="width:auto;padding:12px 20px;font-size:14px;" onclick="App.navigate('intro')">عن البرنامج</button>
-        </div>
-        <div class="card" style="padding:24px;margin-bottom:18px;">
-          <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">
-            <div style="width:54px;height:54px;border-radius:13px;overflow:hidden;flex:none;background:#002045;padding:2px;"><img src="assets/logo.svg" alt="DAMA" style="width:100%;height:100%;display:block;"></div>
-            <div><div id="account-assoc-name" style="font-size:17px;font-weight:700;font-family:'Cairo',sans-serif;">جمعية البر بجدة</div><div id="account-license" style="font-size:13px;color:#7089b3;font-weight:500;">جمعية مسجّلة · ترخيص 700123456</div></div>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;">
-            <div><div style="font-size:12px;color:#7089b3;">البريد</div><div style="font-size:14px;font-weight:600;">info@albirjeddah.org</div></div>
-            <div><div style="font-size:12px;color:#7089b3;">الجوال</div><div style="font-size:14px;font-weight:600;">0551234567</div></div>
-            <div><div style="font-size:12px;color:#7089b3;">المدينة</div><div style="font-size:14px;font-weight:600;">جدة</div></div>
-            <div><div style="font-size:12px;color:#7089b3;">عدد الطلبات</div><div id="account-req-count" style="font-size:14px;font-weight:600;">1</div></div>
-          </div>
-        </div>
-        <div style="font-size:16px;font-weight:700;margin-bottom:12px;font-family:'Cairo',sans-serif;color:#002045;">طلباتي</div>
-        <div class="flex-col">
-          <div class="request-card" onclick="App.navigate('qualstatus')">
-            <div style="display:flex;align-items:center;gap:16px;"><div class="request-icon" style="background:#e7f1f8;color:#002045;">🎓</div><div><div style="font-size:15px;font-weight:700;">طلب التأهيل المؤسسي</div><div style="font-size:12px;color:#7089b3;">TQ-2026-0125 · قُدّم 20/06/2024</div></div></div>
-            <span id="account-qual-badge" class="badge status-review">قيد المراجعة</span>
-          </div>
-          <div id="account-proj-card" class="request-card" style="display:none;" onclick="App.navigate('projstatus')">
-            <div style="display:flex;align-items:center;gap:16px;"><div class="request-icon" style="background:#f0eadf;color:#988057;">💰</div><div><div id="account-proj-name" style="font-size:15px;font-weight:700;">تمكين الأسر المنتجة</div><div style="font-size:12px;color:#7089b3;">PRJ-2026-0098 · طلب منحة</div></div></div>
-            <span id="account-proj-badge" class="badge status-review">قيد المراجعة</span>
-          </div>
-          <div id="account-contract-card" class="request-card" style="display:none;" onclick="App.navigate('contract')">
-            <div style="display:flex;align-items:center;gap:16px;"><div class="request-icon" style="background:#e3efe7;color:#174528;">📄</div><div><div style="font-size:15px;font-weight:700;">عقد المشروع</div><div style="font-size:12px;color:#7089b3;">CON-2026-0044</div></div></div>
-            <span id="account-contract-badge" class="badge status-none">لم يُرفع</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/qualification-status.html -->
-    <div id="page-qualstatus" class="page">
-      <div class="container">
-        <div class="card card-md">
-          <div class="back-link" onclick="App.navigate('account')">→ حسابي</div>
-          <div style="font-size:22px;font-weight:800;margin-bottom:20px;">حالة طلب التأهيل</div>
-          <div class="grid-2" style="margin-bottom:24px;">
-            <div><div style="font-size:13px;color:#7089b3;">رقم الطلب</div><div style="font-size:15px;font-weight:700;">TQ-2026-0125</div></div>
-            <div><div style="font-size:13px;color:#7089b3;">نوع الطلب</div><div style="font-size:15px;font-weight:700;">تأهيل مؤسسي</div></div>
-            <div><div style="font-size:13px;color:#7089b3;">تاريخ التقديم</div><div style="font-size:15px;font-weight:700;">20 يونيو 2024</div></div>
-            <div><div style="font-size:13px;color:#7089b3;">الحالة</div><div id="qualstatus-label" style="font-size:15px;font-weight:700;color:#b8842a;">قيد المراجعة</div></div>
-          </div>
-          <div id="qualstatus-rejected" style="display:none;">
-            <div class="alert alert-error" style="flex-direction:column;align-items:flex-start;gap:6px;"><div style="font-size:14px;font-weight:700;color:#b23b34;">ملاحظات مسؤول النظام</div><div style="font-size:13px;color:#44474e;line-height:1.9;">الملفات المالية غير مكتملة. يرجى رفع القوائم المالية لآخر سنتين وإعادة التقديم.</div></div>
-            <button class="btn btn-primary" style="margin-top:10px;" onclick="App.navigate('qform',{qstep:1})">تعديل وإعادة التقديم</button>
-          </div>
-          <div id="qualstatus-accepted" style="display:none;">
-            <div class="alert alert-success"><div style="font-size:24px;">✅</div><div style="font-size:14px;color:#174528;font-weight:600;line-height:1.6;">تم قبول جمعيتكم في برنامج التأهيل. يمكنكم الآن التقديم على مشروع للحصول على منحة.</div></div>
-            <button class="btn btn-green" onclick="App.navigate('projform')">إدارة المشروع — التقديم على منحة</button>
-          </div>
-          <div id="qualstatus-review" class="alert alert-warning" style="display:flex;"><div style="font-size:22px;">⏳</div><div style="font-size:14px;color:#b8842a;font-weight:600;">طلبكم قيد المراجعة من قبل مسؤول النظام.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/project-form.html -->
-    <div id="page-projform" class="page">
-      <div class="container-top">
-        <div class="card card-form">
-          <div style="font-size:13px;color:#174528;font-weight:700;margin-bottom:4px;">إدارة المشروع</div>
-          <div style="font-size:21px;font-weight:800;margin-bottom:20px;">التقديم على منحة مشروع</div>
-          <div class="form-group"><label class="form-label">اسم المشروع</label><input class="form-input" value="تمكين الأسر المنتجة" oninput="App.setForm('project',this.value)"></div>
-          <div class="flex-row" style="margin-bottom:15px;">
-            <div style="flex:1;"><label class="form-label">الفئة المستهدفة</label><select class="form-select"><option>الأسر المنتجة</option><option>الأيتام</option><option>ذوو الإعاقة</option><option>الشباب</option></select></div>
-            <div style="flex:1;"><label class="form-label">قيمة المشروع (ريال)</label><input class="form-input" value="300,000"></div>
-          </div>
-          <div class="form-group"><label class="form-label">وصف المشروع</label><textarea class="form-input" rows="3">مشروع لتمكين الأسر المنتجة من خلال التدريب المهني وتوفير الأدوات اللازمة.</textarea></div>
-          <div class="form-group" style="margin-bottom:24px;"><label class="form-label">أهداف المشروع</label><textarea class="form-input" rows="2">تأهيل 100 أسرة وتمكينها من إدرار دخل مستدام خلال سنة.</textarea></div>
-          <div class="btn-row">
-            <button class="btn btn-outline-light btn-flex btn-sm" onclick="App.navigate('qualstatus')">رجوع</button>
-            <button class="btn btn-green btn-flex btn-sm" onclick="App.setState({projStatus:'review',screen:'projstatus'})">إرسال طلب المشروع</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/project-status.html -->
-    <div id="page-projstatus" class="page">
-      <div class="container">
-        <div class="card card-md">
-          <div class="back-link" onclick="App.navigate('account')">→ حسابي</div>
-          <div style="font-size:22px;font-weight:800;margin-bottom:20px;">حالة طلب المشروع</div>
-          <div class="grid-2" style="margin-bottom:24px;">
-            <div><div style="font-size:13px;color:#7089b3;">رقم الطلب</div><div style="font-size:15px;font-weight:700;">PRJ-2026-0098</div></div>
-            <div><div style="font-size:13px;color:#7089b3;">اسم المشروع</div><div id="projstatus-name" style="font-size:15px;font-weight:700;">تمكين الأسر المنتجة</div></div>
-            <div><div style="font-size:13px;color:#7089b3;">تاريخ الإرسال</div><div style="font-size:15px;font-weight:700;">25 يونيو 2024</div></div>
-            <div><div style="font-size:13px;color:#7089b3;">الحالة</div><div id="projstatus-label" style="font-size:15px;font-weight:700;color:#b8842a;">قيد المراجعة</div></div>
-          </div>
-          <div id="projstatus-rejected" style="display:none;"><div class="alert alert-error" style="flex-direction:column;align-items:flex-start;gap:6px;"><div style="font-size:14px;font-weight:700;color:#b23b34;">ملاحظات مسؤول النظام</div><div style="font-size:13px;color:#44474e;line-height:1.9;">قيمة المشروع تتجاوز سقف المنحة المتاح. يرجى مراجعة الميزانية.</div></div></div>
-          <div id="projstatus-accepted" style="display:none;">
-            <div class="alert alert-success"><div style="font-size:24px;">🎉</div><div style="font-size:14px;color:#174528;font-weight:600;line-height:1.6;">تمت الموافقة على المشروع! تم إرفاق عقد المشروع، يرجى مراجعته وتوقيعه.</div></div>
-            <button class="btn btn-green" onclick="App.navigate('contract')">عرض عقد المشروع</button>
-          </div>
-          <div id="projstatus-review" class="alert alert-warning" style="display:flex;"><div style="font-size:22px;">⏳</div><div style="font-size:14px;color:#b8842a;font-weight:600;">طلب المشروع قيد المراجعة.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/contract.html -->
-    <div id="page-contract" class="page">
-      <div class="container">
-        <div class="card card-md">
-          <div class="back-link" onclick="App.navigate('account')">→ حسابي</div>
-          <div style="font-size:22px;font-weight:800;margin-bottom:6px;">عقد المشروع</div>
-          <div style="font-size:13px;color:#7089b3;margin-bottom:22px;">الحالة الحالية: <span id="contract-status-label" style="font-weight:700;color:#002045;">بانتظار التوقيع</span></div>
-          <div class="file-download-row">
-            <div style="width:46px;height:46px;border-radius:10px;background:#174528;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;">📄</div>
-            <div style="flex:1;"><div style="font-size:15px;font-weight:700;">عقد منحة المشروع.pdf</div><div style="font-size:12px;color:#7089b3;">CON-2026-0044 · 320 KB</div></div>
-            <span style="color:#002045;font-size:13px;font-weight:700;cursor:pointer;">⬇ تحميل</span>
-          </div>
-          <div class="alert-info" style="margin-bottom:20px;">الخطوات: حمّل العقد، وقّعه خارج النظام، ثم أعد رفعه ليُراجع ويُعتمد من مسؤول النظام وتكتمل إجراءات المنحة.</div>
-          <div id="contract-needs-sign"><button class="btn btn-primary" onclick="App.setState({contractStatus:'signed'})">⬆ رفع العقد بعد توقيعه</button></div>
-          <div id="contract-signed" class="alert alert-warning" style="display:none;"><div style="font-size:20px;">⏳</div><div style="font-size:14px;color:#b8842a;font-weight:600;">تم رفع العقد الموقّع — بانتظار اعتماد مسؤول النظام.</div></div>
-          <div id="contract-approved" class="alert alert-success" style="display:none;"><div style="font-size:24px;">✅</div><div style="font-size:14px;color:#174528;font-weight:700;line-height:1.6;">تم اعتماد العقد واكتملت إجراءات المنحة. المشروع الآن مكتمل.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/admin-login.html -->
-    <div id="page-admin-login" class="page">
-      <div class="container">
-        <div class="card card-login">
-          <div style="width:64px;height:64px;border-radius:14px;overflow:hidden;margin:0 auto;"><img src="assets/logo.svg" alt="DAMA" style="width:64px;height:64px;display:block;"></div>
-          <div style="font-size:22px;font-weight:800;margin:18px 0 4px;text-align:center;">دخول مسؤول النظام</div>
-          <div style="font-size:13px;color:#7089b3;text-align:center;margin-bottom:26px;">حساب خاص بصلاحيات إدارة الطلبات</div>
-          <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input id="admin-email" class="form-input" placeholder="admin@dama-business.com" oninput="App.state.aEmail=this.value;App.state.aErr=false;"></div>
-          <div class="form-group" style="margin-bottom:14px;"><label class="form-label">كلمة المرور</label><input id="admin-pass" type="password" class="form-input" placeholder="••••••••" oninput="App.state.aPass=this.value;App.state.aErr=false;"></div>
-          <div id="admin-login-error" class="error-text" style="display:none;">البريد أو كلمة المرور غير صحيحة.</div>
-          <button class="btn btn-primary" onclick="App.adminSignIn()">دخول</button>
-          <div class="link" style="text-align:center;font-size:13px;margin-top:16px;" onclick="App.setPortal('applicant')">→ العودة لبوابة الجمعيات</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/manager-login.html -->
-    <div id="page-manager-login" class="page">
-      <div class="container">
-        <div class="card card-login">
-          <div style="width:64px;height:64px;border-radius:14px;overflow:hidden;margin:0 auto;"><img src="assets/logo.svg" alt="DAMA" style="width:64px;height:64px;display:block;"></div>
-          <div style="font-size:22px;font-weight:800;margin:18px 0 4px;text-align:center;">دخول الإدارة التنفيذية</div>
-          <div style="font-size:13px;color:#7089b3;text-align:center;margin-bottom:26px;">حساب خاص للاطلاع على المؤشرات والتقارير</div>
-          <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input id="mgr-email" class="form-input" placeholder="ceo@dama-business.com" oninput="App.state.mEmail=this.value;App.state.mErr=false;"></div>
-          <div class="form-group" style="margin-bottom:14px;"><label class="form-label">كلمة المرور</label><input id="mgr-pass" type="password" class="form-input" placeholder="••••••••" oninput="App.state.mPass=this.value;App.state.mErr=false;"></div>
-          <div id="mgr-login-error" class="error-text" style="display:none;">البريد أو كلمة المرور غير صحيحة.</div>
-          <button class="btn btn-green" onclick="App.mgrSignIn()">دخول</button>
-          <div class="link" style="text-align:center;font-size:13px;margin-top:16px;" onclick="App.setPortal('applicant')">→ العودة لبوابة الجمعيات</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/admin.html -->
-    <div id="page-admin" class="page">
-      <div style="display:flex;min-height:100vh;animation:fade .4s;">
-        <div class="sidebar sidebar-admin">
-          <div class="sidebar-logo"><div class="sidebar-logo-bg"><img src="assets/logo.svg" alt="DAMA"></div><div class="sidebar-title" style="font-family:'Cairo',sans-serif;">DAMA</div></div>
-          <div class="sidebar-role">مسؤول النظام</div>
-          <div style="height:1px;background:rgba(255,255,255,.1);margin:14px 0;"></div>
-          <div id="admin-nav-qual" class="sidebar-nav-item admin-nav sidebar-nav-active" onclick="App.setState({adminScreen:'qual'})">طلبات التأهيل</div>
-          <div id="admin-nav-proj" class="sidebar-nav-item admin-nav" onclick="App.setState({adminScreen:'proj'})">طلبات المشاريع</div>
-          <div class="sidebar-logout" onclick="App.setState({adminAuthed:false,portal:'applicant'})">تسجيل الخروج</div>
-        </div>
-        <div style="flex:1;padding:30px 34px;overflow:auto;">
-          <div id="admin-qual" class="admin-section">
-            <div style="font-size:22px;font-weight:800;margin-bottom:20px;font-family:'Cairo',sans-serif;color:#002045;">إدارة طلبات التأهيل</div>
-            <input class="form-input" placeholder="ابحث باسم الجمعية أو رقم الترخيص" style="margin-bottom:18px;">
-            <div class="data-table">
-              <div class="data-table-header" style="grid-template-columns:130px 1.5fr 120px 120px 130px;"><span>رقم الطلب</span><span>اسم الجمعية</span><span>رقم الترخيص</span><span>التاريخ</span><span>الحالة</span></div>
-              <div id="admin-qual-tbody"></div>
-            </div>
-          </div>
-          <div id="admin-qdetail" class="admin-section" style="display:none;">
-            <div class="back-link" onclick="App.setState({adminScreen:'qual'})">→ رجوع لطلبات التأهيل</div>
-            <div class="grid-2-col">
-              <div class="card" style="padding:28px;">
-                <div style="font-size:20px;font-weight:800;margin-bottom:20px;">طلب تأهيل — TQ-2026-0125</div>
-                <div class="grid-2" style="margin-bottom:24px;">
-                  <div><div style="font-size:13px;color:#7089b3;">اسم الجمعية</div><div style="font-size:15px;font-weight:700;">جمعية البر بجدة</div></div>
-                  <div><div style="font-size:13px;color:#7089b3;">رقم الترخيص</div><div style="font-size:15px;font-weight:700;">700123456</div></div>
-                  <div><div style="font-size:13px;color:#7089b3;">البريد</div><div style="font-size:15px;font-weight:700;">info@albirjeddah.org</div></div>
-                  <div><div style="font-size:13px;color:#7089b3;">الجوال</div><div style="font-size:15px;font-weight:700;">0551234567</div></div>
-                </div>
-                <div style="font-size:14px;font-weight:700;margin-bottom:12px;">الملفات المرفقة</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px;">
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">شهادة الترخيص</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">اللائحة الأساسية</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">المعلومات البنكية</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">حساب التبرع</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">الملف التعريفي</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">الهوية البصرية</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">الخطة الاستراتيجية</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">الخطة التشغيلية</span><span class="link">⬇</span></div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;background:#f1f4f6;border-radius:8px;padding:10px 12px;font-size:12px;"><span style="color:#44474e;">القوائم المالية</span><span class="link">⬇</span></div>
-                </div>
-                <div style="font-size:14px;font-weight:700;margin-bottom:10px;">معلومات التأهيل</div>
-                <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:13px;">
-                  <span class="info-tag">شهادات تميز: نعم</span><span class="info-tag">منصة قوائم: مسجّلة</span><span class="info-tag">مشاريع سابقة: 4</span>
-                </div>
-              </div>
-              <div class="card" style="padding:26px;">
-                <div style="font-size:16px;font-weight:700;margin-bottom:8px;">إجراء القرار</div>
-                <div style="font-size:13px;color:#7089b3;margin-bottom:16px;">الحالة الحالية: <span id="admin-qdetail-status" style="font-weight:700;color:#b8842a;">قيد المراجعة</span></div>
-                <textarea class="form-input" rows="4" placeholder="ملاحظات / سبب القرار" style="margin-bottom:16px;"></textarea>
-                <div class="flex-col" style="gap:10px;">
-                  <button class="btn btn-green btn-sm" onclick="App.setState({qualStatus:'accepted',adminScreen:'qual'})">قبول الطلب</button>
-                  <button class="btn btn-outline-yellow btn-sm" onclick="App.setState({qualStatus:'edit',adminScreen:'qual'})">طلب تعديل</button>
-                  <button class="btn btn-outline-red btn-sm" onclick="App.setState({qualStatus:'rejected',adminScreen:'qual'})">رفض الطلب</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="admin-proj" class="admin-section" style="display:none;">
-            <div style="font-size:22px;font-weight:800;margin-bottom:20px;font-family:'Cairo',sans-serif;color:#002045;">مراجعة طلبات المشاريع</div>
-            <div class="data-table">
-              <div class="data-table-header" style="grid-template-columns:130px 1.4fr 1fr 120px 130px;"><span>رقم الطلب</span><span>المشروع</span><span>الجمعية</span><span>القيمة</span><span>الحالة</span></div>
-              <div id="admin-proj-tbody"></div>
-            </div>
-          </div>
-          <div id="admin-pdetail" class="admin-section" style="display:none;">
-            <div class="back-link" onclick="App.setState({adminScreen:'proj'})">→ رجوع لطلبات المشاريع</div>
-            <div class="grid-2-col">
-              <div class="card" style="padding:28px;">
-                <div style="font-size:20px;font-weight:800;margin-bottom:20px;">مشروع — PRJ-2026-0098</div>
-                <div class="grid-2" style="margin-bottom:20px;">
-                  <div><div style="font-size:13px;color:#7089b3;">اسم المشروع</div><div style="font-size:15px;font-weight:700;">تمكين الأسر المنتجة</div></div>
-                  <div><div style="font-size:13px;color:#7089b3;">الجمعية</div><div style="font-size:15px;font-weight:700;">جمعية البر بجدة</div></div>
-                  <div><div style="font-size:13px;color:#7089b3;">الفئة المستهدفة</div><div style="font-size:15px;font-weight:700;">الأسر المنتجة</div></div>
-                  <div><div style="font-size:13px;color:#7089b3;">قيمة المشروع</div><div style="font-size:15px;font-weight:700;">300,000 ريال</div></div>
-                </div>
-                <div style="margin-bottom:18px;"><div style="font-size:13px;color:#7089b3;margin-bottom:5px;">وصف المشروع</div><div style="font-size:14px;color:#44474e;line-height:1.9;">تمكين الأسر المنتجة عبر التدريب المهني وتوفير الأدوات اللازمة لبدء مشاريع صغيرة مدرّة للدخل.</div></div>
-                <div><div style="font-size:13px;color:#7089b3;margin-bottom:5px;">أهداف المشروع</div><div style="font-size:14px;color:#44474e;line-height:1.9;">تأهيل 100 أسرة وتمكينها من دخل مستدام خلال سنة.</div></div>
-              </div>
-              <div class="card" style="padding:26px;">
-                <div style="font-size:16px;font-weight:700;margin-bottom:8px;">القرار والعقد</div>
-                <div style="font-size:13px;color:#7089b3;margin-bottom:16px;">حالة المشروع: <span id="admin-pdetail-status" style="font-weight:700;color:#b8842a;">قيد المراجعة</span></div>
-                <div id="admin-proj-review">
-                  <textarea class="form-input" rows="3" placeholder="ملاحظات" style="margin-bottom:14px;"></textarea>
-                  <div class="flex-col" style="gap:10px;">
-                    <button class="btn btn-green btn-sm" onclick="App.setState({projStatus:'accepted'})">قبول المشروع</button>
-                    <button class="btn btn-outline-red btn-sm" onclick="App.setState({projStatus:'rejected',adminScreen:'proj'})">رفض المشروع</button>
-                  </div>
-                </div>
-                <div id="admin-proj-accepted" style="display:none;">
-                  <div style="font-size:13px;color:#7089b3;margin-bottom:8px;">حالة العقد: <span id="admin-contract-status" style="font-weight:700;color:#7089b3;">لم يُرفع</span></div>
-                  <div id="admin-contract-none"><button class="btn btn-primary btn-sm" onclick="App.setState({contractStatus:'admin_up'})">⬆ رفع عقد المشروع</button></div>
-                  <div id="admin-contract-admin-up" style="display:none;"><div class="alert-info">تم إرسال العقد للجمعية — بانتظار رفع النسخة الموقّعة.</div></div>
-                  <div id="admin-contract-signed" style="display:none;">
-                    <div style="display:flex;align-items:center;gap:10px;background:#f1f4f6;border-radius:10px;padding:12px;margin-bottom:12px;font-size:13px;"><span>📄 العقد الموقّع.pdf</span><span class="link" style="margin-right:auto;">عرض</span></div>
-                    <button class="btn btn-green btn-sm" onclick="App.setState({contractStatus:'approved'})">اعتماد العقد وإكمال المشروع</button>
-                  </div>
-                  <div id="admin-contract-approved" style="display:none;"><div style="background:#e3efe7;border-radius:10px;padding:14px;font-size:13px;color:#174528;font-weight:700;">✅ تم اعتماد العقد — المشروع مكتمل.</div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- #include pages/manager.html -->
-    <div id="page-manager" class="page">
-      <div style="display:flex;min-height:100vh;animation:fade .4s;">
-        <div class="sidebar sidebar-mgr">
-          <div class="sidebar-logo"><div class="sidebar-logo-bg"><img src="assets/logo.svg" alt="DAMA"></div><div class="sidebar-title" style="font-family:'Cairo',sans-serif;">DAMA</div></div>
-          <div style="font-size:12px;opacity:.7;margin-bottom:12px;letter-spacing:1px;">الإدارة التنفيذية</div>
-          <div style="height:1px;background:rgba(255,255,255,.1);margin:12px 0 14px;"></div>
-          <div id="mgr-nav-dash" class="sidebar-nav-item mgr-nav sidebar-nav-active" onclick="App.setState({mgrScreen:'dash'})">لوحة المعلومات</div>
-          <div id="mgr-nav-table" class="sidebar-nav-item mgr-nav" onclick="App.setState({mgrScreen:'table'})">الجمعيات والطلبات</div>
-          <div style="margin-top:24px;font-size:11px;opacity:.55;line-height:1.7;padding:0 14px;">صلاحية الاطلاع فقط — دون تعديل أو اعتماد.</div>
-          <div class="sidebar-logout" onclick="App.setState({mgrAuthed:false,portal:'applicant'})">تسجيل الخروج</div>
-        </div>
-        <div style="flex:1;padding:30px 34px;overflow:auto;">
-          <div id="mgr-dash" class="mgr-section">
-            <div style="font-size:22px;font-weight:800;margin-bottom:22px;font-family:'Cairo',sans-serif;">لوحة المعلومات</div>
-            <div class="stat-grid">
-              <div class="stat-card" style="border-left:4px solid #002045;"><div class="stat-label">إجمالي الجمعيات</div><div class="stat-value" style="color:#002045;">520</div></div>
-              <div class="stat-card" style="border-left:4px solid #002045;"><div class="stat-label">طلبات التأهيل</div><div class="stat-value" style="color:#002045;">220</div></div>
-              <div class="stat-card" style="border-left:4px solid #988057;"><div class="stat-label">طلبات المشاريع</div><div class="stat-value" style="color:#988057;">300</div></div>
-              <div class="stat-card" style="border-left:4px solid #174528;"><div class="stat-label">مشاريع معتمدة</div><div class="stat-value" style="color:#174528;">160</div></div>
-            </div>
-            <div class="stat-grid">
-              <div class="stat-card" style="border-left:4px solid #174528;"><div class="stat-label">مقبولة</div><div style="font-size:26px;font-weight:800;margin-top:4px;color:#174528;">180</div></div>
-              <div class="stat-card" style="border-left:4px solid #b23b34;"><div class="stat-label">مرفوضة</div><div style="font-size:26px;font-weight:800;margin-top:4px;color:#b23b34;">60</div></div>
-              <div class="stat-card" style="border-left:4px solid #b8842a;"><div class="stat-label">قيد المراجعة</div><div style="font-size:26px;font-weight:800;margin-top:4px;color:#b8842a;">40</div></div>
-            </div>
-            <div class="hero-banner">
-              <div><div style="font-size:14px;opacity:.85;letter-spacing:.5px;">إجمالي قيمة المنح المعتمدة</div><div style="font-size:32px;font-weight:800;margin-top:6px;font-family:'Cairo',sans-serif;">12,500,000 ريال</div></div>
-              <div style="font-size:48px;opacity:.2;">💰</div>
-            </div>
-            <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;">
-              <div class="chart-card">
-                <div style="font-size:15px;font-weight:700;margin-bottom:20px;font-family:'Cairo',sans-serif;">الطلبات شهرياً</div>
-                <svg viewBox="0 0 420 160" style="width:100%;height:150px;">
-                  <!-- Grid lines -->
-                  <line x1="20" y1="140" x2="380" y2="140" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"></line>
-                  <line x1="20" y1="105" x2="380" y2="105" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"></line>
-                  <line x1="20" y1="70" x2="380" y2="70" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"></line>
-                  <!-- Chart line -->
-                  <polyline points="20,130 90,95 160,105 230,55 300,70 380,25" fill="none" stroke="#002045" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
-                  <!-- Fill area -->
-                  <polygon points="20,130 90,95 160,105 230,55 300,70 380,25 380,155 20,155" fill="#002045" opacity="0.08"></polygon>
-                  <!-- Data points -->
-                  <circle cx="20" cy="130" r="5" fill="#fff" stroke="#002045" stroke-width="2"></circle>
-                  <circle cx="90" cy="95" r="5" fill="#fff" stroke="#002045" stroke-width="2"></circle>
-                  <circle cx="160" cy="105" r="5" fill="#fff" stroke="#002045" stroke-width="2"></circle>
-                  <circle cx="230" cy="55" r="5" fill="#fff" stroke="#002045" stroke-width="2"></circle>
-                  <circle cx="300" cy="70" r="5" fill="#fff" stroke="#002045" stroke-width="2"></circle>
-                  <circle cx="380" cy="25" r="5" fill="#fff" stroke="#002045" stroke-width="2"></circle>
-                  <!-- Labels -->
-                  <text x="20" y="152" font-size="12" fill="#7089b3" text-anchor="middle" font-weight="500">يناير</text>
-                  <text x="90" y="152" font-size="12" fill="#7089b3" text-anchor="middle" font-weight="500">فبراير</text>
-                  <text x="160" y="152" font-size="12" fill="#7089b3" text-anchor="middle" font-weight="500">مارس</text>
-                  <text x="230" y="152" font-size="12" fill="#7089b3" text-anchor="middle" font-weight="500">أبريل</text>
-                  <text x="300" y="152" font-size="12" fill="#7089b3" text-anchor="middle" font-weight="500">مايو</text>
-                  <text x="380" y="152" font-size="12" fill="#7089b3" text-anchor="middle" font-weight="500">يونيو</text>
-                </svg>
-              </div>
-              <div class="chart-card">
-                <div style="font-size:15px;font-weight:700;margin-bottom:18px;font-family:'Cairo',sans-serif;">توزيع الحالات</div>
-                <div style="display:flex;align-items:center;gap:20px;">
-                  <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(from 0deg, #174528 0deg 216deg, #b8842a 216deg 262.8deg, #b23b34 262.8deg 360deg);box-shadow:0 2px 8px rgba(0,0,0,.1);"></div>
-                  <div style="font-size:13px;display:flex;flex-direction:column;gap:10px;font-weight:500;">
-                    <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:2px;background:#174528;display:inline-block;box-shadow:0 1px 2px rgba(0,0,0,.1);"></span><span>مقبول 60%</span></div>
-                    <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:2px;background:#b8842a;display:inline-block;box-shadow:0 1px 2px rgba(0,0,0,.1);"></span><span>مراجعة 13%</span></div>
-                    <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;border-radius:2px;background:#b23b34;display:inline-block;box-shadow:0 1px 2px rgba(0,0,0,.1);"></span><span>مرفوض 27%</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="mgr-table" class="mgr-section" style="display:none;">
-            <div style="font-size:22px;font-weight:800;margin-bottom:6px;">الجمعيات والطلبات</div>
-            <div style="font-size:13px;color:#7089b3;margin-bottom:18px;">عرض شامل لحالة التأهيل والمشروع والعقد — للاطلاع فقط.</div>
-            <div style="background:#fff;border-radius:13px;overflow:auto;box-shadow:0 2px 14px rgba(39,45,104,.05);">
-              <div class="mgr-table-header" style="grid-template-columns:1.3fr 110px 1.2fr 110px 120px 110px;"><span>الجمعية</span><span>التأهيل</span><span>المشروع</span><span>حالة المشروع</span><span>العقد</span><span>النهائية</span></div>
-              <div id="mgr-table-tbody"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Role Switcher -->
-    <div class="role-switcher">
-      <button id="role-applicant" class="role-btn role-active" onclick="App.setPortal('applicant')">الجمعية</button>
-      <button id="role-admin" class="role-btn role-inactive" onclick="App.setPortal('admin')">مسؤول النظام</button>
-      <button id="role-manager" class="role-btn role-inactive" onclick="App.setPortal('manager')">الإدارة التنفيذية</button>
     </div>
   </div>
 
-  <script src="js/app.js"></script>
-  <script>
-    // Extend setState for toggle buttons and error displays
-    const origSetState = App.setState.bind(App);
-    App.setState = function(updates) {
-      origSetState(updates);
-      const S = App.state;
-      ['q1','q2','q3'].forEach(q => {
-        const yesBtn = document.getElementById(q+'-yes');
-        const noBtn = document.getElementById(q+'-no');
-        const upload = document.getElementById(q+'-upload');
-        if (yesBtn && noBtn) {
-          yesBtn.className = 'btn-toggle ' + (S[q]==='yes' ? 'btn-toggle-on' : 'btn-toggle-off');
-          noBtn.className = 'btn-toggle ' + (S[q]==='no' ? 'btn-toggle-on' : 'btn-toggle-off');
-        }
-        if (upload) upload.style.display = S[q]==='yes' ? 'block' : 'none';
-      });
-      const loginErr = document.getElementById('login-error');
-      if (loginErr) loginErr.style.display = S.loginError ? 'block' : 'none';
-      const adminErr = document.getElementById('admin-login-error');
-      if (adminErr) adminErr.style.display = S.aErr ? 'block' : 'none';
-      const mgrErr = document.getElementById('mgr-login-error');
-      if (mgrErr) mgrErr.style.display = S.mErr ? 'block' : 'none';
-    };
-  </script>
+  <!-- Admin Dashboard -->
+  <div id="page-admin" class="page hidden">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-gradient-to-b from-primary-container to-primary text-on-primary p-6 flex flex-col gap-6 fixed h-screen left-0 top-0 z-50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+            <div class="w-6 h-6 bg-primary-container rounded-sm"></div>
+          </div>
+          <h1 class="font-headline-lg font-bold">DAMA</h1>
+        </div>
+
+        <nav class="flex-1 space-y-2">
+          <a href="#" class="block px-4 py-3 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-3">
+            <span class="material-symbols-outlined text-xl">dashboard</span>
+            <span>لوحة المعلومات</span>
+          </a>
+          <a href="#" class="block px-4 py-3 rounded-lg bg-secondary text-on-secondary transition-colors flex items-center gap-3">
+            <span class="material-symbols-outlined text-xl">description</span>
+            <span>الطلبات</span>
+          </a>
+          <a href="#" class="block px-4 py-3 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-3">
+            <span class="material-symbols-outlined text-xl">assignment</span>
+            <span>العقود</span>
+          </a>
+        </nav>
+
+        <button class="px-4 py-3 text-sm opacity-70 hover:opacity-100 transition-opacity border-t border-white/10 w-full text-right">
+          تسجيل الخروج
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="ml-64 flex-1">
+        <!-- Header -->
+        <header class="bg-surface border-b border-outline h-16 flex items-center px-8 shadow-sm">
+          <div class="flex-1 flex items-center gap-4">
+            <div class="flex-1 max-w-xs">
+              <input type="text" placeholder="البحث..." class="w-full px-4 py-2 bg-surface-container-low border border-outline rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none" />
+            </div>
+            <h2 class="font-headline-xl font-bold text-primary-container ml-4">إدارة الطلبات</h2>
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+              <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <div class="w-10 h-10 rounded-full bg-secondary"></div>
+          </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="p-8">
+          <div class="grid grid-cols-6 gap-4 mb-8">
+            <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+              <p class="text-xs text-on-surface-variant font-bold mb-2">إجمالي الطلبات</p>
+              <p class="text-3xl font-black text-primary-container">1,284</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+              <p class="text-xs text-on-surface-variant font-bold mb-2">قيد المراجعة</p>
+              <p class="text-3xl font-black text-yellow-600">342</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+              <p class="text-xs text-on-surface-variant font-bold mb-2">مقبولة</p>
+              <p class="text-3xl font-black text-secondary">512</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+              <p class="text-xs text-on-surface-variant font-bold mb-2">مرفوضة</p>
+              <p class="text-3xl font-black text-error">45</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+              <p class="text-xs text-on-surface-variant font-bold mb-2">تحتاج تعديل</p>
+              <p class="text-3xl font-black text-orange-600">89</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-outline institutional-shadow">
+              <p class="text-xs text-on-surface-variant font-bold mb-2">مكتملة</p>
+              <p class="text-3xl font-black text-blue-600">296</p>
+            </div>
+          </div>
+
+          <!-- Data Table -->
+          <div class="bg-white rounded-2xl border border-outline institutional-shadow overflow-hidden">
+            <table class="w-full">
+              <thead class="bg-primary-container/5 border-b border-outline">
+                <tr>
+                  <th class="px-6 py-4 text-xs font-black text-primary-container text-right">رقم الطلب</th>
+                  <th class="px-6 py-4 text-xs font-black text-primary-container text-right">الجمعية</th>
+                  <th class="px-6 py-4 text-xs font-black text-primary-container text-right">الحالة</th>
+                  <th class="px-6 py-4 text-xs font-black text-primary-container text-right">التاريخ</th>
+                  <th class="px-6 py-4 text-xs font-black text-primary-container text-center">الإجراء</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-outline">
+                <tr class="hover:bg-primary-container/[0.02] transition-colors">
+                  <td class="px-6 py-4 text-sm font-bold">#REQ-2401</td>
+                  <td class="px-6 py-4 text-sm">جمعية البر الأهلية</td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 text-xs font-bold border border-yellow-200">
+                      <span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+                      قيد المراجعة
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-sm">24/10/2023</td>
+                  <td class="px-6 py-4 text-center">
+                    <button class="bg-secondary text-white px-4 py-1.5 rounded-lg text-xs font-bold hover:brightness-110 transition-all">عرض</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-primary-container/[0.02] transition-colors">
+                  <td class="px-6 py-4 text-sm font-bold">#REQ-2402</td>
+                  <td class="px-6 py-4 text-sm">جمعية التنمية الاجتماعية</td>
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 text-secondary text-xs font-bold border border-green-200">
+                      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      مقبولة
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-sm">22/10/2023</td>
+                  <td class="px-6 py-4 text-center">
+                    <button class="bg-secondary text-white px-4 py-1.5 rounded-lg text-xs font-bold hover:brightness-110 transition-all">عرض</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/app.js"></script>
 </body>
 </html>
