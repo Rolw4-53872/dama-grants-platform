@@ -1,0 +1,304 @@
+DAMA GRANT & QUALIFICATION MANAGEMENT SYSTEM - PROJECT STRUCTURE
+================================================================
+
+DAMA-Grant-System/
+│
+├── Backend/
+│   ├── src/
+│   │   ├── DamaGrant.API/
+│   │   │   ├── Controllers/
+│   │   │   │   ├── AuthController.cs
+│   │   │   │   ├── AssociationController.cs
+│   │   │   │   ├── QualificationController.cs
+│   │   │   │   ├── GrantOpportunitiesController.cs
+│   │   │   │   ├── ProjectApplicationController.cs
+│   │   │   │   ├── ReviewController.cs
+│   │   │   │   ├── CommitteeController.cs
+│   │   │   │   ├── ContractController.cs
+│   │   │   │   ├── PaymentController.cs
+│   │   │   │   ├── ReportController.cs
+│   │   │   │   ├── NotificationController.cs
+│   │   │   │   ├── DashboardController.cs
+│   │   │   │   └── AdminController.cs
+│   │   │   ├── Middlewares/
+│   │   │   │   ├── ExceptionHandlingMiddleware.cs
+│   │   │   │   ├── AuthenticationMiddleware.cs
+│   │   │   │   └── AuditLoggingMiddleware.cs
+│   │   │   ├── Extensions/
+│   │   │   │   ├── ServiceCollectionExtensions.cs
+│   │   │   │   ├── AuthenticationExtensions.cs
+│   │   │   │   └── ValidationExtensions.cs
+│   │   │   ├── Filters/
+│   │   │   │   ├── ValidationFilterAttribute.cs
+│   │   │   │   └── AuthorizationFilterAttribute.cs
+│   │   │   ├── Program.cs
+│   │   │   └── appsettings.json
+│   │   │
+│   │   ├── DamaGrant.Domain/
+│   │   │   ├── Entities/
+│   │   │   │   ├── User.cs
+│   │   │   │   ├── Association.cs
+│   │   │   │   ├── QualificationApplication.cs
+│   │   │   │   ├── GrantOpportunity.cs
+│   │   │   │   ├── ProjectApplication.cs
+│   │   │   │   ├── Review.cs
+│   │   │   │   ├── CommitteeDecision.cs
+│   │   │   │   ├── Contract.cs
+│   │   │   │   ├── Payment.cs
+│   │   │   │   ├── Report.cs
+│   │   │   │   ├── Notification.cs
+│   │   │   │   └── AuditLog.cs
+│   │   │   ├── Enums/
+│   │   │   │   ├── UserRole.cs
+│   │   │   │   ├── ApplicationStatus.cs
+│   │   │   │   ├── ReviewType.cs
+│   │   │   │   ├── DecisionStatus.cs
+│   │   │   │   └── PaymentStatus.cs
+│   │   │   ├── ValueObjects/
+│   │   │   │   ├── Email.cs
+│   │   │   │   ├── Phone.cs
+│   │   │   │   └── Address.cs
+│   │   │   └── Interfaces/
+│   │   │       ├── IRepository.cs
+│   │   │       ├── IUnitOfWork.cs
+│   │   │       └── IAuditService.cs
+│   │   │
+│   │   ├── DamaGrant.Application/
+│   │   │   ├── DTOs/
+│   │   │   │   ├── Auth/
+│   │   │   │   ├── Association/
+│   │   │   │   ├── Qualification/
+│   │   │   │   ├── Grant/
+│   │   │   │   ├── Project/
+│   │   │   │   ├── Review/
+│   │   │   │   ├── Committee/
+│   │   │   │   ├── Contract/
+│   │   │   │   ├── Payment/
+│   │   │   │   └── Report/
+│   │   │   ├── Services/
+│   │   │   │   ├── AuthService.cs
+│   │   │   │   ├── AssociationService.cs
+│   │   │   │   ├── QualificationService.cs
+│   │   │   │   ├── GrantService.cs
+│   │   │   │   ├── ProjectService.cs
+│   │   │   │   ├── ReviewService.cs
+│   │   │   │   ├── CommitteeService.cs
+│   │   │   │   ├── ContractService.cs
+│   │   │   │   ├── PaymentService.cs
+│   │   │   │   ├── NotificationService.cs
+│   │   │   │   ├── ReportService.cs
+│   │   │   │   └── DashboardService.cs
+│   │   │   ├── Validators/
+│   │   │   │   ├── AssociationValidator.cs
+│   │   │   │   ├── QualificationValidator.cs
+│   │   │   │   ├── ProjectValidator.cs
+│   │   │   │   └── ReviewValidator.cs
+│   │   │   ├── Interfaces/
+│   │   │   │   ├── IAuthService.cs
+│   │   │   │   ├── IAssociationService.cs
+│   │   │   │   ├── IQualificationService.cs
+│   │   │   │   ├── IGrantService.cs
+│   │   │   │   ├── IProjectService.cs
+│   │   │   │   ├── IReviewService.cs
+│   │   │   │   ├── ICommitteeService.cs
+│   │   │   │   ├── IContractService.cs
+│   │   │   │   ├── IPaymentService.cs
+│   │   │   │   ├── INotificationService.cs
+│   │   │   │   ├── IReportService.cs
+│   │   │   │   ├── IDashboardService.cs
+│   │   │   │   └── IAuditService.cs
+│   │   │   └── Mappings/
+│   │   │       └── MappingProfile.cs
+│   │   │
+│   │   ├── DamaGrant.Infrastructure/
+│   │   │   ├── Persistence/
+│   │   │   │   ├── AppDbContext.cs
+│   │   │   │   ├── Repositories/
+│   │   │   │   │   ├── Repository.cs
+│   │   │   │   │   ├── UserRepository.cs
+│   │   │   │   │   ├── AssociationRepository.cs
+│   │   │   │   │   ├── ApplicationRepository.cs
+│   │   │   │   │   ├── ReviewRepository.cs
+│   │   │   │   │   ├── ContractRepository.cs
+│   │   │   │   │   ├── PaymentRepository.cs
+│   │   │   │   │   └── AuditLogRepository.cs
+│   │   │   │   ├── Configurations/
+│   │   │   │   │   ├── UserConfiguration.cs
+│   │   │   │   │   ├── AssociationConfiguration.cs
+│   │   │   │   │   ├── ApplicationConfiguration.cs
+│   │   │   │   │   ├── ReviewConfiguration.cs
+│   │   │   │   │   ├── ContractConfiguration.cs
+│   │   │   │   │   ├── PaymentConfiguration.cs
+│   │   │   │   │   └── AuditLogConfiguration.cs
+│   │   │   │   ├── Migrations/
+│   │   │   │   └── UnitOfWork.cs
+│   │   │   ├── External/
+│   │   │   │   ├── EmailService.cs
+│   │   │   │   ├── StorageService.cs
+│   │   │   │   └── NotificationService.cs
+│   │   │   ├── Security/
+│   │   │   │   ├── JwtTokenService.cs
+│   │   │   │   ├── PasswordHashService.cs
+│   │   │   │   └── AuthorizationService.cs
+│   │   │   └── DependencyInjection.cs
+│   │   │
+│   │   └── DamaGrant.Tests/
+│   │       ├── Unit/
+│   │       ├── Integration/
+│   │       └── Performance/
+│   │
+│   ├── DamaGrant.sln
+│   └── .gitignore
+│
+├── Frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── (auth)/
+│   │   │   │   ├── login/page.tsx
+│   │   │   │   ├── register/page.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── (dashboard)/
+│   │   │   │   ├── dashboard/page.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── (association)/
+│   │   │   │   ├── profile/page.tsx
+│   │   │   │   ├── qualification/page.tsx
+│   │   │   │   ├── grants/page.tsx
+│   │   │   │   ├── applications/page.tsx
+│   │   │   │   ├── contracts/page.tsx
+│   │   │   │   ├── reports/page.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── (staff)/
+│   │   │   │   ├── review/page.tsx
+│   │   │   │   ├── committee/page.tsx
+│   │   │   │   ├── decisions/page.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── (admin)/
+│   │   │   │   ├── users/page.tsx
+│   │   │   │   ├── associations/page.tsx
+│   │   │   │   ├── settings/page.tsx
+│   │   │   │   ├── audit/page.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   ├── components/
+│   │   │   ├── layout/
+│   │   │   │   ├── Header.tsx
+│   │   │   │   ├── Sidebar.tsx
+│   │   │   │   └── Footer.tsx
+│   │   │   ├── common/
+│   │   │   │   ├── Button.tsx
+│   │   │   │   ├── Input.tsx
+│   │   │   │   ├── Modal.tsx
+│   │   │   │   ├── Table.tsx
+│   │   │   │   ├── Card.tsx
+│   │   │   │   └── Badge.tsx
+│   │   │   ├── forms/
+│   │   │   │   ├── ApplicationForm.tsx
+│   │   │   │   ├── ReviewForm.tsx
+│   │   │   │   ├── ContractForm.tsx
+│   │   │   │   └── PaymentForm.tsx
+│   │   │   ├── dashboard/
+│   │   │   │   ├── DashboardCard.tsx
+│   │   │   │   ├── StatisticsWidget.tsx
+│   │   │   │   ├── ChartWidget.tsx
+│   │   │   │   └── RecentActivity.tsx
+│   │   │   └── admin/
+│   │   │       ├── UserManagement.tsx
+│   │   │       ├── AssociationManagement.tsx
+│   │   │       └── AuditLog.tsx
+│   │   ├── lib/
+│   │   │   ├── api/
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── endpoints.ts
+│   │   │   │   └── axiosConfig.ts
+│   │   │   ├── hooks/
+│   │   │   │   ├── useAuth.ts
+│   │   │   │   ├── useUser.ts
+│   │   │   │   ├── useApplications.ts
+│   │   │   │   └── useDashboard.ts
+│   │   │   ├── utils/
+│   │   │   │   ├── validation.ts
+│   │   │   │   ├── formatters.ts
+│   │   │   │   └── helpers.ts
+│   │   │   ├── types/
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── api.ts
+│   │   │   │   ├── domain.ts
+│   │   │   │   └── auth.ts
+│   │   │   └── auth/
+│   │   │       ├── jwtManager.ts
+│   │   │       └── protectedRoute.tsx
+│   │   ├── store/
+│   │   │   ├── authStore.ts
+│   │   │   ├── applicationStore.ts
+│   │   │   └── uiStore.ts
+│   │   └── middleware.ts
+│   ├── public/
+│   │   ├── images/
+│   │   ├── icons/
+│   │   └── logos/
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── tailwind.config.ts
+│   ├── next.config.js
+│   └── .env.example
+│
+├── Database/
+│   ├── Scripts/
+│   │   ├── 01_CreateDatabase.sql
+│   │   ├── 02_CreateTables.sql
+│   │   ├── 03_CreateIndexes.sql
+│   │   ├── 04_CreateStoredProcedures.sql
+│   │   └── 05_SeedData.sql
+│   └── Backups/
+│
+├── Documentation/
+│   ├── API_Documentation.md
+│   ├── Architecture.md
+│   ├── Database_Design.md
+│   ├── Development_Guide.md
+│   ├── Deployment_Guide.md
+│   └── Business_Requirements.md
+│
+├── Deployment/
+│   ├── Docker/
+│   │   ├── Dockerfile.backend
+│   │   ├── Dockerfile.frontend
+│   │   └── docker-compose.yml
+│   ├── Kubernetes/
+│   │   ├── backend-deployment.yaml
+│   │   ├── frontend-deployment.yaml
+│   │   └── ingress.yaml
+│   └── CI-CD/
+│       ├── github-workflows/
+│       │   ├── backend-ci.yml
+│       │   ├── frontend-ci.yml
+│       │   └── deploy.yml
+│       └── azure-pipelines/
+│           └── azure-pipelines.yml
+│
+└── README.md
+
+===============================
+PROJECT STATISTICS
+===============================
+Total Projects: 4 (API, Domain, Application, Infrastructure)
+Total Controllers: 13
+Total Services: 12
+Total Entities: 12
+Total DTOs: 10 Folders
+Total Pages: 20+
+Total Components: 25+
+Total Database Tables: 12
+
+TECHNOLOGY STACK:
+===============================
+Backend: ASP.NET Core 9, Entity Framework Core, SQL Server
+Frontend: Next.js 15, React 19, TypeScript, Tailwind CSS
+Architecture: Clean Architecture, SOLID Principles
+Patterns: Repository, Unit of Work, Dependency Injection
+
+Ready for implementation.
